@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Distribuidora de Material Médico e Hospitalar | Speculum</title>
+	<meta name="description" content="A Speculum é distribuidora de material médico e hospitalar em Portugal: obstetrícia, exame, ecografia, anestesia e cirurgia para clínicas e hospitais.">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root{
+			--azul-escuro:#00416b; --azul-claro:#0070af;
+			--gradiente:linear-gradient(135deg,#00416b 0%,#0070af 100%);
+			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
+			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
+			--radius:10px; --container:1240px;
+		}
+		*{box-sizing:border-box;margin:0;padding:0}
+		html{scroll-behavior:smooth}
+		body{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
+		a{color:inherit;text-decoration:none}
+		img{max-width:100%;display:block}
+		.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
+
+		/* ===== Secção Herói com menu integrado ===== */
+		.hero-section{position:relative;background:var(--gradiente);color:#fff;overflow:visible;padding-block:36px}
+		.hero-section::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.08),transparent 45%);pointer-events:none;z-index:0}
+
+		/* Barra de especialidades (mega-menu) */
+		.spec-bar{position:relative;z-index:20;border-block-start:1px solid rgba(255,255,255,.18);margin-block-start:20px}
+		.spec-inner{display:flex;align-items:center;gap:16px}
+		.spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap}
+		.spec-item{position:static}
+		.spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;position:relative;transition:background .2s}
+		.spec-trigger .chev{display:none}
+		.spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
+		.spec-item:hover .spec-trigger,.spec-item:focus-within .spec-trigger{background:rgba(255,255,255,.12)}
+		.spec-item:hover .spec-trigger::after,.spec-item:focus-within .spec-trigger::after,.spec-item.open .spec-trigger::after{transform:scaleX(1)}
+
+		/* Painel mega — abre por baixo da barra, largura total da secção */
+		.mega-panel{position:absolute;left:0;right:0;top:100%;background:var(--branco);color:var(--azul-escuro);box-shadow:var(--sombra-mega);border-block-start:3px solid var(--azul-claro);
+			visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:30}
+		.spec-item:hover .mega-panel,.spec-item:focus-within .mega-panel,.spec-item.open .mega-panel{visibility:visible;opacity:1;transform:translateY(0)}
+		.mega-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px 32px;padding-block:32px}
+		.mega-group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
+		.prod-list{display:flex;flex-direction:column;gap:6px}
+		.prod-card{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;transition:background .18s}
+		.prod-card:hover,.prod-card:focus-visible{background:var(--cinza-claro)}
+		.prod-thumb{flex:0 0 68px;width:68px;height:68px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--cinza-borda);padding:4px}
+		.prod-thumb.ph{display:grid;place-items:center;background:linear-gradient(135deg,#e8eff5,#d5e4ef);border:1px solid var(--cinza-borda)}
+		.prod-thumb.ph svg{width:30px;height:30px;fill:var(--azul-claro);opacity:.7}
+		.prod-name{font-size:.86rem;font-weight:500;line-height:1.3;color:var(--azul-escuro)}
+		.mega-group>.ver-todos{display:inline-block;margin-block-start:10px;font-size:.78rem;font-weight:600;color:var(--azul-claro)}
+		.mega-group>.ver-todos::after{content:" →"}
+
+		/* Conteúdo do herói (sem parágrafo) */
+		.hero-content{position:relative;z-index:10;text-align:center;padding-block:12px}
+		.hero-content .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-block-end:20px;border:1px solid rgba(255,255,255,.4);padding:7px 18px;border-radius:999px}
+		.hero-content h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.12;max-width:20ch;margin-inline:auto}
+
+		/* ===== Categorias ===== */
+		.categorias{padding-block:72px;background:var(--cinza-claro)}
+		.section-head{text-align:center;margin-block-end:44px}
+		.section-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--azul-escuro)}
+		.section-head p{color:var(--cinza-texto);margin-block-start:8px}
+		.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+		.cat-card{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);background-size:cover;background-position:center;isolation:isolate;transition:transform .25s,box-shadow .25s}
+		.cat-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,65,107,.88),rgba(0,65,107,.35) 55%,rgba(0,65,107,.15));transition:background .25s}
+		.cat-card:hover,.cat-card:focus-within{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,65,107,.24)}
+		.cat-card:hover::before,.cat-card:focus-within::before{background:linear-gradient(to top,rgba(0,65,107,.92),rgba(0,112,175,.55) 60%,rgba(0,112,175,.25))}
+		.cat-card .label{padding:24px;color:#fff;width:100%}
+		.cat-card .label h3{font-size:1.35rem;font-weight:700}
+		.cat-card .label span{display:inline-flex;align-items:center;gap:6px;margin-block-start:6px;font-size:.85rem;font-weight:600;opacity:.9}
+		.cat-card .label span::after{content:"→";transition:transform .2s}
+		.cat-card:hover .label span::after{transform:translateX(4px)}
+		.cat-card .stretched{position:absolute;inset:0;z-index:1}
+		.cat-consumiveis{background-image:url("https://www.speculum.pt/files/images/highlights/consum%C3%ADveis.PNG")}
+		.cat-equipamentos{background-image:url("https://www.speculum.pt/files/images/highlights/equipamentos-10341627042018.jpg")}
+		.cat-metalicos{background-image:url("https://www.speculum.pt/files/images/highlights/metalicos-16070627042018.jpg")}
+		.cat-inovacao{background-image:url("https://www.speculum.pt/files/images/highlights/inova%C3%A7%C3%A3omedica.PNG")}
+
+		/* ===== Responsivo ===== */
+		@media (max-width:960px){
+			.spec-trigger{padding:14px 12px}
+			.mega-panel{max-height:78vh;overflow-y:auto}
+			.mega-inner{grid-template-columns:1fr;gap:18px;padding-block:20px}
+			.categorias{padding-block:52px}
+		}
+	</style>
+</head>
+<body>
+
+	<!-- ===== Secção: Menu de especialidades + Herói ===== -->
+	<section class="hero-section">
+
+		<!-- Título do herói (sem parágrafo) -->
+		<div class="container hero-content">
+			<span class="tag">Produtos Médicos e Hospitalares</span>
+			<h1>Distribuidora de material médico e hospitalar</h1>
+		</div>
+
+		<nav class="spec-bar" id="specBar" aria-label="Especialidades">
+			<div class="container spec-inner">
+				<ul class="spec-list">
+
+					<!-- OBSTETRÍCIA -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Obstetrícia<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Ventosas</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/777-ventosas/45599-ventosa-kiwi-omnicup"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/ventosaparto_1.jpg" alt=""><span class="prod-name">Ventosa Kiwi OMNICUP</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/777-ventosas/45598-ventosa-kiwi-omnicup-c-medicao-traccao"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/Kiwi_3.jpg" alt=""><span class="prod-name">Ventosa Kiwi OMNICUP c/ Medição de Tracção</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/777-ventosas">Ver todas</a>
+								</div>
+								<div class="mega-group">
+									<h3>Registo e Gestão dos Dados</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/458-monitorizacao/47940-maternum-partogram-and-deliv-notes-mod"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/MATERNUM.png" alt=""><span class="prod-name">Partograma — Maternum</span></a>
+									</div>
+								</div>
+								<div class="mega-group">
+									<h3>Monitorização Fetal</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/458-monitorizacao/43853-omniview-sisporto-server-license"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/IEOMNISRV.jpg" alt=""><span class="prod-name">OmniView-SisPorto</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/52355-cardiotocografo-edan-f15-air-simple"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/EDF15AIR.jpg" alt=""><span class="prod-name">Cardiotocógrafo EDAN F15 Air Simple</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/43487-cardiotocografo-edan-f9-c-monitmatern"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/EDCTGF9EG.jpg" alt=""><span class="prod-name">Cardiotocógrafo EDAN F9 c/ Monit. Materna</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/45409-sistema-telemetria-single-edan-fts-3"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/EDSNGFTS3.jpg" alt=""><span class="prod-name">Sistema Telemetria Single EDAN FTS-3</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/51009-monitor-controlo-fetal-stan-s41"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/NVSYS120400.jpg" alt=""><span class="prod-name">Monitor Controlo Fetal STAN S41</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- EXAME -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Exame<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Espéculos</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44567-especulo-desc-cusco-se-s"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000102.jpg" alt=""><span class="prod-name">Espéculo Desc. Cusco SE — S</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44568-especulo-desc-cusco-se-m"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000103.jpg" alt=""><span class="prod-name">Espéculo Desc. Cusco SE — M</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44570-especulo-desc-export-se-m"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000105.jpg" alt=""><span class="prod-name">Espéculo Desc. Export SE — M</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/397-especulos">Ver todos</a>
+								</div>
+								<div class="mega-group">
+									<h3>Citologia</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/574-microcuretas/48457-microcureta-endosampler"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Microcureta Endosampler</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1402-escovas/50989-escova-cervical-white-n-esterilizada"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SEBR1N100.jpg" alt=""><span class="prod-name">Escova Cervical White N/ Esterilizada</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/557-recolha-do-endo-e-exocolo/44278-cervex-brush-est"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Cervex Brush Est.</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- ECOGRAFIA -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Ecografia<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Imagem Geral</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/382-ecografos/53855-ecografo-v7-3p-ncw-keyboard-v100"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung V7</span></a>
+										<a class="prod-card" href="https://previous.samsunghealthcare.com/en/products/UltrasoundSystem/HS40/General%20Imaging/benefit"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung HS40</span></a>
+										<a class="prod-card" href="https://previous.samsunghealthcare.com/en/products/UltrasoundSystem/RS80%20EVO/General%20Imaging/benefit"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung RS80</span></a>
+										<a class="prod-card" href="https://previous.samsunghealthcare.com/en/products/UltrasoundSystem/RS85%20Prestige/General%20Imaging/benefit"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung RS85</span></a>
+									</div>
+								</div>
+								<div class="mega-group">
+									<h3>OB/GYN</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://previous.samsunghealthcare.com/en/products/UltrasoundSystem/HS50/Womens%20Health/benefit"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung HS50</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/382-ecografos/53855-ecografo-v7-3p-ncw-keyboard-v100"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Ecógrafo Samsung V7</span></a>
+									</div>
+								</div>
+								<div class="mega-group">
+									<h3>Cobertura de Sondas</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/474-preservativos/47884-preservativo-latex-ind-hh-nest"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Preservativo Látex Ind. H.H. N/Est.</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/474-preservativos/47843-preservativo-latex-indcsilicone-hh"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Preservativo Látex Ind. c/ Silicone H.H.</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/474-preservativos">Ver todos</a>
+								</div>
+								<div class="mega-group">
+									<h3>Consumíveis</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/182-papel-de-impressora/45524-papel-impressora-upp110hg-type-v"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Papel Impressora UPP110HG Type V</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/188-gel/51151-gel-usecg-azul-aquaultra-5kg"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Gel US/ECG (Azul) AquaUltra 5 kg</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/biopsia.html"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Biópsia</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- TESTES DIAGNÓSTICO -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Testes Diagnóstico<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Rutura de Membranas</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/252-testes/42945-teste-amnisure-rutura-membranas"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/AI0FMRT1P.jpg" alt=""><span class="prod-name">Teste AmniSure — Rutura de Membranas</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/252-testes">Ver todos</a>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- ANESTESIA -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Anestesia<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Bloqueios Periféricos Contínuos</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1592-agulhas-bloqueios-perifericos-continuos/51926-kit-bnp-cont-ecogen19gx50facetcatet"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Kit BNP Cont. Ecogen 19Gx50 (Facet) + Catéter</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1592-agulhas-bloqueios-perifericos-continuos/51927-kit-bnp-cont-ecogen19gx100facetcatet"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Kit BNP Cont. Ecogen 19Gx100 (Facet) + Catéter</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1593-agulhas-ecogenicas/51897-agulha-ecogenica-neuroestimul-22gx50mm"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Agulha Ecogénica Neuroestimul. 22Gx50 mm</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1592-agulhas-bloqueios-perifericos-continuos/51900-agulha-bnp-eco-sonotap-22gx50mm"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Agulha BNP Eco SonoTap 22Gx50 mm</span></a>
+									</div>
+								</div>
+								<div class="mega-group">
+									<h3>Lâminas Laringoscópio</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1430-laminas/52190-lamina-laringoscopio-nishikawa-11416mm"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Lâmina Laringoscópio Nishikawa 114/16 mm</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/1430-laminas">Ver todas</a>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- CIRURGIA -->
+					<li class="spec-item">
+						<button class="spec-trigger" aria-expanded="false">Cirurgia<span class="chev" aria-hidden="true">▾</span></button>
+						<div class="mega-panel">
+							<div class="container mega-inner">
+								<div class="mega-group">
+									<h3>Manipulação</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/703-outros/45602-pelicula-retratora-traxi-imc-30"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Película Retratora Traxi IMC 30</span></a>
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/246-manipuladores/45596-manipulador-uterino-clearview-7-cm"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Manipulador Uterino Clearview 7 cm</span></a>
+									</div>
+								</div>
+								<div class="mega-group">
+									<h3>Eletrodos</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/669-ansas-e-electrodos/48795-eletrodo-ball-05cm-desc"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SY000005B.jpg" alt=""><span class="prod-name">Eletrodo Ball 0,5 cm Desc.</span></a>
+									</div>
+									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/669-ansas-e-electrodos">Ver todos</a>
+								</div>
+								<div class="mega-group">
+									<h3>Evacuação de Fumos</h3>
+									<div class="prod-list">
+										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/260-filtros/49463-filtro-evacuador-fumos-finesse"><span class="prod-thumb ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3h-2v8H3v2h8v8h2v-8h8v-2h-8z"/></svg></span><span class="prod-name">Filtro Evacuador de Fumos Finesse</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+	<!-- ===== Categorias ===== -->
+	<section class="categorias" aria-labelledby="titulo-categorias">
+		<div class="container">
+			<div class="section-head">
+				<h2 id="titulo-categorias">Explore por categoria</h2>
+				<p>Milhares de artigos organizados para encontrar o que precisa.</p>
+			</div>
+			<div class="cat-grid">
+				<article class="cat-card cat-consumiveis">
+					<div class="label"><h3>Consumíveis</h3><span>Ver produtos</span></div>
+					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]" aria-label="Ver produtos consumíveis"></a>
+				</article>
+				<article class="cat-card cat-equipamentos">
+					<div class="label"><h3>Equipamentos</h3><span>Ver produtos</span></div>
+					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]" aria-label="Ver equipamentos"></a>
+				</article>
+				<article class="cat-card cat-metalicos">
+					<div class="label"><h3>Metálicos</h3><span>Ver produtos</span></div>
+					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]" aria-label="Ver artigos metálicos"></a>
+				</article>
+				<article class="cat-card cat-inovacao">
+					<div class="label"><h3>Inovação</h3><span>Ver produtos</span></div>
+					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]" aria-label="Ver produtos de inovação"></a>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		(function () {
+			var items = document.querySelectorAll(".spec-item");
+			items.forEach(function (item) {
+				var trigger = item.querySelector(".spec-trigger");
+				trigger.addEventListener("click", function (e) {
+					e.preventDefault();
+					var isOpen = item.classList.contains("open");
+					items.forEach(function (o) { if (o !== item) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); } });
+					item.classList.toggle("open", !isOpen);
+					trigger.setAttribute("aria-expanded", !isOpen ? "true" : "false");
+				});
+			});
+
+			document.addEventListener("click", function (e) {
+				if (!e.target.closest(".spec-item")) {
+					items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
+				}
+			});
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape") items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
+			});
+		})();
+	</script>
+</body>
+</html>
