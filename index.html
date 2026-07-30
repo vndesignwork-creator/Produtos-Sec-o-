@@ -108,8 +108,9 @@
 		.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 		.hl-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:transform .22s,box-shadow .22s}
 		.hl-card:hover,.hl-card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,65,107,.2)}
-		.hl-img{height:210px;display:grid;place-items:center;background:#fff;padding:22px}
-		.hl-img img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
+		.hl-img{height:200px;display:grid;place-items:center;background:#fff;padding:18px;overflow:hidden}
+		.hl-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+		.hl-body{position:relative;z-index:1;background:#fff}
 		.hl-body{padding:20px;border-block-start:1px solid var(--cinza-borda)}
 		.hl-body h3{font-size:1.1rem;font-weight:700;color:var(--azul-escuro)}
 		.hl-cta{display:inline-block;margin-block-start:8px;font-size:.85rem;font-weight:600;color:var(--azul-claro)}
@@ -372,20 +373,32 @@
 		<div class="container">
 			<div class="section-head">
 				<h2 id="hl-title">Em destaque</h2>
-				<p>Os nossos ecógrafos Samsung de última geração.</p>
+				<p>Alguns dos equipamentos e produtos que fornecemos.</p>
 			</div>
 			<div class="hl-grid">
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53909-ecografo-v7-3p-ncw-keyboard-v100">
-					<div class="hl-img"><img loading="lazy" src="https://pbs.twimg.com/media/FUE3mFbUEAAUvRC.png" alt="Ecógrafo Samsung V7"></div>
+					<div class="hl-img"><img loading="lazy" src="images/ecografo-v7.png" alt="Ecógrafo Samsung V7"></div>
 					<div class="hl-body"><h3>Ecógrafo Samsung V7</h3><span class="hl-cta">Ver equipamento →</span></div>
 				</a>
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53908-ecografo-samsung-rs85">
-					<div class="hl-img"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/RS85_NEW/keyvisual-img-lg.png" alt="Ecógrafo Samsung RS85"></div>
+					<div class="hl-img"><img loading="lazy" src="images/ecografo-rs85.png" alt="Ecógrafo Samsung RS85"></div>
 					<div class="hl-body"><h3>Ecógrafo Samsung RS85</h3><span class="hl-cta">Ver equipamento →</span></div>
 				</a>
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53899-ecografo-samsung-hs40">
-					<div class="hl-img"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/HS40_GI/img_slider_hs40_gi01.png" alt="Ecógrafo Samsung HS40"></div>
+					<div class="hl-img"><img loading="lazy" src="images/ecografo-hs40.png" alt="Ecógrafo Samsung HS40"></div>
 					<div class="hl-body"><h3>Ecógrafo Samsung HS40</h3><span class="hl-cta">Ver equipamento →</span></div>
+				</a>
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/43487-cardiotocografo-edan-f9-c-monitmatern">
+					<div class="hl-img"><img loading="lazy" src="images/cardiotocografo-f9.jpg" alt="Cardiotocógrafo EDAN F9"></div>
+					<div class="hl-body"><h3>Cardiotocógrafo EDAN F9</h3><span class="hl-cta">Ver equipamento →</span></div>
+				</a>
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/252-testes/42945-teste-amnisure-rutura-membranas">
+					<div class="hl-img"><img loading="lazy" src="images/amnisure.jpg" alt="Teste AmniSure → Rutura de Membranas"></div>
+					<div class="hl-body"><h3>Teste AmniSure → Rutura de Membranas</h3><span class="hl-cta">Ver produto →</span></div>
+				</a>
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44568-especulo-desc-cusco-se-m">
+					<div class="hl-img"><img loading="lazy" src="images/especulo.jpg" alt="Espéculo Desc. Cusco SE → M"></div>
+					<div class="hl-body"><h3>Espéculo Desc. Cusco SE → M</h3><span class="hl-cta">Ver produto →</span></div>
 				</a>
 			</div>
 		</div>
