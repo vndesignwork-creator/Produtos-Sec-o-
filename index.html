@@ -20,15 +20,16 @@
 		}
 		*{box-sizing:border-box;margin:0;padding:0}
 		html{scroll-behavior:smooth}
-		body{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
+		body{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 		a{color:inherit;text-decoration:none}
 		img{max-width:100%;display:block}
 		.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
 
 		/* ===== Secção Herói com menu integrado ===== */
-		.hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:36px 60px}
+		.hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:48px 36px}
 		.hero-section::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.08),transparent 45%);pointer-events:none;z-index:0}
-		.hero-pulse{position:absolute;left:0;bottom:0;width:100%;height:56px;z-index:1;pointer-events:none;display:block}
+		.hero-pulse{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100vw;height:118px;z-index:0;pointer-events:none;display:block;opacity:.5}
+		.hero-content .tag,.hero-content h1{position:relative;z-index:1}
 
 		/* Barra de especialidades (mega-menu) */
 		.spec-bar{position:relative;z-index:20;border-block-start:1px solid rgba(255,255,255,.18);margin-block-start:20px}
@@ -104,6 +105,17 @@
 
 		<!-- Título do herói (sem parágrafo) -->
 		<div class="container hero-content">
+			<svg class="hero-pulse" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+				<defs>
+					<linearGradient id="pulseGrad" x1="0" y1="0" x2="1" y2="0">
+						<stop offset="0" stop-color="#7db8e0" stop-opacity="0"/>
+						<stop offset=".16" stop-color="#7db8e0" stop-opacity=".55"/>
+						<stop offset=".55" stop-color="#bfe0f5"/>
+						<stop offset="1" stop-color="#eaf5ff"/>
+					</linearGradient>
+				</defs>
+				<path d="M0,60 L85,60 Q102,60 110,48 Q118,60 135,60 L172,60 L176,15 L182,90 L187,60 L198,60 Q210,60 218,46 Q226,60 238,60 L285,60 Q302,60 310,48 Q318,60 335,60 L372,60 L376,15 L382,90 L387,60 L398,60 Q410,60 418,46 Q426,60 438,60 L485,60 Q502,60 510,48 Q518,60 535,60 L572,60 L576,15 L582,90 L587,60 L598,60 Q610,60 618,46 Q626,60 638,60 L685,60 Q702,60 710,48 Q718,60 735,60 L772,60 L776,15 L782,90 L787,60 L798,60 Q810,60 818,46 Q826,60 838,60 L885,60 Q902,60 910,48 Q918,60 935,60 L972,60 L976,15 L982,90 L987,60 L998,60 Q1010,60 1018,46 Q1026,60 1038,60 L1200,60" fill="none" stroke="url(#pulseGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+			</svg>
 			<span class="tag">Produtos Médicos e Hospitalares</span>
 			<h1>Distribuidora de material médico e hospitalar</h1>
 		</div>
@@ -311,18 +323,6 @@
 				</ul>
 			</div>
 		</nav>
-
-		<svg class="hero-pulse" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-			<defs>
-				<linearGradient id="pulseGrad" x1="0" y1="0" x2="1" y2="0">
-					<stop offset="0" stop-color="#7db8e0" stop-opacity="0"/>
-					<stop offset=".16" stop-color="#7db8e0" stop-opacity=".55"/>
-					<stop offset=".55" stop-color="#bfe0f5"/>
-					<stop offset="1" stop-color="#eaf5ff"/>
-				</linearGradient>
-			</defs>
-			<path d="M0,60 L85,60 Q102,60 110,48 Q118,60 135,60 L172,60 L176,15 L182,90 L187,60 L198,60 Q210,60 218,46 Q226,60 238,60 L285,60 Q302,60 310,48 Q318,60 335,60 L372,60 L376,15 L382,90 L387,60 L398,60 Q410,60 418,46 Q426,60 438,60 L485,60 Q502,60 510,48 Q518,60 535,60 L572,60 L576,15 L582,90 L587,60 L598,60 Q610,60 618,46 Q626,60 638,60 L685,60 Q702,60 710,48 Q718,60 735,60 L772,60 L776,15 L782,90 L787,60 L798,60 Q810,60 818,46 Q826,60 838,60 L885,60 Q902,60 910,48 Q918,60 935,60 L972,60 L976,15 L982,90 L987,60 L998,60 Q1010,60 1018,46 Q1026,60 1038,60 L1200,60" fill="none" stroke="url(#pulseGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-		</svg>
 	</section>
 
 	<!-- ===== Categorias ===== -->
