@@ -60,14 +60,14 @@
 		/* Barra de especialidades (mega-menu) */
 		#produtos-main .spec-bar{position:relative;z-index:20}
 		#produtos-main .spec-inner{display:flex;align-items:center;gap:16px}
-		#produtos-main .spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap}
-		#produtos-main .spec-item{position:static}
-		#produtos-main .spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;position:relative;transition:background .2s}
+		#produtos-main .spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap;column-gap:14px;row-gap:2px}
+		#produtos-main .spec-item{position:static;flex-shrink:0}
+		#produtos-main .spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;max-width:none;white-space:nowrap;position:relative}
 		#produtos-main .spec-trigger .chev{display:none}
 			/* Linhas suaves entre especialidades (fade em cima/baixo, sem tocar nas extremidades) */
-			#produtos-main .spec-item + .spec-item .spec-trigger::before{content:"";position:absolute;inset-block:24%;inset-inline-start:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.32),transparent);pointer-events:none}
+			#produtos-main .spec-item + .spec-item .spec-trigger::before{content:"";position:absolute;inset-block:24%;inset-inline-start:-7px;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.32),transparent);pointer-events:none}
 		#produtos-main .spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
-		#produtos-main .spec-item:hover .spec-trigger,#produtos-main .spec-item:focus-within .spec-trigger{background:rgba(255,255,255,.12)}
+		#produtos-main .spec-item:hover .spec-trigger,#produtos-main .spec-item:focus-within .spec-trigger{background:none}
 		#produtos-main .spec-item:hover .spec-trigger::after,#produtos-main .spec-item:focus-within .spec-trigger::after,#produtos-main .spec-item.open .spec-trigger::after{transform:scaleX(1)}
 
 		/* Painel mega */
@@ -137,7 +137,10 @@
 		/* ===== Responsivo ===== */
 		@media (max-width:960px){
 			#produtos-main .spec-trigger{padding:14px 12px}
-				#produtos-main .spec-item + .spec-item .spec-trigger::before{display:none}
+				/* Quebra em várias filas (todos os itens visíveis), alinhada à esquerda; overflow-x:clip
+				   corta o 1px inicial de cada fila (separador a -1px) → sem linhas soltas. */
+				#produtos-main .spec-list{flex-wrap:wrap;justify-content:flex-start;overflow-x:clip}
+				#produtos-main .spec-item + .spec-item .spec-trigger::before{inset-block:30%}
 			#produtos-main .mega-panel{max-height:78vh;overflow-y:auto}
 			#produtos-main .mega-inner{grid-template-columns:1fr;row-gap:0;padding-block:20px}
 			#produtos-main .mega-group{padding-inline:0}
