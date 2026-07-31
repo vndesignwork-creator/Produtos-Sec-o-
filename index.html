@@ -2,126 +2,238 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Distribuidora de Material Médico e Hospitalar | Speculum</title>
-	<meta name="description" content="A Speculum é distribuidora de material médico e hospitalar em Portugal: obstetrícia, exame, ecografia, anestesia e cirurgia para clínicas e hospitais.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="index,follow">
+	<title>Distribuidora de Material Hospitalar</title>
+	<meta name="description" content="Produtos Médicos e Hospitalares">
+	<meta name="keywords" content="Home Page">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Folhas de estilo REAIS do site Speculum (idênticas às da medicoshospitalares.html) -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
+	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/stylesheet.css" type="text/css">
+	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/core.css" type="text/css">
+	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/select2.css" type="text/css">
+	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/font-awesome.min.css" type="text/css">
+
+	<!-- Fonte para o conteúdo de produtos (não afeta cabeçalho/rodapé) -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+	<!-- Estilos do CONTEÚDO de produtos — isolados sob #produtos-main para não colidir com o CSS do site -->
 	<style>
 		:root{
 			--azul-escuro:#00416b; --azul-claro:#0070af;
-			--gradiente:linear-gradient(135deg,#00416b 0%,#0070af 100%);
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
 			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
 			--radius:10px; --container:1240px;
 		}
-		*{box-sizing:border-box;margin:0;padding:0}
-		html{scroll-behavior:smooth}
-		body{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-		a{color:inherit;text-decoration:none}
-		img{max-width:100%;display:block}
-		.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
+		#produtos-main{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
+		#produtos-main *{box-sizing:border-box;margin:0;padding:0}
+		#produtos-main a{color:inherit;text-decoration:none}
+		#produtos-main img{max-width:100%;display:block}
+		#produtos-main .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
 
 		/* ===== Secção Herói com menu integrado ===== */
-		.hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:48px 36px}
-		.hero-section::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.08),transparent 45%);pointer-events:none;z-index:0}
-		.hero-pulse{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100vw;height:110px;z-index:0;pointer-events:none;display:block;opacity:.38}
-		.hero-content .tag,.hero-content h1{position:relative;z-index:1}
+		#produtos-main .hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:80px 52px}
+		#produtos-main .hero-section::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.08),transparent 45%);pointer-events:none;z-index:0}
+		#produtos-main .hero-pulse{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100vw;height:110px;z-index:0;pointer-events:none;display:block;opacity:.38}
+		#produtos-main .hero-content .tag,#produtos-main .hero-content h1{position:relative;z-index:1}
 
 		/* Barra de especialidades (mega-menu) */
-		.spec-bar{position:relative;z-index:20;border-block-start:1px solid rgba(255,255,255,.18);margin-block-start:20px}
-		.spec-inner{display:flex;align-items:center;gap:16px}
-		.spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap}
-		.spec-item{position:static}
-		.spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;position:relative;transition:background .2s}
-		.spec-trigger .chev{display:none}
-		.spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
-		.spec-item:hover .spec-trigger,.spec-item:focus-within .spec-trigger{background:rgba(255,255,255,.12)}
-		.spec-item:hover .spec-trigger::after,.spec-item:focus-within .spec-trigger::after,.spec-item.open .spec-trigger::after{transform:scaleX(1)}
+		#produtos-main .spec-bar{position:relative;z-index:20;border-block-start:1px solid rgba(255,255,255,.18);margin-block-start:20px}
+		#produtos-main .spec-inner{display:flex;align-items:center;gap:16px}
+		#produtos-main .spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap}
+		#produtos-main .spec-item{position:static}
+		#produtos-main .spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;position:relative;transition:background .2s}
+		#produtos-main .spec-trigger .chev{display:none}
+		#produtos-main .spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
+		#produtos-main .spec-item:hover .spec-trigger,#produtos-main .spec-item:focus-within .spec-trigger{background:rgba(255,255,255,.12)}
+		#produtos-main .spec-item:hover .spec-trigger::after,#produtos-main .spec-item:focus-within .spec-trigger::after,#produtos-main .spec-item.open .spec-trigger::after{transform:scaleX(1)}
 
-		/* Painel mega — abre por baixo da barra, largura total da secção */
-		.mega-panel{position:absolute;left:0;right:0;top:100%;background:var(--branco);color:var(--azul-escuro);box-shadow:var(--sombra-mega);border-block-start:3px solid var(--azul-claro);
+		/* Painel mega */
+		#produtos-main .mega-panel{position:absolute;left:0;right:0;top:100%;background:var(--branco);color:var(--azul-escuro);box-shadow:var(--sombra-mega);border-block-start:3px solid var(--azul-claro);
 			visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:30}
-		.spec-item:hover .mega-panel,.spec-item:focus-within .mega-panel,.spec-item.open .mega-panel{visibility:visible;opacity:1;transform:translateY(0)}
-		.mega-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));column-gap:0;row-gap:28px;padding-block:32px}
-		.mega-group{padding-inline:24px}
-		.mega-group:first-child{padding-inline-start:0}
-		.mega-group:not(:first-child){border-inline-start:1px solid var(--cinza-borda)}
-		.mega-group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
-		.prod-list{display:flex;flex-direction:column;gap:6px}
-		.prod-card{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;transition:background .18s}
-		.prod-card:hover,.prod-card:focus-visible{background:var(--cinza-claro)}
-		.prod-thumb{flex:0 0 88px;width:88px;height:88px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--cinza-borda);padding:5px}
-		.prod-thumb.ph{display:grid;place-items:center;background:linear-gradient(135deg,#e8eff5,#d5e4ef);border:1px solid var(--cinza-borda)}
-		.prod-thumb.ph svg{width:36px;height:36px;fill:var(--azul-claro);opacity:.7}
-		.prod-name{font-size:.86rem;font-weight:500;line-height:1.3;color:var(--azul-escuro)}
-		.mega-group>.ver-todos{display:inline-block;margin-block-start:10px;font-size:.78rem;font-weight:600;color:var(--azul-claro)}
-		.mega-group>.ver-todos::after{content:" →"}
+		#produtos-main .spec-item:hover .mega-panel,#produtos-main .spec-item:focus-within .mega-panel,#produtos-main .spec-item.open .mega-panel{visibility:visible;opacity:1;transform:translateY(0)}
+		#produtos-main .mega-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));column-gap:0;row-gap:28px;padding-block:32px}
+		#produtos-main .mega-group{padding-inline:24px}
+		#produtos-main .mega-group:first-child{padding-inline-start:0}
+		#produtos-main .mega-group:not(:first-child){border-inline-start:1px solid var(--cinza-borda)}
+		#produtos-main .mega-group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
+		#produtos-main .prod-list{display:flex;flex-direction:column;gap:6px}
+		#produtos-main .prod-card{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;transition:background .18s}
+		#produtos-main .prod-card:hover,#produtos-main .prod-card:focus-visible{background:var(--cinza-claro)}
+		#produtos-main .prod-thumb{flex:0 0 88px;width:88px;height:88px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--cinza-borda);padding:5px}
+		#produtos-main .prod-thumb.ph{display:grid;place-items:center;background:linear-gradient(135deg,#e8eff5,#d5e4ef);border:1px solid var(--cinza-borda)}
+		#produtos-main .prod-thumb.ph svg{width:36px;height:36px;fill:var(--azul-claro);opacity:.7}
+		#produtos-main .prod-name{font-size:.86rem;font-weight:500;line-height:1.3;color:var(--azul-escuro)}
+		#produtos-main .mega-group>.ver-todos{display:inline-block;margin-block-start:10px;font-size:.78rem;font-weight:600;color:var(--azul-claro)}
+		#produtos-main .mega-group>.ver-todos::after{content:" →"}
 
-		/* Conteúdo do herói (sem parágrafo) */
-		.hero-content{position:relative;z-index:10;text-align:center;padding-block:12px}
-		.hero-content .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-block-end:20px;border:1px solid rgba(255,255,255,.4);padding:7px 18px;border-radius:999px}
-		.hero-content h1{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:700;line-height:1.16;max-width:22ch;margin-inline:auto;text-shadow:0 2px 18px rgba(0,15,25,.65),0 0 4px rgba(0,15,25,.4)}
+		/* Conteúdo do herói */
+		#produtos-main .hero-content{position:relative;z-index:10;text-align:center;padding-block:12px}
+		#produtos-main .hero-content .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-block-end:20px;border:1px solid rgba(255,255,255,.4);padding:7px 18px;border-radius:999px}
+		#produtos-main .hero-content h1{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:700;line-height:1.16;max-width:22ch;margin-inline:auto;text-shadow:0 2px 18px rgba(0,15,25,.65),0 0 4px rgba(0,15,25,.4)}
 
 		/* ===== Categorias ===== */
-		.categorias{padding-block:72px;background:var(--cinza-claro)}
-		.section-head{text-align:center;margin-block-end:44px}
-		.section-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--azul-escuro)}
-		.section-head p{color:var(--cinza-texto);margin-block-start:8px}
-		.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-		.cat-card{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);background-size:cover;background-position:center;isolation:isolate;transition:transform .25s,box-shadow .25s}
-		.cat-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,65,107,.88),rgba(0,65,107,.35) 55%,rgba(0,65,107,.15));transition:background .25s}
-		.cat-card:hover,.cat-card:focus-within{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,65,107,.24)}
-		.cat-card:hover::before,.cat-card:focus-within::before{background:linear-gradient(to top,rgba(0,65,107,.92),rgba(0,112,175,.55) 60%,rgba(0,112,175,.25))}
-		.cat-card .label{padding:24px;color:#fff;width:100%}
-		.cat-card .label h3{font-size:1.35rem;font-weight:700}
-		.cat-card .label span{display:inline-flex;align-items:center;gap:6px;margin-block-start:6px;font-size:.85rem;font-weight:600;opacity:.9}
-		.cat-card .label span::after{content:"→";transition:transform .2s}
-		.cat-card:hover .label span::after{transform:translateX(4px)}
-		.cat-card .stretched{position:absolute;inset:0;z-index:1}
-		.cat-consumiveis{background-image:url("https://www.speculum.pt/files/images/highlights/consum%C3%ADveis.PNG")}
-		.cat-equipamentos{background-image:url("https://www.speculum.pt/files/images/highlights/equipamentos-10341627042018.jpg")}
-		.cat-metalicos{background-image:url("https://www.speculum.pt/files/images/highlights/metalicos-16070627042018.jpg")}
-		.cat-inovacao{background-image:url("https://www.speculum.pt/files/images/highlights/inova%C3%A7%C3%A3omedica.PNG")}
+		#produtos-main .categorias{padding-block:72px;background:var(--cinza-claro)}
+		#produtos-main .section-head{text-align:center;margin-block-end:44px}
+		#produtos-main .section-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--azul-escuro)}
+		#produtos-main .section-head p{color:var(--cinza-texto);margin-block-start:8px}
+		#produtos-main .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+		#produtos-main .cat-card{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);background-size:cover;background-position:center;isolation:isolate;transition:transform .25s,box-shadow .25s}
+		#produtos-main .cat-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,65,107,.88),rgba(0,65,107,.35) 55%,rgba(0,65,107,.15));transition:background .25s}
+		#produtos-main .cat-card:hover,#produtos-main .cat-card:focus-within{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,65,107,.24)}
+		#produtos-main .cat-card:hover::before,#produtos-main .cat-card:focus-within::before{background:linear-gradient(to top,rgba(0,65,107,.92),rgba(0,112,175,.55) 60%,rgba(0,112,175,.25))}
+		#produtos-main .cat-card .label{padding:24px;color:#fff;width:100%}
+		#produtos-main .cat-card .label h3{font-size:1.35rem;font-weight:700}
+		#produtos-main .cat-card .label span{display:inline-flex;align-items:center;gap:6px;margin-block-start:6px;font-size:.85rem;font-weight:600;opacity:.9}
+		#produtos-main .cat-card .label span::after{content:"→";transition:transform .2s}
+		#produtos-main .cat-card:hover .label span::after{transform:translateX(4px)}
+		#produtos-main .cat-card .stretched{position:absolute;inset:0;z-index:1}
+		#produtos-main .cat-consumiveis{background-image:url("https://www.speculum.pt/files/images/highlights/consum%C3%ADveis.PNG")}
+		#produtos-main .cat-equipamentos{background-image:url("https://www.speculum.pt/files/images/highlights/equipamentos-10341627042018.jpg")}
+		#produtos-main .cat-metalicos{background-image:url("https://www.speculum.pt/files/images/highlights/metalicos-16070627042018.jpg")}
+		#produtos-main .cat-inovacao{background-image:url("https://www.speculum.pt/files/images/highlights/inova%C3%A7%C3%A3omedica.PNG")}
+
+		/* ===== Em destaque ===== */
+		#produtos-main .highlights{padding-block:64px;background:var(--cinza-claro)}
+		#produtos-main .hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+		#produtos-main .hl-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:transform .22s,box-shadow .22s}
+		#produtos-main .hl-card:hover,#produtos-main .hl-card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,65,107,.2)}
+		#produtos-main .hl-img{height:200px;display:grid;place-items:center;background:#fff;padding:18px;overflow:hidden}
+		#produtos-main .hl-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+		#produtos-main .hl-body{position:relative;z-index:1;background:#fff;padding:20px;border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .hl-body h3{font-size:1.1rem;font-weight:700;color:var(--azul-escuro)}
+		#produtos-main .hl-cta{display:inline-block;margin-block-start:8px;font-size:.85rem;font-weight:600;color:var(--azul-claro)}
+
+		/* ===== CTA orçamento ===== */
+		#produtos-main .cta-band{background:linear-gradient(135deg,#00416b 0%,#0070af 100%)}
+		#produtos-main .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px;color:#fff}
+		#produtos-main .cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2}
+		#produtos-main .cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch}
+		#produtos-main .cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:999px;transition:transform .18s,box-shadow .18s;white-space:nowrap}
+		#produtos-main .cta-btn:hover,#produtos-main .cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
 
 		/* ===== Responsivo ===== */
 		@media (max-width:960px){
-			.spec-trigger{padding:14px 12px}
-			.mega-panel{max-height:78vh;overflow-y:auto}
-			.mega-inner{grid-template-columns:1fr;row-gap:0;padding-block:20px}
-			.mega-group{padding-inline:0}
-			.mega-group:not(:first-child){border-inline-start:0;border-block-start:1px solid var(--cinza-borda);padding-block-start:18px;margin-block-start:18px}
-			.categorias{padding-block:52px}
+			#produtos-main .spec-trigger{padding:14px 12px}
+			#produtos-main .mega-panel{max-height:78vh;overflow-y:auto}
+			#produtos-main .mega-inner{grid-template-columns:1fr;row-gap:0;padding-block:20px}
+			#produtos-main .mega-group{padding-inline:0}
+			#produtos-main .mega-group:not(:first-child){border-inline-start:0;border-block-start:1px solid var(--cinza-borda);padding-block-start:18px;margin-block-start:18px}
+			#produtos-main .categorias{padding-block:52px}
 		}
-		/* ===== CTA orçamento ===== */
-		.cta-band{background:linear-gradient(135deg,#00416b 0%,#0070af 100%)}
-		.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px;color:#fff}
-		.cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2}
-		.cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch}
-		.cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:999px;transition:transform .18s,box-shadow .18s;white-space:nowrap}
-		.cta-btn:hover,.cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
-		/* ===== Em destaque ===== */
-		.highlights{padding-block:64px;background:var(--cinza-claro)}
-		.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-		.hl-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:transform .22s,box-shadow .22s}
-		.hl-card:hover,.hl-card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,65,107,.2)}
-		.hl-img{height:200px;display:grid;place-items:center;background:#fff;padding:18px;overflow:hidden}
-		.hl-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
-		.hl-body{position:relative;z-index:1;background:#fff}
-		.hl-body{padding:20px;border-block-start:1px solid var(--cinza-borda)}
-		.hl-body h3{font-size:1.1rem;font-weight:700;color:var(--azul-escuro)}
-		.hl-cta{display:inline-block;margin-block-start:8px;font-size:.85rem;font-weight:600;color:var(--azul-claro)}
+
+		/* Remove o padding-bottom que o site reserva para o chat fixo (não usado aqui) → tira o espaço em branco do rodapé */
+		body.has-mainnav{padding-bottom:0}
+
+		/* ===== FontAwesome auto-alojado (garante os ícones em qualquer contexto) ===== */
+		@font-face{
+			font-family:'FontAwesome';
+			src:url('fonts/fontawesome-webfont.woff2') format('woff2'),
+			    url('fonts/fontawesome-webfont.woff') format('woff'),
+			    url('fonts/fontawesome-webfont.ttf') format('truetype');
+			font-weight:normal;font-style:normal;font-display:block;
+		}
+		#navtop .fa{font-family:'FontAwesome'}
+		#navtop .fa-user:before{content:"\f007"}
+		#navtop .fa-shopping-cart:before{content:"\f07a"}
+
+		/* ===== Correções de cor e tipografia do conteúdo (o CSS do site sobrepunha-se) ===== */
+		#produtos-main h1,#produtos-main h2,#produtos-main h3,#produtos-main h4,
+		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button{
+			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+		}
+		#produtos-main .hero-content h1{color:#fff}
+		#produtos-main .hero-content .tag{color:#fff}
+		#produtos-main .spec-trigger{color:#fff}
+		#produtos-main .cat-card .label h3{color:#fff}
+		#produtos-main .cat-card .label span{color:#fff}
+		#produtos-main .cta-text h2{color:#fff}
+		#produtos-main .cta-text p{color:#fff}
+		#produtos-main .cta-btn{color:var(--azul-escuro)}
+		#produtos-main .section-head h2{color:var(--azul-escuro)}
+		#produtos-main .section-head p{color:var(--cinza-texto)}
+		#produtos-main .hl-body h3{color:var(--azul-escuro)}
+		#produtos-main .hl-cta{color:var(--azul-claro)}
+		#produtos-main .mega-group h3{color:var(--azul-claro)}
+		#produtos-main .prod-name{color:var(--azul-escuro)}
+		#produtos-main .ver-todos{color:var(--azul-claro)}
 	</style>
 </head>
-<body>
+<body class="has-mainnav mouse-user">
+
+<!-- ============================================================= -->
+<!-- CABEÇALHO — HTML exato do site Speculum (estilizado pela stylesheet.css do site) -->
+<!-- ============================================================= -->
+<header id="navtop">
+
+<div class="navtop-top-bar">
+<div class="navtop-top-bar-inner">
+
+
+<div class="navtop-top-buttons">
+<a class="logout-btn-wrapper" href="#">Logout</a>
+<a class="user-btn-wrapper" href="https://www.speculum.pt/pt/area-de-cliente"><i class="fa fa-user user-btn"></i><span class="restricted-area-label">Login / Registo</span></a>
+
+
+<div id="languages-flags">
+<ul>
+<li class="li-active">pt</li>
+<li class="li-selected"><a href="https://www.speculum.pt/en">en</a></li>
+</ul>
+</div>
+
+<a class="shopping-btn-wrapper" href="https://www.speculum.pt/pt/carrinho-de-compras"><i class="fa fa-shopping-cart shopping-btn"> </i>(0) 0.00 €</a>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div id="navtopinner">
+
+
+
+
+
+
+
+
+<div class="menu-left similar">
+<a class="logo fleft" href="https://www.speculum.pt/pt/inicio" rel="nofollow"> <img src="https://www.speculum.pt/files/images/logo_20200619_043032.PNG" alt="Início | Speculum" title="Início | Speculum"> </a>
+</div>
+
+
+<div class="menu-center similar">
+<nav class="fright show">
+
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="https://www.speculum.pt/pt/produtos" class="selected">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
+<select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option selected="selected" value="https://www.speculum.pt/pt/produtos">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
+</div>
+
+
+
+<div class="toggle-menu"></div>
+<div class="mobile-menu">
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="https://www.speculum.pt/pt/produtos" class="selected ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
+<div class="clear"></div>
+</div>
+
+</header>
+
+
+<!-- ============================================================= -->
+<!-- CONTEÚDO DA PÁGINA DE PRODUTOS (isolado) -->
+<!-- ============================================================= -->
+<main id="produtos-main">
 
 	<!-- ===== Secção: Menu de especialidades + Herói ===== -->
 	<section class="hero-section">
 
-		<!-- Título do herói (sem parágrafo) -->
 		<div class="container hero-content">
 			<svg class="hero-pulse" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
 				<defs>
@@ -367,7 +479,6 @@
 		</div>
 	</section>
 
-
 	<!-- ===== Em destaque ===== -->
 	<section class="highlights" aria-labelledby="hl-title">
 		<div class="container">
@@ -393,12 +504,12 @@
 					<div class="hl-body"><h3>Cardiotocógrafo EDAN F9</h3><span class="hl-cta">Ver equipamento →</span></div>
 				</a>
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/252-testes/42945-teste-amnisure-rutura-membranas">
-					<div class="hl-img"><img loading="lazy" src="images/amnisure.jpg" alt="Teste AmniSure → Rutura de Membranas"></div>
-					<div class="hl-body"><h3>Teste AmniSure → Rutura de Membranas</h3><span class="hl-cta">Ver produto →</span></div>
+					<div class="hl-img"><img loading="lazy" src="images/amnisure.jpg" alt="Teste AmniSure — Rutura de Membranas"></div>
+					<div class="hl-body"><h3>Teste AmniSure — Rutura de Membranas</h3><span class="hl-cta">Ver produto →</span></div>
 				</a>
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44568-especulo-desc-cusco-se-m">
-					<div class="hl-img"><img loading="lazy" src="images/especulo.jpg" alt="Espéculo Desc. Cusco SE → M"></div>
-					<div class="hl-body"><h3>Espéculo Desc. Cusco SE → M</h3><span class="hl-cta">Ver produto →</span></div>
+					<div class="hl-img"><img loading="lazy" src="images/especulo.jpg" alt="Espéculo Desc. Cusco SE — M"></div>
+					<div class="hl-body"><h3>Espéculo Desc. Cusco SE — M</h3><span class="hl-cta">Ver produto →</span></div>
 				</a>
 			</div>
 		</div>
@@ -415,35 +526,224 @@
 		</div>
 	</section>
 
+</main>
 
 
+<!-- ============================================================= -->
+<!-- RODAPÉ — bloco exato da medicoshospitalares.html (com o seu próprio CSS embutido) -->
+<!-- ============================================================= -->
+<div id="grid-wrap-footer" style="margin-top: -30px;">
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__grid">
+
+    <!-- Navegação -->
+    <section class="site-footer__col" aria-label="Navegação">
+      <h2 class="site-footer__title">NAVEGAÇÃO</h2>
+      <ul class="site-footer__list">
+        <li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li>
+        <li><a href="https://www.speculum.pt/pt/produtos">Produtos</a></li>
+        <li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li>
+        <li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li>
+        <li><a href="https://www.speculum.pt/pt/noticias/6-noticias/89-pesquisa-de-produtos-medico-hospitalares">Loja de Produtos Hospitalares</a></li>
+      </ul>
+    </section>
+
+    <!-- Produtos -->
+    <section class="site-footer__col" aria-label="Produtos">
+      <h2 class="site-footer__title">PRODUTOS</h2>
+      <ul class="site-footer__list">
+        <li><a href="https://www.speculum.pt/pt/produtos/categoria=%5B1-consumiveis%5D/0">Consumíveis</a></li>
+        <li><a href="https://www.speculum.pt/pt/produtos/categoria=%5B2-equipamentos%5D">Equipamentos</a></li>
+        <li><a href="https://www.speculum.pt/pt/produtos/categoria=%5B3-metalicos%5D/0">Metálicos</a></li>
+        <li><a href="https://www.speculum.pt/pt/produtos/categoria=%5B1303-inovacao%5D">Inovação</a></li>
+      </ul>
+    </section>
+
+    <!-- Contactos -->
+    <section class="site-footer__col" aria-label="Contactos">
+      <h2 class="site-footer__title">
+        <a href="https://www.speculum.pt/pt/contactos">CONTACTOS</a>
+      </h2>
+
+      <ul class="site-footer__list">
+        <li class="site-footer__phones">
+          <a href="tel:+351214728040">21 472 80 40</a>
+          <span class="site-footer__sep">|</span>
+          <a href="tel:+351808200306"><strong>808 200 306</strong></a>
+        </li>
+
+        <li>
+          <a href="mailto:cliente@speculum.pt">cliente@speculum.pt</a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/speculum.sa" rel="noopener">facebook.com/speculum.sa</a>
+        </li>
+
+        <li>
+          <a href="https://www.speculum.pt/distribuidoradematerialhospitalar.html">
+            Travessa do Miradouro, nº1<br>
+            2610-114 Alfragide - PORTUGAL
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- Rodapé legal -->
+  <div class="site-footer__bottom">
+      <a href="https://www.speculum.pt/pt/produtos/categoria=%5B1-consumiveis%5D/3">Mapa do site</a>
+      <span aria-hidden="true">|</span>
+      <a href="https://www.speculum.pt/pt/protecao-de-dados">Política de Privacidade</a>
+      <span aria-hidden="true">|</span>
+      <span>Todos os direitos reservados www.speculum.pt</span>
+      <span aria-hidden="true">|</span>
+      <a href="https://www.speculum.pt/pt/noticias/6-noticias/89-pesquisa-de-produtos-medico-hospitalares">Empresa de produtos hospitalares</a>
+  </div>
+</footer>
+<!-- /FOOTER -->
+
+<style>
+
+.site-footer{
+  padding: 24px 16px;
+  background: #07090c;
+  color: #fff;
+}
+
+.site-footer a{
+  color: #fff;
+  text-decoration: none;
+  opacity: .92;
+}
+
+.site-footer a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.site-footer__grid{
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px){
+  .site-footer__grid{
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+.site-footer__title{
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: .6px;
+}
+
+.site-footer__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.site-footer__phones{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.site-footer__sep{
+  opacity: .7;
+}
+
+.site-footer__bottom{
+  max-width: 1200px;
+  margin: 14px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  font-size: 13px;
+  opacity: .92;
+}
+
+</style>
+
+</div>
 
 
-
-
-	<script>
-		(function () {
-			var items = document.querySelectorAll(".spec-item");
-			items.forEach(function (item) {
-				var trigger = item.querySelector(".spec-trigger");
-				trigger.addEventListener("click", function (e) {
-					e.preventDefault();
-					var isOpen = item.classList.contains("open");
-					items.forEach(function (o) { if (o !== item) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); } });
-					item.classList.toggle("open", !isOpen);
-					trigger.setAttribute("aria-expanded", !isOpen ? "true" : "false");
-				});
+<!-- ============================================================= -->
+<!-- Comportamento (vanilla, sem dependências importadas) -->
+<!-- ============================================================= -->
+<script>
+	/* --- Cabeçalho do site: idioma, menu mobile, submenu --- */
+	(function () {
+		// Dropdown de idioma (pt | en)
+		var liActive = document.querySelector('#languages-flags .li-active');
+		var liSelected = document.querySelector('#languages-flags .li-selected');
+		if (liActive && liSelected) {
+			liActive.addEventListener('click', function (e) {
+				e.stopPropagation();
+				liSelected.style.display = (liSelected.style.display === 'block') ? 'none' : 'block';
 			});
+			document.addEventListener('click', function (e) {
+				if (!e.target.closest('.li-active')) liSelected.style.display = 'none';
+			});
+		}
 
-			document.addEventListener("click", function (e) {
-				if (!e.target.closest(".spec-item")) {
-					items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
-				}
+		// Toggle do menu mobile
+		var toggle = document.querySelector('.toggle-menu');
+		var mobile = document.querySelector('.mobile-menu');
+		if (toggle && mobile) {
+			toggle.addEventListener('click', function () {
+				mobile.style.display = (getComputedStyle(mobile).display === 'none') ? 'block' : 'none';
 			});
-			document.addEventListener("keydown", function (e) {
-				if (e.key === "Escape") items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
+		}
+
+		// Submenu "Produtos" no menu mobile (botão +)
+		var plus = document.querySelector('.mobile-menu .button-plus');
+		if (plus) {
+			plus.addEventListener('click', function () {
+				var sub = plus.parentElement.querySelector('.sf-submenu');
+				if (sub) sub.style.display = (getComputedStyle(sub).display === 'none') ? 'block' : 'none';
 			});
-		})();
-	</script>
+		}
+
+	})();
+
+	/* --- Mega-menu de especialidades (conteúdo de produtos) --- */
+	(function () {
+		var items = document.querySelectorAll("#produtos-main .spec-item");
+		items.forEach(function (item) {
+			var trigger = item.querySelector(".spec-trigger");
+			trigger.addEventListener("click", function (e) {
+				e.preventDefault();
+				var isOpen = item.classList.contains("open");
+				items.forEach(function (o) { if (o !== item) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); } });
+				item.classList.toggle("open", !isOpen);
+				trigger.setAttribute("aria-expanded", !isOpen ? "true" : "false");
+			});
+		});
+		document.addEventListener("click", function (e) {
+			if (!e.target.closest("#produtos-main .spec-item")) {
+				items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
+			}
+		});
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape") items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
+		});
+	})();
+</script>
 </body>
 </html>
