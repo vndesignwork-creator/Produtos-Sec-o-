@@ -28,7 +28,7 @@
 		html{overflow-x:clip!important;height:auto!important}
 		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
 		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo) */
-		body{padding-top:var(--header-h,90px)!important}
+		#produtos-main{padding-block-start:var(--header-h,90px)}
 
 		:root{
 			--azul-escuro:#00416b; --azul-claro:#0070af;
@@ -64,6 +64,8 @@
 		#produtos-main .spec-item{position:static}
 		#produtos-main .spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;position:relative;transition:background .2s}
 		#produtos-main .spec-trigger .chev{display:none}
+			/* Linhas suaves entre especialidades (fade em cima/baixo, sem tocar nas extremidades) */
+			#produtos-main .spec-item + .spec-item .spec-trigger::before{content:"";position:absolute;inset-block:24%;inset-inline-start:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.32),transparent);pointer-events:none}
 		#produtos-main .spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
 		#produtos-main .spec-item:hover .spec-trigger,#produtos-main .spec-item:focus-within .spec-trigger{background:rgba(255,255,255,.12)}
 		#produtos-main .spec-item:hover .spec-trigger::after,#produtos-main .spec-item:focus-within .spec-trigger::after,#produtos-main .spec-item.open .spec-trigger::after{transform:scaleX(1)}
@@ -135,6 +137,7 @@
 		/* ===== Responsivo ===== */
 		@media (max-width:960px){
 			#produtos-main .spec-trigger{padding:14px 12px}
+				#produtos-main .spec-item + .spec-item .spec-trigger::before{display:none}
 			#produtos-main .mega-panel{max-height:78vh;overflow-y:auto}
 			#produtos-main .mega-inner{grid-template-columns:1fr;row-gap:0;padding-block:20px}
 			#produtos-main .mega-group{padding-inline:0}
@@ -691,14 +694,16 @@
 <script>
 	/* --- Cabeçalho do site: idioma, menu mobile, submenu --- */
 	(function () {
-		// Offset do cabeçalho fixo (responsivo): o body reserva a altura real do cabeçalho,
-		// para o conteúdo não ficar por baixo e sem espaço a mais.
+		// Offset do cabeçalho fixo (responsivo): publica a altura real do cabeçalho em --header-h;
+		// o espaço é reservado por CSS no #produtos-main (ID que o site não sobrepõe).
 		function setHeaderOffset() {
 			var h = document.getElementById('navtop');
 			if (!h) return;
 			var hh = h.offsetHeight;
-			document.body.style.paddingTop = hh + 'px';
 			document.documentElement.style.setProperty('--header-h', hh + 'px');
+			// O offset vive no #produtos-main (via --header-h). Zeramos o padding-top do
+			// body para não somar ao offset: inline !important vence qualquer regra do site.
+			document.body.style.setProperty('padding-top', '0', 'important');
 		}
 		setHeaderOffset();
 		window.addEventListener('load', setHeaderOffset);
