@@ -21,6 +21,9 @@
 
 	<!-- Estilos do CONTEÚDO de produtos — isolados sob #produtos-main para não colidir com o CSS do site -->
 	<style>
+		/* Evita barra de rolagem horizontal (o SVG do herói usa 100vw, que inclui a largura da scrollbar) */
+		html,body{overflow-x:hidden;max-width:100%}
+
 		:root{
 			--azul-escuro:#00416b; --azul-claro:#0070af;
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
