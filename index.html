@@ -21,8 +21,12 @@
 
 	<!-- Estilos do CONTEÚDO de produtos — isolados sob #produtos-main para não colidir com o CSS do site -->
 	<style>
-		/* Evita barra de rolagem horizontal (o SVG do herói usa 100vw, que inclui a largura da scrollbar) */
-		html,body{overflow-x:hidden;max-width:100%}
+		/* Corrige as barras de rolagem:
+		   - overflow-x:clip corta o excesso lateral do SVG do herói (usa 100vw)
+		   - height:auto anula o height:100% do CSS do site (que punha html e body a rolar → barra vertical dupla)
+		   Resultado: uma só barra vertical, sem barra horizontal. */
+		html{overflow-x:clip!important;height:auto!important}
+		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
 
 		:root{
 			--azul-escuro:#00416b; --azul-claro:#0070af;
