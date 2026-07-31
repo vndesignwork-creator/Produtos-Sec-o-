@@ -27,6 +27,8 @@
 		   Resultado: uma só barra vertical, sem barra horizontal. */
 		html{overflow-x:clip!important;height:auto!important}
 		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
+		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo) */
+		body{padding-top:var(--header-h,90px)!important}
 
 		:root{
 			--azul-escuro:#00416b; --azul-claro:#0070af;
@@ -40,8 +42,12 @@
 		#produtos-main img{max-width:100%;display:block}
 		#produtos-main .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
 
+		/* Cabeçalho fixo: o offset do body e o topo do menu mobile são definidos por JS (--header-h) */
+		#navtop .toggle-menu{top:50%!important;transform:translateY(-50%);margin:0!important}
+		#navtop .mobile-menu{top:var(--header-h,80px)!important;background:#fff!important}
+
 		/* ===== Barra de especialidades (sobre fundo azul) ===== */
-		#produtos-main .hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:70px 32px}
+		#produtos-main .hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:22px}
 
 		/* Barra de especialidades (mega-menu) */
 		#produtos-main .spec-bar{position:relative;z-index:20}
@@ -677,6 +683,19 @@
 <script>
 	/* --- Cabeçalho do site: idioma, menu mobile, submenu --- */
 	(function () {
+		// Offset do cabeçalho fixo (responsivo): o body reserva a altura real do cabeçalho,
+		// para o conteúdo não ficar por baixo e sem espaço a mais.
+		function setHeaderOffset() {
+			var h = document.getElementById('navtop');
+			if (!h) return;
+			var hh = h.offsetHeight;
+			document.body.style.paddingTop = hh + 'px';
+			document.documentElement.style.setProperty('--header-h', hh + 'px');
+		}
+		setHeaderOffset();
+		window.addEventListener('load', setHeaderOffset);
+		window.addEventListener('resize', setHeaderOffset);
+
 		// Dropdown de idioma (pt | en)
 		var liActive = document.querySelector('#languages-flags .li-active');
 		var liSelected = document.querySelector('#languages-flags .li-selected');
