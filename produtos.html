@@ -31,6 +31,7 @@
 		#produtos-main{padding-block-start:var(--header-h,90px)}
 
 		:root{
+			color-scheme: light;
 			--azul-escuro:#00416b; --azul-claro:#0070af;
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
 			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
@@ -643,9 +644,15 @@
   padding: 24px 16px;
   background: #02486f;
   color: #fff;
+  color-scheme: light;
+  forced-color-adjust: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.site-footer strong{
+  color: #fff !important;
 }
 
 .site-footer a,
