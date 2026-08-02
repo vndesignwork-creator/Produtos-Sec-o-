@@ -956,7 +956,7 @@
 		// URL do Worker que contorna o CORS quando a página não está alojada no
 		// speculum.pt — ver proxy/cloudflare-worker.js (instruções no topo do ficheiro).
 		// Enquanto estiver vazio, fora do site mostra-se só a linha do plano B.
-		var PROXY = '';
+		var PROXY = 'https://speculum-pesquisa.vndesign-work.workers.dev';
 
 		// No speculum.pt a chamada é same-origin e não precisa de proxy nenhum; fora dele o
 		// get_search.php não devolve Access-Control-Allow-Origin, por isso passa pelo Worker.
