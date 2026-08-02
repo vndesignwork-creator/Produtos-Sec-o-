@@ -27,8 +27,10 @@
 		   Resultado: uma só barra vertical, sem barra horizontal. */
 		html{overflow-x:clip!important;height:auto!important}
 		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
-		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo) */
-		#produtos-main{padding-block-start:var(--header-h,90px)}
+		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo).
+		   --search-h acrescenta a faixa da pesquisa quando esta fica por baixo do cabeçalho
+		   (no desktop o site mantém-na sempre aberta), para não tapar a barra de especialidades. */
+		#produtos-main{padding-block-start:calc(var(--header-h,90px) + var(--search-h,0px))}
 
 		:root{
 			color-scheme: light;
@@ -166,6 +168,100 @@
 		#navtop .fa{font-family:'FontAwesome'}
 		#navtop .fa-user:before{content:"\f007"}
 		#navtop .fa-shopping-cart:before{content:"\f07a"}
+		#navtop .fa-search:before{content:"\f002"}
+
+		/* ===== Pesquisa em tempo real =====
+		   Marcação e circuito são os do speculum.pt. A aparência é fixada aqui porque esta
+		   página carrega também o core.css (que o site não usa na homepage) e esse sobrepõe-se
+		   às regras de pesquisa da stylesheet.css — o campo ficava com 23px de altura.
+		   Os valores seguem os do site: campo de 380px com moldura azul, botão », e lista de
+		   produtos com miniatura redonda à esquerda e nome alinhado à direita. */
+
+		/* Faixa: linha própria colada por baixo do cabeçalho fixo. O espaço que ocupa é
+		   reservado em --search-h (medido por JS) para não tapar a barra de especialidades. */
+		#navtop #search-input-section{position:absolute!important;left:0!important;right:0!important;top:100%!important;
+			width:100%!important;max-width:none!important;height:auto!important;min-height:0!important;
+			margin:0!important;padding:0 0 12px!important;background:transparent!important;border:0!important;
+			box-shadow:none!important;opacity:1!important;pointer-events:auto!important;overflow:visible!important;
+			display:block!important;z-index:9998!important;transition:none}
+		#navtop #search-input-section.fechada{display:none!important}
+		/* Todas as regras vão prefixadas com #navtop: abaixo de 768px o site usa seletores como
+		   `#searchform input[type="text"]`, mais específicos do que `#search-input-section .x`. */
+		/* box-sizing para o campo ficar alinhado com o .container do conteúdo (mesma margem) */
+		#navtop #search-input-section-inside{box-sizing:border-box;max-width:var(--container);height:auto;
+			margin-inline:auto;padding-inline:20px;text-align:right}
+		/* !important porque abaixo de 768px a stylesheet.css do site fixa o formulário ao topo
+		   do ecrã (position:fixed) — aqui ele vive dentro da faixa, em qualquer largura. */
+		#navtop #search-input-section form#searchform{position:relative!important;top:auto!important;left:auto!important;
+			right:auto!important;display:inline-block;width:100%!important;max-width:380px!important;
+			height:50px!important;margin:0!important;padding:0!important;background:transparent!important;
+			border:0!important;z-index:auto!important;box-shadow:0 10px 26px rgba(0,65,107,.18)!important}
+
+		/* Campo + botão */
+		#navtop #search-input-section .search-input{box-sizing:border-box!important;width:100%!important;height:50px!important;
+			margin:0!important;padding:0 60px 0 18px!important;border:1px solid var(--azul-claro)!important;
+			border-radius:0!important;background:#fff!important;color:var(--azul-escuro)!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;
+			font-size:.9rem!important;line-height:normal!important;box-shadow:none!important}
+		#navtop #search-input-section .search-input::placeholder{color:#8a97a3;opacity:1}
+		#navtop #search-input-section .search-input:focus{border-color:var(--azul-escuro)!important}
+		#navtop #search-input-section .form-button{position:absolute!important;top:1px!important;right:1px!important;
+			left:auto!important;bottom:auto!important;width:50px!important;height:48px!important;margin:0!important;
+			padding:0 0 4px!important;border:0!important;border-radius:0!important;background:var(--azul-claro)!important;
+			color:#fff!important;font-family:inherit!important;font-size:26px!important;line-height:1!important;
+			cursor:pointer;transition:background .2s}
+		#navtop #search-input-section .form-button:hover,
+		#navtop #search-input-section .form-button:focus-visible{background:var(--azul-escuro)!important}
+
+		/* Lista de resultados — fora do fluxo do formulário para os resultados não fazerem
+		   crescer o cabeçalho (que é medido para o offset da página). */
+		#navtop #search-input-section #search-content{position:absolute!important;top:100%!important;left:0!important;
+			right:0!important;width:auto!important;height:auto!important;max-height:500px!important;overflow-y:auto!important;
+			background:#fff!important;box-shadow:0 12px 28px rgba(0,65,107,.22);z-index:1!important}
+		#navtop #search-input-section #search-content:empty{display:none!important}
+		#navtop #search-input-section a.cc_item{display:flex!important;align-items:center;gap:12px;width:100%!important;
+			height:60px!important;padding:5px 12px!important;background:#f7f9fb!important;
+			border-bottom:1px solid var(--cinza-borda)!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;font-size:.82rem!important;
+			line-height:1.3!important;color:var(--cinza-texto)!important;transition:background .15s}
+		#navtop #search-input-section a.cc_item:last-child{border-bottom:0!important}
+		#navtop #search-input-section a.cc_item:hover,
+		#navtop #search-input-section a.cc_item:focus-visible{background:var(--cinza-claro)!important}
+		#navtop #search-input-section a.cc_item .image{flex:0 0 50px;width:50px!important;height:50px!important;
+			padding:0!important;margin:0!important;overflow:hidden;float:none!important}
+		#navtop #search-input-section a.cc_item img{width:50px!important;height:50px!important;max-width:none!important;
+			max-height:none!important;margin:0!important;padding:0!important;object-fit:cover!important;
+			border-radius:500px!important;background:#fff}
+		#navtop #search-input-section a.cc_item div:not(.image){flex:1;min-width:0;width:auto!important;
+			line-height:1.3!important;text-align:right!important}
+		/* "Ver mais (N)" — o endpoint envia-o no fim quando há mais resultados do que os
+		   listados; é um submit do próprio formulário, leva à página de resultados do site. */
+		#navtop #search-input-section .cc_wrapper .button-send{display:block!important;position:static!important;
+			width:100%!important;max-width:none!important;height:auto!important;margin:0!important;
+			padding:15px 20px!important;border:0!important;border-radius:0!important;
+			background:var(--azul-claro)!important;color:#fff!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;font-size:.8rem!important;
+			font-weight:600!important;letter-spacing:.06em;text-transform:uppercase;text-align:center;
+			line-height:1.2!important;cursor:pointer;transition:background .2s}
+		#navtop #search-input-section .cc_wrapper .button-send:hover,
+		#navtop #search-input-section .cc_wrapper .button-send:focus-visible{background:var(--azul-escuro)!important}
+
+		/* A lupa só faz sentido onde a faixa arranca fechada (ecrãs estreitos); à direita do
+		   logótipo e à esquerda do menu de hambúrguer, sem lhe tocar. */
+		#navtop .menu-right{display:none}
+		@media (max-width:991px){
+			#navtop .menu-right{display:block!important;visibility:visible!important;position:absolute!important;
+				top:50%!important;right:62px!important;left:auto!important;transform:translateY(-50%);
+				width:auto!important;height:auto!important;margin:0!important;padding:0!important;z-index:10001}
+			#navtop .menu-right .search-btn{display:block!important;width:auto!important;height:auto!important;
+				min-width:0!important;min-height:0!important;margin:0!important;padding:8px!important;
+				border-left:0!important;font-size:20px!important;color:var(--azul-escuro)!important}
+			/* em ecrã estreito o campo ocupa a largura toda da faixa */
+			#navtop #search-input-section form#searchform{max-width:none!important}
+		}
+
+		/* O ecrã de espera do site (loading2.gif) não deve intercetar cliques */
+		#navtop #search-input-section #search-input-section-inside.loading:before{pointer-events:none}
 
 		/* ===== Correções de cor e tipografia do conteúdo (o CSS do site sobrepunha-se) ===== */
 		#produtos-main h1,#produtos-main h2,#produtos-main h3,#produtos-main h4,
@@ -236,6 +332,11 @@
 </div>
 
 
+<div class="menu-right similar">
+<i class="fa fa-search fa-lg search-btn" role="button" tabindex="0" aria-label="Pesquisar produtos" aria-expanded="false" aria-controls="search-input-section"></i>
+</div>
+
+
 <div class="menu-center similar">
 <nav class="fright show">
 
@@ -245,10 +346,22 @@
 
 
 
-<div class="toggle-menu"></div>
+<div class="toggle-menu" role="button" tabindex="0" aria-label="Abrir menu"></div>
 <div class="mobile-menu">
 <ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="https://www.speculum.pt/pt/produtos" class="selected ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
 <div class="clear"></div>
+</div>
+
+<!-- Pesquisa em tempo real — mesma marcação do speculum.pt (estilizada pela stylesheet.css do site) -->
+<div id="search-input-section">
+<div id="search-input-section-inside">
+<form autocomplete="off" id="searchform" action="https://www.speculum.pt/pt/pesquisar" method="post" role="search">
+<input autocomplete="off" placeholder="Pesquisar" class="form-input search-input border" type="text" name="search_tag_all" id="search_tag_all" aria-label="Pesquisar produtos" aria-controls="search-content" aria-expanded="false">
+<input class="form-button" type="submit" value="»" aria-label="Pesquisar">
+
+<div id="search-content"></div>
+</form>
+</div>
 </div>
 
 </header>
@@ -774,6 +887,15 @@
 			if (!h) return;
 			var hh = h.offsetHeight;
 			document.documentElement.style.setProperty('--header-h', hh + 'px');
+			// A faixa da pesquisa é absoluta dentro do cabeçalho: quando o site a mantém
+			// aberta ela cai por baixo dele, por isso mede-se o quanto sobra e reserva-se.
+			var campo = document.getElementById('search_tag_all');
+			var faixa = document.getElementById('search-input-section');
+			var extra = 0;
+			if (campo && faixa && getComputedStyle(faixa).opacity !== '0' && getComputedStyle(faixa).display !== 'none') {
+				extra = Math.max(0, Math.round(campo.getBoundingClientRect().bottom - h.getBoundingClientRect().bottom) + 12);
+			}
+			document.documentElement.style.setProperty('--search-h', extra + 'px');
 			// O offset vive no #produtos-main (via --header-h). Zeramos o padding-top do
 			// body para não somar ao offset: inline !important vence qualquer regra do site.
 			document.body.style.setProperty('padding-top', '0', 'important');
@@ -813,6 +935,197 @@
 			});
 		}
 
+	})();
+
+	/* --- Pesquisa em tempo real — réplica do circuito do speculum.pt ---
+	   No site, cada tecla dispara um POST a includes/get_search.php com o termo em base64
+	   (UTF-8) + id_lang/lang, e o HTML devolvido (<a class="cc_item">) é colocado por baixo
+	   do campo. Aqui faz-se o mesmo sem jQuery: mesmo endpoint, mesmos parâmetros, mesma
+	   marcação — logo, os mesmos estilos da stylesheet.css do site. */
+	(function () {
+		var faixa   = document.getElementById('search-input-section');
+		var inside  = document.getElementById('search-input-section-inside');
+		var form    = document.getElementById('searchform');
+		var campo   = document.getElementById('search_tag_all');
+		var lista   = document.getElementById('search-content');
+		var lupa    = document.querySelector('#navtop .search-btn');
+		if (!faixa || !campo || !lista) return;
+
+		var SITE = 'https://www.speculum.pt/';
+		// Alojada no speculum.pt, a chamada é same-origin. Fora dele o browser bloqueia-a
+		// (o get_search.php não devolve Access-Control-Allow-Origin) e usa-se o plano B.
+		var noSite = /(^|\.)speculum\.pt$/i.test(location.hostname);
+		var BASE = noSite ? location.origin + '/' : SITE;
+		var ENDPOINT = BASE + 'includes/get_search.php';
+
+		var pedido = 0;      // ordena as respostas — só a última conta
+		var emCurso = null;  // pedido a abortar quando chega tecla nova
+		var espera;
+
+		// O get_search.php espera o termo em base64 de UTF-8 (btoa cru rebenta com acentos).
+		function base64(texto) {
+			var bytes = new TextEncoder().encode(texto), s = '';
+			for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
+			return btoa(s);
+		}
+
+		function absoluto(url) {
+			try { var u = new URL(url, BASE); return /^https?:$/.test(u.protocol) ? u.href : ''; }
+			catch (e) { return ''; }
+		}
+
+		function limpar() {
+			lista.textContent = '';
+			campo.setAttribute('aria-expanded', 'false');
+		}
+
+		function novoWrapper() {
+			var w = document.createElement('div');
+			w.className = 'cc_wrapper';
+			return w;
+		}
+
+		// Os resultados são reconstruídos a partir do HTML devolvido em vez de injetados tal
+		// e qual: fica a mesma marcação do site, mas nada do que venha no meio é executado,
+		// e os href relativos (pt/produtos/...) passam a absolutos para funcionarem daqui.
+		function desenhar(html) {
+			var doc = new DOMParser().parseFromString(html, 'text/html');
+			var itens = doc.querySelectorAll('a.cc_item');
+			limpar();
+			if (!itens.length) return;
+
+			var wrapper = novoWrapper();
+			Array.prototype.forEach.call(itens, function (item) {
+				var href = absoluto(item.getAttribute('href') || '');
+				var nomeEl = item.querySelector('div:not(.image)');
+				var nome = nomeEl ? nomeEl.textContent.trim() : '';
+				if (!href || !nome) return;
+
+				var a = document.createElement('a');
+				a.className = 'cc_item';
+				a.href = href;
+
+				var imgEl = item.querySelector('img');
+				var src = imgEl ? absoluto(imgEl.getAttribute('src') || '') : '';
+				if (src) {
+					var caixa = document.createElement('div');
+					caixa.className = 'image';
+					var img = document.createElement('img');
+					img.src = src;
+					img.alt = '';
+					img.loading = 'lazy';
+					caixa.appendChild(img);
+					a.appendChild(caixa);
+				}
+
+				var texto = document.createElement('div');
+				texto.textContent = nome;
+				a.appendChild(texto);
+				wrapper.appendChild(a);
+			});
+
+			if (!wrapper.childNodes.length) return;
+
+			// O endpoint acrescenta um "Ver mais (N)" quando há mais resultados do que os
+			// listados. É um <input type="submit"> dentro do formulário: ao carregar, submete
+			// a pesquisa e segue para a página de resultados do site.
+			var verMais = doc.querySelector('input.button-send');
+			if (verMais) {
+				var botao = document.createElement('input');
+				botao.type = 'submit';
+				botao.className = 'button-send';
+				botao.value = verMais.getAttribute('value') || 'Ver mais';
+				wrapper.appendChild(botao);
+			}
+
+			lista.appendChild(wrapper);
+			campo.setAttribute('aria-expanded', 'true');
+		}
+
+		// Plano B (página servida fora do speculum.pt, ou rede em baixo): uma linha que leva
+		// à pesquisa real do site, em vez de um dropdown mudo.
+		function planoB(termo) {
+			limpar();
+			var wrapper = novoWrapper();
+			var a = document.createElement('a');
+			a.className = 'cc_item';
+			a.href = SITE + 'pt/pesquisar?search_tag_all=' + encodeURIComponent(termo);
+			var texto = document.createElement('div');
+			texto.textContent = 'Ver resultados para “' + termo + '” em speculum.pt';
+			a.appendChild(texto);
+			wrapper.appendChild(a);
+			lista.appendChild(wrapper);
+			campo.setAttribute('aria-expanded', 'true');
+		}
+
+		function procurar(termo) {
+			var meu = ++pedido;
+			if (emCurso) emCurso.abort();
+			emCurso = new AbortController();
+
+			fetch(ENDPOINT, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+				body: 'text=' + encodeURIComponent(base64(termo)) + '&id_lang=1&lang=pt',
+				signal: emCurso.signal
+			})
+				.then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+				.then(function (html) { if (meu === pedido) desenhar(html); })
+				.catch(function (erro) {
+					if (erro && erro.name === 'AbortError') return;
+					if (meu === pedido) planoB(termo);
+				});
+		}
+
+		// O site consulta a cada tecla; aqui espera-se 150 ms para não disparar um pedido
+		// por letra (o resultado que o utilizador vê é o mesmo, com menos tráfego).
+		campo.addEventListener('input', function () {
+			var termo = campo.value.trim();
+			clearTimeout(espera);
+			if (!termo) { if (emCurso) emCurso.abort(); limpar(); return; }
+			espera = setTimeout(function () { procurar(termo); }, 150);
+		});
+
+		// Em ecrã largo a faixa está sempre aberta (como no speculum.pt) e a lupa não aparece;
+		// em ecrã estreito arranca fechada e é a lupa que a revela — poupa uma linha de altura.
+		var estreito = window.matchMedia('(max-width:991px)');
+
+		function alternar(abrir, focar) {
+			faixa.classList.toggle('fechada', !abrir);
+			if (lupa) lupa.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+			if (abrir) { if (focar) campo.focus(); } else { limpar(); }
+			window.dispatchEvent(new Event('resize')); // remede o offset do cabeçalho
+		}
+		function ajustarAoEcra() { alternar(!estreito.matches, false); }
+		ajustarAoEcra();
+		estreito.addEventListener('change', ajustarAoEcra);
+
+		if (lupa) {
+			var abrirPelaLupa = function () { alternar(faixa.classList.contains('fechada'), true); };
+			lupa.addEventListener('click', abrirPelaLupa);
+			lupa.addEventListener('keydown', function (e) {
+				if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirPelaLupa(); }
+			});
+		}
+
+		// Estado de espera do site enquanto a submissão navega para a página de resultados
+		if (form && inside) {
+			form.addEventListener('submit', function () {
+				if (!campo.value.trim()) return;
+				inside.classList.add('loading');
+			});
+		}
+		lista.addEventListener('click', function (e) {
+			if (e.target.closest('a.cc_item') && inside) inside.classList.add('loading');
+		});
+
+		// Fechar a lista ao clicar fora ou com Escape
+		document.addEventListener('click', function (e) {
+			if (!e.target.closest('#search-input-section') && !e.target.closest('.search-btn')) limpar();
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && lista.childNodes.length) { limpar(); campo.blur(); }
+		});
 	})();
 
 	/* --- Mega-menu de especialidades (conteúdo de produtos) --- */
