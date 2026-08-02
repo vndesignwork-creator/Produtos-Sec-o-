@@ -952,11 +952,17 @@
 		if (!faixa || !campo || !lista) return;
 
 		var SITE = 'https://www.speculum.pt/';
-		// Alojada no speculum.pt, a chamada é same-origin. Fora dele o browser bloqueia-a
-		// (o get_search.php não devolve Access-Control-Allow-Origin) e usa-se o plano B.
+
+		// URL do Worker que contorna o CORS quando a página não está alojada no
+		// speculum.pt — ver proxy/cloudflare-worker.js (instruções no topo do ficheiro).
+		// Enquanto estiver vazio, fora do site mostra-se só a linha do plano B.
+		var PROXY = '';
+
+		// No speculum.pt a chamada é same-origin e não precisa de proxy nenhum; fora dele o
+		// get_search.php não devolve Access-Control-Allow-Origin, por isso passa pelo Worker.
 		var noSite = /(^|\.)speculum\.pt$/i.test(location.hostname);
-		var BASE = noSite ? location.origin + '/' : SITE;
-		var ENDPOINT = BASE + 'includes/get_search.php';
+		var BASE = noSite ? location.origin + '/' : SITE;   // base dos links dos produtos
+		var ENDPOINT = noSite ? BASE + 'includes/get_search.php' : PROXY;
 
 		var pedido = 0;      // ordena as respostas — só a última conta
 		var emCurso = null;  // pedido a abortar quando chega tecla nova
@@ -1059,6 +1065,10 @@
 		}
 
 		function procurar(termo) {
+			// Sem proxy configurado fora do speculum.pt não vale a pena tentar: o browser
+			// bloquearia o pedido de qualquer maneira.
+			if (!ENDPOINT) { planoB(termo); return; }
+
 			var meu = ++pedido;
 			if (emCurso) emCurso.abort();
 			emCurso = new AbortController();
