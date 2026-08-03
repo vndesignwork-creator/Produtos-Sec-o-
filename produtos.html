@@ -84,8 +84,10 @@
 		#produtos-main .mega-group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
 		#produtos-main .prod-list{display:flex;flex-direction:column;gap:6px}
 		/* Sub-rótulo dentro de uma coluna do mega-menu, para separar categorias diferentes
-		   que partilham o mesmo grupo (ex.: Gel + Biópsia sob a coluna "Gel"). */
-		#produtos-main .prod-sub{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cinza-texto);padding-block-start:8px;margin-block-start:2px;border-block-start:1px solid var(--cinza-borda)}
+		   que partilham o mesmo grupo (ex.: Gel + Biópsia sob a coluna "Gel"). Mesmo estilo
+		   do h3 do grupo (cor azul, linha por baixo); só a margem de cima muda, para o
+		   afastar do cartão anterior em vez de colar ao topo da coluna. */
+		#produtos-main .prod-sub{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-start:6px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
 		#produtos-main .prod-card{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;transition:background .18s}
 		#produtos-main .prod-card:hover,#produtos-main .prod-card:focus-visible{background:var(--cinza-claro)}
 		#produtos-main .prod-thumb{flex:0 0 88px;width:88px;height:88px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--cinza-borda);padding:5px}
