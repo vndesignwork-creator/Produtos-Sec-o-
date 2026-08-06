@@ -5,9 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index,follow">
-	<title>Distribuidora de Material Hospitalar</title>
-	<meta name="description" content="Produtos Médicos e Hospitalares">
-	<meta name="keywords" content="Home Page">
+	<title>Omniview bed license | Monitorização | Obstetrícia | Equipamentos | Speculum</title>
+	<meta name="description" content="Omniview bed license (Ref. IEOVBEDLI) — licença por cama do sistema Omniview-SisPorto®: estação central com até 25 traçados CTG/STAN no mesmo ecrã, arquivo automático e alertas em tempo real.">
+	<meta name="keywords" content="Omniview bed license, IEOVBEDLI, Omniview-SisPorto, monitorização fetal, CTG, STAN, cardiotocografia, obstetrícia, Speculum">
 
 	<!-- Folhas de estilo REAIS do site Speculum (idênticas às da medicoshospitalares.html) -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
@@ -36,7 +36,7 @@
 			color-scheme: light;
 			--azul-escuro:#00416b; --azul-claro:#0070af;
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
-			--sombra:0 2px 8px rgba(0,65,107,.05); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
+			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
 			--radius:10px; --container:1240px;
 		}
 		#produtos-main{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -57,76 +57,10 @@
 			#navtop{padding-bottom:18px}
 		}
 
-		/* ===== Barra de especialidades (sobre fundo azul) ===== */
-		#produtos-main .hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:visible;padding-block:22px}
-
-		/* Barra de especialidades (mega-menu) */
-		#produtos-main .spec-bar{position:relative;z-index:20}
-		#produtos-main .spec-inner{display:flex;align-items:center;gap:16px}
-		#produtos-main .spec-list{list-style:none;display:flex;flex:1;justify-content:center;flex-wrap:wrap;column-gap:14px;row-gap:2px}
-		#produtos-main .spec-item{position:static;flex-shrink:0}
-		#produtos-main .spec-trigger{background:none;border:0;cursor:pointer;color:#fff;font-family:inherit;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 20px;max-width:none;white-space:nowrap;position:relative}
-		#produtos-main .spec-trigger .chev{display:none}
-			/* Linhas suaves entre especialidades (fade em cima/baixo, sem tocar nas extremidades) */
-			#produtos-main .spec-item + .spec-item .spec-trigger::before{content:"";position:absolute;inset-block:24%;inset-inline-start:-7px;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.32),transparent);pointer-events:none}
-		#produtos-main .spec-trigger::after{content:"";position:absolute;left:20px;right:20px;bottom:12px;height:2px;background:#fff;transform:scaleX(0);transition:transform .2s}
-		#produtos-main .spec-item:hover .spec-trigger,#produtos-main .spec-item:focus-within .spec-trigger{background:none}
-		#produtos-main .spec-item:hover .spec-trigger::after,#produtos-main .spec-item:focus-within .spec-trigger::after,#produtos-main .spec-item.open .spec-trigger::after{transform:scaleX(1)}
-
-		/* Painel mega */
-		#produtos-main .mega-panel{position:absolute;left:0;right:0;top:100%;background:var(--branco);color:var(--azul-escuro);box-shadow:var(--sombra-mega);border-block-start:3px solid var(--azul-claro);
-			visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:30}
-		#produtos-main .spec-item:hover .mega-panel,#produtos-main .spec-item:focus-within .mega-panel,#produtos-main .spec-item.open .mega-panel{visibility:visible;opacity:1;transform:translateY(0)}
-		#produtos-main .mega-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));column-gap:0;row-gap:28px;padding-block:32px!important}
-		#produtos-main .mega-group{padding-inline:24px}
-		#produtos-main .mega-group:first-child{padding-inline-start:0}
-		#produtos-main .mega-group:not(:first-child){border-inline-start:1px solid var(--cinza-borda)}
-		#produtos-main .mega-group h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
-		#produtos-main .prod-list{display:flex;flex-direction:column;gap:6px}
-		/* Sub-rótulo dentro de uma coluna do mega-menu, para separar categorias diferentes
-		   que partilham o mesmo grupo (ex.: Gel + Biópsia sob a coluna "Gel"). Mesmo estilo
-		   do h3 do grupo (cor azul, linha por baixo); só a margem de cima muda, para o
-		   afastar do cartão anterior em vez de colar ao topo da coluna. */
-		#produtos-main .prod-sub{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:10px;margin-block-start:6px;margin-block-end:12px;border-block-end:1px solid var(--cinza-borda)}
-		#produtos-main .prod-card{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;transition:background .18s}
-		#produtos-main .prod-card:hover,#produtos-main .prod-card:focus-visible{background:var(--cinza-claro)}
-		#produtos-main .prod-thumb{flex:0 0 88px;width:88px;height:88px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid var(--cinza-borda);padding:5px}
-		#produtos-main .prod-thumb.ph{display:grid;place-items:center;background:linear-gradient(135deg,#e8eff5,#d5e4ef);border:1px solid var(--cinza-borda)}
-		#produtos-main .prod-thumb.ph svg{width:36px;height:36px;fill:var(--azul-claro);opacity:.7}
-		#produtos-main .prod-name{font-size:.86rem;font-weight:500;line-height:1.3;color:var(--azul-escuro)}
-		#produtos-main .mega-group>.ver-todos{display:inline-block;margin-block-start:10px;font-size:.78rem;font-weight:600;color:var(--azul-claro)}
-		#produtos-main .mega-group>.ver-todos::after{content:" →"}
-
-		/* Conteúdo do herói */
-		#produtos-main .hero-content{position:relative;z-index:10;text-align:center;padding-block:12px}
-		#produtos-main .hero-content .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-block-end:20px;border:1px solid rgba(255,255,255,.4);padding:7px 18px;border-radius:999px}
-		#produtos-main .hero-content h1{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:700;line-height:1.16;max-width:22ch;margin-inline:auto;text-shadow:0 2px 18px rgba(0,15,25,.65),0 0 4px rgba(0,15,25,.4)}
-
-		/* ===== Categorias ===== */
-		#produtos-main .categorias{padding-block:72px;background:var(--cinza-claro)}
-		#produtos-main .section-head{text-align:center;margin-block-end:44px}
-		#produtos-main .section-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--azul-escuro)}
-		#produtos-main .section-head p{color:var(--cinza-texto);margin-block-start:8px}
-		#produtos-main .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-		#produtos-main .cat-card{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);background-size:cover;background-position:center;isolation:isolate;transition:transform .25s,box-shadow .25s}
-		#produtos-main .cat-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,65,107,.88),rgba(0,65,107,.35) 55%,rgba(0,65,107,.15));transition:background .25s}
-		#produtos-main .cat-card:hover,#produtos-main .cat-card:focus-within{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,65,107,.1)}
-		#produtos-main .cat-card:hover::before,#produtos-main .cat-card:focus-within::before{background:linear-gradient(to top,rgba(0,65,107,.92),rgba(0,112,175,.55) 60%,rgba(0,112,175,.25))}
-		#produtos-main .cat-card .label{padding:24px;color:#fff;width:100%}
-		#produtos-main .cat-card .label h3{font-size:1.35rem;font-weight:700}
-		#produtos-main .cat-card .label span{display:inline-flex;align-items:center;gap:6px;margin-block-start:6px;font-size:.85rem;font-weight:600;opacity:.9}
-		#produtos-main .cat-card .label span::after{content:"→";transition:transform .2s}
-		#produtos-main .cat-card:hover .label span::after{transform:translateX(4px)}
-		#produtos-main .cat-card .stretched{position:absolute;inset:0;z-index:1}
-		#produtos-main .cat-consumiveis{background-image:url("https://www.speculum.pt/files/images/highlights/consum%C3%ADveis.PNG")}
-		#produtos-main .cat-equipamentos{background-image:url("https://www.speculum.pt/files/images/highlights/equipamentos-10341627042018.jpg")}
-		#produtos-main .cat-metalicos{background-image:url("https://www.speculum.pt/files/images/highlights/metalicos-16070627042018.jpg")}
-		#produtos-main .cat-inovacao{background-image:url("https://www.speculum.pt/files/images/highlights/inova%C3%A7%C3%A3omedica.PNG")}
-
 		/* ===== Em destaque ===== */
 		#produtos-main .highlights{padding-block:64px;background:var(--cinza-claro)}
 		#produtos-main .hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-		#produtos-main .hl-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:transform .22s,box-shadow .22s}
+		#produtos-main .hl-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 8px rgba(0,65,107,.05);transition:transform .22s,box-shadow .22s}
 		#produtos-main .hl-card:hover,#produtos-main .hl-card:focus-visible{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,65,107,.1)}
 		#produtos-main .hl-img{height:200px;display:grid;place-items:center;background:#fff;padding:18px;overflow:hidden}
 		#produtos-main .hl-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
@@ -137,27 +71,6 @@
 		#produtos-main .hl-viewall{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:var(--radius);border:2px solid var(--azul-claro);color:var(--azul-claro);font-weight:700;font-size:.95rem;background:transparent;transition:background .2s,color .2s,transform .18s}
 		#produtos-main .hl-viewall:hover,#produtos-main .hl-viewall:focus-visible{background:var(--azul-claro);color:#fff;transform:translateY(-2px)}
 
-		/* ===== CTA orçamento ===== */
-		#produtos-main .cta-band{background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%)}
-		#produtos-main .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px!important;color:#fff}
-		#produtos-main .cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2}
-		#produtos-main .cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch}
-		#produtos-main .cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:var(--radius);transition:transform .18s,box-shadow .18s;white-space:nowrap}
-		#produtos-main .cta-btn:hover,#produtos-main .cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
-
-		/* ===== Responsivo ===== */
-		@media (max-width:960px){
-			#produtos-main .spec-trigger{padding:14px 12px}
-				/* Quebra em várias filas (todos os itens visíveis), alinhada à esquerda; overflow-x:clip
-				   corta o 1px inicial de cada fila (separador a -1px) → sem linhas soltas. */
-				#produtos-main .spec-list{flex-wrap:wrap;justify-content:flex-start;overflow-x:clip}
-				#produtos-main .spec-item + .spec-item .spec-trigger::before{inset-block:30%}
-			#produtos-main .mega-panel{max-height:78vh;overflow-y:auto}
-			#produtos-main .mega-inner{grid-template-columns:1fr;row-gap:0;padding-block:20px}
-			#produtos-main .mega-group{padding-inline:0}
-			#produtos-main .mega-group:not(:first-child){border-inline-start:0;border-block-start:1px solid var(--cinza-borda);padding-block-start:18px;margin-block-start:18px}
-			#produtos-main .categorias{padding-block:52px}
-		}
 
 		/* Remove o padding-bottom que o site reserva para o chat fixo (não usado aqui) → tira o espaço em branco do rodapé */
 		body.has-mainnav{padding-bottom:0}
@@ -271,21 +184,121 @@
 		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button{
 			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 		}
-		#produtos-main .hero-content h1{color:#fff}
-		#produtos-main .hero-content .tag{color:#fff}
-		#produtos-main .spec-trigger{color:#fff}
-		#produtos-main .cat-card .label h3{color:#fff}
-		#produtos-main .cat-card .label span{color:#fff}
-		#produtos-main .cta-text h2{color:#fff}
-		#produtos-main .cta-text p{color:#fff}
-		#produtos-main .cta-btn{color:var(--azul-escuro)}
-		#produtos-main .section-head h2{color:var(--azul-escuro)}
+		#produtos-main .section-head{text-align:center;margin-block-end:44px}
+		#produtos-main .section-head h2{color:var(--azul-escuro);font-weight:700;position:relative;padding-block-end:6px}
+		#produtos-main .section-head h2::after{content:"";position:absolute;inset-inline-start:50%;bottom:0;width:48px;height:3px;border-radius:999px;background:var(--azul-claro);transform:translateX(-50%)}
 		#produtos-main .section-head p{color:var(--cinza-texto)}
 		#produtos-main .hl-body h3{color:var(--azul-escuro)}
 		#produtos-main .hl-cta{color:var(--azul-claro)}
-		#produtos-main .mega-group h3{color:var(--azul-claro)}
-		#produtos-main .prod-name{color:var(--azul-escuro)}
-		#produtos-main .ver-todos{color:var(--azul-claro)}
+
+		/* ============================================================= */
+		/* ===== PÁGINA DE PRODUTO (Omniview bed license) ===== */
+		/* Reutiliza as mesmas variáveis, tipografia e raio da página de produtos. */
+		/* ============================================================= */
+
+		/* --- Migalhas --- */
+		#produtos-main .breadcrumbs{background:var(--branco);border-block-end:1px solid var(--cinza-borda)}
+		#produtos-main .bc-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-block:16px!important;font-size:.95rem;color:var(--cinza-texto)}
+		#produtos-main .bc-inner a{color:var(--cinza-texto);transition:color .18s}
+		#produtos-main .bc-inner a:hover,#produtos-main .bc-inner a:focus-visible{color:var(--azul-claro)}
+		#produtos-main .bc-inner .sep{opacity:.4;font-size:.85rem}
+		#produtos-main .bc-inner .atual{color:var(--azul-escuro);font-weight:600}
+
+		/* --- Bloco principal: imagem + ficha --- */
+		#produtos-main .produto{padding-block:52px 64px;background:var(--branco)}
+		#produtos-main .produto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+
+		#produtos-main .galeria{position:sticky;top:calc(var(--header-h,90px) + var(--search-h,0px) + 24px)}
+		#produtos-main .galeria-img{display:grid;place-items:center;aspect-ratio:4/3;padding:36px;background:var(--cinza-claro);border:1px solid var(--cinza-borda);border-radius:var(--radius)}
+		#produtos-main .galeria-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+		#produtos-main .galeria-nota{display:flex;align-items:center;gap:8px;margin-block-start:14px;font-size:.78rem;color:var(--cinza-texto)}
+		#produtos-main .galeria-nota svg{flex:0 0 16px;width:16px;height:16px;stroke:var(--azul-claro)}
+
+		#produtos-main .prod-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-claro);border:1px solid var(--cinza-borda);border-radius:999px;padding:7px 16px}
+		/* text-align:start porque a stylesheet.css do site centra todos os h1 */
+		#produtos-main .prod-titulo{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;line-height:1.15;color:var(--azul-escuro);text-align:start;margin-block-start:20px}
+		#produtos-main .prod-ref{display:inline-block;margin-block-start:12px;padding:5px 12px;border-radius:6px;background:var(--cinza-claro);border:1px solid var(--cinza-borda);font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--cinza-texto)}
+		#produtos-main .prod-lead{margin-block-start:20px;font-size:1rem;line-height:1.7;color:var(--cinza-texto)}
+
+		#produtos-main .prod-pontos{list-style:none;display:grid;gap:12px;margin-block-start:26px}
+		#produtos-main .prod-pontos li{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;line-height:1.5;color:var(--azul-escuro)}
+		#produtos-main .prod-pontos svg{flex:0 0 20px;width:20px;height:20px;margin-block-start:1px;stroke:var(--azul-claro)}
+
+		#produtos-main .prod-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-block-start:32px}
+		#produtos-main .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:var(--radius);font-size:.92rem;font-weight:700;transition:background .2s,color .2s,transform .18s,box-shadow .2s}
+		#produtos-main .btn svg{width:18px;height:18px;stroke:currentColor}
+		#produtos-main .btn-primario{background:var(--azul-claro);color:#fff;border:2px solid var(--azul-claro)}
+		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{background:var(--azul-escuro);border-color:var(--azul-escuro);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,65,107,.24)}
+		#produtos-main .btn-secundario{background:transparent;color:var(--azul-claro);border:2px solid var(--azul-claro)}
+		#produtos-main .btn-secundario:hover,#produtos-main .btn-secundario:focus-visible{background:var(--azul-claro);color:#fff;transform:translateY(-2px)}
+
+		#produtos-main .prod-meta{display:grid;gap:0;margin-block-start:32px;border:1px solid var(--cinza-borda);border-radius:var(--radius);overflow:hidden}
+		#produtos-main .prod-meta div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:13px 18px;font-size:.86rem}
+		#produtos-main .prod-meta div + div{border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .prod-meta div:nth-child(odd){background:var(--cinza-claro)}
+		#produtos-main .prod-meta dt,#produtos-main .prod-meta .rotulo{color:var(--cinza-texto)}
+		#produtos-main .prod-meta dd,#produtos-main .prod-meta .valor{font-weight:600;color:var(--azul-escuro);text-align:right}
+
+		/* --- Capacidades --- */
+		#produtos-main .capacidades{padding-block:72px;background:var(--cinza-claro)}
+		#produtos-main .cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+		#produtos-main .cap-card{background:#fff;border:1px solid var(--cinza-borda);border-radius:var(--radius);padding:28px;box-shadow:0 1px 4px rgba(0,65,107,.04);transition:transform .22s,box-shadow .22s}
+		#produtos-main .cap-card:hover{transform:translateY(-4px);box-shadow:0 5px 14px rgba(0,65,107,.09)}
+		#produtos-main .cap-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:rgba(0,112,175,.1)}
+		#produtos-main .cap-icon svg{width:24px;height:24px;stroke:var(--azul-claro)}
+		#produtos-main .cap-card h3{margin-block-start:18px;font-size:1.02rem;font-weight:700;line-height:1.3;color:var(--azul-escuro)}
+		#produtos-main .cap-card p{margin-block-start:8px;font-size:.88rem;line-height:1.6;color:var(--cinza-texto)}
+
+		/* --- Especificações --- */
+		#produtos-main .especificacoes{padding-block:72px;background:var(--branco)}
+		#produtos-main .esp-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:start}
+		#produtos-main .esp-texto h3{font-size:1.15rem;font-weight:700;color:var(--azul-escuro);margin-block-start:34px}
+		#produtos-main .esp-texto h3:first-child{margin-block-start:0}
+		#produtos-main .esp-texto p{margin-block-start:12px;font-size:.94rem;line-height:1.75;color:var(--cinza-texto)}
+		#produtos-main .esp-aside{display:grid;gap:24px;position:sticky;top:calc(var(--header-h,90px) + var(--search-h,0px) + 24px)}
+		#produtos-main .esp-card{background:var(--cinza-claro);border:1px solid var(--cinza-borda);border-radius:var(--radius);padding:28px}
+		#produtos-main .esp-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul-claro);padding-block-end:12px;margin-block-end:16px;border-block-end:1px solid var(--cinza-borda)}
+		#produtos-main .alertas{list-style:none;display:grid;gap:11px}
+		#produtos-main .alertas li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;line-height:1.5;color:var(--azul-escuro)}
+		#produtos-main .alertas li::before{content:"";flex:0 0 7px;width:7px;height:7px;margin-block-start:7px;border-radius:50%;background:var(--azul-claro)}
+
+		#produtos-main .doc-card{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--cinza-borda);border-radius:8px;padding:16px;transition:border-color .2s,box-shadow .2s}
+		#produtos-main .doc-card:hover,#produtos-main .doc-card:focus-visible{border-color:var(--azul-claro);box-shadow:var(--sombra)}
+		#produtos-main .doc-card svg{flex:0 0 26px;width:26px;height:26px;stroke:var(--azul-claro)}
+		#produtos-main .doc-card strong{display:block;font-size:.9rem;font-weight:600;color:var(--azul-escuro)}
+		#produtos-main .doc-card span{display:block;margin-block-start:2px;font-size:.76rem;color:var(--cinza-texto)}
+
+		/* --- Associados --- */
+		#produtos-main .associados{padding-block:64px;background:var(--cinza-claro)}
+		#produtos-main .assoc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+
+		/* --- Responsivo --- */
+		@media (max-width:960px){
+			#produtos-main .produto-grid{grid-template-columns:1fr;gap:36px}
+			#produtos-main .galeria,#produtos-main .esp-aside{position:static}
+			#produtos-main .esp-grid{grid-template-columns:1fr;gap:36px}
+			#produtos-main .produto{padding-block:36px 48px}
+			#produtos-main .capacidades,#produtos-main .especificacoes,#produtos-main .associados{padding-block:52px}
+		}
+		/* Abaixo de 768px a stylesheet.css do site aplica a TODOS os h1 a regra do título da
+		   página de pesquisa (font-size:20px, text-align:center, margin e cor, tudo !important).
+		   A produtos.html não dá por isso porque não tem h1; aqui o título do produto é um h1,
+		   por isso a regra é reposta com a mesma força. */
+		@media (max-width:768px){
+			#produtos-main .prod-titulo{font-size:1.7rem!important;line-height:1.15!important;
+				text-align:start!important;margin:20px 0 0!important;color:var(--azul-escuro)!important;font-weight:700!important}
+		}
+
+		@media (max-width:520px){
+			#produtos-main .prod-acoes .btn{width:100%}
+		}
+
+		/* Cores forçadas (o CSS do site sobrepunha-se) */
+		#produtos-main .prod-titulo{color:var(--azul-escuro)}
+		#produtos-main .cap-card h3,#produtos-main .esp-texto h3{color:var(--azul-escuro)}
+		#produtos-main .esp-card h3{color:var(--azul-claro)}
+		#produtos-main .btn-primario{color:#fff}
+		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{color:#fff}
 	</style>
 </head>
 <body class="has-mainnav mouse-user">
@@ -343,15 +356,15 @@
 <div class="menu-center similar">
 <nav class="fright show">
 
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="https://www.speculum.pt/pt/produtos" class="selected">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
-<select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option selected="selected" value="https://www.speculum.pt/pt/produtos">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="https://www.speculum.pt/pt/produtos">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
+<select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option value="https://www.speculum.pt/pt/produtos">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
 </div>
 
 
 
 <div class="toggle-menu" role="button" tabindex="0" aria-label="Abrir menu"></div>
 <div class="mobile-menu">
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="https://www.speculum.pt/pt/produtos" class="selected ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="https://www.speculum.pt/pt/produtos" class=" ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
 <div class="clear"></div>
 </div>
 
@@ -371,276 +384,262 @@
 
 
 <!-- ============================================================= -->
-<!-- CONTEÚDO DA PÁGINA DE PRODUTOS (isolado) -->
+<!-- CONTEÚDO DA PÁGINA DE PRODUTO (isolado) — mesmo id #produtos-main da produtos.html,
+     porque todo o CSS do conteúdo está escopado a esse id -->
 <!-- ============================================================= -->
 <main id="produtos-main">
 
-	<!-- ===== Secção: Menu de especialidades ===== -->
-	<section class="hero-section">
+	<!-- ===== Migalhas ===== -->
+	<nav class="breadcrumbs" aria-label="Está aqui">
+		<div class="container bc-inner">
+			<a href="https://www.speculum.pt/pt/inicio">Início</a>
+			<span class="sep" aria-hidden="true">›</span>
+			<a href="produtos.html">Produtos</a>
+			<span class="sep" aria-hidden="true">›</span>
+			<a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a>
+			<span class="sep" aria-hidden="true">›</span>
+			<a href="https://www.speculum.pt/pt/produtos/especialidade=[36-obstetricia]-categoria=[2-equipamentos]">Obstetrícia</a>
+			<span class="sep" aria-hidden="true">›</span>
+			<a href="https://www.speculum.pt/pt/produtos/grupo=[272-monitorizacao]-especialidade=[36-obstetricia]-categoria=[2-equipamentos]">Monitorização</a>
+			<span class="sep" aria-hidden="true">›</span>
+			<span class="atual" aria-current="page">Omniview bed license</span>
+		</div>
+	</nav>
 
-		<nav class="spec-bar" id="specBar" aria-label="Especialidades">
-			<div class="container spec-inner">
-				<ul class="spec-list">
+	<!-- ===== Produto: imagem + ficha ===== -->
+	<section class="produto" aria-labelledby="prod-titulo">
+		<div class="container produto-grid">
 
-					<!-- OBSTETRÍCIA -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Obstetrícia<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Ventosas</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/777-ventosas/45599-ventosa-kiwi-omnicup"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/ventosaparto_1.jpg" alt=""><span class="prod-name">Ventosa Kiwi OMNICUP</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/777-ventosas/45598-ventosa-kiwi-omnicup-c-medicao-traccao"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/Kiwi_3.jpg" alt=""><span class="prod-name">Ventosa Kiwi OMNICUP c/ Medição de Tracção</span></a>
-									</div>
-									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/777-ventosas">Ver todas</a>
-								</div>
-								<div class="mega-group">
-									<h3>Registo e Gestão dos Dados</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/458-monitorizacao/47940-maternum-partogram-and-deliv-notes-mod"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/MATERNUM.png" alt=""><span class="prod-name">Partograma — Maternum</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Monitorização Fetal</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/458-monitorizacao/43853-omniview-sisporto-server-license"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/IEOMNISRV.jpg" alt=""><span class="prod-name">OmniView-SisPorto</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/43487-cardiotocografo-edan-f9-c-monitmatern"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/EDCTGF9EG.jpg" alt=""><span class="prod-name">Cardiotocógrafo EDAN F9 c/ Monit. Materna</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/45409-sistema-telemetria-single-edan-fts-3"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/EDSNGFTS3.jpg" alt=""><span class="prod-name">Sistema Telemetria Single EDAN FTS-3</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/51009-monitor-controlo-fetal-stan-s41"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/NVSYS120400.jpg" alt=""><span class="prod-name">Monitor Controlo Fetal STAN S41</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- EXAME -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Exame<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Espéculos</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44567-especulo-desc-cusco-se-s"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000102.jpg" alt=""><span class="prod-name">Espéculo Desc. Cusco SE — S</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44568-especulo-desc-cusco-se-m"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000103.jpg" alt=""><span class="prod-name">Espéculo Desc. Cusco SE — M</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44570-especulo-desc-export-se-m"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000105.jpg" alt=""><span class="prod-name">Espéculo Desc. Export SE — M</span></a>
-									</div>
-									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/397-especulos">Ver todos</a>
-								</div>
-								<div class="mega-group">
-									<h3>Citologia</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/574-microcuretas/48457-microcureta-endosampler"><img class="prod-thumb" loading="lazy" src="https://www.medgyn.com/wp-content/uploads/2017/01/Endosampler1-600x512.jpg" alt=""><span class="prod-name">Microcureta Endosampler</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/652-recolha-do-endo-e-exocolo/54001-escova-cervical-white-n-esterilizada"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SEBR1N100.jpg" alt=""><span class="prod-name">Escova Cervical White N/ Esterilizada</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/557-recolha-do-endo-e-exocolo/44278-cervex-brush-est"><img class="prod-thumb" loading="lazy" src="https://www.roversmedicaldevices.com/wp-content/uploads/2016/07/Cervex-Brush_PRODUCT_1000x355.jpg" alt=""><span class="prod-name">Cervex Brush Est.</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- ECOGRAFIA -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Ecografia<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Imagem Geral</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53909-ecografo-v7-3p-ncw-keyboard-v100"><img class="prod-thumb" loading="lazy" src="https://pbs.twimg.com/media/FUE3mFbUEAAUvRC.png" alt=""><span class="prod-name">Ecógrafo Samsung V7</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53899-ecografo-samsung-hs40"><img class="prod-thumb" loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/HS40_GI/img_slider_hs40_gi01.png" alt=""><span class="prod-name">Ecógrafo Samsung HS40</span></a>
-										<a class="prod-card" target="_blank" rel="noopener" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS80EVO?tabSeq=5"><img class="prod-thumb" loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/RS80_EVO/mvflow-slider-lg.png" alt=""><span class="prod-name">Ecógrafo Samsung RS80</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53908-ecografo-samsung-rs85"><img class="prod-thumb" loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/RS85_NEW/keyvisual-img-lg.png" alt=""><span class="prod-name">Ecógrafo Samsung RS85</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>OB/GYN</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/files/files/pdfs/SMS-HS5NB3M.pdf"><img class="prod-thumb" loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/HS50_GI/img_slider_hs50_gi02.png" alt=""><span class="prod-name">Ecógrafo Samsung HS50</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53909-ecografo-v7-3p-ncw-keyboard-v100"><img class="prod-thumb" loading="lazy" src="https://pbs.twimg.com/media/FUE3mFbUEAAUvRC.png" alt=""><span class="prod-name">Ecógrafo Samsung V7</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Cobertura de Sondas</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/grupo=[474-preservativos]-especialidade=[29-ecografia]-categoria=[1-consumiveis]"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/preservativo-latex-ind-hh-nest-1013343082026.jpg" alt=""><span class="prod-name">Ver todos</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Papel de Impressora</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/182-papel-de-impressora/45524-papel-impressora-upp110hg-type-v"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/CCHG12100.jpg" alt=""><span class="prod-name">Papel Impressora UPP110HG Type V</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Gel</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/grupo=[188-gel]-especialidade=[29-ecografia]-categoria=[1-consumiveis]"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/CC0010173.jpg" alt=""><span class="prod-name">Ver todos</span></a>
-										<span class="prod-sub">Biópsia</span>
-										<a class="prod-card" href="https://www.speculum.pt/biopsia.html"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/LP0102017.jpg" alt=""><span class="prod-name">Ver todos</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- TESTES DIAGNÓSTICO -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Testes Diagnóstico<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Rutura de Membranas</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/252-testes/42945-teste-amnisure-rutura-membranas"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/AI0FMRT1P.jpg" alt=""><span class="prod-name">Teste AmniSure — Rutura de Membranas</span></a>
-									</div>
-									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/252-testes">Ver todos</a>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- ANESTESIA -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Anestesia<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Bloqueios Periféricos Contínuos</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/grupo=[1592-agulhas-bloqueios-perifericos-continuos]-especialidade=[66-anestesia]-categoria=[1-consumiveis]"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/PJ531187-31A.jpg" alt=""><span class="prod-name">Ver todos</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Lâminas Laringoscópio</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/grupo=[450-laminas]-especialidade=[26-orl]-categoria=[1-consumiveis]"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/GM0034375.jpg" alt=""><span class="prod-name">Ver todos</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- CIRURGIA -->
-					<li class="spec-item">
-						<button class="spec-trigger" aria-expanded="false">Cirurgia<span class="chev" aria-hidden="true">▾</span></button>
-						<div class="mega-panel">
-							<div class="container mega-inner">
-								<div class="mega-group">
-									<h3>Manipulação</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/703-outros/45602-pelicula-retratora-traxi-imc-30"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/CIPRS1030.jpg" alt=""><span class="prod-name">Película Retratora Traxi IMC 30</span></a>
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/246-manipuladores/45596-manipulador-uterino-clearview-7-cm"><img class="prod-thumb" loading="lazy" src="https://www.laborie.com/wp-content/uploads/2021/07/CVkit.png.webp" alt=""><span class="prod-name">Manipulador Uterino Clearview 7 cm</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Pinças</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/1180-histerectomia/51843-pinca-histerectomia-mp-curva-24-cm"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/MM0336542.jpg" alt=""><span class="prod-name">Pinça Histerectomia MP Curva 24 cm</span></a>
-									</div>
-								</div>
-								<div class="mega-group">
-									<h3>Eletrodos</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/669-ansas-e-electrodos/48795-eletrodo-ball-05cm-desc"><img class="prod-thumb" loading="lazy" src="https://www.speculum.pt/files/images/products/SY000005B.jpg" alt=""><span class="prod-name">Eletrodo Ball 0,5 cm Desc.</span></a>
-									</div>
-									<a class="ver-todos" href="https://www.speculum.pt/pt/produtos/669-ansas-e-electrodos">Ver todos</a>
-								</div>
-								<div class="mega-group">
-									<h3>Evacuação de Fumos</h3>
-									<div class="prod-list">
-										<a class="prod-card" href="https://www.speculum.pt/pt/produtos/260-filtros/49463-filtro-evacuador-fumos-finesse"><img class="prod-thumb" loading="lazy" src="https://nz.getzhealthcare.com/dev-au-getzhealthcare/products/medical-hospital/electrosurgery-smoke-evacuation/electrosugical-accessories/utah-medical-finesse-filter-pack/image-thumb__7492__ghcProductImagesFull/utah-medical-finesse-filter-pack@2x.webp" alt=""><span class="prod-name">Filtro Evacuador de Fumos Finesse</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-				</ul>
+			<div class="galeria">
+				<div class="galeria-img">
+					<img src="https://www.speculum.pt/files/images/products/IEOVBEDLI.jpg" alt="Omniview bed license — estação central de monitorização com traçados CTG" width="640" height="480">
+				</div>
+				<p class="galeria-nota">
+					<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-5M12 8h.01"></path></svg>
+					Imagem ilustrativa. O aspeto do ecrã depende da configuração instalada.
+				</p>
 			</div>
-		</nav>
+
+			<div class="ficha">
+				<p class="prod-eyebrow">Monitorização fetal · Obstetrícia</p>
+
+				<h1 class="prod-titulo" id="prod-titulo">Omniview bed license</h1>
+				<p class="prod-ref">Ref. IEOVBEDLI</p>
+
+				<!-- Texto igual à descrição oficial do produto no speculum.pt:
+				     "Visualização centralizada dos traçados CTG.Arquivo de traçados automático.
+				     Análise com alertas:Taquissistolia.Desacelerações prolongadas.Variabilidade
+				     curta reduzida.Variabilidade longa reduzida.Combinação de eventos ST e
+				     traçados não tranquilizadores." -->
+				<p class="prod-lead">
+					Visualização centralizada dos traçados CTG. Arquivo de traçados automático.
+					Análise com alertas:
+				</p>
+
+				<ul class="prod-pontos">
+					<li>
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+						Taquissistolia
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+						Desacelerações prolongadas
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+						Variabilidade curta reduzida
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+						Variabilidade longa reduzida
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+						Combinação de eventos ST e traçados não tranquilizadores
+					</li>
+				</ul>
+
+				<div class="prod-acoes">
+					<a class="btn btn-primario" href="https://www.speculum.pt/pt/contactos">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v12H7l-3 3z"></path></svg>
+						Peça mais informações
+					</a>
+					<a class="btn btn-secundario" href="https://www.speculum.pt/files/files/pdfs/IEOVBEDLI.pdf" target="_blank" rel="noopener">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"></path></svg>
+						Ficha técnica (PDF)
+					</a>
+				</div>
+
+				<dl class="prod-meta">
+					<div><dt>Referência</dt><dd>IEOVBEDLI</dd></div>
+					<div><dt>Categoria</dt><dd>Equipamentos</dd></div>
+					<div><dt>Especialidade</dt><dd>Obstetrícia</dd></div>
+					<div><dt>Grupo</dt><dd>Monitorização</dd></div>
+					<div><dt>Unidades por embalagem</dt><dd>1</dd></div>
+				</dl>
+			</div>
+
+		</div>
 	</section>
 
-	<!-- ===== Categorias ===== -->
-	<section class="categorias" aria-label="Categorias de produtos">
+	<!-- ===== Capacidades ===== -->
+	<section class="capacidades" aria-labelledby="cap-title">
 		<div class="container">
-			<div class="cat-grid">
-				<article class="cat-card cat-consumiveis">
-					<div class="label"><h3>Consumíveis</h3><span>Ver produtos</span></div>
-					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]" aria-label="Ver produtos consumíveis"></a>
+			<div class="section-head">
+				<h2 id="cap-title">O que o sistema faz</h2>
+				<p>Funcionalidades automáticas pensadas para reduzir ao mínimo o trabalho manual da equipa.</p>
+			</div>
+			<div class="cap-grid">
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4M6 12l2-3 2 4 2-6 2 5"></path></svg>
+					</div>
+					<h3>Até 25 traçados no mesmo ecrã</h3>
+					<p>Estação central que combina CTG e STAN, com dimensionamento automático das janelas activas conforme o número de traçados a decorrer.</p>
 				</article>
-				<article class="cat-card cat-equipamentos">
-					<div class="label"><h3>Equipamentos</h3><span>Ver produtos</span></div>
-					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]" aria-label="Ver equipamentos"></a>
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v4l3 2"></path><circle cx="12" cy="12" r="9"></circle></svg>
+					</div>
+					<h3>Início e fim automáticos</h3>
+					<p>O programa deteta continuamente a ligação e a desligação dos monitores fetais, iniciando, terminando e arquivando cada traçado sozinho.</p>
 				</article>
-				<article class="cat-card cat-metalicos">
-					<div class="label"><h3>Metálicos</h3><span>Ver produtos</span></div>
-					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]" aria-label="Ver artigos metálicos"></a>
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+					</div>
+					<h3>Alertas visuais e sonoros</h3>
+					<p>A análise SisPorto assinala em tempo real as características do CTG e a combinação de eventos ST com traçados não tranquilizadores.</p>
 				</article>
-				<article class="cat-card cat-inovacao">
-					<div class="label"><h3>Inovação</h3><span>Ver produtos</span></div>
-					<a class="stretched" href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]" aria-label="Ver produtos de inovação"></a>
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"></path></svg>
+					</div>
+					<h3>Análise computorizada do CTG</h3>
+					<p>Estimativa das contracções uterinas e da linha de base, identificação de acelerações e desacelerações e quantificação da variabilidade curta e longa.</p>
 				</article>
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>
+					</div>
+					<h3>Arquitectura multiposto</h3>
+					<p>Um número praticamente ilimitado de computadores pode ligar-se por intranet local para visualizar os traçados em curso.</p>
+				</article>
+
+				<article class="cap-card">
+					<div class="cap-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="3" y="9" width="18" height="7" rx="2"></rect><path d="M6 16h12v4H6z"></path></svg>
+					</div>
+					<h3>Impressão e revisão</h3>
+					<p>Impressão automática no fim do traçado ou a pedido, com ou sem os resultados da análise, e recuperação de traçados guardados para revisão e simulação com fins pedagógicos.</p>
+				</article>
+
 			</div>
 		</div>
 	</section>
 
-	<!-- ===== Em destaque ===== -->
-	<section class="highlights" aria-labelledby="hl-title">
+	<!-- ===== Especificações ===== -->
+	<section class="especificacoes" aria-labelledby="esp-title">
 		<div class="container">
 			<div class="section-head">
-				<h2 id="hl-title">Em destaque</h2>
-				<p>Alguns dos equipamentos e produtos que fornecemos.</p>
+				<h2 id="esp-title">Especificações</h2>
+				<p>O que está incluído nesta licença e como o sistema se comporta em serviço.</p>
 			</div>
-			<div class="hl-grid">
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53909-ecografo-v7-3p-ncw-keyboard-v100">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-V7N000K3.jpg" alt="Ecógrafo Samsung V7"></div>
-					<div class="hl-body"><h3>Ecógrafo Samsung V7</h3><span class="hl-cta">Ver equipamento →</span></div>
+
+			<div class="esp-grid">
+
+				<div class="esp-texto">
+					<h3>Visualização de múltiplos traçados</h3>
+					<p>
+						O sistema Omniview-SisPorto<sup>®</sup> funciona como estação central de monitorização,
+						permitindo a apresentação combinada de até 25 traçados CTG e/ou STAN no mesmo ecrã.
+						A aquisição, a apresentação e o armazenamento são geridos pelo programa, que deteta
+						continuamente a ligação e a desligação dos monitores fetais que transmitem sinal válido.
+					</p>
+					<p>
+						Ao maximizar a janela de um traçado, acede-se a uma vista detalhada com possibilidade
+						de rever o traçado completo. São também apresentados os eventos STAN e as cruzes T/QRS,
+						com comunicação automática de nome e identificação com o STAN 31.
+					</p>
+
+					<h3>Análise SisPorto em tempo real</h3>
+					<p>
+						A análise da frequência cardíaca fetal gera alertas em tempo real de apoio à decisão
+						durante o trabalho de parto. Inclui a estimativa das contracções uterinas e da linha de
+						base da frequência cardíaca fetal, a identificação de acelerações e desacelerações e a
+						quantificação da variabilidade a curto e a longo prazo.
+					</p>
+
+					<h3>Arquivo, impressão e ensino</h3>
+					<p>
+						Os traçados são arquivados automaticamente e podem ser recuperados e impressos mais tarde,
+						com ou sem os resultados da análise automatizada. A revisão e a simulação de traçados
+						guardados permitem usar o histórico do serviço para formação das equipas.
+					</p>
+					<p>
+						Uma arquitectura multi-cliente garante que um número praticamente ilimitado de computadores
+						se pode ligar por intranet local para visualizar traçados, sem licenças adicionais de posto.
+					</p>
+				</div>
+
+				<aside class="esp-aside">
+					<div class="esp-card">
+						<h3>Alertas incluídos</h3>
+						<ul class="alertas">
+							<li>Taquissistolia (contractilidade uterina excessiva)</li>
+							<li>Desacelerações prolongadas</li>
+							<li>Variabilidade a curto prazo reduzida</li>
+							<li>Variabilidade a longo prazo reduzida</li>
+							<li>Combinação de eventos ST com traçados não tranquilizadores</li>
+						</ul>
+					</div>
+
+					<div class="esp-card">
+						<h3>Documentação</h3>
+						<a class="doc-card" href="https://www.speculum.pt/files/files/pdfs/IEOVBEDLI.pdf" target="_blank" rel="noopener">
+							<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg>
+							<span>
+								<strong>Omniview bed license</strong>
+								<span>IEOVBEDLI.pdf — abre em nova janela</span>
+							</span>
+						</a>
+					</div>
+				</aside>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- ===== Associados ===== -->
+	<section class="associados" aria-labelledby="assoc-title">
+		<div class="container">
+			<div class="section-head">
+				<h2 id="assoc-title">Associado a</h2>
+				<p>Complete o sistema de monitorização centralizada.</p>
+			</div>
+			<div class="assoc-grid">
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/760-software/51098-sistema-visualizacao-ctgs-omniview">
+					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/IEOSANUC.jpg" alt="Sistema visualização CTGs Omniview"></div>
+					<div class="hl-body"><h3>Sistema visualização CTGs Omniview</h3><span class="hl-cta">Ver detalhes →</span></div>
 				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53908-ecografo-samsung-rs85">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-RS85F40.jpg" alt="Ecógrafo Samsung RS85"></div>
-					<div class="hl-body"><h3>Ecógrafo Samsung RS85</h3><span class="hl-cta">Ver equipamento →</span></div>
-				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53899-ecografo-samsung-hs40">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-HS4NL3B.jpg" alt="Ecógrafo Samsung HS40"></div>
-					<div class="hl-body"><h3>Ecógrafo Samsung HS40</h3><span class="hl-cta">Ver equipamento →</span></div>
-				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/43487-cardiotocografo-edan-f9-c-monitmatern">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/EDCTGF9EG.jpg" alt="Cardiotocógrafo EDAN F9"></div>
-					<div class="hl-body"><h3>Cardiotocógrafo EDAN F9</h3><span class="hl-cta">Ver equipamento →</span></div>
-				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/45409-sistema-telemetria-single-edan-fts-3">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/EDSNGFTS3.jpg" alt="Sistema Telemetria Single EDAN FTS-3"></div>
-					<div class="hl-body"><h3>Sistema Telemetria Single EDAN FTS-3</h3><span class="hl-cta">Ver equipamento →</span></div>
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/458-monitorizacao/43853-omniview-sisporto-server-license">
+					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/IEOMNISRV.jpg" alt="OmniView-SisPorto — licença de servidor"></div>
+					<div class="hl-body"><h3>OmniView-SisPorto — licença de servidor</h3><span class="hl-cta">Ver detalhes →</span></div>
 				</a>
 				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao/51009-monitor-controlo-fetal-stan-s41">
 					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/NVSYS120400.jpg" alt="Monitor Controlo Fetal STAN S41"></div>
-					<div class="hl-body"><h3>Monitor Controlo Fetal STAN S41</h3><span class="hl-cta">Ver equipamento →</span></div>
+					<div class="hl-body"><h3>Monitor Controlo Fetal STAN S41</h3><span class="hl-cta">Ver detalhes →</span></div>
 				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/252-testes/42945-teste-amnisure-rutura-membranas">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/AI0FMRT1P.jpg" alt="Teste AmniSure — Rutura de Membranas"></div>
-					<div class="hl-body"><h3>Teste AmniSure — Rutura de Membranas</h3><span class="hl-cta">Ver produto →</span></div>
-				</a>
-				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/397-especulos/44568-especulo-desc-cusco-se-m">
-					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SE0000103.jpg" alt="Espéculo Desc. Cusco SE — M"></div>
-					<div class="hl-body"><h3>Espéculo Desc. Cusco SE — M</h3><span class="hl-cta">Ver produto →</span></div>
+				<a class="hl-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos/43487-cardiotocografo-edan-f9-c-monitmatern">
+					<div class="hl-img"><img loading="lazy" src="https://www.speculum.pt/files/images/products/EDCTGF9EG.jpg" alt="Cardiotocógrafo EDAN F9 com monitorização materna"></div>
+					<div class="hl-body"><h3>Cardiotocógrafo EDAN F9 c/ Monit. Materna</h3><span class="hl-cta">Ver detalhes →</span></div>
 				</a>
 			</div>
-			<div class="hl-footer">
-				<a class="hl-viewall" href="https://www.speculum.pt/pt/produtos/categoria">Ver todos</a>
-			</div>
-		</div>
-	</section>
-
-	<!-- ===== CTA orçamento ===== -->
-	<section class="cta-band" aria-label="Peça um orçamento">
-		<div class="container cta-inner">
-			<div class="cta-text">
-				<h2>Precisa de equipamento ou consumíveis?</h2>
-				<p>A nossa equipa prepara um orçamento à medida da sua clínica ou hospital.</p>
-			</div>
-			<a class="cta-btn" href="https://www.speculum.pt/pt/contactos">Peça um orçamento</a>
 		</div>
 	</section>
 
@@ -1132,29 +1131,6 @@
 		});
 		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape' && lista.childNodes.length) { limpar(); campo.blur(); }
-		});
-	})();
-
-	/* --- Mega-menu de especialidades (conteúdo de produtos) --- */
-	(function () {
-		var items = document.querySelectorAll("#produtos-main .spec-item");
-		items.forEach(function (item) {
-			var trigger = item.querySelector(".spec-trigger");
-			trigger.addEventListener("click", function (e) {
-				e.preventDefault();
-				var isOpen = item.classList.contains("open");
-				items.forEach(function (o) { if (o !== item) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); } });
-				item.classList.toggle("open", !isOpen);
-				trigger.setAttribute("aria-expanded", !isOpen ? "true" : "false");
-			});
-		});
-		document.addEventListener("click", function (e) {
-			if (!e.target.closest("#produtos-main .spec-item")) {
-				items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
-			}
-		});
-		document.addEventListener("keydown", function (e) {
-			if (e.key === "Escape") items.forEach(function (o) { o.classList.remove("open"); o.querySelector(".spec-trigger").setAttribute("aria-expanded", "false"); });
 		});
 	})();
 </script>
