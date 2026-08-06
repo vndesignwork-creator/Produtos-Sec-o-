@@ -885,6 +885,21 @@
 		setHeaderOffset();
 		window.addEventListener('load', setHeaderOffset);
 		window.addEventListener('resize', setHeaderOffset);
+		// 'resize' só apanha mudanças na janela. Entre ~750-950px o menu principal
+		// (Início/Empresa/Produtos/...) está no limite de caber numa linha: basta a
+		// fonte acabar de carregar um instante depois do 'load' (métricas ligeiramente
+		// diferentes da fonte de substituição) para o cabeçalho passar a 2 linhas sem
+		// nenhum resize da janela — e sem isto o --header-h ficava desactualizado,
+		// deixando um vão entre o cabeçalho e o menu mobile (mostrava a faixa azul por trás).
+		// Dois mecanismos independentes, os dois sempre activos: o ResizeObserver apanha
+		// qualquer mudança de altura do cabeçalho seja qual for a causa, e o fonts.ready
+		// cobre especificamente a troca de fonte mesmo se o suporte a ResizeObserver falhar.
+		if (window.ResizeObserver) {
+			new ResizeObserver(setHeaderOffset).observe(document.getElementById('navtop'));
+		}
+		if (document.fonts) {
+			document.fonts.ready.then(setHeaderOffset);
+		}
 
 		// Dropdown de idioma (pt | en)
 		var liActive = document.querySelector('#languages-flags .li-active');
