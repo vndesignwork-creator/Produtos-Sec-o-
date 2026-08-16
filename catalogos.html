@@ -241,8 +241,9 @@
 			#produtos-main .catalogos{padding-block:52px}
 			#produtos-main .hero-content{padding-block:24px}
 		}
+		/* No telemóvel: um cartão por linha, para a capa se ler à vontade. */
 		@media (max-width:520px){
-			#produtos-main .cat-grelha{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+			#produtos-main .cat-grelha{grid-template-columns:1fr;gap:20px}
 		}
 
 		/* --- Migalhas --- */
