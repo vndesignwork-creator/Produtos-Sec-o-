@@ -170,22 +170,12 @@
 		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button{
 			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 		}
-		#produtos-main .section-head{text-align:center;margin-block-end:44px}
-		#produtos-main .section-head h2{color:var(--azul-escuro);font-weight:700;position:relative;padding-block-end:6px}
-		#produtos-main .section-head h2::after{content:"";position:absolute;inset-inline-start:50%;bottom:0;width:48px;height:3px;border-radius:999px;background:var(--azul-claro);transform:translateX(-50%)}
-		#produtos-main .section-head p{color:var(--cinza-texto)}
 
 		/* ============================================================= */
 		/* ===== PÁGINA DE CATÁLOGOS ===== */
 		/* Reutiliza as mesmas variáveis, tipografia e raio da página de produtos. */
 		/* ============================================================= */
 
-		/* --- Faixa azul do topo (mesmo gradiente da barra de especialidades) --- */
-		#produtos-main .hero-section{position:relative;background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%);color:#fff;overflow:hidden;padding-block:22px}
-		#produtos-main .hero-content{position:relative;z-index:10;text-align:center;padding-block:34px}
-		#produtos-main .hero-content .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-block-end:20px;border:1px solid rgba(255,255,255,.4);padding:7px 18px;border-radius:999px}
-		#produtos-main .hero-content h1{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:700;line-height:1.16;max-width:22ch;margin-inline:auto;text-shadow:0 2px 18px rgba(0,15,25,.65),0 0 4px rgba(0,15,25,.4)}
-		#produtos-main .hero-content p{margin-block-start:16px;max-width:56ch;margin-inline:auto;opacity:.92}
 
 		/* --- Listagem de catálogos --- */
 		#produtos-main .catalogos{padding-block:72px;background:var(--cinza-claro)}
@@ -261,7 +251,6 @@
 
 		@media (max-width:960px){
 			#produtos-main .catalogos{padding-block:52px}
-			#produtos-main .hero-content{padding-block:24px}
 		}
 		/* No telemóvel: um cartão por linha, para a capa se ler à vontade. */
 		@media (max-width:520px){
@@ -276,17 +265,8 @@
 		#produtos-main .bc-inner .sep{opacity:.4;font-size:.85rem}
 		#produtos-main .bc-inner .atual{color:var(--azul-escuro);font-weight:600}
 
-		/* Abaixo de 768px a stylesheet.css do site aplica a TODOS os h1 a regra do título da
-		   página de pesquisa (font-size:20px, text-align:center, margin e cor, tudo !important).
-		   A produtos.html não dá por isso porque não tem h1; aqui o título é um h1, por isso a
-		   regra é reposta com a mesma força. */
-		@media (max-width:768px){
-			#produtos-main .hero-content h1{font-size:1.7rem!important;line-height:1.16!important;
-				text-align:center!important;margin:0 auto!important;color:#fff!important;font-weight:700!important}
-		}
 
 		/* Cores forçadas (o CSS do site sobrepunha-se) */
-		#produtos-main .hero-content h1,#produtos-main .hero-content .tag,#produtos-main .hero-content p{color:#fff}
 		#produtos-main .cta-btn{color:var(--azul-escuro)}
 	</style>
 </head>
@@ -378,14 +358,8 @@
 <!-- ============================================================= -->
 <main id="produtos-main">
 
-	<!-- ===== Topo: faixa azul com o título da página ===== -->
-	<section class="hero-section">
-		<div class="container hero-content">
-			<p class="tag">Documentação</p>
-			<h1>Catálogos</h1>
-			<p>Catálogos e brochuras dos produtos que representamos, para consultar ou descarregar em PDF.</p>
-		</div>
-	</section>
+	<h1 class="so-leitores">Catálogos</h1>
+
 
 	<!-- ===== Migalhas ===== -->
 	<nav class="breadcrumbs" aria-label="Está aqui">
@@ -400,10 +374,6 @@
 	     Títulos, capas e PDFs são os do speculum.pt/pt/catalogos, pela mesma ordem. -->
 	<section class="catalogos" aria-labelledby="cat-title">
 		<div class="container">
-			<div class="section-head">
-				<h2 id="cat-title">Listagem de Catálogos</h2>
-				<p>Todos os ficheiros abrem em separador novo, no site da Speculum.</p>
-			</div>
 
 			<div class="cat-chips" role="group" aria-label="Filtrar por categoria">
 				<button type="button" class="cat-chip is-ativo" data-cat="">Todas <span>43</span></button>
