@@ -186,45 +186,77 @@
 		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
 			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 
-		/* Filtro por categoria: botões que filtram a grelha aqui, sem sair da página. */
-		#produtos-main .cat-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-block-end:24px}
-		#produtos-main .cat-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:999px;
-			background:#fff;border:1px solid var(--cinza-borda);font-family:inherit;font-size:.82rem;font-weight:600;
-			color:var(--azul-escuro);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-		#produtos-main .cat-chip span{font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:999px;
-			background:var(--cinza-claro);color:var(--cinza-texto);transition:background .2s,color .2s}
-		#produtos-main .cat-chip:hover,#produtos-main .cat-chip:focus-visible{border-color:var(--azul-claro);color:var(--azul-claro)}
-		#produtos-main .cat-chip.is-ativo{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
-		#produtos-main .cat-chip.is-ativo span{background:rgba(255,255,255,.22);color:#fff}
-		/* Abaixo de 768px a stylesheet.css do site força width:100% em todos os <button>
-		   (regra dos formulários). Sem isto os chips viravam barras de largura total. */
-		@media (max-width:768px){
-			#produtos-main .cat-chip{width:auto;max-width:none;min-height:0;padding:8px 16px;font-size:.8rem}
-		}
+		/* Painel de filtros à esquerda: pesquisa por texto e categorias em caixas de
+		   seleção, combináveis entre si. */
+		#produtos-main .cat-layout{display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+		/* Acompanha a rolagem descontando o cabeçalho fixo (--header-h vem do JS). */
+		#produtos-main .cat-painel{position:sticky;top:calc(var(--header-h,90px) + 20px)}
+		#produtos-main .cat-bloco + .cat-bloco{margin-block-start:28px}
+
+		/* Rótulo de secção: maiúsculas espaçadas */
+		#produtos-main .cat-rotulo{display:block;font-size:.72rem;font-weight:700;letter-spacing:.09em;
+			text-transform:uppercase;color:var(--azul-escuro);margin-block-end:10px}
+
+		/* Título das categorias, que também abre e fecha a lista.
+		   O width:auto!important é preciso porque abaixo de 768px a stylesheet.css do
+		   site força width:100% em todos os <button> (regra dos formulários). */
+		#produtos-main .cat-toggle{display:flex;align-items:center;gap:8px;width:auto!important;padding:0;border:0;
+			background:none;font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.09em;
+			text-transform:uppercase;color:var(--azul-escuro);cursor:pointer;margin-block-end:14px}
+		/* Seta desenhada com bordas: aponta para baixo aberta, para a direita fechada. */
+		#produtos-main .cat-toggle::after{content:"";width:0;height:0;border-inline:4px solid transparent;
+			border-block-start:5px solid var(--azul-claro);transition:transform .2s}
+		#produtos-main .cat-toggle[aria-expanded="false"]::after{transform:rotate(-90deg)}
+		#produtos-main .cat-lista{display:flex;flex-direction:column;gap:2px}
+		/* Com o prefixo do id para vencer o display das consultas de meios abaixo. */
+		#produtos-main .cat-lista[hidden]{display:none}
+
+		/* text-transform e letter-spacing repostos: o CSS do site põe os <label> em
+		   maiúsculas espaçadas, e aqui os nomes das categorias lêem-se em caixa normal. */
+		#produtos-main .cat-opcao{display:flex;align-items:center;gap:10px;padding:6px 0;cursor:pointer;
+			font-size:.95rem;font-weight:400;color:var(--azul-escuro);line-height:1.4;
+			text-transform:none;letter-spacing:normal;transition:color .15s}
+		/* A caixa é desenhada aqui: o CSS do site aplica -webkit-appearance:none a todos
+		   os input e só mais abaixo o repõe para checkbox — desenhá-la evita depender
+		   dessa ordem. */
+		#produtos-main .cat-opcao input{appearance:none;-webkit-appearance:none;flex:0 0 auto;
+			width:18px!important;height:18px!important;margin:0!important;border:1px solid #b9c3cc;border-radius:3px;
+			background:#fff;cursor:pointer;transition:background .15s,border-color .15s}
+		#produtos-main .cat-opcao input:checked{background:var(--azul-claro);border-color:var(--azul-claro)}
+		/* O visto são dois lados de uma borda, rodados 45°. */
+		#produtos-main .cat-opcao input:checked::after{content:"";display:block;width:5px;height:9px;
+			margin:1px auto 0;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+		#produtos-main .cat-opcao input:focus-visible{outline:2px solid var(--azul-claro);outline-offset:2px}
+		#produtos-main .cat-opcao:hover{color:var(--azul-claro)}
+		#produtos-main .cat-opcao .n{color:var(--cinza-texto);font-size:.88rem}
+
+		#produtos-main .cat-limpar{margin-block-start:14px;width:auto!important;padding:0;border:0;background:none;
+			font-family:inherit;font-size:.8rem;font-weight:600;color:var(--azul-claro);cursor:pointer;
+			text-decoration:underline}
+		#produtos-main .cat-limpar[hidden]{display:none}
 
 		/* Etiquetas de categoria no cartão */
 		#produtos-main .cat-meta{display:flex;flex-wrap:wrap;gap:6px;margin-block-end:10px}
 		#produtos-main .cat-etiqueta{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:999px;
 			background:var(--cinza-claro);color:var(--cinza-texto)}
 
-		#produtos-main .cat-filtro{max-width:460px;margin:0 auto 20px;position:relative}
 		/* Abaixo de 768px a stylesheet.css do site esconde com !important qualquer
 		   input[type="search"] ou com "Pesquisar" no placeholder — regra pensada para a
 		   pesquisa do site, mas escrita de forma tão larga que apanhava este filtro.
-		   Daí o type="text" no HTML e este display forçado. */
-		#produtos-main .cat-filtro input{display:block!important;box-sizing:border-box;width:100%;height:50px;padding:0 46px 0 18px;
-			border:1px solid var(--cinza-borda);border-radius:var(--radius);background:#fff;color:var(--azul-escuro);
-			font-family:inherit;font-size:.92rem;transition:border-color .2s,box-shadow .2s}
+		   Daí o type="text" no HTML, este display forçado, e não haver <form> a envolver
+		   o campo (a mesma regra esconde form:has(input[placeholder*="Pesquisar"])). */
+		#produtos-main .cat-filtro input{display:block!important;box-sizing:border-box;width:100%;height:48px;
+			padding:0 16px;margin:0;border:1px solid var(--cinza-borda);border-radius:6px;background:#fff;
+			color:var(--azul-escuro);font-family:inherit;font-size:.92rem;transition:border-color .2s,box-shadow .2s}
 		#produtos-main .cat-filtro input:focus{outline:none;border-color:var(--azul-claro);box-shadow:0 0 0 3px rgba(0,112,175,.12)}
 		#produtos-main .cat-filtro input::placeholder{color:#8a97a3;opacity:1}
-		#produtos-main .cat-filtro svg{position:absolute;inset-inline-end:16px;top:50%;transform:translateY(-50%);
-			width:18px;height:18px;stroke:var(--azul-claro);fill:none;stroke-width:2;pointer-events:none}
-		#produtos-main .cat-contagem{text-align:center;margin-block-end:28px;font-size:.85rem;color:var(--cinza-texto)}
+		#produtos-main .cat-contagem{margin-block-end:20px;font-size:.85rem;color:var(--cinza-texto)}
 		#produtos-main .cat-vazio{text-align:center;padding-block:40px;color:var(--cinza-texto)}
 
-		/* minmax de 300px: no contentor de 1240px dá 3 colunas (acima de 282px já não
-		   cabem 4), e desce sozinho para 2 à medida que o ecrã estreita. */
-		#produtos-main .cat-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+		/* minmax de 280px: descontando o painel de 260px e a goteira de 32px, sobram
+		   908px no contentor de 1240px — dá 3 colunas (4 pediriam 1192px), e desce
+		   sozinho para 2 e 1 à medida que o ecrã estreita. */
+		#produtos-main .cat-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
 		#produtos-main .cat-item{display:flex;flex-direction:column;background:#fff;border:1px solid var(--cinza-borda);
 			border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 8px rgba(0,65,107,.05);
 			transition:transform .22s,box-shadow .22s,border-color .22s}
@@ -251,10 +283,16 @@
 
 		@media (max-width:960px){
 			#produtos-main .catalogos{padding-block:52px}
+			/* Painel passa para cima da grelha, e a lista para duas colunas, para não
+			   empurrar os cartões para fora do ecrã. */
+			#produtos-main .cat-layout{grid-template-columns:1fr;gap:24px}
+			#produtos-main .cat-painel{position:static}
+			#produtos-main .cat-lista{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px}
 		}
 		/* No telemóvel: um cartão por linha, para a capa se ler à vontade. */
 		@media (max-width:520px){
 			#produtos-main .cat-grelha{grid-template-columns:1fr;gap:20px}
+			#produtos-main .cat-lista{grid-template-columns:1fr}
 		}
 
 		/* --- Migalhas --- */
@@ -375,23 +413,33 @@
 	<section class="catalogos" aria-labelledby="cat-title">
 		<div class="container">
 
-			<div class="cat-chips" role="group" aria-label="Filtrar por categoria">
-				<button type="button" class="cat-chip is-ativo" data-cat="">Todas <span>43</span></button>
-				<button type="button" class="cat-chip" data-cat="Ecografia">Ecografia <span>13</span></button>
-				<button type="button" class="cat-chip" data-cat="Obstetrícia">Obstetrícia <span>12</span></button>
-				<button type="button" class="cat-chip" data-cat="Anestesia">Anestesia <span>11</span></button>
-				<button type="button" class="cat-chip" data-cat="Equipamentos">Equipamentos <span>7</span></button>
-				<button type="button" class="cat-chip" data-cat="Cirurgia">Cirurgia <span>5</span></button>
-				<button type="button" class="cat-chip" data-cat="Monitorização">Monitorização <span>5</span></button>
-				<button type="button" class="cat-chip" data-cat="Consumíveis">Consumíveis <span>3</span></button>
-				<button type="button" class="cat-chip" data-cat="Metálicos">Metálicos <span>3</span></button>
+			<div class="cat-layout">
+
+			<!-- Painel de filtros: texto e categorias, combináveis. Sem <form> a envolver
+			     o campo — ver a nota do CSS sobre a regra do site abaixo de 768px. -->
+			<div class="cat-painel">
+				<div class="cat-bloco cat-filtro">
+					<label class="cat-rotulo" for="cat-busca">Pesquisar</label>
+					<input type="text" id="cat-busca" placeholder="Pesquisar catálogos…" autocomplete="off">
+				</div>
+
+				<div class="cat-bloco">
+					<button type="button" class="cat-toggle" id="cat-toggle" aria-expanded="true" aria-controls="cat-lista">Categorias</button>
+					<div class="cat-lista" id="cat-lista" role="group" aria-labelledby="cat-toggle">
+						<label class="cat-opcao"><input type="checkbox" value="Ecografia">Ecografia <span class="n">(13)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Obstetrícia">Obstetrícia <span class="n">(12)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Anestesia">Anestesia <span class="n">(11)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Equipamentos">Equipamentos <span class="n">(7)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Cirurgia">Cirurgia <span class="n">(5)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Monitorização">Monitorização <span class="n">(5)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Consumíveis">Consumíveis <span class="n">(3)</span></label>
+						<label class="cat-opcao"><input type="checkbox" value="Metálicos">Metálicos <span class="n">(3)</span></label>
+					</div>
+					<button type="button" class="cat-limpar" id="cat-limpar" hidden>Limpar filtros</button>
+				</div>
 			</div>
 
-			<div class="cat-filtro">
-				<label class="so-leitores" for="cat-busca">Filtrar catálogos</label>
-				<input type="text" id="cat-busca" placeholder="Filtrar por nome, marca ou área…" autocomplete="off">
-				<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
-			</div>
+			<div class="cat-resultados">
 			<p class="cat-contagem" id="cat-contagem" role="status"></p>
 
 			<div class="cat-grelha" id="cat-grelha">
@@ -612,6 +660,9 @@
 				</a>			</div>
 
 			<p class="cat-vazio" id="cat-vazio" hidden>Nenhum catálogo corresponde a essa pesquisa.</p>
+			</div><!-- /.cat-resultados -->
+
+			</div><!-- /.cat-layout -->
 		</div>
 	</section>
 
@@ -1119,15 +1170,18 @@
 	})();
 
 	/* --- Filtro da listagem de catálogos ---
-	   Categoria (chips) e texto, combináveis. Filtragem local, só sobre o que já está na
-	   página: nada é pedido ao servidor. Sem JS a grelha fica toda visível — perdem-se os
-	   filtros, não o conteúdo. */
+	   Categorias (caixas de seleção) e texto, combináveis. Filtragem local, só sobre o
+	   que já está na página: nada é pedido ao servidor. Sem JS a grelha fica toda
+	   visível — perdem-se os filtros, não o conteúdo. */
 	(function () {
 		var busca    = document.getElementById('cat-busca');
 		var grelha   = document.getElementById('cat-grelha');
 		var vazio    = document.getElementById('cat-vazio');
 		var contagem = document.getElementById('cat-contagem');
-		var chips    = document.querySelectorAll('.cat-chip');
+		var lista    = document.getElementById('cat-lista');
+		var toggle   = document.getElementById('cat-toggle');
+		var limpar   = document.getElementById('cat-limpar');
+		var caixas   = document.querySelectorAll('#cat-lista input[type="checkbox"]');
 		if (!busca || !grelha) return;
 
 		// Sem acentos e em minúsculas, para "metalicos" encontrar "Metálicos".
@@ -1143,7 +1197,7 @@
 			};
 		});
 		var total = itens.length;
-		var categoria = '';
+		var escolhidas = [];
 
 		function mostrar(n) {
 			contagem.textContent = n === total
@@ -1152,13 +1206,21 @@
 			vazio.hidden = n !== 0;
 		}
 
+		// Guarda as categorias marcadas e mostra o "Limpar filtros" só quando há algo a limpar.
+		function lerEscolhas() {
+			escolhidas = Array.prototype.filter.call(caixas, function (c) { return c.checked; })
+				.map(function (c) { return c.value; });
+			limpar.hidden = escolhidas.length === 0 && !busca.value;
+		}
+
 		function filtrar() {
 			var termo = normalizar(busca.value);
 			// Todas as palavras têm de aparecer, em qualquer ordem ("samsung v7" ou "v7 samsung").
 			var palavras = termo ? termo.split(' ') : [];
 			var visiveis = 0;
 			itens.forEach(function (i) {
-				var ok = (!categoria || i.cats.indexOf(categoria) !== -1)
+				// Sem nada marcado mostra tudo; com várias marcadas basta uma corresponder.
+				var ok = (escolhidas.length === 0 || i.cats.some(function (c) { return escolhidas.indexOf(c) !== -1; }))
 					&& palavras.every(function (p) { return i.texto.indexOf(p) !== -1; });
 				i.el.hidden = !ok;
 				if (ok) visiveis++;
@@ -1166,20 +1228,28 @@
 			mostrar(visiveis);
 		}
 
-		chips.forEach(function (chip) {
-			chip.addEventListener('click', function () {
-				chips.forEach(function (c) { c.classList.remove('is-ativo'); });
-				chip.classList.add('is-ativo');
-				categoria = chip.dataset.cat || '';
-				filtrar();
-			});
+		function aplicar() { lerEscolhas(); filtrar(); }
+
+		caixas.forEach(function (c) { c.addEventListener('change', aplicar); });
+
+		limpar.addEventListener('click', function () {
+			caixas.forEach(function (c) { c.checked = false; });
+			busca.value = '';
+			aplicar();
+			busca.focus();
 		});
 
-		busca.addEventListener('input', filtrar);
-		busca.addEventListener('keydown', function (e) {
-			if (e.key === 'Escape') { busca.value = ''; filtrar(); }
+		toggle.addEventListener('click', function () {
+			var aberto = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', aberto ? 'false' : 'true');
+			lista.hidden = aberto;
 		});
-		filtrar();
+
+		busca.addEventListener('input', aplicar);
+		busca.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') { busca.value = ''; aplicar(); }
+		});
+		aplicar();
 	})();
 </script>
 </body>
