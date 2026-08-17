@@ -166,8 +166,13 @@
 		#navtop #search-input-section #search-input-section-inside.loading:before{pointer-events:none}
 
 		/* ===== Correções de cor e tipografia do conteúdo (o CSS do site sobrepunha-se) ===== */
+		/* label incluído por causa do painel de filtros: a stylesheet.css do site põe
+		   os <label> em MiniSansBold, uma fonte hospedada em speculum.pt sem CORS — fora
+		   desse domínio falha sempre a carregar, e até o browser desistir e cair para o
+		   Arial de reserva o texto fica invisível (o mesmo problema da fonte que já
+		   afeta o cabeçalho do site, aqui herdado pelos rótulos das categorias). */
 		#produtos-main h1,#produtos-main h2,#produtos-main h3,#produtos-main h4,
-		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button{
+		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button,#produtos-main label{
 			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 		}
 
