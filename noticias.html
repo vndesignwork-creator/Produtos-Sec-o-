@@ -190,13 +190,34 @@
 		/* --- Listagem de notícias --- */
 		#produtos-main .noticias{padding-block:72px;background:var(--cinza-claro)}
 
-		/* Categorias do site, como atalhos. Levam às listagens do speculum.pt. */
-		#produtos-main .not-categorias{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-block-end:40px}
-		#produtos-main .not-categorias a{display:inline-block;padding:8px 18px;border-radius:999px;background:#fff;
-			border:1px solid var(--cinza-borda);font-size:.82rem;font-weight:600;color:var(--azul-escuro);
-			transition:background .2s,color .2s,border-color .2s}
-		#produtos-main .not-categorias a:hover,#produtos-main .not-categorias a:focus-visible{
-			background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
+		/* A stylesheet.css do site não traz utilitário de "só para leitores de ecrã". */
+		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+		/* Filtro por categoria: botões, não links — filtram a grelha aqui, sem sair da página. */
+		#produtos-main .not-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-block-end:24px}
+		#produtos-main .not-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:999px;
+			background:#fff;border:1px solid var(--cinza-borda);font-family:inherit;font-size:.82rem;font-weight:600;
+			color:var(--azul-escuro);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+		#produtos-main .not-chip span{font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:999px;
+			background:var(--cinza-claro);color:var(--cinza-texto);transition:background .2s,color .2s}
+		#produtos-main .not-chip:hover,#produtos-main .not-chip:focus-visible{border-color:var(--azul-claro);color:var(--azul-claro)}
+		#produtos-main .not-chip.is-ativo{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
+		#produtos-main .not-chip.is-ativo span{background:rgba(255,255,255,.22);color:#fff}
+
+		/* Filtro por texto. type="text" e display forçado: abaixo de 768px a stylesheet.css do
+		   site esconde com !important qualquer input[type="search"] ou com "Pesquisar" no
+		   placeholder — regra da pesquisa do site, larga o bastante para apanhar este campo. */
+		#produtos-main .not-filtro{max-width:460px;margin:0 auto 20px;position:relative}
+		#produtos-main .not-filtro input{display:block!important;box-sizing:border-box;width:100%;height:50px;
+			padding:0 46px 0 18px;border:1px solid var(--cinza-borda);border-radius:var(--radius);background:#fff;
+			color:var(--azul-escuro);font-family:inherit;font-size:.92rem;transition:border-color .2s,box-shadow .2s}
+		#produtos-main .not-filtro input:focus{outline:none;border-color:var(--azul-claro);box-shadow:0 0 0 3px rgba(0,112,175,.12)}
+		#produtos-main .not-filtro input::placeholder{color:#8a97a3;opacity:1}
+		#produtos-main .not-filtro svg{position:absolute;inset-inline-end:16px;top:50%;transform:translateY(-50%);
+			width:18px;height:18px;stroke:var(--azul-claro);fill:none;stroke-width:2;pointer-events:none}
+		#produtos-main .not-contagem{text-align:center;margin-block-end:28px;font-size:.85rem;color:var(--cinza-texto)}
+		#produtos-main .not-vazio{text-align:center;padding-block:40px;color:var(--cinza-texto)}
 
 		#produtos-main .not-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
 		#produtos-main .not-item{display:flex;flex-direction:column;background:#fff;border:1px solid var(--cinza-borda);
@@ -204,19 +225,45 @@
 			transition:transform .22s,box-shadow .22s,border-color .22s}
 		#produtos-main .not-item:hover,#produtos-main .not-item:focus-visible{transform:translateY(-4px);
 			box-shadow:0 6px 16px rgba(0,65,107,.1);border-color:var(--azul-claro)}
+		#produtos-main .not-item[hidden]{display:none}
 		/* A imagem é fotografia de topo: cover, para preencher sem deformar. */
 		#produtos-main .not-imagem{aspect-ratio:16/10;overflow:hidden;background:var(--cinza-claro)}
 		#produtos-main .not-imagem img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
 		#produtos-main .not-item:hover .not-imagem img{transform:scale(1.04)}
 		#produtos-main .not-info{display:flex;flex-direction:column;flex:1;padding:20px}
-		#produtos-main .not-data{display:block;font-size:.76rem;font-weight:600;letter-spacing:.08em;
+		#produtos-main .not-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+		#produtos-main .not-data{font-size:.76rem;font-weight:600;letter-spacing:.08em;
 			text-transform:uppercase;color:var(--azul-claro)}
+		#produtos-main .not-etiqueta{font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;
+			background:var(--cinza-claro);color:var(--cinza-texto)}
 		#produtos-main .not-info h3{margin-block-start:10px;font-size:1.02rem;font-weight:700;line-height:1.35;
 			color:var(--azul-escuro)}
 		#produtos-main .not-cta{display:inline-flex;align-items:center;gap:6px;margin-block-start:auto;padding-block-start:16px;
 			font-size:.82rem;font-weight:600;color:var(--azul-claro)}
 		#produtos-main .not-cta::after{content:"→";transition:transform .2s}
 		#produtos-main .not-item:hover .not-cta::after{transform:translateX(4px)}
+
+		/* --- Paginação --- */
+		#produtos-main .not-paginacao{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+			gap:8px;margin-block-start:44px}
+		#produtos-main .not-pag-btn{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;
+			padding:0 12px;border-radius:8px;background:#fff;border:1px solid var(--cinza-borda);font-family:inherit;
+			font-size:.88rem;font-weight:600;color:var(--azul-escuro);cursor:pointer;
+			transition:background .2s,color .2s,border-color .2s}
+		#produtos-main .not-pag-btn:hover:not(:disabled),#produtos-main .not-pag-btn:focus-visible{
+			border-color:var(--azul-claro);color:var(--azul-claro)}
+		#produtos-main .not-pag-btn.is-ativo{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
+		#produtos-main .not-pag-btn:disabled{opacity:.4;cursor:default}
+		#produtos-main .not-reticencias{padding-inline:4px;color:var(--cinza-texto)}
+
+		/* Abaixo de 768px a stylesheet.css do site força width:100%, max-width:none e
+		   min-height:48px em TODOS os <button> (regra dos formulários). Sem isto, os chips
+		   e a paginação viravam barras de largura total, uma por linha. */
+		@media (max-width:768px){
+			#produtos-main .not-chip,#produtos-main .not-pag-btn{width:auto;max-width:none;min-height:0}
+			#produtos-main .not-chip{padding:8px 16px;font-size:.8rem}
+			#produtos-main .not-pag-btn{min-width:42px;height:42px;padding:0 12px;font-size:.88rem}
+		}
 
 		/* --- Faixa de contacto --- */
 		#produtos-main .cta-band{background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%)}
@@ -364,10 +411,10 @@
 	</nav>
 
 	<!-- ===== Listagem de notícias =====
-	     Títulos, datas, imagens e destinos são os do speculum.pt/pt/noticias, pela mesma
-	     ordem. Três títulos chegam truncados a meio da palavra da listagem do site e
-	     foram aparados na última palavra inteira — o texto completo não está exposto
-	     em lado nenhum do site. -->
+	     Corpus completo do speculum.pt: as 4 páginas de /pt/noticias (56) mais 12 que
+	     só aparecem nas listagens por categoria — 68 no total. As categorias de cada
+	     notícia vêm do cruzamento com as 8 páginas de categoria do site.
+	     Filtro e paginação são locais: tudo já está na página, nada vai ao servidor. -->
 	<section class="noticias" aria-labelledby="not-title">
 		<div class="container">
 			<div class="section-head">
@@ -375,138 +422,572 @@
 				<p>Todos os artigos abrem no site da Speculum.</p>
 			</div>
 
-			<nav class="not-categorias" aria-label="Categorias de notícias">
-				<a href="https://www.speculum.pt/pt/noticias/5-inovacao">Inovação</a>
-				<a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia</a>
-				<a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia</a>
-				<a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia</a>
-				<a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia</a>
-				<a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização</a>
-				<a href="https://www.speculum.pt/pt/noticias/13-campanhas">Campanhas</a>
-				<a href="https://www.speculum.pt/pt/noticias/14-radiologia">Radiologia</a>
-			</nav>
+			<div class="not-chips" role="group" aria-label="Filtrar por categoria">
+				<button type="button" class="not-chip is-ativo" data-cat="">Todas <span>68</span></button>
+				<button type="button" class="not-chip" data-cat="Inovação">Inovação <span>31</span></button>
+				<button type="button" class="not-chip" data-cat="Ginecologia">Ginecologia <span>17</span></button>
+				<button type="button" class="not-chip" data-cat="Obstetrícia">Obstetrícia <span>13</span></button>
+				<button type="button" class="not-chip" data-cat="Anestesia">Anestesia <span>11</span></button>
+				<button type="button" class="not-chip" data-cat="Monitorização">Monitorização <span>8</span></button>
+				<button type="button" class="not-chip" data-cat="Radiologia">Radiologia <span>5</span></button>
+				<button type="button" class="not-chip" data-cat="Campanhas">Campanhas <span>3</span></button>			</div>
 
-			<div class="not-grelha">
-				<a class="not-item" href="https://www.speculum.pt/ultrassonografia-ecografo-portatil.html">
+			<div class="not-filtro">
+				<label class="so-leitores" for="not-busca">Pesquisar notícias</label>
+				<input type="text" id="not-busca" placeholder="Pesquisar por palavra…" autocomplete="off">
+				<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+			</div>
+			<p class="not-contagem" id="not-contagem" role="status"></p>
+
+			<div class="not-grelha" id="not-grelha">
+				<a class="not-item" href="https://www.speculum.pt/ultrassonografia-ecografo-portatil.html" data-cats="Inovação" data-busca="kosmos echonous – o futuro da ecografia portatil e… inovacao">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ecografiaportatil-11032620012026.JPG" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2026-01-20">20 jan 2026</time>
+						<div class="not-meta"><time class="not-data" datetime="2026-01-20">20 jan 2026</time><span class="not-etiqueta">Inovação</span></div>
 						<h3>Kosmos EchoNous – o futuro da ecografia portátil e…</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/ecografospremium.html">
+				<a class="not-item" href="https://www.speculum.pt/ecografospremium.html" data-cats="Inovação" data-busca="ecografos samsung - experiencie o futuro da ecografia inovacao">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ecografos-14432230102025.JPG" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2025-10-30">30 out 2025</time>
+						<div class="not-meta"><time class="not-data" datetime="2025-10-30">30 out 2025</time><span class="not-etiqueta">Inovação</span></div>
 						<h3>Ecógrafos SAMSUNG - experiencie o futuro da ecografia</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/marquesas.html">
+				<a class="not-item" href="https://www.speculum.pt/marquesas.html" data-cats="Ginecologia" data-busca="marquesas medi-matic® da schmitz ginecologia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/marquesas-10564615092025.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2025-09-15">15 set 2025</time>
+						<div class="not-meta"><time class="not-data" datetime="2025-09-15">15 set 2025</time><span class="not-etiqueta">Ginecologia</span></div>
 						<h3>Marquesas Medi-Matic® da SCHMITZ</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/videolaringoscopios.html">
+				<a class="not-item" href="https://www.speculum.pt/videolaringoscopios.html" data-cats="Anestesia" data-busca="video laringoscopios medcam® anestesia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/videolaringoscopios-10473114082025.jpeg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2025-08-14">14 ago 2025</time>
+						<div class="not-meta"><time class="not-data" datetime="2025-08-14">14 ago 2025</time><span class="not-etiqueta">Anestesia</span></div>
 						<h3>Video Laringoscópios Medcam®</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/rejuvenescimentovaginal.html">
+				<a class="not-item" href="https://www.speculum.pt/rejuvenescimentovaginal.html" data-cats="Ginecologia|Inovação" data-busca="tecnologia laser co2 avancada para ginecologia ginecologia inovacao">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/oip-1359126082025.jpeg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2025-08-06">6 ago 2025</time>
+						<div class="not-meta"><time class="not-data" datetime="2025-08-06">6 ago 2025</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span></div>
 						<h3>Tecnologia Laser CO2 Avançada para Ginecologia</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/monitoresdesinaisvitais.html">
+				<a class="not-item" href="https://www.speculum.pt/monitoresdesinaisvitais.html" data-cats="Inovação|Monitorização" data-busca="monitores de sinais vitais ix series inovacao monitorizacao">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/monitores_de_sinais_vitais-934459072024.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2024-07-09">9 jul 2024</time>
+						<div class="not-meta"><time class="not-data" datetime="2024-07-09">9 jul 2024</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span></div>
 						<h3>Monitores de Sinais Vitais ix Series</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/gravidasderiscoemcasa.html">
+				<a class="not-item" href="https://www.speculum.pt/gravidasderiscoemcasa.html" data-cats="Inovação|Monitorização|Obstetrícia" data-busca="equipa multidisciplinar da mac vai acompanhar gravidas de… inovacao monitorizacao obstetricia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pregnabit-logo-color-copy-1024x307-1101025062024.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2024-06-05">5 jun 2024</time>
+						<div class="not-meta"><time class="not-data" datetime="2024-06-05">5 jun 2024</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span><span class="not-etiqueta">Obstetrícia</span></div>
 						<h3>Equipa multidisciplinar da MAC vai acompanhar grávidas de…</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/187-einstein-implementa-software-omniview-sisporto">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/187-einstein-implementa-software-omniview-sisporto" data-cats="" data-busca="einstein implementa software omniview-sisporto ">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/einstein_implementa_software_omniview-sisporto-11354525032024.jpeg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2024-03-25">25 mar 2024</time>
+						<div class="not-meta"><time class="not-data" datetime="2024-03-25">25 mar 2024</time></div>
 						<h3>Einstein implementa software Omniview-SisPorto</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/177-hera-w10-elite">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/177-hera-w10-elite" data-cats="Ginecologia|Inovação|Obstetrícia" data-busca="hera w10 elite ginecologia inovacao obstetricia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ecografostopodegama-16592228022024.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-10-31">31 out 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-10-31">31 out 2023</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Obstetrícia</span></div>
 						<h3>Hera W10 Elite</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/119-seguranca-no-combate-ao-covid-19">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/119-seguranca-no-combate-ao-covid-19" data-cats="" data-busca="seguranca no combate ao covid-19 ! ">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/stop_coronavirus-15094321072023.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-07-21">21 jul 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-07-21">21 jul 2023</time></div>
 						<h3>Segurança no combate ao Covid-19 !</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/172-30-aniversario">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/172-30-aniversario" data-cats="" data-busca="30º aniversario ">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/30-anos-16541121072023.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-07-21">21 jul 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-07-21">21 jul 2023</time></div>
 						<h3>30º Aniversário</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/176-inovadora-cotec">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/7-obstetricia/18-cesariana-na-obesidade-simplifique-com-o-traxi" data-cats="Campanhas|Obstetrícia" data-busca="cesariana na obesidade? simplifique com o traxi! campanhas obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/traxi_img-site_noticia-11392321072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2023-07-21">21 jul 2023</time><span class="not-etiqueta">Campanhas</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Cesariana na obesidade? Simplifique com o TRAXI!</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/176-inovadora-cotec" data-cats="Inovação" data-busca="inovadora cotec inovacao">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/post_lnkd_2023_inovadora_cotec__speculum-11200121072023.png" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-07-20">20 jul 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-07-20">20 jul 2023</time><span class="not-etiqueta">Inovação</span></div>
 						<h3>INOVADORA COTEC</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/nervetrack.html">
+				<a class="not-item" href="https://www.speculum.pt/nervetrack.html" data-cats="Anestesia|Ginecologia|Inovação|Obstetrícia|Radiologia" data-busca="nervetrack™ inteligencia artificial exclusiva da samsung anestesia ginecologia inovacao obstetricia radiologia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/function_diagnostic_img9-12084311052023.png" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-05-11">11 mai 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-05-11">11 mai 2023</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Obstetrícia</span><span class="not-etiqueta">Radiologia</span></div>
 						<h3>Nervetrack™ inteligência artificial exclusiva da Samsung</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/174-avaliar-o-fluxo-sanguineo-nas-arterias-coronarias-e-no-coracao">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/174-avaliar-o-fluxo-sanguineo-nas-arterias-coronarias-e-no-coracao" data-cats="Anestesia|Ginecologia|Inovação|Obstetrícia|Radiologia" data-busca="avaliar o fluxo sanguineo nas arterias coronarias e no… anestesia ginecologia inovacao obstetricia radiologia">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/row3_img_pc-15500521072023.png" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-03-02">2 mar 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-03-02">2 mar 2023</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Obstetrícia</span><span class="not-etiqueta">Radiologia</span></div>
 						<h3>Avaliar o fluxo sanguíneo nas artérias coronárias e no…</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
 				</a>
-				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/173-camas-hospitalares-novak-zerog">
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/173-camas-hospitalares-novak-zerog" data-cats="" data-busca="camas hospitalares novak zerog ">
 					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/chair_zero_g-15284121072023.jpg" alt=""></div>
 					<div class="not-info">
-						<time class="not-data" datetime="2023-02-24">24 fev 2023</time>
+						<div class="not-meta"><time class="not-data" datetime="2023-02-24">24 fev 2023</time></div>
 						<h3>Camas Hospitalares Novak ZeroG</h3>
 						<span class="not-cta">Ler mais</span>
 					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/desinfe%C3%A7aodesuperficieshospitalares.html" data-cats="Inovação" data-busca="desinfecao de superficies hospitalares inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/desinfetantesuperficieshospitalares-1039075092022.JPG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-09-05">5 set 2022</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Desinfeção de superfícies hospitalares</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/169-laborassist-quantitative-tool-for-fetal-head-progression-on-delivery" data-cats="Inovação|Obstetrícia" data-busca="laborassist™ quantitative tool for fetal head progression… inovacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/sa1-13382317052022.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-05-17">17 mai 2022</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>LaborAssist™ Quantitative tool for fetal head progression…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.youtube.com/watch?v=vhhMHSwpJrQ&t=1s" data-cats="Inovação|Monitorização|Obstetrícia" data-busca="omniview-sisporto® is a ctg central fetal monitoring system inovacao monitorizacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/logotipo-omniviewsisporto-10375724072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-03-31">31 mar 2022</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Omniview-SisPorto® is a CTG central fetal monitoring system</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/KITRaquianestesiaContinua.html" data-cats="Anestesia|Inovação" data-busca="raquianestesia com agulhas sprotte anestesia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pa_overview_intralong_01-10404724072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-03-31">31 mar 2022</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>Raquianestesia com agulhas SPROTTE</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/ecografoparaveterinario.html" data-cats="Inovação" data-busca="ecografo veterinario : a melhor solucao inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/main_visual_pc-11293924072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-03-14">14 mar 2022</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Ecógrafo Veterinário : A melhor solução</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/vaginalspeculum.html" data-cats="Ginecologia|Obstetrícia" data-busca="vaginal speculum supplier ginecologia obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/vaginal_speculum1-15010610032022.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2022-03-10">10 mar 2022</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Vaginal Speculum Supplier</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://echonous.com/product/kosmos-ultraportable-ultrasound/" data-cats="Inovação" data-busca="aparelho de ultrassonografia ultra portatil inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/kosmos-13560223122021.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-12-23">23 dez 2021</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Aparelho de Ultrassonografia Ultra portátil</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/158-curso-basico-de-colposcopia-9-edicao" data-cats="Ginecologia" data-busca="curso basico de colposcopia (9ª edicao) ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/spg-27-curso-basico-colposcopia-2a-edicao-event-cover-13073317122021.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-12-17">17 dez 2021</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Curso Básico de Colposcopia (9ª Edição)</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/155-solucoes-de-gel-ecografico" data-cats="" data-busca="solucoes de gel ecografico ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/cc0012356-10293824072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-11-08">8 nov 2021</time></div>
+						<h3>Soluções de gel ecográfico</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/154-novo-ecografo-ultraportatil" data-cats="Anestesia|Inovação|Radiologia" data-busca="novo ecografo ultraportatil. anestesia inovacao radiologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ultraportatil-1216565112021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-11-05">5 nov 2021</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Radiologia</span></div>
+						<h3>Novo ecógrafo ultraportátil.</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/150-diversidade-de-tesouras" data-cats="" data-busca="diversidade de tesouras ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/hb2221d2-14321121072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-11-02">2 nov 2021</time></div>
+						<h3>Diversidade de Tesouras</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/149-especulos-ginecologicos" data-cats="Ginecologia" data-busca="especulos ginecologicos ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/especulovaginal-15161520102021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-10-20">20 out 2021</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Espéculos Ginecológicos</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/142-agulha-de-bloqueio-de-nervo" data-cats="Anestesia" data-busca="agulha de bloqueio de nervo anestesia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/agulhas-11320628092021.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-09-28">28 set 2021</time><span class="not-etiqueta">Anestesia</span></div>
+						<h3>Agulha de bloqueio de nervo</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/143-kit-para-biopsia-hepatica" data-cats="" data-busca="kit para biopsia hepatica ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ste-13131328092021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-09-28">28 set 2021</time></div>
+						<h3>Kit para Biópsia Hepática</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/144-sistema-de-cateter-atraves-de-agulha-ecogenica" data-cats="Anestesia" data-busca="sistema de cateter atraves de agulha ecogenica anestesia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/agulhas-14454228092021.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-09-28">28 set 2021</time><span class="not-etiqueta">Anestesia</span></div>
+						<h3>Sistema de cateter através de agulha ecogênica</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/145-gynreport-relatorio-digital-de-colposcopia-com-imagem-integrada" data-cats="Ginecologia|Inovação" data-busca="gynreport relatorio digital de colposcopia com imagem… ginecologia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/logotipo-gynreport-9333629092021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-09-28">28 set 2021</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>Gynreport relatório digital de colposcopia com imagem…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/141-convite-samsung-webinar-3-julho-multi-parametric-ultrasound-for-liver-carotid-and-msk" data-cats="Inovação|Radiologia" data-busca="convite samsung webinar 3 julho - multi-parametric… inovacao radiologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/sm-13402925062021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-06-25">25 jun 2021</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Radiologia</span></div>
+						<h3>Convite Samsung Webinar 3 Julho - Multi-parametric…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/138-corpuls-simulacao" data-cats="Inovação|Monitorização" data-busca="corpuls simulacao inovacao monitorizacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/corpuls-12071818062021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-06-18">18 jun 2021</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span></div>
+						<h3>Corpuls simulação</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/133-samsung-rs80-evo-simbolo-do-compromisso-com-um-espirito-de-relentless-innovation" data-cats="" data-busca="samsung rs80 evo simbolo do compromisso com um espirito de… ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ecografos-9404924052021.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-05-24">24 mai 2021</time></div>
+						<h3>Samsung RS80 EVO símbolo do compromisso com um espírito de…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/129-anestesia-espinal-continua-com-intralong" data-cats="Anestesia" data-busca="anestesia espinal continua com intralong anestesia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pa_signet-wort-bild_ohne-claim-14450621072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-05-03">3 mai 2021</time><span class="not-etiqueta">Anestesia</span></div>
+						<h3>Anestesia espinal contínua com INTRALONG</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/127-tecnologia-crystallive" data-cats="" data-busca="tecnologia crystallive ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/tec-11010328042021.JPG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-04-28">28 abr 2021</time></div>
+						<h3>Tecnologia Crystallive</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/122-a-digital-partograph-to-make-birth-safer" data-cats="Monitorização|Obstetrícia" data-busca="a digital partograph to make birth safer. monitorizacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/maternum-logo-v2-12523724072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2021-01-21">21 jan 2021</time><span class="not-etiqueta">Monitorização</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>A digital partograph to make birth safer.</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/121-why-omniview-sisporto" data-cats="Monitorização|Obstetrícia" data-busca="why omniview sisporto monitorizacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/logotipo-omniviewsisporto-12534624072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-11-27">27 nov 2020</time><span class="not-etiqueta">Monitorização</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Why Omniview SisPorto</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/120-o-novo-comvat-duo3-a-primeira-e-unica-solucao-combinada-de-uvc-o3" data-cats="Inovação" data-busca="o novo comvat duo3 ™ a primeira e unica solucao… inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/comvat_duo3-14550821072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-11-26">26 nov 2020</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>O novo COMVAT DUO3 ™ a primeira e única solução…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/118-stimulong-sono-ii" data-cats="" data-busca="stimulong sono ii ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/capture_20181024172751-11553216112020.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-11-16">16 nov 2020</time></div>
+						<h3>StimuLong Sono II</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/117-lancamento-do-modulo-brain" data-cats="Obstetrícia" data-busca="lancamento do modulo “brain” obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/brain-15565010112020.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-11-09">9 nov 2020</time><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Lançamento do módulo “Brain”</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/116-raios-uv-e-sars-cov-2" data-cats="Inovação" data-busca="raios uv e sars-cov-2 inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/produtosmedicohospitalares-15094227102020.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-10-27">27 out 2020</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Raios UV e SARS-CoV-2</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/114-mascaras-cirurgicas-e-infarmed" data-cats="" data-busca="mascaras cirurgicas e infarmed ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/mascara-cirurgica-10575824072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-10-27">27 out 2020</time></div>
+						<h3>Máscaras Cirúrgicas e Infarmed</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/112-mascaras-e-covid-19" data-cats="" data-busca="mascaras e covid-19 ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/mascarascovid-9554123102020.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-10-23">23 out 2020</time></div>
+						<h3>Máscaras e Covid-19</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/111-comvat-duo3" data-cats="" data-busca="comvat duo3 ™ ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/comvat_duo3-10555924072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-09-01">1 set 2020</time></div>
+						<h3>COMVAT DUO3 ™</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/106-equipamento-medico-hospitalar" data-cats="Inovação" data-busca="equipamento medico hospitalar inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/equipamentomedicohospitalar-11310925062020.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-06-25">25 jun 2020</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Equipamento Médico Hospitalar</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/8-ginecologia/102-especulos-vaginais-descartaveis" data-cats="Ginecologia" data-busca="especulos vaginais descartaveis ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/imagembranca-15381118062020.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-06-18">18 jun 2020</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Espéculos vaginais Descartáveis</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/97-termometro-infravermelho-sem-contacto" data-cats="Campanhas" data-busca="termometro infravermelho sem contacto campanhas">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pop-up-termometro-1323285052020.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-05-05">5 mai 2020</time><span class="not-etiqueta">Campanhas</span></div>
+						<h3>Termómetro Infravermelho Sem Contacto</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/8-ginecologia/96-pesquisa-por-eletrodos-cirurgicos" data-cats="Ginecologia" data-busca="pesquisa por eletrodos cirurgicos ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/eletrodos_cirurgicos-17211830032020.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-03-30">30 mar 2020</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Pesquisa por Eletrodos Cirúrgicos</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/89-pesquisa-de-produtos-medico-hospitalares" data-cats="" data-busca="pesquisa de produtos medico hospitalares ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/material_hospitalar_dispositivos_medicos_consultorio_cirurgico-1810564032020.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-03-04">4 mar 2020</time></div>
+						<h3>Pesquisa de produtos médico hospitalares</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/8-ginecologia/87-eletrocirurgia" data-cats="Ginecologia" data-busca="eletrocirurgia ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ui0fin220_ut0esu170-13043524072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-02-20">20 fev 2020</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Eletrocirurgia</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/8-ginecologia/83-a-melhor-recolha-das-celulas-do-cervix-e-com-cervex-brush" data-cats="Ginecologia" data-busca="a melhor recolha das celulas do cervix e com cervex brush ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/cervex-brush_product_1000x355-13012724072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2020-02-06">6 fev 2020</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>A melhor recolha das células do cérvix é com Cervex Brush</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/79-certificacao-sgs" data-cats="" data-busca="certificacao sgs ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/best-quality_logo-spec-sgs-11093521072023.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2019-03-15">15 mar 2019</time></div>
+						<h3>Certificação SGS</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/13-campanhas/74-manipulador-uterino-clearview" data-cats="Campanhas" data-busca="manipulador uterino clearview campanhas">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pop-up-manipulador-uterino-clearview-16532216102018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-10-16">16 out 2018</time><span class="not-etiqueta">Campanhas</span></div>
+						<h3>Manipulador Uterino ClearView</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/59-os-3-kits-de-agulhas-de-anestesia-mais-inovadores" data-cats="Anestesia|Inovação" data-busca="os 3 kits de agulhas de anestesia mais inovadores! anestesia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/conjunto_pajunk-16150921062018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-06-21">21 jun 2018</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>Os 3 kits de agulhas de anestesia mais inovadores!</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/54-presenca-da-speculum-no-xiv-congresso-nacional-de-ginecologia" data-cats="Ginecologia" data-busca="presenca da speculum no xiv congresso nacional de… ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/xivcnginecologiav3-1446558062018.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-06-08">8 jun 2018</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Presença da SPECULUM no XIV Congresso Nacional de…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/51-colposcopio-eva-melhor-visualizacao-melhor-diagnostico" data-cats="Ginecologia|Inovação" data-busca="colposcopio eva - melhor visualizacao melhor… ginecologia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/prima_tent1-1010138062018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-06-08">8 jun 2018</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>Colposcópio eVA - melhor visualização melhor…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/50-colposcopio-prima-cs-803-a-maior-eficiencia-e-conveniencia-para-o-ginecologista" data-cats="Ginecologia|Inovação" data-busca="colposcopio prima cs 803 - a maior eficiencia e… ginecologia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/adobe_express_-_file_1-1845331062026.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-06-08">8 jun 2018</time><span class="not-etiqueta">Ginecologia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>Colposcópio PRIMA CS 803 - a maior eficiência e…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/33-novo-tratamento-para-atrofia-e-incontinencia-leve-e-moderada" data-cats="Ginecologia" data-busca="novo tratamento para atrofia e incontinencia leve e… ginecologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/pop-up-maio--gynelase-16543910052018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-06-07">7 jun 2018</time><span class="not-etiqueta">Ginecologia</span></div>
+						<h3>Novo tratamento para atrofia e incontinência leve e…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/48-3-vantagens-que-o-ecografo-hs40-fornece-aos-anestesista" data-cats="Anestesia|Inovação" data-busca="3 vantagens que o ecografo hs40 fornece aos anestesista anestesia inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ecografo_hs40-1122128062018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-05-22">22 mai 2018</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Inovação</span></div>
+						<h3>3 vantagens que o ecógrafo HS40 fornece aos Anestesista</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/37-ginecologia-melhor-visualizacao-melhor-diagnostico" data-cats="" data-busca="ginecologia - melhor visualizacao melhor diagnostico! ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/colposcopio-14134511052018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-05-01">1 mai 2018</time></div>
+						<h3>Ginecologia - Melhor visualização melhor diagnóstico!</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/26-ecografo-samsung-ws80a-obtenha-a-melhor-qualidade-de-imagem-em-ecografia" data-cats="Inovação" data-busca="ecografo samsung ws80a - obtenha a melhor qualidade de… inovacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/ws80-1505057052018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-04-28">28 abr 2018</time><span class="not-etiqueta">Inovação</span></div>
+						<h3>Ecógrafo Samsung WS80A - Obtenha a melhor qualidade de…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/1-omniview-sisporto-analise-segura-e-fiavel-dos-ctg" data-cats="Inovação|Monitorização|Obstetrícia" data-busca="omniview-sisporto - analise segura e fiavel dos ctg! inovacao monitorizacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/omniview-9155725072018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-04-28">28 abr 2018</time><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Omniview-SisPorto - Análise Segura e Fiável dos CTG!</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/8-tof-cuff-novo-equipamento-para-uma-monitorizacao-do-bloqueio-neuromuscular-robusta" data-cats="Anestesia|Inovação|Monitorização" data-busca="tof-cuff - novo equipamento para uma monitorizacao do… anestesia inovacao monitorizacao">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/tofcuff_fundo-1412103052018.PNG" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-04-28">28 abr 2018</time><span class="not-etiqueta">Anestesia</span><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Monitorização</span></div>
+						<h3>TOF-Cuff - Novo equipamento para uma monitorização do…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/6-noticias/29-equipamento-medico-de-analise-hematologica" data-cats="" data-busca="equipamento medico de analise hematologica ">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/imagem-9442410052018.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><time class="not-data" datetime="2018-04-27">27 abr 2018</time></div>
+						<h3>Equipamento Médico de Análise Hematológica</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/80-a-importancia-das-agulhas-pajunk" data-cats="Inovação|Radiologia" data-busca="a importancia das agulhas pajunk inovacao radiologia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/material_hospitalar_dispositivos_medicos_consultorio_cirurgico-15050426022020.jpg" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Radiologia</span></div>
+						<h3>A importância das Agulhas Pajunk</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
+				</a>
+				<a class="not-item" href="https://www.speculum.pt/pt/noticias/5-inovacao/45-obstetricia-samsung-hs50-e-um-ecografo-eficiente-para-a-realizacao-de-exames-profissionais-de-ob" data-cats="Inovação|Obstetrícia" data-busca="obstetricia - samsung hs50 e um ecografo eficiente para a… inovacao obstetricia">
+					<div class="not-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/blog/hs50-1620528062018.png" alt=""></div>
+					<div class="not-info">
+						<div class="not-meta"><span class="not-etiqueta">Inovação</span><span class="not-etiqueta">Obstetrícia</span></div>
+						<h3>Obstetrícia - Samsung HS50 é um ecógrafo eficiente para a…</h3>
+						<span class="not-cta">Ler mais</span>
+					</div>
 				</a>			</div>
+
+			<p class="not-vazio" id="not-vazio" hidden>Nenhuma notícia corresponde a essa pesquisa.</p>
+
+			<nav class="not-paginacao" id="not-paginacao" aria-label="Paginação das notícias"></nav>
 		</div>
 	</section>
 
@@ -1010,6 +1491,135 @@
 		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape' && lista.childNodes.length) { limpar(); campo.blur(); }
 		});
+	})();
+
+	/* --- Filtro por categoria, pesquisa e paginação das notícias ---
+	   Tudo local: as 68 notícias já estão no HTML, nada é pedido ao servidor. Sem JS
+	   ficam todas visíveis numa página só — perdem-se os filtros, não o conteúdo. */
+	(function () {
+		var POR_PAGINA = 12;
+
+		var grelha    = document.getElementById('not-grelha');
+		var busca     = document.getElementById('not-busca');
+		var contagem  = document.getElementById('not-contagem');
+		var vazio     = document.getElementById('not-vazio');
+		var paginacao = document.getElementById('not-paginacao');
+		var chips     = document.querySelectorAll('.not-chip');
+		if (!grelha || !paginacao) return;
+
+		var itens = Array.prototype.map.call(grelha.querySelectorAll('.not-item'), function (el) {
+			return {
+				el: el,
+				cats: (el.dataset.cats || '').split('|').filter(Boolean),
+				busca: el.dataset.busca || ''
+			};
+		});
+		var total = itens.length;
+		var categoria = '';
+		var termo = '';
+		var pagina = 1;
+
+		// Sem acentos e em minúsculas, para "obstetricia" encontrar "Obstetrícia".
+		function normalizar(t) {
+			return t.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, ' ').trim();
+		}
+
+		function correspondem() {
+			var palavras = termo ? termo.split(' ') : [];
+			return itens.filter(function (i) {
+				if (categoria && i.cats.indexOf(categoria) === -1) return false;
+				return palavras.every(function (p) { return i.busca.indexOf(p) !== -1; });
+			});
+		}
+
+		function botao(rotulo, alvo, opts) {
+			opts = opts || {};
+			var b = document.createElement('button');
+			b.type = 'button';
+			b.className = 'not-pag-btn' + (opts.ativo ? ' is-ativo' : '');
+			b.textContent = rotulo;
+			if (opts.desativado) b.disabled = true;
+			if (opts.rotuloAcessivel) b.setAttribute('aria-label', opts.rotuloAcessivel);
+			if (opts.ativo) b.setAttribute('aria-current', 'page');
+			b.addEventListener('click', function () { irPara(alvo); });
+			return b;
+		}
+
+		// Janela de páginas à volta da atual, com reticências nas pontas.
+		function numerosVisiveis(atual, ultimo) {
+			var n = [];
+			for (var p = 1; p <= ultimo; p++) {
+				if (p === 1 || p === ultimo || Math.abs(p - atual) <= 1) n.push(p);
+				else if (n[n.length - 1] !== '…') n.push('…');
+			}
+			return n;
+		}
+
+		function desenharPaginacao(ultimo) {
+			paginacao.textContent = '';
+			if (ultimo <= 1) return;
+			paginacao.appendChild(botao('‹', pagina - 1, { desativado: pagina === 1, rotuloAcessivel: 'Página anterior' }));
+			numerosVisiveis(pagina, ultimo).forEach(function (n) {
+				if (n === '…') {
+					var s = document.createElement('span');
+					s.className = 'not-reticencias';
+					s.textContent = '…';
+					paginacao.appendChild(s);
+				} else {
+					paginacao.appendChild(botao(String(n), n, { ativo: n === pagina, rotuloAcessivel: 'Página ' + n }));
+				}
+			});
+			paginacao.appendChild(botao('›', pagina + 1, { desativado: pagina === ultimo, rotuloAcessivel: 'Página seguinte' }));
+		}
+
+		function render() {
+			var visiveis = correspondem();
+			var ultimo = Math.max(1, Math.ceil(visiveis.length / POR_PAGINA));
+			if (pagina > ultimo) pagina = ultimo;
+
+			var inicio = (pagina - 1) * POR_PAGINA;
+			var nesta = visiveis.slice(inicio, inicio + POR_PAGINA);
+			itens.forEach(function (i) { i.el.hidden = true; });
+			nesta.forEach(function (i) { i.el.hidden = false; });
+
+			contagem.textContent = visiveis.length === total
+				? total + ' notícias'
+				: visiveis.length + ' de ' + total + ' notícias';
+			if (visiveis.length > POR_PAGINA) {
+				contagem.textContent += ' · página ' + pagina + ' de ' + ultimo;
+			}
+			vazio.hidden = visiveis.length !== 0;
+			desenharPaginacao(ultimo);
+		}
+
+		function irPara(p) {
+			pagina = p;
+			render();
+			// Volta ao topo da listagem, para não ficar a meio da página nova.
+			var y = grelha.getBoundingClientRect().top + window.pageYOffset - 140;
+			window.scrollTo({ top: y, behavior: 'smooth' });
+		}
+
+		chips.forEach(function (chip) {
+			chip.addEventListener('click', function () {
+				chips.forEach(function (c) { c.classList.remove('is-ativo'); });
+				chip.classList.add('is-ativo');
+				categoria = chip.dataset.cat || '';
+				pagina = 1;
+				render();
+			});
+		});
+
+		busca.addEventListener('input', function () {
+			termo = normalizar(busca.value);
+			pagina = 1;
+			render();
+		});
+		busca.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') { busca.value = ''; termo = ''; pagina = 1; render(); }
+		});
+
+		render();
 	})();
 </script>
 </body>
