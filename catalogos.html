@@ -224,8 +224,14 @@
 		/* A caixa é desenhada aqui: o CSS do site aplica -webkit-appearance:none a todos
 		   os input e só mais abaixo o repõe para checkbox — desenhá-la evita depender
 		   dessa ordem. */
+		/* min-height e min-width aqui porque, abaixo de 768px, a stylesheet.css do site
+		   tem "input,select,textarea{min-height:48px}" — min-height vence sempre um
+		   height mais pequeno, mesmo com !important (não é uma questão de
+		   especificidade, é assim que a caixa CSS resolve os dois valores), daí a
+		   caixa de seleção sair esticada a 48px de altura sem isto. */
 		#produtos-main .cat-opcao input{appearance:none;-webkit-appearance:none;flex:0 0 auto;
-			width:18px!important;height:18px!important;margin:0!important;border:1px solid #b9c3cc;border-radius:3px;
+			width:18px!important;height:18px!important;min-width:18px!important;min-height:18px!important;
+			margin:0!important;border:1px solid #b9c3cc;border-radius:3px;
 			background:#fff;cursor:pointer;transition:background .15s,border-color .15s}
 		#produtos-main .cat-opcao input:checked{background:var(--azul-claro);border-color:var(--azul-claro)}
 		/* O visto são dois lados de uma borda, rodados 45°. */
@@ -430,7 +436,14 @@
 
 				<div class="cat-bloco">
 					<button type="button" class="cat-toggle" id="cat-toggle" aria-expanded="true" aria-controls="cat-lista">Categorias</button>
-					<div class="cat-lista" id="cat-lista" role="group" aria-labelledby="cat-toggle">
+					<!-- visibility:hidden inline (não em classe) porque tem de fazer efeito no
+					     primeiro parse, antes da stylesheet.css do site — 356KB, cross-origin,
+					     por vezes lenta — terminar de aplicar-se. Sem isto, num carregamento
+					     lento a caixa de seleção chega a pintar-se uma vez com a aparência
+					     nativa do browser (alta e sem borda arredondada) antes de o nosso CSS
+					     a estilizar entrar em vigor. O script no fim da página, que só corre
+					     depois de toda a folha de estilos estar pronta, remove isto. -->
+					<div class="cat-lista" id="cat-lista" role="group" aria-labelledby="cat-toggle" style="visibility:hidden">
 						<label class="cat-opcao"><input type="checkbox" value="Ecografia">Ecografia <span class="n">(13)</span></label>
 						<label class="cat-opcao"><input type="checkbox" value="Obstetrícia">Obstetrícia <span class="n">(12)</span></label>
 						<label class="cat-opcao"><input type="checkbox" value="Anestesia">Anestesia <span class="n">(11)</span></label>
@@ -1188,6 +1201,11 @@
 		var limpar   = document.getElementById('cat-limpar');
 		var caixas   = document.querySelectorAll('#cat-lista input[type="checkbox"]');
 		if (!busca || !grelha) return;
+
+		// Este script só corre depois da stylesheet.css do site estar pronta (é
+		// bloqueante, vem antes no <head>), por isso é seguro revelar agora a lista
+		// que ficou escondida no HTML — ver o comentário junto ao style="visibility:hidden".
+		if (lista) lista.style.visibility = '';
 
 		// Sem acentos e em minúsculas, para "metalicos" encontrar "Metálicos".
 		function normalizar(t) {
