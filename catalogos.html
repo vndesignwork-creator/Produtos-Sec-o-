@@ -195,7 +195,29 @@
 		/* A stylesheet.css do site não traz utilitário de "só para leitores de ecrã". */
 		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
 			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
-		#produtos-main .cat-filtro{max-width:460px;margin:0 auto 36px;position:relative}
+
+		/* Filtro por categoria: botões que filtram a grelha aqui, sem sair da página. */
+		#produtos-main .cat-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-block-end:24px}
+		#produtos-main .cat-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:999px;
+			background:#fff;border:1px solid var(--cinza-borda);font-family:inherit;font-size:.82rem;font-weight:600;
+			color:var(--azul-escuro);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+		#produtos-main .cat-chip span{font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:999px;
+			background:var(--cinza-claro);color:var(--cinza-texto);transition:background .2s,color .2s}
+		#produtos-main .cat-chip:hover,#produtos-main .cat-chip:focus-visible{border-color:var(--azul-claro);color:var(--azul-claro)}
+		#produtos-main .cat-chip.is-ativo{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
+		#produtos-main .cat-chip.is-ativo span{background:rgba(255,255,255,.22);color:#fff}
+		/* Abaixo de 768px a stylesheet.css do site força width:100% em todos os <button>
+		   (regra dos formulários). Sem isto os chips viravam barras de largura total. */
+		@media (max-width:768px){
+			#produtos-main .cat-chip{width:auto;max-width:none;min-height:0;padding:8px 16px;font-size:.8rem}
+		}
+
+		/* Etiquetas de categoria no cartão */
+		#produtos-main .cat-meta{display:flex;flex-wrap:wrap;gap:6px;margin-block-end:10px}
+		#produtos-main .cat-etiqueta{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:999px;
+			background:var(--cinza-claro);color:var(--cinza-texto)}
+
+		#produtos-main .cat-filtro{max-width:460px;margin:0 auto 20px;position:relative}
 		/* Abaixo de 768px a stylesheet.css do site esconde com !important qualquer
 		   input[type="search"] ou com "Pesquisar" no placeholder — regra pensada para a
 		   pesquisa do site, mas escrita de forma tão larga que apanhava este filtro.
@@ -383,6 +405,18 @@
 				<p>Todos os ficheiros abrem em separador novo, no site da Speculum.</p>
 			</div>
 
+			<div class="cat-chips" role="group" aria-label="Filtrar por categoria">
+				<button type="button" class="cat-chip is-ativo" data-cat="">Todas <span>43</span></button>
+				<button type="button" class="cat-chip" data-cat="Ecografia">Ecografia <span>13</span></button>
+				<button type="button" class="cat-chip" data-cat="Obstetrícia">Obstetrícia <span>12</span></button>
+				<button type="button" class="cat-chip" data-cat="Anestesia">Anestesia <span>11</span></button>
+				<button type="button" class="cat-chip" data-cat="Equipamentos">Equipamentos <span>7</span></button>
+				<button type="button" class="cat-chip" data-cat="Cirurgia">Cirurgia <span>5</span></button>
+				<button type="button" class="cat-chip" data-cat="Monitorização">Monitorização <span>5</span></button>
+				<button type="button" class="cat-chip" data-cat="Consumíveis">Consumíveis <span>3</span></button>
+				<button type="button" class="cat-chip" data-cat="Metálicos">Metálicos <span>3</span></button>
+			</div>
+
 			<div class="cat-filtro">
 				<label class="so-leitores" for="cat-busca">Filtrar catálogos</label>
 				<input type="text" id="cat-busca" placeholder="Filtrar por nome, marca ou área…" autocomplete="off">
@@ -391,177 +425,220 @@
 			<p class="cat-contagem" id="cat-contagem" role="status"></p>
 
 			<div class="cat-grelha" id="cat-grelha">
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/%5B2023%5D%20Cat%C3%A1logo_Marina%20Medical-compactado-20230714-091700.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/%5B2023%5D%20Cat%C3%A1logo_Marina%20Medical-compactado-20230714-091700.pdf" target="_blank" rel="noopener" data-cats="Metálicos|Cirurgia" data-busca="instrumentos metalicos especiais! metalicos cirurgia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/2023-marina-medical_capa-botao-9175614072023.jpg" alt="Capa — Instrumentos Metálicos Especiais!"></div>
-					<div class="cat-info"><h3>Instrumentos Metálicos Especiais!</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Metálicos</span><span class="cat-etiqueta">Cirurgia</span></div><h3>Instrumentos Metálicos Especiais!</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Folheto-Julho-2026_Oferta-7=10-20260701-060322.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Folheto-Julho-2026_Oferta-7=10-20260701-060322.pdf" target="_blank" rel="noopener" data-cats="Consumíveis" data-busca="oferta de luvas consumiveis">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/folheto-julho-2026_oferta-710-1803221072026.jpg" alt="Capa — Oferta de Luvas"></div>
-					<div class="cat-info"><h3>Oferta de Luvas</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Consumíveis</span></div><h3>Oferta de Luvas</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Cat%C3%A1logo%20Consum%C3%ADveis%20A-Z_2026_DIGITAL_compressed-20260630-092729.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Cat%C3%A1logo%20Consum%C3%ADveis%20A-Z_2026_DIGITAL_compressed-20260630-092729.pdf" target="_blank" rel="noopener" data-cats="Consumíveis" data-busca="catalogo consumiveis a-z consumiveis">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capa-catalogo-consumiveis-a-z_2024_digital-11350720012025.jpg" alt="Capa — Catálogo Consumíveis A-Z"></div>
-					<div class="cat-info"><h3>Catálogo Consumíveis A-Z</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Consumíveis</span></div><h3>Catálogo Consumíveis A-Z</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/%5B2023-07%5D%20R1_Laser%20ou%20Eletrocirurgia%20Conhe%C3%A7a%20os%20met%C3%A1licos%20mais%20adequados-20230714-101453.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/%5B2023-07%5D%20R1_Laser%20ou%20Eletrocirurgia%20Conhe%C3%A7a%20os%20met%C3%A1licos%20mais%20adequados-20230714-101453.pdf" target="_blank" rel="noopener" data-cats="Metálicos|Cirurgia" data-busca="metalicos revestidos para laser e eletrocirurgia! metalicos cirurgia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/2023-07-r1_laser-ou-eletrocirurgia-conheca-os-metalicos-mais-adequados-10145314072023.jpg" alt="Capa — METÁLICOS REVESTIDOS PARA LASER E ELETROCIRURGIA!"></div>
-					<div class="cat-info"><h3>METÁLICOS REVESTIDOS PARA LASER E ELETROCIRURGIA!</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Metálicos</span><span class="cat-etiqueta">Cirurgia</span></div><h3>METÁLICOS REVESTIDOS PARA LASER E ELETROCIRURGIA!</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Cat%C3%A1logo%20de%20Equipamentos-20260616-090916.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Cat%C3%A1logo%20de%20Equipamentos-20260616-090916.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="catalogo de equipamentos medicos equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/catalogo-equipamentos-9091616062026.jpg" alt="Capa — Catálogo de Equipamentos Médicos"></div>
-					<div class="cat-info"><h3>Catálogo de Equipamentos Médicos</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Catálogo de Equipamentos Médicos</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Catalogo%20peq%20cirug%202018.compressed-20180608-044428.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Catalogo%20peq%20cirug%202018.compressed-20180608-044428.pdf" target="_blank" rel="noopener" data-cats="Cirurgia|Consumíveis" data-busca="catalogo pequena cirurgia cirurgia consumiveis">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capa_pequena_cirur-1644288062018.jpg" alt="Capa — Catálogo Pequena Cirurgia"></div>
-					<div class="cat-info"><h3>Catálogo Pequena Cirurgia</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Cirurgia</span><span class="cat-etiqueta">Consumíveis</span></div><h3>Catálogo Pequena Cirurgia</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/SPEC.MK.MG.202501003.R0_SPECULUM%20A%20qualidade%20nos%20met%C3%A1licos!_capa%20site-20251003-033940.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/SPEC.MK.MG.202501003.R0_SPECULUM%20A%20qualidade%20nos%20met%C3%A1licos!_capa%20site-20251003-033940.pdf" target="_blank" rel="noopener" data-cats="Metálicos" data-busca="metalicos de excelente qualidade, para todas as especialidades! metalicos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/spec-1539403102025.jpg" alt="Capa — METÁLICOS DE EXCELENTE QUALIDADE, Para TODAS as especialidades!"></div>
-					<div class="cat-info"><h3>METÁLICOS DE EXCELENTE QUALIDADE, Para TODAS as especialidades!</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Metálicos</span></div><h3>METÁLICOS DE EXCELENTE QUALIDADE, Para TODAS as especialidades!</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura_Antepartum_Pregnabit-compressed-20230524-095610.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura_Antepartum_Pregnabit-compressed-20230524-095610.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Monitorização" data-busca="maternum antepartum &amp; ctg’s home solution obstetricia monitorizacao">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/brochura_antepartum_pregnabit-9561024052023.jpg" alt="Capa — Maternum Antepartum &amp; CTG’s Home solution"></div>
-					<div class="cat-info"><h3>Maternum Antepartum &amp; CTG’s Home solution</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Monitorização</span></div><h3>Maternum Antepartum &amp; CTG’s Home solution</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Poster_Omni_Final-20180427-020349.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Poster_Omni_Final-20180427-020349.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Monitorização" data-busca="omniview -sisporto obstetricia monitorizacao">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capa_omniview-15333327042018.png" alt="Capa — Omniview -SisPorto"></div>
-					<div class="cat-info"><h3>Omniview -SisPorto</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Monitorização</span></div><h3>Omniview -SisPorto</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/TOF-Cuff%20PT_NV-20180619-043447.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/TOF-Cuff%20PT_NV-20180619-043447.pdf" target="_blank" rel="noopener" data-cats="Anestesia|Monitorização" data-busca="brochura tofcuff anestesia monitorizacao">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capa_tofcuff-16334019062018.png" alt="Capa — Brochura TOFCuff"></div>
-					<div class="cat-info"><h3>Brochura TOFCuff</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span><span class="cat-etiqueta">Monitorização</span></div><h3>Brochura TOFCuff</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Day%20hospital%20chair%20ZeroG_Speculum_A4_Single%20page_compressed-20230302-114728.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Day%20hospital%20chair%20ZeroG_Speculum_A4_Single%20page_compressed-20230302-114728.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="day hospital chair zerog equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/day-hospital-chair-zerog_speculum_link-1147272032023.jpg" alt="Capa — Day hospital Chair ZeroG"></div>
-					<div class="cat-info"><h3>Day hospital Chair ZeroG</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Day hospital Chair ZeroG</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura_Kosmos-20220908-010931.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura_Kosmos-20220908-010931.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Equipamentos" data-busca="kosmos ecografia equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capakosmos-1309318092022.png" alt="Capa — KOSMOS"></div>
-					<div class="cat-info"><h3>KOSMOS</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Equipamentos</span></div><h3>KOSMOS</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Folheto.small-20190312-122151.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Folheto.small-20190312-122151.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia" data-busca="amnisure &amp; partosure obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/ddddd-12215112032019.jpg" alt="Capa — AMNISURE &amp; PARTOSURE"></div>
-					<div class="cat-info"><h3>AMNISURE &amp; PARTOSURE</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span></div><h3>AMNISURE &amp; PARTOSURE</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat75_Gyn_allgemein_GB_oP_20221124_geschuetzt-20230717-095658.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat75_Gyn_allgemein_GB_oP_20221124_geschuetzt-20230717-095658.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="schmitz | arco-matic® | marquesas equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/web_schmitz_kat75_gyn_allgemein_gb_op_20221124_geschuetzt_pagina_001-9565817072023.jpg" alt="Capa — Schmitz | arco-matic® | Marquesas"></div>
-					<div class="cat-info"><h3>Schmitz | arco-matic® | Marquesas</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Schmitz | arco-matic® | Marquesas</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_schmitz_kat75_Gyn_GB_allgemein_20211202_geschuetzt-20230717-100351.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_schmitz_kat75_Gyn_GB_allgemein_20211202_geschuetzt-20230717-100351.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="schmitz | medi-matic® | marquesas equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/web_schmitz_kat75_gyn_gb_allgemein_20211202_geschuetzt-10035117072023.jpg" alt="Capa — Schmitz | medi-matic® | Marquesas"></div>
-					<div class="cat-info"><h3>Schmitz | medi-matic® | Marquesas</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Schmitz | medi-matic® | Marquesas</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat63_VarimedB_DEoP_20230102_geschuetzt-compactado-20230725-033012.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat63_VarimedB_DEoP_20230102_geschuetzt-compactado-20230725-033012.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="schmitz | varimed® equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/web_schmitz_kat63_varimedb_deop_20230102_geschuetzt-15301225072023.jpg" alt="Capa — Schmitz | varimed®"></div>
-					<div class="cat-info"><h3>Schmitz | varimed®</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Schmitz | varimed®</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat70_2023_VarimedA_ES_20220102_geschuetzt_compressed-20230725-033502.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/web_SCHMITZ_Kat70_2023_VarimedA_ES_20220102_geschuetzt_compressed-20230725-033502.pdf" target="_blank" rel="noopener" data-cats="Equipamentos" data-busca="schmitz | varimed® equipamentos">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/web_schmitz_kat70_2023_varimeda_es_20220102_geschuetzt-15350225072023.jpg" alt="Capa — Schmitz | varimed®"></div>
-					<div class="cat-info"><h3>Schmitz | varimed®</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Equipamentos</span></div><h3>Schmitz | varimed®</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/PA_Brochure_SonoPlex_XS200231_Screen-20250320-011820.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/PA_Brochure_SonoPlex_XS200231_Screen-20250320-011820.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="sonoplex® echogenic, stimulating single shot nerve block needles anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/anotacao-2025-03-20-131726-13182020032025.jpg" alt="Capa — SonoPlex® Echogenic, Stimulating Single Shot Nerve Block Needles"></div>
-					<div class="cat-info"><h3>SonoPlex® Echogenic, Stimulating Single Shot Nerve Block Needles</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>SonoPlex® Echogenic, Stimulating Single Shot Nerve Block Needles</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Regional-Anaesthesia_Product-Catalogue_English-20230724-042713.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Regional-Anaesthesia_Product-Catalogue_English-20230724-042713.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | regional anaesthesia anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/regional-anaesthesia_product-catalogue_english-16271324072023.jpg" alt="Capa — PAJUNK | Regional Anaesthesia"></div>
-					<div class="cat-info"><h3>PAJUNK | Regional Anaesthesia</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | Regional Anaesthesia</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Pain_Catalogue_Brochure_English-20230724-041327.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Pain_Catalogue_Brochure_English-20230724-041327.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | pain management anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/pain_catalogue_brochure_english-16132724072023.jpg" alt="Capa — PAJUNK | Pain Management"></div>
-					<div class="cat-info"><h3>PAJUNK | Pain Management</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | Pain Management</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/NerveBlocks_Sub-Catalogue_English-20230724-042103.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/NerveBlocks_Sub-Catalogue_English-20230724-042103.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | nerve blocks anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/nerveblocks_sub-catalogue_english-16210324072023.jpg" alt="Capa — PAJUNK | Nerve Blocks"></div>
-					<div class="cat-info"><h3>PAJUNK | Nerve Blocks</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | Nerve Blocks</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/NerveGuard_Brochure_English-20240913-110614.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/NerveGuard_Brochure_English-20240913-110614.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | nerveguard anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/nerveguard-brochure-11061413092024.jpg" alt="Capa — PAJUNK | NerveGuard"></div>
-					<div class="cat-info"><h3>PAJUNK | NerveGuard</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | NerveGuard</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Wound-Infiltration_Sub-Catalogue_English-20230724-041626.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Wound-Infiltration_Sub-Catalogue_English-20230724-041626.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | wound infiltration anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/wound-infiltration_sub-catalogue_english-16162624072023.jpg" alt="Capa — PAJUNK | Wound Infiltration"></div>
-					<div class="cat-info"><h3>PAJUNK | Wound Infiltration</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | Wound Infiltration</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/PNB-Catheter-Sets_Brochure_English-2-20241011-121017.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/PNB-Catheter-Sets_Brochure_English-2-20241011-121017.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | pnb catheter sets anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/pnb-catheter-sets-12101711102024.jpg" alt="Capa — PAJUNK | PNB Catheter Sets"></div>
-					<div class="cat-info"><h3>PAJUNK | PNB Catheter Sets</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | PNB Catheter Sets</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Regional-Anaesthesia_Product-Catalogue_English--20251003-034547.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Regional-Anaesthesia_Product-Catalogue_English--20251003-034547.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="regional anaesthesia product anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/regional-anaesthesia-product-1544213102025.jpg" alt="Capa — Regional Anaesthesia Product"></div>
-					<div class="cat-info"><h3>Regional Anaesthesia Product</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>Regional Anaesthesia Product</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/SonoPlex-II_Broschuere_English-20251003-032729.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/SonoPlex-II_Broschuere_English-20251003-032729.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | sonoplex-ii anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/sonoplex-ii_broschuere_english-1527283102025.jpg" alt="Capa — PAJUNK | SonoPlex-II"></div>
-					<div class="cat-info"><h3>PAJUNK | SonoPlex-II</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | SonoPlex-II</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_GI_CE%20mark_200129_spread-20230731-104018.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_GI_CE%20mark_200129_spread-20230731-104018.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | hs40 crystallive general ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/hs40_v1-10401831072023.jpg" alt="Capa — SAMSUNG | HS40 CrystalLive General"></div>
-					<div class="cat-info"><h3>SAMSUNG | HS40 CrystalLive General</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | HS40 CrystalLive General</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/E-Cath-II_E-Cath-II-Plus_Brochure_English-3-20241011-115935.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/E-Cath-II_E-Cath-II-Plus_Brochure_English-3-20241011-115935.pdf" target="_blank" rel="noopener" data-cats="Anestesia" data-busca="pajunk | e-cath-ii_e-cath-ii-plus anestesia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/anotacao-2024-10-11-115828-11593411102024.jpg" alt="Capa — PAJUNK | E-Cath-II_E-Cath-II-Plus"></div>
-					<div class="cat-info"><h3>PAJUNK | E-Cath-II_E-Cath-II-Plus</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Anestesia</span></div><h3>PAJUNK | E-Cath-II_E-Cath-II-Plus</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_OB_CE%20mark_200129_spread-20230731-105324.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_OB_CE%20mark_200129_spread-20230731-105324.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Obstetrícia" data-busca="samsung | hs40 crystallive obstetrics • gynecology ecografia obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/hs40_v1-10532331072023.jpg" alt="Capa — SAMSUNG | HS40 CrystalLive Obstetrics • Gynecology"></div>
-					<div class="cat-info"><h3>SAMSUNG | HS40 CrystalLive Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Obstetrícia</span></div><h3>SAMSUNG | HS40 CrystalLive Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Obstetrícia" data-busca="samsung | hera w10 elite ecografia obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/capa-poster-catalogo-hera-w10-elite-10371225072023.jpg" alt="Capa — SAMSUNG | HERA W10 Elite"></div>
-					<div class="cat-info"><h3>SAMSUNG | HERA W10 Elite</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Obstetrícia</span></div><h3>SAMSUNG | HERA W10 Elite</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | rs85 prestige ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/rs85-poster_lifstyle-ver_0211-10410525072023.jpg" alt="Capa — SAMSUNG | RS85 Prestige"></div>
-					<div class="cat-info"><h3>SAMSUNG | RS85 Prestige</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | RS85 Prestige</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_CV_210914_spread-20230725-103233.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_CV_210914_spread-20230725-103233.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | v8 general ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v8_catalog_gi_210917_capa-10450525072023.jpg" alt="Capa — SAMSUNG | V8 General"></div>
-					<div class="cat-info"><h3>SAMSUNG | V8 General</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | V8 General</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Obstetrícia" data-busca="samsung | v8 obstetrics • gynecology ecografia obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v8_catalog_ob_gyn_210917_capa-10434425072023.jpg" alt="Capa — SAMSUNG | V8 Obstetrics • Gynecology"></div>
-					<div class="cat-info"><h3>SAMSUNG | V8 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Obstetrícia</span></div><h3>SAMSUNG | V8 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_GI_230125-20230725-111103.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_GI_230125-20230725-111103.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | v7 general ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v7_poster_s-detect_220915-11110225072023.jpg" alt="Capa — SAMSUNG | V7 General"></div>
-					<div class="cat-info"><h3>SAMSUNG | V7 General</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | V7 General</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_OBGyn_230125-20230725-110916.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_OBGyn_230125-20230725-110916.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Obstetrícia" data-busca="samsung | v7 obstetrics • gynecology ecografia obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v7_poster_realisticvue_220915-11091625072023.jpg" alt="Capa — SAMSUNG | V7 Obstetrics • Gynecology"></div>
-					<div class="cat-info"><h3>SAMSUNG | V7 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Obstetrícia</span></div><h3>SAMSUNG | V7 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20GI_230725-20230725-113118.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20GI_230725-20230725-113118.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | v6 general ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v6-poster_gi_0725-11311825072023.jpg" alt="Capa — SAMSUNG | V6 General"></div>
-					<div class="cat-info"><h3>SAMSUNG | V6 General</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | V6 General</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20OBGYN_230725-20230725-113222.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20OBGYN_230725-20230725-113222.pdf" target="_blank" rel="noopener" data-cats="Ecografia|Obstetrícia" data-busca="samsung | v6 obstetrics • gynecology ecografia obstetricia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v6-poster_obgyn_0725-11322125072023.jpg" alt="Capa — SAMSUNG | V6 Obstetrics • Gynecology"></div>
-					<div class="cat-info"><h3>SAMSUNG | V6 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span><span class="cat-etiqueta">Obstetrícia</span></div><h3>SAMSUNG | V6 Obstetrics • Gynecology</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V5_Catalog_All_0911-2-20251104-094631.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/V5_Catalog_All_0911-2-20251104-094631.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="samsung | v5 general ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/v5-poster_gi_0224_print-946304112025.jpg" alt="Capa — SAMSUNG | V5 General"></div>
-					<div class="cat-info"><h3>SAMSUNG | V5 General</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>SAMSUNG | V5 General</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20ABBy-20240809-030534.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20ABBy-20240809-030534.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Cirurgia" data-busca="abby™ obstetricia cirurgia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/brochura1-1505349082024.jpg" alt="Capa — ABBy™"></div>
-					<div class="cat-info"><h3>ABBy™</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Cirurgia</span></div><h3>ABBy™</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20Traxi%20&%20ABBy%20Panniculus%20Retraction%20System_pt-20260602-112426.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20Traxi%20&%20ABBy%20Panniculus%20Retraction%20System_pt-20260602-112426.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Cirurgia" data-busca="traxi® &amp; abby™ sistema de retracao do paniculo na cesariana obstetricia cirurgia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/1-brochura-1220151062026.jpg" alt="Capa — traxi® &amp; ABBy™ Sistema de Retração do Panículo na Cesariana"></div>
-					<div class="cat-info"><h3>traxi® &amp; ABBy™ Sistema de Retração do Panículo na Cesariana</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Cirurgia</span></div><h3>traxi® &amp; ABBy™ Sistema de Retração do Panículo na Cesariana</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/ENG-OB%20&%20GYN-FTS-6%20Mobile-V2.2-20240624-20251112-025543.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/ENG-OB%20&%20GYN-FTS-6%20Mobile-V2.2-20240624-20251112-025543.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Monitorização" data-busca="edan | fts-6 mobile obstetricia monitorizacao">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/fts-6-mobile-remote-fetal-monitor-14554312112025.jpg" alt="Capa — EDAN | FTS-6 Mobile"></div>
-					<div class="cat-info"><h3>EDAN | FTS-6 Mobile</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Monitorização</span></div><h3>EDAN | FTS-6 Mobile</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20Edan%20NANO%20Sonda%20Linear-20251104-090750.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/Brochura%20Edan%20NANO%20Sonda%20Linear-20251104-090750.pdf" target="_blank" rel="noopener" data-cats="Ecografia" data-busca="edan | nano l12 exp ecografia">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/thfbf-907504112025.jpg" alt="Capa — EDAN | Nano L12 EXP"></div>
-					<div class="cat-info"><h3>EDAN | Nano L12 EXP</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Ecografia</span></div><h3>EDAN | Nano L12 EXP</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>
-				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/20230313033242_198796-20251112-025829.pdf" target="_blank" rel="noopener">
+				<a class="cat-item" href="https://www.speculum.pt/files/files/catalog/20230313033242_198796-20251112-025829.pdf" target="_blank" rel="noopener" data-cats="Obstetrícia|Monitorização" data-busca="edan | f15 fetal &amp; maternal monitor obstetricia monitorizacao">
 					<div class="cat-capa"><img loading="lazy" src="https://www.speculum.pt/files/images/catalog/f15-fetal-e-maternal-monitor-14582912112025.jpg" alt="Capa — EDAN | F15 Fetal &amp; Maternal Monitor"></div>
-					<div class="cat-info"><h3>EDAN | F15 Fetal &amp; Maternal Monitor</h3><span class="cat-cta">Ver PDF</span></div>
+					<div class="cat-info">
+						<div class="cat-meta"><span class="cat-etiqueta">Obstetrícia</span><span class="cat-etiqueta">Monitorização</span></div><h3>EDAN | F15 Fetal &amp; Maternal Monitor</h3><span class="cat-cta">Ver PDF</span></div>
 				</a>			</div>
 
 			<p class="cat-vazio" id="cat-vazio" hidden>Nenhum catálogo corresponde a essa pesquisa.</p>
@@ -1071,24 +1148,31 @@
 	})();
 
 	/* --- Filtro da listagem de catálogos ---
-	   Filtragem local, só sobre o que já está na página: nada é pedido ao servidor.
-	   Sem JS a grelha fica toda visível — o campo é a única coisa que se perde. */
+	   Categoria (chips) e texto, combináveis. Filtragem local, só sobre o que já está na
+	   página: nada é pedido ao servidor. Sem JS a grelha fica toda visível — perdem-se os
+	   filtros, não o conteúdo. */
 	(function () {
 		var busca    = document.getElementById('cat-busca');
 		var grelha   = document.getElementById('cat-grelha');
 		var vazio    = document.getElementById('cat-vazio');
 		var contagem = document.getElementById('cat-contagem');
+		var chips    = document.querySelectorAll('.cat-chip');
 		if (!busca || !grelha) return;
-
-		var itens = Array.prototype.map.call(grelha.querySelectorAll('.cat-item'), function (el) {
-			return { el: el, texto: normalizar(el.textContent) };
-		});
-		var total = itens.length;
 
 		// Sem acentos e em minúsculas, para "metalicos" encontrar "Metálicos".
 		function normalizar(t) {
 			return t.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, ' ').trim();
 		}
+
+		var itens = Array.prototype.map.call(grelha.querySelectorAll('.cat-item'), function (el) {
+			return {
+				el: el,
+				cats: (el.dataset.cats || '').split('|').filter(Boolean),
+				texto: el.dataset.busca || normalizar(el.textContent)
+			};
+		});
+		var total = itens.length;
+		var categoria = '';
 
 		function mostrar(n) {
 			contagem.textContent = n === total
@@ -1099,27 +1183,32 @@
 
 		function filtrar() {
 			var termo = normalizar(busca.value);
-			if (!termo) {
-				itens.forEach(function (i) { i.el.hidden = false; });
-				mostrar(total);
-				return;
-			}
 			// Todas as palavras têm de aparecer, em qualquer ordem ("samsung v7" ou "v7 samsung").
-			var palavras = termo.split(' ');
+			var palavras = termo ? termo.split(' ') : [];
 			var visiveis = 0;
 			itens.forEach(function (i) {
-				var ok = palavras.every(function (p) { return i.texto.indexOf(p) !== -1; });
+				var ok = (!categoria || i.cats.indexOf(categoria) !== -1)
+					&& palavras.every(function (p) { return i.texto.indexOf(p) !== -1; });
 				i.el.hidden = !ok;
 				if (ok) visiveis++;
 			});
 			mostrar(visiveis);
 		}
 
+		chips.forEach(function (chip) {
+			chip.addEventListener('click', function () {
+				chips.forEach(function (c) { c.classList.remove('is-ativo'); });
+				chip.classList.add('is-ativo');
+				categoria = chip.dataset.cat || '';
+				filtrar();
+			});
+		});
+
 		busca.addEventListener('input', filtrar);
 		busca.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape') { busca.value = ''; filtrar(); }
 		});
-		mostrar(total);
+		filtrar();
 	})();
 </script>
 </body>
