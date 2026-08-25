@@ -221,10 +221,13 @@
 		#produtos-main .pin-specs span{color:var(--cinza-texto)}
 		#produtos-main .pin-specs strong{font-weight:600;color:var(--azul-escuro);white-space:nowrap}
 		#produtos-main .pin-desc{margin-block-start:14px;font-size:.88rem;line-height:1.6;color:var(--cinza-texto)}
-		#produtos-main .pin-cta{display:inline-flex;align-items:center;gap:6px;margin-block-start:auto;padding-block-start:16px;
-			font-size:.82rem;font-weight:600;color:var(--azul-claro)}
+		/* Agora é um <button> real (abre o formulário), não um link — reset dos estilos
+		   nativos de botão para se ler como o link discreto que já era. */
+		#produtos-main .pin-cta{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+			margin-block-start:auto;padding-block-start:16px;background:none;border:0;cursor:pointer;
+			font-family:inherit;font-size:.82rem;font-weight:600;color:var(--azul-claro)}
 		#produtos-main .pin-cta::after{content:"→";transition:transform .2s}
-		#produtos-main .pin-item:hover .pin-cta::after{transform:translateX(4px)}
+		#produtos-main .pin-cta:hover::after,#produtos-main .pin-cta:focus-visible::after{transform:translateX(4px)}
 
 		/* --- Quadro comparativo --- */
 		#produtos-main .comparativo{padding-block:72px;background:var(--branco)}
@@ -256,6 +259,57 @@
 			#produtos-main .pin-grelha{grid-template-columns:1fr;gap:20px}
 			#produtos-main .pincas,#produtos-main .comparativo{padding-block:52px}
 			#produtos-main .pin-intro{padding-block:40px}
+		}
+
+		/* --- Modal "Pedir informação" --- */
+		#produtos-main .pin-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px}
+		#produtos-main .pin-modal[hidden]{display:none}
+		#produtos-main .pin-modal__véu{position:absolute;inset:0;background:rgba(0,17,25,.6)}
+		#produtos-main .pin-modal__caixa{position:relative;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;
+			background:#fff;border-radius:var(--radius);padding:36px 32px 32px;box-shadow:var(--sombra-mega)}
+		#produtos-main .pin-modal__fechar{position:absolute;inset-block-start:16px;inset-inline-end:16px;
+			display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:8px;
+			background:var(--azul-claro);color:#fff;cursor:pointer;transition:background .15s}
+		#produtos-main .pin-modal__fechar:hover,#produtos-main .pin-modal__fechar:focus-visible{background:var(--azul-escuro)}
+		#produtos-main .pin-modal__fechar svg{width:18px;height:18px;stroke:currentColor;fill:none}
+		#produtos-main .pin-modal__titulo{padding-inline-end:40px;font-size:1.05rem;font-weight:600;
+			line-height:1.4;color:var(--azul-escuro)}
+
+		#produtos-main #pin-form{margin-block-start:22px;display:flex;flex-direction:column;gap:12px}
+		#produtos-main .pin-campo input,#produtos-main .pin-campo textarea{display:block;box-sizing:border-box;
+			width:100%;padding:13px 16px;border:1px solid var(--cinza-borda);border-radius:8px;background:#fff;
+			color:var(--azul-escuro);font-family:inherit;font-size:.92rem;resize:vertical;
+			transition:border-color .2s,box-shadow .2s}
+		#produtos-main .pin-campo input:focus,#produtos-main .pin-campo textarea:focus{outline:none;
+			border-color:var(--azul-claro);box-shadow:0 0 0 3px rgba(0,112,175,.12)}
+		#produtos-main .pin-campo input::placeholder,#produtos-main .pin-campo textarea::placeholder{color:#8a97a3;opacity:1}
+		/* O campo de produto vem pré-preenchido e não se edita — cor mais apagada avisa disso. */
+		#produtos-main .pin-campo input[readonly]{background:var(--cinza-claro);color:var(--cinza-texto);cursor:default}
+
+		#produtos-main .pin-modal__aceite{display:flex;align-items:flex-start;gap:10px;margin-block-start:4px;
+			font-size:.82rem;line-height:1.5;color:var(--cinza-texto)}
+		#produtos-main .pin-modal__aceite input{flex:0 0 auto;width:18px;height:18px;margin-block-start:1px;
+			accent-color:var(--azul-claro)}
+		#produtos-main .pin-modal__aceite a{color:var(--azul-claro);text-decoration:underline}
+
+		#produtos-main .pin-modal__submeter{margin-block-start:6px;padding:14px;border:0;border-radius:8px;
+			background:var(--azul-claro);color:#fff;font-family:inherit;font-size:.92rem;font-weight:700;
+			cursor:pointer;transition:background .2s,opacity .2s}
+		#produtos-main .pin-modal__submeter:hover:not(:disabled),
+		#produtos-main .pin-modal__submeter:focus-visible:not(:disabled){background:var(--azul-escuro)}
+		/* Desativado até aceitar os termos, e enquanto o pedido de token/envio decorre. */
+		#produtos-main .pin-modal__submeter:disabled{background:#c3ccd3;cursor:not-allowed}
+
+		#produtos-main .pin-modal__estado{padding-block:20px;text-align:center;color:var(--azul-escuro)}
+		#produtos-main .pin-modal__estado svg{width:40px;height:40px;stroke:var(--azul-claro);fill:none;
+			stroke-width:1.6;margin-inline:auto;margin-block-end:14px}
+		#produtos-main .pin-modal__estado p{font-size:.92rem;line-height:1.6;color:var(--cinza-texto)}
+		/* !important por segurança: nenhuma regra do site visada a "iframe" força display,
+		   mas outros elementos desta página (table, input) já foram apanhados assim. */
+		#produtos-main #pin-envio{display:none!important}
+
+		@media (max-width:520px){
+			#produtos-main .pin-modal__caixa{padding:28px 20px 24px}
 		}
 
 		/* --- Faixa de contacto --- */
@@ -406,7 +460,7 @@
 
 			<div class="pin-grelha">
 
-				<a class="pin-item" href="https://www.speculum.pt/pt/contactos" target="_blank" rel="noopener">
+				<div class="pin-item">
 					<div class="pin-imagem"><img loading="lazy" src="images/pinca-biopsia-tischler.jpg" alt="Pinça de biópsia Tischler, com anéis dourados no punho" width="600" height="600"></div>
 					<div class="pin-info">
 						<h3>Tischler</h3>
@@ -416,11 +470,11 @@
 							<li><span>Comprimento</span><strong>25,5 cm</strong></li>
 						</ul>
 						<p class="pin-desc">A mandíbula maior das quatro. É a configuração clássica da biópsia cervical dirigida por colposcopia.</p>
-						<span class="pin-cta">Pedir informação</span>
+						<button type="button" class="pin-cta" data-produto="MM0290210 - Pinça biopsia tischler 25,5 cm" data-url="https://www.speculum.pt/pt/produtos/1017-pincas/48337-pinca-biopsia-tischler-255-cm">Pedir informação</button>
 					</div>
-				</a>
+				</div>
 
-				<a class="pin-item" href="https://www.speculum.pt/pt/contactos" target="_blank" rel="noopener">
+				<div class="pin-item">
 					<div class="pin-imagem"><img loading="lazy" src="images/pinca-biopsia-baby-tischler.jpg" alt="Pinça de biópsia Baby Tischler, com anéis dourados no punho" width="600" height="600"></div>
 					<div class="pin-info">
 						<h3>Baby Tischler</h3>
@@ -430,11 +484,11 @@
 							<li><span>Comprimento</span><strong>25,5 cm</strong></li>
 						</ul>
 						<p class="pin-desc">A mandíbula mais pequena da gama, no mesmo corpo da Tischler: colhe fragmentos menores.</p>
-						<span class="pin-cta">Pedir informação</span>
+						<button type="button" class="pin-cta" data-produto="MM0290310 - Pinça biopsia baby-tischler 25,5 cm" data-url="https://www.speculum.pt/pt/produtos/1017-pincas/48338-pinca-biopsia-baby-tischler-255-cm">Pedir informação</button>
 					</div>
-				</a>
+				</div>
 
-				<a class="pin-item" href="https://www.speculum.pt/pt/contactos" target="_blank" rel="noopener">
+				<div class="pin-item">
 					<div class="pin-imagem"><img loading="lazy" src="images/pinca-biopsia-burke.jpg" alt="Pinça de biópsia Burke, com anéis dourados no punho" width="800" height="800"></div>
 					<div class="pin-info">
 						<h3>Burke</h3>
@@ -444,11 +498,11 @@
 							<li><span>Comprimento</span><strong>20 cm</strong></li>
 						</ul>
 						<p class="pin-desc">A mesma mandíbula da Tischler num corpo mais curto — a mais curta das quatro.</p>
-						<span class="pin-cta">Pedir informação</span>
+						<button type="button" class="pin-cta" data-produto="MM0290101 - Pinça biopsia burke 20 cm" data-url="https://www.speculum.pt/pt/produtos/1017-pincas/51475-pinca-biopsia-burke-20-cm">Pedir informação</button>
 					</div>
-				</a>
+				</div>
 
-				<a class="pin-item" href="https://www.speculum.pt/pt/contactos" target="_blank" rel="noopener">
+				<div class="pin-item">
 					<div class="pin-imagem"><img loading="lazy" src="images/pinca-biopsia-kevorkian.jpg" alt="Pinça de biópsia Kevorkian, com anéis dourados no punho" width="800" height="800"></div>
 					<div class="pin-info">
 						<h3>Kevorkian</h3>
@@ -458,9 +512,9 @@
 							<li><span>Comprimento</span><strong>25,5 cm</strong></li>
 						</ul>
 						<p class="pin-desc">Mandíbula intermédia, entre a da Tischler e a da Baby Tischler, no corpo mais longo.</p>
-						<span class="pin-cta">Pedir informação</span>
+						<button type="button" class="pin-cta" data-produto="MM0290402 - Pinça biopsia kevorkian 25 cm" data-url="https://www.speculum.pt/pt/produtos/1017-pincas/51476-pinca-biopsia-kevorkian-25-cm">Pedir informação</button>
 					</div>
-				</a>
+				</div>
 
 			</div>
 		</div>
@@ -538,6 +592,63 @@
 			<a class="cta-btn" href="contactos.html">Contacte-nos</a>
 		</div>
 	</section>
+
+	<!-- ===== Modal "Pedir informação" =====
+	     Réplica do formulário que o speculum.pt tem em cada ficha de produto (a mesma
+	     marcação, os mesmos nomes de campo, o mesmo reCAPTCHA v3). Um só modal, partilhado
+	     pelos quatro cartões: o botão que o abre passa-lhe o nome do produto e o URL da
+	     ficha correspondente antes de mostrar.
+
+	     O envio é uma submissão de formulário a sério para essa ficha em speculum.pt — não
+	     um pedido fetch/AJAX, por isso não esbarra em CORS (a mesma razão por que a
+	     pesquisa em tempo real precisa do proxy Cloudflare e isto não). O site abre numa
+	     nova separador para não se perder esta página. -->
+	<div class="pin-modal" id="pin-modal" hidden>
+		<div class="pin-modal__véu" data-fechar="1"></div>
+		<div class="pin-modal__caixa" role="dialog" aria-modal="true" aria-labelledby="pin-modal-titulo">
+			<button type="button" class="pin-modal__fechar" data-fechar="1" aria-label="Fechar">
+				<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+			</button>
+			<p class="pin-modal__titulo" id="pin-modal-titulo">Preencha o formulário abaixo e entraremos em contacto consigo.</p>
+
+			<form id="pin-form" method="post" enctype="multipart/form-data" target="pin-envio">
+				<input type="hidden" name="forms_submit" value="forms_submit">
+				<label class="pin-campo">
+					<span class="so-leitores">Produto</span>
+					<input type="text" name="produto" id="pin-form-produto" readonly>
+				</label>
+				<label class="pin-campo">
+					<span class="so-leitores">Nome</span>
+					<input type="text" name="nome" placeholder="Nome*" required>
+				</label>
+				<label class="pin-campo">
+					<span class="so-leitores">Email</span>
+					<input type="email" name="email" placeholder="Email*" required>
+				</label>
+				<label class="pin-campo">
+					<span class="so-leitores">Telefone</span>
+					<input type="tel" name="telefone" placeholder="Telefone*" required>
+				</label>
+				<label class="pin-campo">
+					<span class="so-leitores">Mensagem</span>
+					<textarea name="mensagem" placeholder="Mensagem*" rows="4" required></textarea>
+				</label>
+
+				<label class="pin-modal__aceite">
+					<input type="checkbox" name="accept" value="1" id="pin-form-aceite" required>
+					Li os <a href="https://www.speculum.pt/files/files/pdfs/ProtecaoDadosWebsite.pdf" target="_blank" rel="noopener">termos</a>
+					e consinto o uso dos meus dados pessoais para receber informações úteis à minha especialidade e promoções, por email ou contacto telefónico.
+				</label>
+
+				<button type="submit" class="pin-modal__submeter" id="pin-form-submeter" disabled>Submeter ›</button>
+			</form>
+
+			<!-- Estado mostrado depois de submeter; o formulário acima esconde-se. -->
+			<div class="pin-modal__estado" id="pin-modal-estado" hidden></div>
+		</div>
+	</div>
+	<!-- Recebe a resposta do envio sem navegar para fora desta página. -->
+	<iframe name="pin-envio" id="pin-envio" title="Confirmação de envio" hidden></iframe>
 
 </main>
 
@@ -1033,6 +1144,118 @@
 
 	/* Esta página não tem filtro: são quatro modelos, todos visíveis. O JS acima é o do
 	   cabeçalho e da pesquisa do site, comum a todas as páginas. */
+
+	/* --- Modal "Pedir informação" ---
+	   Réplica do formulário de cada ficha do speculum.pt. O envio é uma submissão de
+	   <form> a sério, dirigida a um iframe oculto — não um fetch — por isso não esbarra
+	   em CORS: o POST chega ao mesmo backend PHP que processa o formulário de origem,
+	   mesmo vindo desta página. O reCAPTCHA v3 do site (chave pública, a mesma que
+	   qualquer visitante carrega) confirmámos que gera token a partir daqui. O que não é
+	   possível confirmar sem enviar um pedido a sério é se o backend aceita um POST cujo
+	   Referer não é o speculum.pt — por isso vale a pena um teste real depois de publicar. */
+	(function () {
+		var RECAPTCHA_SITE_KEY = '6Lc4RTcpAAAAAIQjoFy8jRRUvvvPYVC5FZBOx0Nx';
+
+		var modal    = document.getElementById('pin-modal');
+		var form     = document.getElementById('pin-form');
+		var campoRef = document.getElementById('pin-form-produto');
+		var aceite   = document.getElementById('pin-form-aceite');
+		var submeter = document.getElementById('pin-form-submeter');
+		var estado   = document.getElementById('pin-modal-estado');
+		var iframeEnvio = document.getElementById('pin-envio');
+		var botoes   = document.querySelectorAll('.pin-cta');
+		if (!modal || !form) return;
+
+		var ultimoFoco = null;
+		var recaptchaPronto = null; // promessa do carregamento do script, criada só quando é preciso
+
+		function carregarRecaptcha() {
+			if (recaptchaPronto) return recaptchaPronto;
+			recaptchaPronto = new Promise(function (resolve, reject) {
+				var s = document.createElement('script');
+				s.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+				s.onload = function () {
+					if (window.grecaptcha) { window.grecaptcha.ready(resolve); } else { reject(new Error('grecaptcha indisponível')); }
+				};
+				s.onerror = function () { reject(new Error('falha ao carregar o reCAPTCHA')); };
+				document.head.appendChild(s);
+			});
+			return recaptchaPronto;
+		}
+
+		function abrir(botao) {
+			ultimoFoco = document.activeElement;
+			form.reset();
+			form.hidden = false;
+			estado.hidden = true;
+			estado.innerHTML = '';
+			campoRef.value = botao.dataset.produto || '';
+			form.action = botao.dataset.url || '';
+			aceite.checked = false;
+			submeter.disabled = true;
+			modal.hidden = false;
+			var primeiro = form.querySelector('input[name="nome"]');
+			if (primeiro) primeiro.focus();
+		}
+
+		function fechar() {
+			modal.hidden = true;
+			if (ultimoFoco) ultimoFoco.focus();
+		}
+
+		botoes.forEach(function (b) {
+			b.addEventListener('click', function () { abrir(b); });
+		});
+
+		modal.addEventListener('click', function (e) {
+			if (e.target.dataset.fechar) fechar();
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && !modal.hidden) fechar();
+		});
+
+		aceite.addEventListener('change', function () {
+			submeter.disabled = !aceite.checked;
+		});
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			if (!aceite.checked) return;
+			submeter.disabled = true;
+			submeter.textContent = 'A enviar…';
+
+			carregarRecaptcha().then(function () {
+				return window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' });
+			}).then(function (token) {
+				var campoToken = form.querySelector('input[name="recaptcha_token"]');
+				if (!campoToken) {
+					campoToken = document.createElement('input');
+					campoToken.type = 'hidden';
+					campoToken.name = 'recaptcha_token';
+					form.appendChild(campoToken);
+				}
+				campoToken.value = token;
+
+				iframeEnvio.addEventListener('load', function aoReceberResposta() {
+					iframeEnvio.removeEventListener('load', aoReceberResposta);
+					form.hidden = true;
+					estado.hidden = false;
+					estado.innerHTML =
+						'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>' +
+						'<p>Pedido enviado. A Speculum entra em contacto consigo brevemente.</p>';
+					submeter.disabled = false;
+					submeter.textContent = 'Submeter ›';
+				}, { once: true });
+
+				form.submit();
+			}).catch(function (erro) {
+				submeter.disabled = false;
+				submeter.textContent = 'Submeter ›';
+				estado.hidden = false;
+				estado.innerHTML = '<p>Não foi possível enviar agora. Tente de novo, ou contacte-nos diretamente em <a href="contactos.html">Contactos</a>.</p>';
+			});
+		});
+	})();
 </script>
 </body>
 </html>
