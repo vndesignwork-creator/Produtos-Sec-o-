@@ -1210,7 +1210,9 @@
 		});
 
 		modal.addEventListener('click', function (e) {
-			if (e.target.dataset.fechar) fechar();
+			/* closest(), não e.target: o botão de fechar tem um <svg> lá dentro, e clicar
+			   no ícone faz e.target ser o svg (sem data-fechar), não o próprio botão. */
+			if (e.target.closest('[data-fechar]')) fechar();
 		});
 		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape' && !modal.hidden) fechar();
