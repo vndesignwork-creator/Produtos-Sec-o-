@@ -1,0 +1,48 @@
+name: Atualizar catálogo de produtos
+
+# Repete sozinho o que scripts/catalogo/README.md descreve: recolhe o catálogo do
+# speculum.pt, gera os dados e publica produtos-catalogo.html com o resultado.
+#
+# Agendado para as segundas-feiras. "workflow_dispatch" permite correr manualmente
+# a partir do separador Actions do GitHub, sem esperar pelo agendamento.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Recolher listagem do speculum.pt
+        working-directory: scripts/catalogo
+        run: node 1-scrape.mjs
+
+      - name: Recolher referências de cada ficha
+        working-directory: scripts/catalogo
+        run: node 2-refs.mjs
+
+      - name: Gerar e montar a página
+        working-directory: scripts/catalogo
+        run: node 3-montar.mjs
+
+      - name: Publicar, se algo mudou
+        run: |
+          if git diff --quiet -- produtos-catalogo.html; then
+            echo "Sem alterações no catálogo — nada para publicar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add produtos-catalogo.html
+          git commit -m "Atualiza o catálogo de produtos (automático)"
+          git push
