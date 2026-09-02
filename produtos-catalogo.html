@@ -267,9 +267,7 @@
 			background:#fff6e0;border:1px solid #f0cf7a;font-size:.82rem;color:#6b5115}
 		#produtos-main .pr-aviso a{color:var(--azul-claro);font-weight:600;text-decoration:underline}
 		#produtos-main .pr-vazio{text-align:center;padding-block:48px;color:var(--cinza-texto)}
-		/* minmax de 210px: descontando o painel de 260px e a goteira, dá 4 colunas no
-		   contentor de 1240px, e desce sozinho para 3, 2 e 1 à medida que o ecrã estreita. */
-		#produtos-main .pr-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
+		#produtos-main .pr-grelha{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 		#produtos-main .pr-item{display:flex;flex-direction:column;background:#fff;border:1px solid var(--cinza-borda);
 			border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 8px rgba(0,65,107,.05);
 			transition:transform .22s,box-shadow .22s,border-color .22s}
@@ -318,9 +316,10 @@
 			#produtos-main .pr-painel{position:static;max-height:none;overflow:visible}
 			#produtos-main .pr-lista{display:grid;grid-template-columns:1fr 1fr;gap:1px 18px}
 			#produtos-main .pr-lista--longa{max-height:220px}
+			#produtos-main .pr-grelha{grid-template-columns:repeat(2,1fr)}
 		}
 		@media (max-width:520px){
-			#produtos-main .pr-grelha{grid-template-columns:1fr 1fr;gap:14px}
+			#produtos-main .pr-grelha{grid-template-columns:1fr;gap:14px}
 			#produtos-main .pr-lista{grid-template-columns:1fr}
 			#produtos-main .pr-hero-inner{padding-block:44px!important}
 			#produtos-main .pr-info h3{font-size:.82rem}
