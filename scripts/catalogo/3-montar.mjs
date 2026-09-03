@@ -136,14 +136,8 @@ const mainHtml =
 	</nav>
 
 	<!-- ===== Cabeçalho da página ===== -->
-	<section class="pr-hero" aria-labelledby="pr-hero-title">
+	<section class="pr-hero" aria-label="Catálogo de produtos médico-hospitalares">
 		<div class="container pr-hero-inner">
-			<p class="pr-eyebrow">Catálogo</p>
-			<h2 id="pr-hero-title">Produtos Médico-Hospitalares</h2>
-			<p>
-				Do consumível de uso diário ao equipamento de última geração — o catálogo da
-				Speculum, ${itens.length.toLocaleString('pt-PT')} referências organizadas por categoria, tipo de artigo e área clínica.
-			</p>
 			<div class="pr-areas" role="group" aria-label="Atalhos por área clínica">
 ${areasHero}
 			</div>
