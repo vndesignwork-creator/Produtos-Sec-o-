@@ -243,6 +243,13 @@
 		#produtos-main .pr-opcao input:focus-visible{outline:2px solid var(--azul-claro);outline-offset:2px}
 		#produtos-main .pr-opcao:hover{color:var(--azul-claro)}
 		#produtos-main .pr-opcao .n{color:var(--cinza-texto);font-size:.8rem}
+		/* Opção que, com o que já está escolhido, não daria resultado nenhum. */
+		#produtos-main .pr-opcao.is-vazio{opacity:.4;cursor:not-allowed}
+		#produtos-main .pr-opcao.is-vazio:hover{color:var(--azul-escuro)}
+		#produtos-main .pr-opcao.is-vazio input{cursor:not-allowed}
+		#produtos-main .pr-area-btn:disabled{opacity:.35;cursor:not-allowed}
+		#produtos-main .pr-area-btn:disabled:hover{background:rgba(255,255,255,.06);
+			border-color:rgba(255,255,255,.35)}
 
 		/* Campo de pesquisa. Abaixo de 768px a stylesheet.css do site esconde com !important
 		   qualquer input com "Pesquisar" no placeholder — e também qualquer <form> que o
@@ -1255,6 +1262,25 @@
 			return nomes.map(function (n) { return dicionario.indexOf(n); });
 		}
 
+		// Um produto passa se satisfizer os grupos de filtro pedidos. "ignorar" salta um
+		// grupo, e é isso que permite contar as facetas: dentro de um grupo as opções
+		// somam-se (marcar mais uma categoria alarga o resultado), por isso a contagem de
+		// cada opção conta como se só ela estivesse marcada nesse grupo. Sem isto, marcar
+		// "Metálicos" poria as outras categorias todas a zero.
+		function passa(k, iCats, iTipos, iAreas, palavras, ignorar) {
+			var p = PR_DADOS[k];
+			if (ignorar !== 'cat'  && iCats.length  && iCats.indexOf(p[CAT])   === -1) return false;
+			if (ignorar !== 'tipo' && iTipos.length && iTipos.indexOf(p[TIPO]) === -1) return false;
+			if (ignorar !== 'area' && iAreas.length && iAreas.indexOf(p[AREA]) === -1) return false;
+			if (palavras.length) {
+				var t = textoDe(k);
+				for (var w = 0; w < palavras.length; w++) {
+					if (t.indexOf(palavras[w]) === -1) return false;
+				}
+			}
+			return true;
+		}
+
 		function filtrar(manterPagina) {
 			var iCats  = indicesDe(escolhas.cat,  PR_CATS);
 			var iTipos = indicesDe(escolhas.tipo, PR_TIPOS);
@@ -1263,22 +1289,39 @@
 			palavras = palavras ? palavras.split(' ') : [];
 
 			visiveis = [];
+			var contaCat = {}, contaTipo = {}, contaArea = {};
 			for (var k = 0; k < PR_DADOS.length; k++) {
 				var p = PR_DADOS[k];
-				if (iCats.length  && iCats.indexOf(p[CAT])   === -1) continue;
-				if (iTipos.length && iTipos.indexOf(p[TIPO]) === -1) continue;
-				if (iAreas.length && iAreas.indexOf(p[AREA]) === -1) continue;
-				if (palavras.length) {
-					var t = textoDe(k), ok = true;
-					for (var w = 0; w < palavras.length; w++) {
-						if (t.indexOf(palavras[w]) === -1) { ok = false; break; }
-					}
-					if (!ok) continue;
-				}
-				visiveis.push(k);
+				if (passa(k, iCats, iTipos, iAreas, palavras, null)) visiveis.push(k);
+				if (p[CAT]  >= 0 && passa(k, iCats, iTipos, iAreas, palavras, 'cat'))  contaCat[p[CAT]]   = (contaCat[p[CAT]]   || 0) + 1;
+				if (p[TIPO] >= 0 && passa(k, iCats, iTipos, iAreas, palavras, 'tipo')) contaTipo[p[TIPO]] = (contaTipo[p[TIPO]] || 0) + 1;
+				if (p[AREA] >= 0 && passa(k, iCats, iTipos, iAreas, palavras, 'area')) contaArea[p[AREA]] = (contaArea[p[AREA]] || 0) + 1;
 			}
+			atualizarContagens(contaCat, contaTipo, contaArea);
 			if (!manterPagina) pagina = 1;
 			desenhar();
+		}
+
+		// Reescreve o número ao lado de cada opção com o que ela daria a partir do que já
+		// está escolhido, e desativa as que dariam zero — assim não se chega a combinações
+		// vazias como "Metálicos + Obstetrícia", que não têm um único produto em comum.
+		var DICIONARIO = { cat: PR_CATS, tipo: PR_TIPOS, area: PR_AREAS };
+		function atualizarContagens(contaCat, contaTipo, contaArea) {
+			var contas = { cat: contaCat, tipo: contaTipo, area: contaArea };
+			Array.prototype.forEach.call(caixas, function (c) {
+				var campo = c.dataset.campo;
+				var n = contas[campo][DICIONARIO[campo].indexOf(c.value)] || 0;
+				var span = c.parentElement.querySelector('.n');
+				if (span) span.textContent = '(' + n + ')';
+				// Uma opção já marcada nunca se desativa, senão deixava de se poder desmarcar.
+				var bloquear = n === 0 && !c.checked;
+				c.disabled = bloquear;
+				c.parentElement.classList.toggle('is-vazio', bloquear);
+			});
+			Array.prototype.forEach.call(botoesArea, function (b) {
+				var n = contaArea[PR_AREAS.indexOf(b.dataset.area)] || 0;
+				b.disabled = n === 0 && escolhas.area.indexOf(b.dataset.area) === -1;
+			});
 		}
 
 		function cartao(k) {
