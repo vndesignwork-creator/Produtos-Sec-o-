@@ -243,6 +243,9 @@
 		#produtos-main .hero-lead{font-size:18px;color:#465e6c;max-width:670px;margin:0 0 27px;}
 		#produtos-main .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
 		#produtos-main .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 22px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:800;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;}
+		/* Mesmo caso da faixa Samsung: o site impõe cor escura aos <span> sem classe, e a
+		   seta dentro do botão saía quase preta sobre o azul em vez de branca. */
+		#produtos-main .btn span{color:inherit}
 		#produtos-main .btn:hover{transform:translateY(-1px)}
 		#produtos-main .btn-primary{background:var(--speculum);color:#fff;box-shadow:0 8px 20px rgba(0,104,139,.22);}
 		#produtos-main .btn-primary:hover{background:var(--speculum-dark)}
@@ -276,6 +279,9 @@
 		#produtos-main .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:27px;box-shadow:0 9px 25px rgba(0,36,56,.055);transition:transform .2s ease, box-shadow .2s ease;}
 		#produtos-main .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
 		#produtos-main .icon{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#e4f6fb,#edf0ff);color:var(--speculum);font-size:24px;margin-bottom:18px;}
+		/* Os ícones são SVG embutido (traço, herdando a cor do .icon) em vez de glifos
+		   soltos: cada um passa a corresponder ao texto do cartão. */
+		#produtos-main .icon svg{width:24px;height:24px;display:block}
 		#produtos-main .card h3{margin:0 0 10px;font-size:17px;color:var(--speculum-deep)}
 		#produtos-main .card p{margin:0;color:#657985;font-size:14px}
 
@@ -613,7 +619,13 @@
 
         <div class="cards-4">
           <article class="card">
-            <div class="icon">◉</div>
+            <div class="icon">
+              <!-- olho: detalhe e qualidade visual -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M2.5 12S6 5.6 12 5.6 21.5 12 21.5 12 18 18.4 12 18.4 2.5 12 2.5 12Z"/>
+                <circle cx="12" cy="12" r="3.1"/>
+              </svg>
+            </div>
             <h3>Qualidade de imagem</h3>
             <p>
               Arquitetura de formação de imagem desenvolvida para proporcionar detalhe,
@@ -622,7 +634,14 @@
           </article>
 
           <article class="card">
-            <div class="icon">✦</div>
+            <div class="icon">
+              <!-- chip: IA integrada no sistema -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="6.6" y="6.6" width="10.8" height="10.8" rx="2.6"/>
+                <rect x="10.2" y="10.2" width="3.6" height="3.6" rx="1"/>
+                <path d="M9.6 3.4v3.2M14.4 3.4v3.2M9.6 17.4v3.2M14.4 17.4v3.2M3.4 9.6h3.2M3.4 14.4h3.2M17.4 9.6h3.2M17.4 14.4h3.2"/>
+              </svg>
+            </div>
             <h3>Inteligência integrada</h3>
             <p>
               Ferramentas de IA e automação que apoiam tarefas de medição,
@@ -631,7 +650,15 @@
           </article>
 
           <article class="card">
-            <div class="icon">↗</div>
+            <div class="icon">
+              <!-- ciclo: automatização de etapas repetitivas -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3l2.2 2.2"/>
+                <path d="M19.5 4.2v4.7h-4.7"/>
+                <path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3l-2.2-2.2"/>
+                <path d="M4.5 19.8v-4.7h4.7"/>
+              </svg>
+            </div>
             <h3>Workflow eficiente</h3>
             <p>
               Funções automatizadas e uma interface concebida para reduzir etapas
@@ -640,7 +667,14 @@
           </article>
 
           <article class="card">
-            <div class="icon">⌁</div>
+            <div class="icon">
+              <!-- mão: manuseamento dos controlos e do transdutor -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M9.2 12.2V5.6a1.6 1.6 0 0 1 3.2 0v5.2"/>
+                <path d="M12.4 10.8V4.6a1.6 1.6 0 0 1 3.2 0v6.2"/>
+                <path d="M15.6 11.4V7.8a1.6 1.6 0 0 1 3.2 0v7.4a5.8 5.8 0 0 1-5.8 5.8h-1.2a5 5 0 0 1-3.54-1.47l-3.4-3.4a1.6 1.6 0 0 1 2.26-2.26l2.24 2.24V12.2"/>
+              </svg>
+            </div>
             <h3>Conforto de utilização</h3>
             <p>
               Design do sistema, controlos e transdutores pensados para apoiar
