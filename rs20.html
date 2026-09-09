@@ -342,52 +342,36 @@
     }
 
     .r20-ergo-block {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       min-height: 420px;
       padding: 28px;
-      background: linear-gradient(180deg, #eaf0f2, #d9e5ea);
+      background-image: linear-gradient(180deg, rgba(10, 24, 36, 0) 40%, rgba(6, 17, 26, 0.82) 100%), url("https://usa.samsunghealthcare.com/hs-fs/hubfs/GI-R20-Hero-image3-450x600.png");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    .r20-ergo-block strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 33px; }
-    .r20-ergo-block p { margin: 8px 0 0; color: #526a77; font-size: 13px; line-height: 1.6; }
+    .r20-ergo-block--monitor { background-position: center 8%; }
+    .r20-ergo-block--panel { background-position: center 92%; }
+
+    .r20-ergo-block strong { display: block; color: #8beaff; font-family: "Montserrat", sans-serif; font-size: 33px; }
+    .r20-ergo-block p { margin: 8px 0 0; color: #d7e6ec; font-size: 13px; line-height: 1.6; }
 
     /* FLEX */
     .r20-flex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 38px; }
 
     .r20-flex-visual {
       min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 45px;
       overflow: hidden;
       border-radius: 23px;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(28, 181, 219, 0.25), transparent 38%),
-        linear-gradient(145deg, #eef3f5, #dbe6ea);
-    }
-
-    .r20-cable-graphic { position: relative; width: 100%; height: 320px; }
-
-    .r20-cable-line {
-      position: absolute;
-      top: 50%; left: 5%;
-      width: 90%; height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e8eff1, #ffffff, #d7e3e8);
-      box-shadow: 0 6px 17px rgba(0, 45, 65, 0.18);
-      transform: rotate(-12deg);
-    }
-
-    .r20-cable-probe {
-      position: absolute;
-      left: 10%; top: 90px;
-      width: 115px; height: 185px;
-      border-radius: 52px 52px 28px 28px;
-      background: linear-gradient(145deg, #ffffff, #d7e1e6);
-      box-shadow: 0 18px 40px rgba(0, 44, 66, 0.18);
+      background-image:
+        radial-gradient(circle at 50% 35%, rgba(28, 181, 219, 0.12), transparent 38%),
+        url("https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-healthcare-r20-probe-fan.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center 82%;
     }
 
     .r20-flex-info { padding: 32px; border: 1px solid rgba(113, 225, 252, 0.16); border-radius: 23px; background: #0b2536; }
@@ -494,7 +478,7 @@
     <header class="r20-header">
       <div class="r20-container r20-header-inner">
         <a class="r20-logo" href="https://www.speculum.pt/pt/inicio">
-          <img src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/logo/logo-speculum.png" alt="Speculum">
+          <img src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/logo/logo-speculum.svg" alt="Speculum">
         </a>
 
         <nav class="r20-main-nav">
@@ -805,11 +789,11 @@
             </div>
 
             <div class="r20-ergo-visual r20-reveal">
-              <div class="r20-ergo-block">
+              <div class="r20-ergo-block r20-ergo-block--monitor">
                 <strong>27”</strong>
                 <p>Monitor OLED de grande dimensão com rotação até 360°.</p>
               </div>
-              <div class="r20-ergo-block">
+              <div class="r20-ergo-block r20-ergo-block--panel">
                 <strong>15.6”</strong>
                 <p>Touchscreen inclinável até 30° para utilização sentada ou em pé.</p>
               </div>
@@ -831,12 +815,7 @@
           </div>
 
           <div class="r20-flex-grid">
-            <div class="r20-flex-visual r20-reveal">
-              <div class="r20-cable-graphic">
-                <div class="r20-cable-line"></div>
-                <div class="r20-cable-probe"></div>
-              </div>
-            </div>
+            <div class="r20-flex-visual r20-reveal"></div>
 
             <div class="r20-flex-info r20-reveal">
               <h3>Leve, equilibrado e concebido para movimentos mais naturais.</h3>
@@ -887,7 +866,7 @@
         <div class="r20-footer-grid">
 
           <div class="r20-footer-logo">
-            <img src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/logo/logo-speculum-white.png" alt="Speculum">
+            <img src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/logo/logo-speculum-white.svg" alt="Speculum">
             <p>Soluções e equipamentos para profissionais e instituições de saúde.</p>
           </div>
 
