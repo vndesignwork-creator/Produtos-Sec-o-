@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Speculum | Samsung R20 Ultrasound System & General Imaging</title>
+
+  <meta
+    name="description"
+    content="Samsung R20 em Portugal pela Speculum. Plataforma avançada de ecografia com 3ª Harmónica, Live LiverAssist, Live BreastAssist, EzSWI, MV CEUS com TOA e ergonomia avançada."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --blue: #00527f;
+      --blue2: #008cc2;
+      --cyan: #16d8ff;
+      --dark: #020817;
+      --dark2: #071322;
+      --dark3: #0d1b30;
+      --text: #173043;
+      --muted: #607481;
+      --soft: #f4f7f9;
+      --line: #dfe7eb;
+      --white: #ffffff;
+      --shadow: 0 20px 55px rgba(0, 36, 58, 0.13);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .r20-container { width: min(1240px, calc(100% - 36px)); margin-inline: auto; }
+    .r20-section { padding: 92px 0; }
+    .r20-soft { background: var(--soft); }
+
+    .r20-dark {
+      color: #ffffff;
+      background: radial-gradient(circle at 50% -10%, rgba(0, 144, 190, 0.12), transparent 36%), var(--dark);
+    }
+
+    .r20-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 14px;
+      color: #087fa8;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .r20-kicker::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    .r20-dark .r20-kicker { color: #70e4ff; }
+
+    .r20-title {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(32px, 4.7vw, 55px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .r20-lead { max-width: 880px; margin: 20px 0 0; color: #586d7a; font-size: 18px; line-height: 1.72; }
+    .r20-dark .r20-lead { color: #b7cad4; }
+
+    /* TOP */
+    .r20-topbar { color: #75828a; background: #f7f9fa; border-bottom: 1px solid #e5ebee; font-size: 11px; }
+    .r20-topbar .r20-container { min-height: 33px; display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+
+    /* HEADER */
+    .r20-header { position: sticky; top: 0; z-index: 1000; background: #ffffff; border-bottom: 1px solid #dde6ea; }
+    .r20-header-inner { min-height: 84px; display: flex; align-items: center; gap: 30px; }
+    .r20-logo img { width: auto; height: 52px; }
+
+    .r20-main-nav { display: flex; align-items: center; gap: 23px; margin-left: auto; }
+    .r20-main-nav a { color: var(--blue); font-family: "Montserrat", sans-serif; font-size: 12px; font-weight: 700; }
+    .r20-main-nav a:hover { color: var(--blue2); }
+
+    .r20-menu-button { display: none; margin-left: auto; border: 0; color: var(--blue); background: transparent; font-size: 25px; cursor: pointer; }
+
+    .r20-mobile-menu { display: none; padding: 12px 18px 18px; background: #ffffff; border-top: 1px solid #e3e9ec; }
+    .r20-mobile-menu.open { display: grid; }
+    .r20-mobile-menu a { padding: 9px 4px; color: var(--blue); font-weight: 700; font-size: 13px; }
+
+    /* SUBNAV */
+    .r20-subnav {
+      position: sticky;
+      top: 84px;
+      z-index: 900;
+      background: rgba(4, 16, 27, 0.97);
+      color: #bed3dd;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .r20-subnav .r20-container { display: flex; gap: 25px; overflow-x: auto; scrollbar-width: none; }
+    .r20-subnav a { flex: 0 0 auto; padding: 13px 0; white-space: nowrap; font-size: 12px; font-weight: 700; }
+    .r20-subnav a:hover { color: #ffffff; }
+
+    /* HERO */
+    .r20-hero { position: relative; min-height: 690px; display: flex; align-items: center; overflow: hidden; color: #ffffff; background: #06131f; }
+
+    .r20-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(3, 16, 27, 0.98) 0%, rgba(3, 16, 27, 0.85) 43%, rgba(3, 16, 27, 0.26) 76%, rgba(3, 16, 27, 0.52) 100%),
+        url("https://img.global.news.samsung.com/global/wp-content/uploads/2025/12/01091146/Samsung-Corporate-More-Stories-Samsung-Medison-RSNA-2025-R20-Ultrasound-System_main1.jpg")
+        center / cover no-repeat;
+    }
+
+    .r20-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 140px;
+      background: linear-gradient(transparent, #071722);
+    }
+
+    .r20-hero-inner { position: relative; z-index: 2; max-width: 790px; padding: 90px 0 105px; }
+
+    .r20-pill {
+      display: inline-flex;
+      padding: 7px 12px;
+      border: 1px solid rgba(80, 222, 255, 0.35);
+      border-radius: 999px;
+      color: #96eaff;
+      background: rgba(0, 119, 154, 0.12);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .r20-hero h1 {
+      margin: 18px 0 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(58px, 8vw, 100px);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+    }
+
+    .r20-hero h1 span { display: block; margin-top: 15px; color: #a9e5f3; font-size: 0.38em; letter-spacing: -0.025em; }
+    .r20-hero p { max-width: 710px; margin: 27px 0 0; color: #d2e4ec; font-size: 19px; line-height: 1.7; }
+
+    .r20-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+
+    .r20-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 21px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .r20-btn-primary { color: #051722; background: #20b8e5; }
+    .r20-btn-primary:hover { background: #72def7; transform: translateY(-1px); }
+    .r20-btn-outline { color: #ffffff; background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.25); }
+
+    .r20-hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 46px; }
+
+    .r20-hero-stat { padding: 17px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 15px; background: rgba(6, 28, 41, 0.65); }
+    .r20-hero-stat strong { display: block; color: #8beaff; font-family: "Montserrat", sans-serif; font-size: 25px; line-height: 1; }
+    .r20-hero-stat span { display: block; margin-top: 8px; color: #bfd3dc; font-size: 11px; line-height: 1.45; }
+
+    /* GENERIC GRID */
+    .r20-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .r20-feature-list { display: grid; gap: 13px; margin-top: 30px; }
+    .r20-feature { display: grid; grid-template-columns: 45px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .r20-feature:last-child { border-bottom: 0; }
+
+    .r20-feature-icon {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      color: #057ea6;
+      background: #e8f6fa;
+      font-weight: 900;
+    }
+
+    .r20-feature h3 { margin: 0 0 5px; font-family: "Montserrat", sans-serif; font-size: 17px; }
+    .r20-feature p { margin: 0; color: #617581; font-size: 14px; line-height: 1.65; }
+
+    .r20-image-card { position: relative; min-height: 470px; overflow: hidden; border-radius: 23px; background: #e8eef1; box-shadow: var(--shadow); }
+    .r20-image-card img { width: 100%; height: 100%; min-height: 470px; object-fit: cover; }
+
+    .r20-image-caption {
+      position: absolute;
+      left: 17px; right: 17px; bottom: 17px;
+      padding: 13px 15px;
+      border-radius: 12px;
+      color: #effaff;
+      background: rgba(3, 20, 30, 0.84);
+      font-size: 12px;
+    }
+
+    /* SOFTWARES */
+    .r20-software-heading { max-width: 890px; margin: 0 auto; text-align: center; }
+    .r20-software-heading .r20-lead { margin-left: auto; margin-right: auto; }
+
+    .r20-software-pill {
+      display: inline-flex;
+      padding: 6px 13px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(0, 203, 255, 0.34);
+      border-radius: 999px;
+      color: #17d9ff;
+      background: rgba(0, 165, 211, 0.08);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .r20-software-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin-top: 42px; }
+
+    .r20-software-tab {
+      padding: 10px 17px;
+      border: 1px solid #24344d;
+      border-radius: 11px;
+      color: #98b3d0;
+      background: #0b1425;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .r20-software-tab:hover { color: #ffffff; border-color: #1487b2; }
+
+    .r20-software-tab.active {
+      color: #ffffff;
+      border-color: #00baef;
+      background: linear-gradient(135deg, #06b5e7, #0879f9);
+      box-shadow: 0 8px 23px rgba(0, 184, 235, 0.25);
+    }
+
+    .r20-software-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 19px; margin-top: 40px; }
+
+    .r20-software-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid #23324a;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #111d31, #091425);
+      transition: 0.2s ease;
+    }
+
+    .r20-software-card:hover { transform: translateY(-4px); border-color: rgba(0, 207, 255, 0.46); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3); }
+    .r20-software-card.hidden { display: none; }
+
+    .r20-software-top { min-height: 34px; display: flex; align-items: flex-start; justify-content: space-between; gap: 9px; margin-bottom: 12px; }
+    .r20-software-category { max-width: 70%; color: #12dcff; font-size: 10px; font-weight: 800; line-height: 1.45; text-transform: uppercase; }
+
+    .r20-software-badge {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 208, 255, 0.55);
+      border-radius: 999px;
+      color: #30ddff;
+      background: rgba(0, 193, 239, 0.10);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .r20-software-image { position: relative; aspect-ratio: 1.62 / 1; overflow: hidden; border: 1px solid #203149; border-radius: 12px; background: #02050a; }
+    .r20-software-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .r20-software-image-label {
+      position: absolute;
+      left: 9px; bottom: 8px;
+      padding: 4px 7px;
+      border-radius: 4px;
+      color: #13e1ff;
+      background: rgba(0, 8, 18, 0.82);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .r20-software-card h3 { margin: 16px 0 10px; color: #ffffff; font-family: "Montserrat", sans-serif; font-size: 17px; line-height: 1.45; }
+    .r20-software-summary { min-height: 82px; margin: 0; color: #9eb6ca; font-size: 12px; line-height: 1.65; }
+
+    .r20-software-benefits { display: grid; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .r20-software-benefit { display: grid; grid-template-columns: 18px 1fr; gap: 7px; align-items: flex-start; }
+    .r20-software-benefit span { color: #10d9ff; font-weight: 900; font-size: 12px; }
+    .r20-software-benefit p { margin: 0; color: #d6e5ee; font-size: 10px; line-height: 1.55; }
+
+    /* ERGONOMIA */
+    .r20-ergo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 35px; }
+    .r20-ergo-stat { padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: #ffffff; }
+    .r20-ergo-stat strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
+    .r20-ergo-stat span { display: block; margin-top: 9px; color: #627581; font-size: 13px; line-height: 1.5; }
+
+    .r20-ergo-highlight { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 25px; margin-top: 35px; }
+
+    .r20-ergo-score {
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 420px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #ffffff;
+    }
+
+    .r20-ergo-score strong { color: #087fa8; font-family: "Montserrat", sans-serif; font-size: clamp(62px, 8vw, 95px); line-height: 0.9; }
+    .r20-ergo-score h3 { margin: 20px 0 9px; font-family: "Montserrat", sans-serif; font-size: 24px; }
+    .r20-ergo-score p { margin: 0; color: #617581; font-size: 14px; line-height: 1.7; }
+
+    .r20-ergo-visual {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #e7edf0;
+    }
+
+    .r20-ergo-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 420px;
+      padding: 28px;
+      background: linear-gradient(180deg, #eaf0f2, #d9e5ea);
+    }
+
+    .r20-ergo-block strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 33px; }
+    .r20-ergo-block p { margin: 8px 0 0; color: #526a77; font-size: 13px; line-height: 1.6; }
+
+    /* FLEX */
+    .r20-flex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 38px; }
+
+    .r20-flex-visual {
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 45px;
+      overflow: hidden;
+      border-radius: 23px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(28, 181, 219, 0.25), transparent 38%),
+        linear-gradient(145deg, #eef3f5, #dbe6ea);
+    }
+
+    .r20-cable-graphic { position: relative; width: 100%; height: 320px; }
+
+    .r20-cable-line {
+      position: absolute;
+      top: 50%; left: 5%;
+      width: 90%; height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e8eff1, #ffffff, #d7e3e8);
+      box-shadow: 0 6px 17px rgba(0, 45, 65, 0.18);
+      transform: rotate(-12deg);
+    }
+
+    .r20-cable-probe {
+      position: absolute;
+      left: 10%; top: 90px;
+      width: 115px; height: 185px;
+      border-radius: 52px 52px 28px 28px;
+      background: linear-gradient(145deg, #ffffff, #d7e1e6);
+      box-shadow: 0 18px 40px rgba(0, 44, 66, 0.18);
+    }
+
+    .r20-flex-info { padding: 32px; border: 1px solid rgba(113, 225, 252, 0.16); border-radius: 23px; background: #0b2536; }
+    .r20-flex-info h3 { margin: 0 0 14px; font-family: "Montserrat", sans-serif; font-size: 30px; line-height: 1.16; }
+    .r20-flex-info > p { margin: 0; color: #bbd0da; font-size: 14px; line-height: 1.75; }
+
+    .r20-flex-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .r20-flex-metric { padding: 18px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.045); }
+    .r20-flex-metric strong { display: block; color: #82e8ff; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
+    .r20-flex-metric span { display: block; margin-top: 8px; color: #aec3cd; font-size: 11px; line-height: 1.5; }
+
+    .r20-flex-list { display: grid; gap: 11px; margin-top: 24px; }
+    .r20-flex-item { display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+
+    .r20-flex-check {
+      width: 27px; height: 27px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      color: #05271d;
+      background: #79e1be;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .r20-flex-item p { margin: 2px 0 0; color: #c1d2da; font-size: 13px; line-height: 1.6; }
+
+    /* CTA */
+    .r20-cta { padding: 68px 0; color: #ffffff; background: linear-gradient(120deg, #00446d, #0079ad 65%, #12a5cc); }
+    .r20-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .r20-cta h2 { max-width: 750px; margin: 0; font-family: "Montserrat", sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; }
+    .r20-cta p { max-width: 720px; margin: 13px 0 0; color: #d6edf6; font-size: 15px; line-height: 1.7; }
+
+    .r20-contact-button { flex: 0 0 auto; padding: 14px 21px; border-radius: 11px; color: #005a85; background: #ffffff; font-size: 13px; font-weight: 800; }
+
+    /* FOOTER */
+    .r20-footer { padding: 55px 0 25px; color: #d2e1e8; background: #003353; }
+    .r20-footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.7fr; gap: 35px; }
+    .r20-footer-logo img { width: auto; height: 48px; margin-bottom: 17px; filter: brightness(0) invert(1); }
+    .r20-footer h4 { margin: 0 0 15px; color: #ffffff; font-family: "Montserrat", sans-serif; font-size: 13px; }
+    .r20-footer p, .r20-footer a, .r20-footer li { color: #d1e0e7; font-size: 12px; line-height: 1.65; }
+    .r20-footer ul { list-style: none; display: grid; gap: 8px; margin: 0; padding: 0; }
+    .r20-footer-note { margin-top: 28px; color: #9fb7c2; font-size: 10px; line-height: 1.6; }
+
+    .r20-footer-bottom {
+      margin-top: 26px;
+      padding-top: 19px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #b8ccd5;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    /* REVEAL */
+    .r20-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .r20-reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .r20-main-nav { display: none; }
+      .r20-menu-button { display: block; }
+      .r20-software-grid { grid-template-columns: repeat(2, 1fr); }
+      .r20-footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      .r20-section { padding: 68px 0; }
+      .r20-grid-2, .r20-ergo-highlight, .r20-flex-grid { grid-template-columns: 1fr; }
+      .r20-ergo-stats { grid-template-columns: 1fr 1fr; }
+      .r20-hero-stats { grid-template-columns: 1fr 1fr; }
+      .r20-hero { min-height: 760px; }
+      .r20-hero-inner { padding: 180px 0 80px; }
+      .r20-cta-inner { display: block; }
+      .r20-contact-button { display: inline-flex; margin-top: 24px; }
+    }
+
+    @media (max-width: 620px) {
+      .r20-container { width: calc(100% - 24px); }
+      .r20-topbar { display: none; }
+      .r20-header-inner { min-height: 72px; }
+      .r20-logo img { height: 43px; }
+      .r20-subnav { top: 72px; }
+      .r20-software-grid { grid-template-columns: 1fr; }
+      .r20-software-tabs { justify-content: flex-start; }
+      .r20-ergo-stats, .r20-flex-metrics { grid-template-columns: 1fr; }
+      .r20-footer-grid { grid-template-columns: 1fr; }
+      .r20-hero h1 { font-size: 52px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+
+    <!-- TOPBAR -->
+    <div class="r20-topbar">
+      <div class="r20-container">
+        <a href="https://www.speculum.pt/pt/inicio">pt</a>
+        <a href="https://www.speculum.pt/en/home">en</a>
+        <a href="https://www.speculum.pt/pt/carrinho-de-compras">(0) 0.00 €</a>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="r20-header">
+      <div class="r20-container r20-header-inner">
+        <a class="r20-logo" href="https://www.speculum.pt/pt/inicio">
+          <img src="https://www.speculum.pt/files/images/logo_20200619_043032.PNG" alt="Speculum">
+        </a>
+
+        <nav class="r20-main-nav">
+          <a href="https://www.speculum.pt/pt/inicio">Início</a>
+          <a href="https://www.speculum.pt/pt/empresa">Empresa</a>
+          <a href="https://www.speculum.pt/medicoshospitalares.html">Produtos</a>
+          <a href="https://www.speculum.pt/servicos.html">Serviços</a>
+          <a href="https://www.speculum.pt/catalogos.html">Catálogos</a>
+          <a href="https://www.speculum.pt/noticias.html">Notícias</a>
+          <a href="https://www.speculum.pt/contactos.html">Contactos</a>
+        </nav>
+
+        <button type="button" class="r20-menu-button" id="r20MenuButton" aria-label="Abrir menu">☰</button>
+      </div>
+
+      <div class="r20-mobile-menu" id="r20MobileMenu">
+        <a href="https://www.speculum.pt/pt/inicio">Início</a>
+        <a href="https://www.speculum.pt/pt/empresa">Empresa</a>
+        <a href="https://www.speculum.pt/medicoshospitalares.html">Produtos</a>
+        <a href="https://www.speculum.pt/servicos.html">Serviços</a>
+        <a href="https://www.speculum.pt/catalogos.html">Catálogos</a>
+        <a href="https://www.speculum.pt/noticias.html">Notícias</a>
+        <a href="https://www.speculum.pt/contactos.html">Contactos</a>
+      </div>
+    </header>
+
+    <!-- SUBNAV -->
+    <nav class="r20-subnav">
+      <div class="r20-container">
+        <a href="#r20Hero">Visão Geral</a>
+        <a href="#r20Tecnologia">Tecnologias</a>
+        <a href="#r20Softwares">Softwares Clínicos</a>
+        <a href="#r20Ergonomia">Ergonomia</a>
+        <a href="#r20Flex">Cabos flex™</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- HERO -->
+      <section id="r20Hero" class="r20-hero">
+        <div class="r20-container">
+          <div class="r20-hero-inner r20-reveal visible">
+            <span class="r20-pill">Samsung R20 · General Imaging</span>
+
+            <h1>
+              R20
+              <span>Deep insight. Confident decisions.</span>
+            </h1>
+
+            <p>
+              Uma plataforma de ecografia que reúne formação avançada de imagem, ferramentas clínicas
+              assistidas por Inteligência Artificial e uma abordagem ergonómica desenvolvida para apoiar
+              o utilizador durante toda a rotina de exame.
+            </p>
+
+            <div class="r20-actions">
+              <a class="r20-btn r20-btn-primary" href="#r20Softwares">Explorar softwares clínicos</a>
+              <a class="r20-btn r20-btn-outline" href="#r20Ergonomia">Explorar ergonomia</a>
+            </div>
+
+            <div class="r20-hero-stats">
+              <div class="r20-hero-stat">
+                <strong>27”</strong>
+                <span>Monitor OLED</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>15.6”</strong>
+                <span>Touchscreen inclinável</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>360°</strong>
+                <span>Rotação do monitor</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>37/37</strong>
+                <span>Critérios ergonómicos atingidos ou ultrapassados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECNOLOGIA -->
+      <section id="r20Tecnologia" class="r20-section">
+        <div class="r20-container r20-grid-2">
+          <div class="r20-reveal">
+            <span class="r20-kicker">Advanced Imaging</span>
+
+            <h2 class="r20-title">Imagem concebida para revelar mais detalhe.</h2>
+
+            <p class="r20-lead">
+              O Samsung R20 combina formação avançada de imagem, processamento baseado em software
+              e ferramentas clínicas orientadas para General Imaging.
+            </p>
+
+            <div class="r20-feature-list">
+              <div class="r20-feature">
+                <div class="r20-feature-icon">01</div>
+                <div>
+                  <h3>3ª Harmónica</h3>
+                  <p>Tecnologia orientada para reforçar definição, contraste e delimitação de estruturas.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">02</div>
+                <div>
+                  <h3>Visualização vascular</h3>
+                  <p>Ferramentas avançadas de fluxo e contraste para avaliação da perfusão.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">03</div>
+                <div>
+                  <h3>OLED 27”</h3>
+                  <p>Grande área de visualização e rotação do monitor até 360°.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">04</div>
+                <div>
+                  <h3>Human Centered Design</h3>
+                  <p>Painel ajustável, touchscreen inclinável e cabos flex™ concebidos para maior conforto.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="r20-image-card r20-reveal">
+            <img
+              src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-R20-mv-flow.jpg"
+              alt="Samsung R20 - imagem clínica"
+            >
+            <figcaption class="r20-image-caption">Samsung R20 · Advanced Imaging.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- SOFTWARES -->
+      <section id="r20Softwares" class="r20-section r20-dark">
+        <div class="r20-container">
+
+          <div class="r20-software-heading r20-reveal">
+            <span class="r20-software-pill">✧ APOIO À DECISÃO CLÍNICA</span>
+            <h2 class="r20-title">Softwares Clínicos Samsung R20</h2>
+            <p class="r20-lead">
+              Ferramentas desenvolvidas para apoiar aquisição, análise e interpretação
+              em aplicações clínicas específicas.
+            </p>
+          </div>
+
+          <div class="r20-software-tabs">
+            <button class="r20-software-tab active" data-filter="all">Todos os Softwares</button>
+            <button class="r20-software-tab" data-filter="ai">Inteligência Artificial</button>
+            <button class="r20-software-tab" data-filter="ceus">CEUS &amp; Perfusão</button>
+            <button class="r20-software-tab" data-filter="elastografia">Elastografia</button>
+          </div>
+
+          <div class="r20-software-grid">
+
+            <!-- MV CEUS -->
+            <article class="r20-software-card r20-reveal" data-category="ceus">
+              <div class="r20-software-top">
+                <span class="r20-software-category">ECOGRAFIA COM CONTRASTE</span>
+                <span class="r20-software-badge">CEUS</span>
+              </div>
+
+              <div class="r20-software-image">
+                <img
+                  src="https://usa.samsunghealthcare.com/hs-fs/hubfs/Samsung-R20-MV-CEU-TOA.jpg"
+                  alt="MV CEUS com TOA Samsung R20"
+                >
+                <span class="r20-software-image-label">Imagem Clínica R20</span>
+              </div>
+
+              <h3>MV CEUS com TOA (Time of Arrival)</h3>
+
+              <p class="r20-software-summary">
+                Ecografia com contraste associada a análise temporal da perfusão, apresentando um mapa
+                codificado por cores do momento de chegada do contraste.
+              </p>
+
+              <div class="r20-software-benefits">
+                <div class="r20-software-benefit"><span>✓</span><p>Mapa temporal do aporte de contraste.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Visualização da dinâmica de perfusão.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Apoio à avaliação de padrões de realce.</p></div>
+              </div>
+            </article>
+
+            <!-- BREAST -->
+            <article class="r20-software-card r20-reveal" data-category="ai">
+              <div class="r20-software-top">
+                <span class="r20-software-category">SENOLOGIA E MAMA</span>
+                <span class="r20-software-badge">IA</span>
+              </div>
+
+              <div class="r20-software-image">
+                <img
+                  src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-r20-s-detect.jpg"
+                  alt="Live BreastAssist Samsung R20"
+                >
+                <span class="r20-software-image-label">Imagem Clínica R20</span>
+              </div>
+
+              <h3>Live BreastAssist™</h3>
+
+              <p class="r20-software-summary">
+                Assistência em tempo real durante a ecografia mamária, apoiando a identificação
+                e caracterização de áreas de interesse.
+              </p>
+
+              <div class="r20-software-benefits">
+                <div class="r20-software-benefit"><span>✓</span><p>Assistência durante a aquisição.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Apoio à caracterização das áreas de interesse.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Integração no fluxo BI-RADS®.</p></div>
+              </div>
+            </article>
+
+            <!-- LIVER -->
+            <article class="r20-software-card r20-reveal" data-category="ai">
+              <div class="r20-software-top">
+                <span class="r20-software-category">RADIOLOGIA HEPÁTICA</span>
+                <span class="r20-software-badge">IA</span>
+              </div>
+
+              <div class="r20-software-image">
+                <img
+                  src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-R20-Liver-Mass.jpg"
+                  alt="Live LiverAssist Samsung R20"
+                >
+                <span class="r20-software-image-label">Imagem Clínica R20</span>
+              </div>
+
+              <h3>Live LiverAssist™</h3>
+
+              <p class="r20-software-summary">
+                Ferramenta baseada em Deep Learning para apoio à identificação de áreas de interesse
+                durante a varredura hepática.
+              </p>
+
+              <div class="r20-software-benefits">
+                <div class="r20-software-benefit"><span>✓</span><p>Assinalamento dinâmico durante a aquisição.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Integração na rotina hepática.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Apoio à consistência da avaliação.</p></div>
+              </div>
+            </article>
+
+            <!-- EZSWI -->
+            <article class="r20-software-card r20-reveal" data-category="elastografia">
+              <div class="r20-software-top">
+                <span class="r20-software-category">ELASTOGRAFIA QUANTITATIVA</span>
+                <span class="r20-software-badge">EzSWI™</span>
+              </div>
+
+              <div class="r20-software-image">
+                <img
+                  src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-r20-EzSWI-thumbnail.jpg"
+                  alt="EzSWI Samsung R20"
+                >
+                <span class="r20-software-image-label">Samsung R20</span>
+              </div>
+
+              <h3>EzSWI™</h3>
+
+              <p class="r20-software-summary">
+                Assistência à elastografia quantitativa, analisando a estabilidade da aquisição
+                e apoiando a seleção de frames e ROI.
+              </p>
+
+              <div class="r20-software-benefits">
+                <div class="r20-software-benefit"><span>✓</span><p>Seleção de frames estáveis.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Assistência à colocação da ROI.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Indicador de fiabilidade para a medição.</p></div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ERGONOMIA -->
+      <section id="r20Ergonomia" class="r20-section r20-soft">
+        <div class="r20-container">
+          <div class="r20-reveal">
+            <span class="r20-kicker">Ergonomia R20</span>
+            <h2 class="r20-title">Ajustar o equipamento à pessoa — e não o contrário.</h2>
+            <p class="r20-lead">
+              A avaliação ergonómica independente do Samsung R20 analisou 37 critérios de referência.
+              O sistema atingiu ou ultrapassou todos os critérios avaliados.
+            </p>
+          </div>
+
+          <div class="r20-ergo-stats r20-reveal">
+            <div class="r20-ergo-stat"><strong>180°</strong><span>Rotação do painel de controlo</span></div>
+            <div class="r20-ergo-stat"><strong>11.25”</strong><span>Ajuste vertical do painel</span></div>
+            <div class="r20-ergo-stat"><strong>30°</strong><span>Inclinação do touchscreen de 15.6”</span></div>
+            <div class="r20-ergo-stat"><strong>360°</strong><span>Rotação do monitor OLED de 27”</span></div>
+          </div>
+
+          <div class="r20-ergo-highlight">
+            <div class="r20-ergo-score r20-reveal">
+              <strong>100%</strong>
+              <h3>37 critérios ergonómicos</h3>
+              <p>O Samsung R20 atingiu ou ultrapassou todos os 37 critérios analisados na avaliação.</p>
+            </div>
+
+            <div class="r20-ergo-visual r20-reveal">
+              <div class="r20-ergo-block">
+                <strong>27”</strong>
+                <p>Monitor OLED de grande dimensão com rotação até 360°.</p>
+              </div>
+              <div class="r20-ergo-block">
+                <strong>15.6”</strong>
+                <p>Touchscreen inclinável até 30° para utilização sentada ou em pé.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLEX CABLES -->
+      <section id="r20Flex" class="r20-section r20-dark">
+        <div class="r20-container">
+          <div class="r20-reveal">
+            <span class="r20-kicker">flex™ cable</span>
+            <h2 class="r20-title">Menos peso no cabo. Menos esforço acumulado.</h2>
+            <p class="r20-lead">
+              Os transdutores e cabos flex™ foram redesenhados com foco em menor peso,
+              menor área de secção, equilíbrio e conforto de utilização.
+            </p>
+          </div>
+
+          <div class="r20-flex-grid">
+            <div class="r20-flex-visual r20-reveal">
+              <div class="r20-cable-graphic">
+                <div class="r20-cable-line"></div>
+                <div class="r20-cable-probe"></div>
+              </div>
+            </div>
+
+            <div class="r20-flex-info r20-reveal">
+              <h3>Leve, equilibrado e concebido para movimentos mais naturais.</h3>
+
+              <p>
+                O redesenho dos transdutores e dos cabos procura reduzir a carga física
+                associada à manipulação repetida durante exames prolongados.
+              </p>
+
+              <div class="r20-flex-metrics">
+                <div class="r20-flex-metric"><strong>33–66%</strong><span>redução de peso do cabo</span></div>
+                <div class="r20-flex-metric"><strong>18–50%</strong><span>redução da área de secção</span></div>
+                <div class="r20-flex-metric"><strong>9–26%</strong><span>redução de peso dos transdutores</span></div>
+                <div class="r20-flex-metric"><strong>20–30%</strong><span>redução da ativação do deltóide nos protocolos avaliados</span></div>
+              </div>
+
+              <div class="r20-flex-list">
+                <div class="r20-flex-item"><div class="r20-flex-check">✓</div><p>Menor massa suspensa durante a utilização da sonda.</p></div>
+                <div class="r20-flex-item"><div class="r20-flex-check">✓</div><p>Menor arrasto durante os movimentos repetitivos.</p></div>
+                <div class="r20-flex-item"><div class="r20-flex-check">✓</div><p>Geometria orientada para uma pega mais natural.</p></div>
+                <div class="r20-flex-item"><div class="r20-flex-check">✓</div><p>Textura antiderrapante para maior estabilidade.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="r20-cta">
+        <div class="r20-container r20-cta-inner">
+          <div>
+            <h2>Conheça o Samsung R20 em detalhe.</h2>
+            <p>
+              Para informação técnica, configuração, disponibilidade ou demonstração do sistema
+              em Portugal, contacte a Speculum.
+            </p>
+          </div>
+
+          <a class="r20-contact-button" href="https://www.speculum.pt/contactos.html">Contactar Speculum</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="r20-footer">
+      <div class="r20-container">
+        <div class="r20-footer-grid">
+
+          <div class="r20-footer-logo">
+            <img src="https://www.speculum.pt/files/images/logo_20200619_043032.PNG" alt="Speculum">
+            <p>Soluções e equipamentos para profissionais e instituições de saúde.</p>
+          </div>
+
+          <div>
+            <h4>INSTITUCIONAL</h4>
+            <ul>
+              <li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li>
+              <li><a href="https://www.speculum.pt/medicoshospitalares.html">Produtos</a></li>
+              <li><a href="https://www.speculum.pt/servicos.html">Serviços</a></li>
+              <li><a href="https://www.speculum.pt/catalogos.html">Catálogos</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>PRODUTOS</h4>
+            <ul>
+              <li>Consumíveis</li>
+              <li>Equipamentos</li>
+              <li>Ecografia</li>
+              <li>Inovação</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>CONTACTOS</h4>
+            <ul>
+              <li>21 472 80 40 · 808 200 306</li>
+              <li><a href="mailto:cliente@speculum.pt">cliente@speculum.pt</a></li>
+              <li>Travessa do Miradouro, nº1</li>
+              <li>2610-114 Alfragide · Portugal</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="r20-footer-note">
+          Informação técnica baseada em documentação Samsung R20 e na avaliação ergonómica do sistema.
+          Funcionalidades e disponibilidade podem variar segundo configuração e mercado.
+        </div>
+
+        <div class="r20-footer-bottom">
+          Speculum · Samsung R20 · Todos os direitos reservados
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var menuButton = document.getElementById("r20MenuButton");
+      var mobileMenu = document.getElementById("r20MobileMenu");
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("open");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.remove("open");
+          });
+        });
+      }
+
+      var tabs = document.querySelectorAll(".r20-software-tab");
+      var cards = document.querySelectorAll(".r20-software-card");
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          tabs.forEach(function (t) { t.classList.remove("active"); });
+          tab.classList.add("active");
+
+          var filter = tab.getAttribute("data-filter");
+
+          cards.forEach(function (card) {
+            if (filter === "all" || card.getAttribute("data-category") === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      var revealEls = document.querySelectorAll(".r20-reveal");
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        revealEls.forEach(function (el) { observer.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("visible"); });
+      }
+    })();
+  </script>
+
+</body>
+</html>
