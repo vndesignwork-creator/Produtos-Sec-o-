@@ -364,14 +364,22 @@
 
     .r20-flex-visual {
       min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
       overflow: hidden;
       border-radius: 23px;
-      background-image:
+      background:
         radial-gradient(circle at 50% 35%, rgba(28, 181, 219, 0.12), transparent 38%),
-        url("https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-healthcare-r20-probe-fan.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center 82%;
+        linear-gradient(145deg, #eef3f5, #dbe6ea);
+    }
+
+    .r20-flex-visual img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .r20-flex-info { padding: 32px; border: 1px solid rgba(113, 225, 252, 0.16); border-radius: 23px; background: #0b2536; }
@@ -815,7 +823,12 @@
           </div>
 
           <div class="r20-flex-grid">
-            <div class="r20-flex-visual r20-reveal"></div>
+            <div class="r20-flex-visual r20-reveal">
+              <img
+                src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-healthcare-r20-probe-fan.jpg"
+                alt="Transdutores e cabos flex™ Samsung R20 - mais finos e leves"
+              >
+            </div>
 
             <div class="r20-flex-info r20-reveal">
               <h3>Leve, equilibrado e concebido para movimentos mais naturais.</h3>
