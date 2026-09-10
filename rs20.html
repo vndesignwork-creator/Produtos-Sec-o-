@@ -125,6 +125,7 @@
       position: absolute;
       inset: 0;
       background:
+        radial-gradient(55% 65% at 79% 74%, rgba(3, 16, 27, 0.6), transparent 72%),
         linear-gradient(90deg, rgba(3, 16, 27, 0.98) 0%, rgba(3, 16, 27, 0.85) 43%, rgba(3, 16, 27, 0.26) 76%, rgba(3, 16, 27, 0.52) 100%),
         url("https://img.global.news.samsung.com/global/wp-content/uploads/2025/12/01091146/Samsung-Corporate-More-Stories-Samsung-Medison-RSNA-2025-R20-Ultrasound-System_main1.jpg")
         center / cover no-repeat;
@@ -136,6 +137,19 @@
       left: 0; right: 0; bottom: 0;
       height: 140px;
       background: linear-gradient(transparent, #071722);
+    }
+
+    .r20-hero-device {
+      position: absolute;
+      right: 4%;
+      bottom: 0;
+      height: 86%;
+      width: auto;
+      max-width: min(40%, calc(100% - 880px));
+      object-fit: contain;
+      object-position: bottom;
+      filter: drop-shadow(0 26px 55px rgba(0, 0, 0, 0.55));
+      pointer-events: none;
     }
 
     .r20-hero-inner { position: relative; z-index: 2; max-width: 790px; padding: 90px 0 105px; }
@@ -456,6 +470,7 @@
     @media (max-width: 1100px) {
       .r20-main-nav { display: none; }
       .r20-menu-button { display: block; }
+      .r20-hero-device { display: none; }
       .r20-software-grid { grid-template-columns: repeat(2, 1fr); }
       .r20-footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -567,6 +582,12 @@
 
       <!-- HERO -->
       <section id="r20Hero" class="r20-hero">
+        <img
+          class="r20-hero-device"
+          src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/products/r20-ecografo.png"
+          alt="Ecógrafo Samsung R20"
+        >
+
         <div class="r20-container">
           <div class="r20-hero-inner r20-reveal visible">
             <span class="r20-pill">Samsung R20 · General Imaging</span>
