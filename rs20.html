@@ -464,8 +464,18 @@
       .r20-software-grid { grid-template-columns: 1fr; }
       .r20-software-tabs { justify-content: flex-start; }
       .r20-ergo-stats, .r20-flex-metrics { grid-template-columns: 1fr; }
-      .r20-footer-grid { grid-template-columns: 1fr; }
       .r20-hero h1 { font-size: 52px; }
+
+      .r20-ergo-block {
+        min-height: 260px;
+        padding: 16px;
+        background-color: #0d1f30;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .r20-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .r20-footer-logo, .r20-footer-grid > div:last-child { grid-column: 1 / -1; }
     }
   </style>
 </head>
