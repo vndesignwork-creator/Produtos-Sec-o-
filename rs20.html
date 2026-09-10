@@ -478,13 +478,24 @@
       .r20-ergo-stats, .r20-flex-metrics { grid-template-columns: 1fr; }
       .r20-hero h1 { font-size: 52px; }
 
-      .r20-ergo-block {
-        min-height: 260px;
+      .r20-ergo-visual { min-height: 0; }
+
+      .r20-ergo-block,
+      .r20-ergo-block--monitor,
+      .r20-ergo-block--panel {
+        min-height: 230px;
         padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         background-color: #0d1f30;
         background-size: contain;
         background-repeat: no-repeat;
+        background-position: center center;
       }
+
+      .r20-flex-visual { min-height: 0; padding: 14px; }
+      .r20-flex-visual img { width: 100%; }
 
       .r20-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
       .r20-footer-grid > *:nth-child(1),
