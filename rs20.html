@@ -31,7 +31,7 @@
       --soft: #f4f7f9;
       --line: #dfe7eb;
       --white: #ffffff;
-      --shadow: 0 20px 55px rgba(0, 36, 58, 0.13);
+      --shadow: 0 10px 28px rgba(0, 36, 58, 0.08);
     }
 
     * { box-sizing: border-box; }
@@ -189,7 +189,7 @@
     .r20-hero-stat span { display: block; margin-top: 8px; color: #bfd3dc; font-size: 11px; line-height: 1.45; }
 
     /* GENERIC GRID */
-    .r20-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .r20-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: stretch; }
     .r20-feature-list { display: grid; gap: 13px; margin-top: 30px; }
     .r20-feature { display: grid; grid-template-columns: 45px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
     .r20-feature:last-child { border-bottom: 0; }
@@ -319,14 +319,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 320px;
-      padding: 24px;
+      min-height: 480px;
+      padding: 20px;
       border-radius: 23px;
       background: linear-gradient(145deg, #eef3f5, #dbe6ea);
       box-shadow: var(--shadow);
     }
 
-    .r20-ergo-device-card img { width: 100%; height: auto; max-height: 320px; object-fit: contain; }
+    .r20-ergo-device-card img { width: auto; height: 100%; max-height: 480px; max-width: 100%; object-fit: contain; }
 
     .r20-ergo-slider {
       position: relative;
@@ -1124,7 +1124,6 @@
       <section id="r20Flex" class="r20-section r20-dark">
         <div class="r20-container">
           <div class="r20-reveal">
-            <span class="r20-kicker">flex™ cable</span>
             <h2 class="r20-title">Menos peso no cabo. Menos esforço acumulado.</h2>
             <p class="r20-lead">
               Os transdutores e cabos flex™ foram redesenhados com foco em menor peso,
