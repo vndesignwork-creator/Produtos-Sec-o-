@@ -328,6 +328,10 @@
 
     .r20-ergo-device-card img { width: 100%; height: auto; max-height: 320px; object-fit: contain; }
 
+    .r20-ergo-diagrams { display: grid; gap: 24px; margin-top: 46px; }
+    .r20-ergo-diagram-card { margin: 0; border-radius: 23px; overflow: hidden; background: #e7edf0; box-shadow: var(--shadow); }
+    .r20-ergo-diagram-card img { width: 100%; height: auto; display: block; }
+
     .r20-ergo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 35px; }
     .r20-ergo-stat { padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: #ffffff; }
     .r20-ergo-stat strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
@@ -952,7 +956,6 @@
       <section id="r20Ergonomia" class="r20-section r20-soft">
         <div class="r20-container">
           <div class="r20-reveal">
-            <span class="r20-kicker">Ergonomia R20</span>
             <h2 class="r20-title">Projetado para si, aperfeiçoado para imagens de corpo inteiro.</h2>
             <p class="r20-lead">
               Cada curva, cada controlo — pensados a pensar nos profissionais de saúde. O R20 combina
@@ -1026,30 +1029,21 @@
             </div>
           </div>
 
-          <div class="r20-ergo-stats r20-reveal">
-            <div class="r20-ergo-stat"><strong>180°</strong><span>Rotação do painel de controlo</span></div>
-            <div class="r20-ergo-stat"><strong>11.25”</strong><span>Ajuste vertical do painel</span></div>
-            <div class="r20-ergo-stat"><strong>30°</strong><span>Inclinação do touchscreen de 15.6”</span></div>
-            <div class="r20-ergo-stat"><strong>360°</strong><span>Rotação do monitor OLED de 27”</span></div>
-          </div>
-
-          <div class="r20-ergo-highlight">
-            <div class="r20-ergo-score r20-reveal">
-              <strong>100%</strong>
-              <h3>37 critérios ergonómicos</h3>
-              <p>O Samsung R20 atingiu ou ultrapassou todos os 37 critérios analisados na avaliação.</p>
-            </div>
-
-            <div class="r20-ergo-visual r20-reveal">
-              <div class="r20-ergo-block r20-ergo-block--monitor">
-                <strong>27”</strong>
-                <p>Monitor OLED de grande dimensão com rotação até 360°.</p>
-              </div>
-              <div class="r20-ergo-block r20-ergo-block--panel">
-                <strong>15.6”</strong>
-                <p>Touchscreen inclinável até 30° para utilização sentada ou em pé.</p>
-              </div>
-            </div>
+          <div class="r20-ergo-diagrams r20-reveal">
+            <figure class="r20-ergo-diagram-card">
+              <img
+                src="https://www.samsunghealthcare.com/upload/ba921796-4dc7-4f41-ba3d-3e1eec3469ac.png"
+                alt="O painel de controlo do R20 ajusta-se facilmente para suportar rastreios de corpo inteiro, da cabeça aos pés, com reposicionamento mínimo"
+                loading="lazy"
+              >
+            </figure>
+            <figure class="r20-ergo-diagram-card">
+              <img
+                src="https://www.samsunghealthcare.com/upload/8ad57553-bc56-4fa8-8b99-ce3c606741d3.png"
+                alt="Vista frontal do R20 com as principais características: monitor OLED de 27”, touchscreen de 15.6”, bloqueio num só toque, compartimentos amplos, aquecedor de gel e iluminação LED"
+                loading="lazy"
+              >
+            </figure>
           </div>
         </div>
       </section>
