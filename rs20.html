@@ -313,6 +313,21 @@
     .r20-software-benefit p { margin: 0; color: #d6e5ee; font-size: 10px; line-height: 1.55; }
 
     /* ERGONOMIA */
+    .r20-ergo-showcase { margin-top: 46px; }
+
+    .r20-ergo-device-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      padding: 24px;
+      border-radius: 23px;
+      background: linear-gradient(145deg, #eef3f5, #dbe6ea);
+      box-shadow: var(--shadow);
+    }
+
+    .r20-ergo-device-card img { width: 100%; height: auto; max-height: 320px; object-fit: contain; }
+
     .r20-ergo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 35px; }
     .r20-ergo-stat { padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: #ffffff; }
     .r20-ergo-stat strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
@@ -569,7 +584,7 @@
       <section id="r20Hero" class="r20-hero">
         <div class="r20-container">
           <div class="r20-hero-inner r20-reveal visible">
-            <span class="r20-pill">Samsung R20 · General Imaging</span>
+            <span class="r20-pill">Samsung R20</span>
 
             <h1>
               R20
@@ -577,9 +592,9 @@
             </h1>
 
             <p>
-              Uma plataforma de ecografia que reúne formação avançada de imagem, ferramentas clínicas
-              assistidas por Inteligência Artificial e uma abordagem ergonómica desenvolvida para apoiar
-              o utilizador durante toda a rotina de exame.
+              O R20 é mais do que um ecógrafo — é uma solução completa, desenvolvida ao pormenor para
+              apoiar os profissionais de saúde em cada etapa dos cuidados ao doente, desde o rastreio
+              e o diagnóstico inicial até à intervenção e além.
             </p>
 
             <div class="r20-actions">
@@ -618,8 +633,9 @@
             <h2 class="r20-title">Imagem concebida para revelar mais detalhe.</h2>
 
             <p class="r20-lead">
-              O Samsung R20 combina formação avançada de imagem, processamento baseado em software
-              e ferramentas clínicas orientadas para General Imaging.
+              Com qualidade de imagem de ponta, ferramentas clínicas melhoradas por Inteligência
+              Artificial, fluxo de trabalho simplificado e um design intuitivo, o R20 permite que os
+              profissionais de saúde se concentrem no que mais importa: cuidados precisos e confiáveis.
             </p>
 
             <div class="r20-feature-list">
@@ -632,19 +648,6 @@
                 <div>
                   <h3>3ª Harmónica</h3>
                   <p>Tecnologia orientada para reforçar definição, contraste e delimitação de estruturas.</p>
-                </div>
-              </div>
-
-              <div class="r20-feature">
-                <div class="r20-feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3.4c3.4 3.6 5.9 6.8 5.9 9.8a5.9 5.9 0 0 1-11.8 0c0-3 2.5-6.2 5.9-9.8z"/>
-                    <path d="M8.8 14.2h1.9l1-2 1.4 3.3.9-1.3h1.3"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3>Visualização vascular</h3>
-                  <p>Ferramentas avançadas de fluxo e contraste para avaliação da perfusão.</p>
                 </div>
               </div>
 
@@ -695,22 +698,16 @@
             <span class="r20-software-pill">✧ APOIO À DECISÃO CLÍNICA</span>
             <h2 class="r20-title">Softwares Clínicos Samsung R20</h2>
             <p class="r20-lead">
-              Ferramentas desenvolvidas para apoiar aquisição, análise e interpretação
-              em aplicações clínicas específicas.
+              Equipado com várias soluções de Inteligência Artificial e ferramentas avançadas, o R20
+              aumenta a confiança dos médicos em diversos cenários de diagnóstico — os exemplos abaixo
+              são apenas uma amostra de todo o portefólio clínico disponível.
             </p>
-          </div>
-
-          <div class="r20-software-tabs">
-            <button class="r20-software-tab active" data-filter="all">Todos os Softwares</button>
-            <button class="r20-software-tab" data-filter="ai">Inteligência Artificial</button>
-            <button class="r20-software-tab" data-filter="ceus">CEUS &amp; Perfusão</button>
-            <button class="r20-software-tab" data-filter="elastografia">Elastografia</button>
           </div>
 
           <div class="r20-software-grid">
 
             <!-- MV CEUS -->
-            <article class="r20-software-card r20-reveal" data-category="ceus">
+            <article class="r20-software-card r20-reveal">
               <div class="r20-software-top">
                 <span class="r20-software-category">ECOGRAFIA COM CONTRASTE</span>
                 <span class="r20-software-badge">CEUS</span>
@@ -739,7 +736,7 @@
             </article>
 
             <!-- BREAST -->
-            <article class="r20-software-card r20-reveal" data-category="ai">
+            <article class="r20-software-card r20-reveal">
               <div class="r20-software-top">
                 <span class="r20-software-category">SENOLOGIA E MAMA</span>
                 <span class="r20-software-badge">IA</span>
@@ -768,7 +765,7 @@
             </article>
 
             <!-- LIVER -->
-            <article class="r20-software-card r20-reveal" data-category="ai">
+            <article class="r20-software-card r20-reveal">
               <div class="r20-software-top">
                 <span class="r20-software-category">RADIOLOGIA HEPÁTICA</span>
                 <span class="r20-software-badge">IA</span>
@@ -797,7 +794,7 @@
             </article>
 
             <!-- EZSWI -->
-            <article class="r20-software-card r20-reveal" data-category="elastografia">
+            <article class="r20-software-card r20-reveal">
               <div class="r20-software-top">
                 <span class="r20-software-category">ELASTOGRAFIA QUANTITATIVA</span>
                 <span class="r20-software-badge">EzSWI™</span>
@@ -825,6 +822,35 @@
               </div>
             </article>
 
+            <!-- DEEPUSFF -->
+            <article class="r20-software-card r20-reveal">
+              <div class="r20-software-top">
+                <span class="r20-software-category">AVALIAÇÃO HEPÁTICA</span>
+                <span class="r20-software-badge">IA</span>
+              </div>
+
+              <div class="r20-software-image">
+                <img
+                  src="https://www.samsunghealthcare.com/upload/61484b22-7954-4080-a555-a87a9d23e5d7.png"
+                  alt="Fração de gordura por ecografia com IA - DeepUSFF Samsung R20"
+                >
+                <span class="r20-software-image-label">Imagem Clínica R20</span>
+              </div>
+
+              <h3>DeepUSFF™</h3>
+
+              <p class="r20-software-summary">
+                Recurso baseado em tecnologia de Inteligência Artificial que fornece informação sobre
+                a proporção de gordura no fígado, apoiando o diagnóstico não invasivo de esteatose hepática.
+              </p>
+
+              <div class="r20-software-benefits">
+                <div class="r20-software-benefit"><span>✓</span><p>Quantificação não invasiva da gordura hepática.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Dados objetivos para apoio ao diagnóstico.</p></div>
+                <div class="r20-software-benefit"><span>✓</span><p>Apoio ao rastreio e seguimento da esteatose hepática.</p></div>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
@@ -834,11 +860,77 @@
         <div class="r20-container">
           <div class="r20-reveal">
             <span class="r20-kicker">Ergonomia R20</span>
-            <h2 class="r20-title">Ajustar o equipamento à pessoa — e não o contrário.</h2>
+            <h2 class="r20-title">Projetado para si, aperfeiçoado para imagens de corpo inteiro.</h2>
             <p class="r20-lead">
-              A avaliação ergonómica independente do Samsung R20 analisou 37 critérios de referência.
-              O sistema atingiu ou ultrapassou todos os critérios avaliados.
+              Cada curva, cada controlo — pensados a pensar nos profissionais de saúde. O R20 combina
+              um design elegante com uma utilização intuitiva, oferecendo cobertura completa do corpo
+              e uma manobrabilidade perfeita. Porque um bom design não se resume à aparência, mas sim
+              à forma como funciona para si.
             </p>
+          </div>
+
+          <div class="r20-ergo-showcase r20-grid-2 r20-reveal">
+            <div class="r20-ergo-device-card">
+              <img
+                src="https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@main/images/products/r20-ecografo.png"
+                alt="Samsung R20 - vista frontal"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="r20-feature-list">
+              <div class="r20-feature">
+                <div class="r20-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="5" y="11" width="14" height="9" rx="2"/>
+                    <path d="M8 11V7.5a4 4 0 0 1 8 0V11"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Bloqueio num só toque</h3>
+                  <p>Trava e destrava o sistema sem ser preciso bloquear cada roda individualmente.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 18h6"/>
+                    <path d="M10 21h4"/>
+                    <path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 1.2 1 2.1h5c0-.9.4-1.65 1-2.1A6 6 0 0 0 12 3z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Iluminação LED</h3>
+                  <p>Ajuda a montar os transdutores com precisão em ambientes com pouca luz.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="8" width="16" height="8" rx="4"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Aquecedor de gel</h3>
+                  <p>Pode ser montado de qualquer lado do equipamento, evitando colisões.</p>
+                </div>
+              </div>
+
+              <div class="r20-feature">
+                <div class="r20-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3.5" y="6" width="17" height="13" rx="2"/>
+                    <path d="M3.5 11h17"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Compartimentos amplos</h3>
+                  <p>Espaço para tabuleiros, impressora e outros acessórios do dia a dia.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="r20-ergo-stats r20-reveal">
@@ -1054,26 +1146,6 @@
           });
         });
       }
-
-      var tabs = document.querySelectorAll(".r20-software-tab");
-      var cards = document.querySelectorAll(".r20-software-card");
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener("click", function () {
-          tabs.forEach(function (t) { t.classList.remove("active"); });
-          tab.classList.add("active");
-
-          var filter = tab.getAttribute("data-filter");
-
-          cards.forEach(function (card) {
-            if (filter === "all" || card.getAttribute("data-category") === filter) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
-        });
-      });
 
       var revealEls = document.querySelectorAll(".r20-reveal");
 
