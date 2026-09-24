@@ -214,7 +214,7 @@
 
 		/* ===== Cabeçalho compacto ao rolar =====
 		   A classe .compacto é posta por JS a partir dos ~90px de scroll. Esconde a barra de
-		   topo e encolhe o logótipo: o cabeçalho passa de 146 para cerca de 66px no desktop.
+		   topo e encolhe o logótipo: no desktop o cabeçalho passa de 146 para 74px.
 		   A transição está na altura do logótipo — animar a altura do cabeçalho faria o menu
 		   saltar, porque ele é dimensionado pelo conteúdo. */
 		@media (min-width:992px){
@@ -224,7 +224,20 @@
 
 		#navtop.compacto .navtop-top-bar{display:none!important}
 		#navtop.compacto .logo img{height:50px!important;width:auto!important}
-		#navtop.compacto .menu-center{padding-block-end:0!important}
+		/* A stylesheet.css do site afina a vertical destas peças para o cabeçalho por extenso:
+		   margin-top:-10px na .menu-left, padding-bottom:20px na .menu-center e margin-top:26px
+		   na lista do menu. Com o cabeçalho mais baixo, esses valores punham o logótipo a sair
+		   por cima (topo em -10px, cortado) e o menu a transbordar por baixo. No modo compacto
+		   os deslocamentos são anulados e as duas colunas são centradas à mão. Com elas fora do
+		   fluxo, a altura deixa de vir dos floats e passa a ser fixada aqui. */
+		#navtop.compacto #navtopinner{height:74px!important}
+		#navtop.compacto .menu-left,#navtop.compacto .menu-center{position:absolute!important;
+			inset-block-start:50%!important;transform:translateY(-50%)!important;
+			margin:0!important;padding:0!important;height:auto!important}
+		#navtop.compacto .menu-left{inset-inline-start:0!important}
+		#navtop.compacto .menu-center{inset-inline-end:0!important}
+		#navtop.compacto nav.fright{height:auto!important}
+		#navtop.compacto ul.sf-menu{margin-block-start:0!important}
 		/* Abaixo de 992px não há modo compacto: a barra de topo já está escondida e o cabeçalho
 		   tem min-height:58px, por isso encolher o logótipo não devolveria altura nenhuma. */
 
