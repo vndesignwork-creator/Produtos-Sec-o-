@@ -207,37 +207,55 @@
 			/* A lista de resultados cai por baixo do campo, sobre o resto do cabeçalho. */
 			#navtop #search-input-section #search-content{width:380px!important;max-width:none!important;
 				inset-inline-end:0!important;inset-inline-start:auto!important;z-index:10003!important}
-			/* Ao rolar sai com o resto da barra de topo. Não basta esconder a .navtop-top-bar:
-			   a pesquisa é irmã dela, não filha, e ficaria a flutuar sobre o logótipo. */
-			#navtop.compacto #search-input-section{display:none!important}
 		}
 
 		/* ===== Cabeçalho compacto ao rolar =====
-		   A classe .compacto é posta por JS a partir dos ~90px de scroll. Esconde a barra de
-		   topo e encolhe o logótipo: no desktop o cabeçalho passa de 146 para 74px.
-		   A transição está na altura do logótipo — animar a altura do cabeçalho faria o menu
-		   saltar, porque ele é dimensionado pelo conteúdo. */
-		@media (min-width:992px){
-			#navtop .logo img{transition:height .18s ease-out}
-		}
-		@media (prefers-reduced-motion:reduce){#navtop .logo img{transition:none}}
+		   A classe .compacto é posta por JS a partir dos ~90px de scroll: a barra de topo
+		   recolhe-se e o logótipo encolhe, levando o cabeçalho de 146 para 74px.
 
-		#navtop.compacto .navtop-top-bar{display:none!important}
-		#navtop.compacto .logo img{height:50px!important;width:auto!important}
-		/* A stylesheet.css do site afina a vertical destas peças para o cabeçalho por extenso:
-		   margin-top:-10px na .menu-left, padding-bottom:20px na .menu-center e margin-top:26px
-		   na lista do menu. Com o cabeçalho mais baixo, esses valores punham o logótipo a sair
-		   por cima (topo em -10px, cortado) e o menu a transbordar por baixo. No modo compacto
-		   os deslocamentos são anulados e as duas colunas são centradas à mão. Com elas fora do
-		   fluxo, a altura deixa de vir dos floats e passa a ser fixada aqui. */
-		#navtop.compacto #navtopinner{height:74px!important}
-		#navtop.compacto .menu-left,#navtop.compacto .menu-center{position:absolute!important;
-			inset-block-start:50%!important;transform:translateY(-50%)!important;
-			margin:0!important;padding:0!important;height:auto!important}
-		#navtop.compacto .menu-left{inset-inline-start:0!important}
-		#navtop.compacto .menu-center{inset-inline-end:0!important}
-		#navtop.compacto nav.fright{height:auto!important}
-		#navtop.compacto ul.sf-menu{margin-block-start:0!important}
+		   Tudo o que muda são propriedades animáveis — alturas, margens, preenchimentos e
+		   opacidade. Nada de `display:none` nem de trocar `position`, que cortam a meio: a
+		   barra de topo fecha-se de 46 para 0 de altura, e as peças por baixo sobem com ela.
+
+		   A stylesheet.css do site afina a vertical destas peças para o cabeçalho por extenso
+		   (margin-top:-10px na .menu-left, padding-bottom:20px na .menu-center, margin-top:26px
+		   na lista do menu). Com o cabeçalho mais baixo esses valores punham o logótipo a sair
+		   por cima, cortado, e o menu a transbordar por baixo; no estado compacto são
+		   substituídos por valores que centram as duas colunas nos 74px — e, por serem margens
+		   e preenchimentos, fazem-no a deslizar em vez de aos saltos. */
+		@media (min-width:992px){
+			#navtop .navtop-top-bar{overflow:hidden;
+				transition:height .26s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+			/* O site fixa #navtopinner em 100px, por isso o cabeçalho nunca desceria abaixo
+			   disso só por encolher o que está lá dentro. Como ambos os extremos são valores
+			   explícitos, a altura interpola-se. */
+			#navtop #navtopinner{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .logo img{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			/* As duas colunas também têm altura fixa do site (80px); sem a encolher, o cabeçalho
+			   ficava pelos 104px mesmo com o interior a 74. */
+			#navtop .menu-left{transition:height .26s cubic-bezier(.4,0,.2,1),
+				margin-block-start .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .menu-center{transition:height .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop ul.sf-menu{transition:margin-block-start .26s cubic-bezier(.4,0,.2,1)}
+			/* A pesquisa esvai-se antes do resto; visibility só comuta no fim, para o campo
+			   deixar de apanhar cliques enquanto ainda se vê. */
+			#navtop #search-input-section{transition:opacity .18s ease,visibility 0s linear .18s}
+
+			#navtop.compacto .navtop-top-bar{height:0!important;opacity:0}
+			#navtop.compacto #navtopinner{height:74px!important}
+			#navtop.compacto #search-input-section{opacity:0;visibility:hidden}
+			#navtop.compacto .logo img{height:50px!important;width:auto!important}
+			#navtop.compacto .menu-left{height:50px!important;margin-block-start:12px!important;
+				padding-block-end:12px!important}
+			#navtop.compacto .menu-center{height:71px!important;padding-block-end:3px!important}
+			#navtop.compacto ul.sf-menu{margin-block-start:2px!important}
+		}
+		@media (prefers-reduced-motion:reduce){
+			#navtop .navtop-top-bar,#navtop #navtopinner,#navtop .logo img,#navtop .menu-left,
+			#navtop .menu-center,#navtop ul.sf-menu,#navtop #search-input-section{transition:none!important}
+		}
 		/* Abaixo de 992px não há modo compacto: a barra de topo já está escondida e o cabeçalho
 		   tem min-height:58px, por isso encolher o logótipo não devolveria altura nenhuma. */
 
@@ -1591,13 +1609,28 @@
 			if (!cabecalho) return;
 			var COMPACTA_A = 90, EXPANDE_A = 20;
 
+			// A altura do cabeçalho muda ao longo da transição, não de uma vez. A barra de
+			// secções e o destino das âncoras seguem --header-now, por isso essa variável é
+			// remedida a cada fotograma enquanto a transição decorre — senão a barra saltava
+			// para a posição final ainda o cabeçalho ia a meio do caminho.
+			function seguirTransicao() {
+				var fim = performance.now() + 320;
+				(function passo() {
+					setHeaderOffset();
+					if (performance.now() < fim) requestAnimationFrame(passo);
+				})();
+				// Em separadores em segundo plano o requestAnimationFrame fica suspenso;
+				// este temporizador garante o valor final mesmo nesse caso.
+				setTimeout(setHeaderOffset, 340);
+			}
+
 			function aoRolar() {
 				var y = window.scrollY || document.documentElement.scrollTop || 0;
 				var compacto = cabecalho.classList.contains('compacto');
 				if (!compacto && y > COMPACTA_A) cabecalho.classList.add('compacto');
 				else if (compacto && y < EXPANDE_A) cabecalho.classList.remove('compacto');
 				else return;
-				setHeaderOffset(); // republica --header-now com a altura nova
+				seguirTransicao();
 			}
 
 			window.addEventListener('scroll', aoRolar, { passive: true });
