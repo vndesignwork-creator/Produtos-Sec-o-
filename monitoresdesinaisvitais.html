@@ -120,6 +120,11 @@
 			right:auto!important;display:inline-block;width:100%!important;max-width:380px!important;
 			height:50px!important;margin:0!important;padding:0!important;background:transparent!important;
 			border:0!important;z-index:auto!important;box-shadow:0 10px 26px rgba(0,65,107,.18)!important}
+		/* Na barra de topo o campo é pequeno: a sombra da faixa larga (26px de desfoque,
+		   10px de deslocamento) pesava demasiado. Aqui fica um pousio discreto. */
+		@media (min-width:992px){
+			#navtop #search-input-section form#searchform{box-shadow:0 1px 3px rgba(0,65,107,.1)!important}
+		}
 
 		/* Campo + botão */
 		#navtop #search-input-section .search-input{box-sizing:border-box!important;width:100%!important;height:50px!important;
