@@ -27,9 +27,14 @@
 		   Resultado: uma só barra vertical, sem barra horizontal. */
 		html{overflow-x:clip!important;height:auto!important}
 		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
-		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo).
+		/* Offset do cabeçalho fixo. Duas variáveis, ambas mantidas por JS:
+		     --header-h   altura do cabeçalho por extenso; só muda com a largura da janela.
+		     --header-now altura neste momento, que baixa quando o cabeçalho fica compacto.
+		   O espaço reservado aqui usa --header-h: se seguisse a altura actual, encolheria ao
+		   rolar e a página daria um salto. Quem acompanha o cabeçalho ao rolar (a barra de
+		   secções e o destino das âncoras) é que usa --header-now.
 		   --search-h acrescenta a faixa da pesquisa quando esta fica por baixo do cabeçalho
-		   (no desktop o site mantém-na sempre aberta), para não tapar a barra de especialidades. */
+		   (abaixo de 992px, ao abrir pela lupa), para não tapar o conteúdo. */
 		#produtos-main{padding-block-start:calc(var(--header-h,90px) + var(--search-h,0px))}
 
 		:root{
@@ -50,7 +55,7 @@
 
 		/* Cabeçalho fixo: o offset do body e o topo do menu mobile são definidos por JS (--header-h) */
 		#navtop .toggle-menu{top:50%!important;transform:translateY(-50%);margin:0!important}
-		#navtop .mobile-menu{top:var(--header-h,80px)!important;background:#fff!important}
+		#navtop .mobile-menu{top:var(--header-now,80px)!important;background:#fff!important}
 		/* Rodapé sempre à largura toda (o site limitava a largura de .site-footer) */
 		#grid-wrap-footer .site-footer{width:100%!important;max-width:none!important;box-sizing:border-box!important}
 		/* Espaço em cinza-claro entre a secção do orçamento e o rodapé (separa as duas secções em azul) */
@@ -202,7 +207,26 @@
 			/* A lista de resultados cai por baixo do campo, sobre o resto do cabeçalho. */
 			#navtop #search-input-section #search-content{width:380px!important;max-width:none!important;
 				inset-inline-end:0!important;inset-inline-start:auto!important;z-index:10003!important}
+			/* Ao rolar sai com o resto da barra de topo. Não basta esconder a .navtop-top-bar:
+			   a pesquisa é irmã dela, não filha, e ficaria a flutuar sobre o logótipo. */
+			#navtop.compacto #search-input-section{display:none!important}
 		}
+
+		/* ===== Cabeçalho compacto ao rolar =====
+		   A classe .compacto é posta por JS a partir dos ~90px de scroll. Esconde a barra de
+		   topo e encolhe o logótipo: o cabeçalho passa de 146 para cerca de 66px no desktop.
+		   A transição está na altura do logótipo — animar a altura do cabeçalho faria o menu
+		   saltar, porque ele é dimensionado pelo conteúdo. */
+		@media (min-width:992px){
+			#navtop .logo img{transition:height .18s ease-out}
+		}
+		@media (prefers-reduced-motion:reduce){#navtop .logo img{transition:none}}
+
+		#navtop.compacto .navtop-top-bar{display:none!important}
+		#navtop.compacto .logo img{height:50px!important;width:auto!important}
+		#navtop.compacto .menu-center{padding-block-end:0!important}
+		/* Abaixo de 992px não há modo compacto: a barra de topo já está escondida e o cabeçalho
+		   tem min-height:58px, por isso encolher o logótipo não devolveria altura nenhuma. */
 
 		/* A lupa só faz sentido onde a faixa arranca fechada (ecrãs estreitos); à direita do
 		   logótipo e à esquerda do menu de hambúrguer, sem lhe tocar. */
@@ -523,7 +547,7 @@
 		/* --- Barra de navegação das secções ---
 		   Cola por baixo do cabeçalho fixo do site. --subnav-h é preenchida por JS com a altura
 		   real da barra e serve para as âncoras pararem no sítio certo (scroll-margin-top). */
-		#produtos-main .sub-nav{position:sticky;inset-block-start:calc(var(--header-h,90px) + var(--search-h,0px));
+		#produtos-main .sub-nav{position:sticky;inset-block-start:calc(var(--header-now,90px) + var(--search-h,0px));
 			z-index:900;background:rgba(0,20,31,.97);border-block-end:1px solid rgba(255,255,255,.1);
 			-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 		/* Rola na horizontal quando não cabe, sem barra de scroll à vista. */
@@ -539,7 +563,7 @@
 		#produtos-main .sub-nav a.is-ativo{color:#fff}
 		#produtos-main .sub-nav a:hover::after,#produtos-main .sub-nav a.is-ativo::after{transform:scaleX(1)}
 		/* As âncoras param abaixo do cabeçalho e da barra, não por baixo deles. */
-		#produtos-main section[id]{scroll-margin-top:calc(var(--header-h,90px) + var(--search-h,0px) + var(--subnav-h,49px))}
+		#produtos-main section[id]{scroll-margin-top:calc(var(--header-now,90px) + var(--search-h,0px) + var(--subnav-h,49px))}
 		@media (max-width:560px){
 			#produtos-main .sub-nav-inner{gap:20px}
 			#produtos-main .sub-nav a{font-size:.74rem;padding:13px 0}
@@ -1495,7 +1519,14 @@
 			var h = document.getElementById('navtop');
 			if (!h) return;
 			var hh = h.offsetHeight;
-			document.documentElement.style.setProperty('--header-h', hh + 'px');
+			// --header-now é a altura actual; --header-h fica com a altura por extenso e só é
+			// actualizada fora do modo compacto. O espaço reservado no topo do conteúdo e a
+			// altura do vídeo dependem de --header-h: se seguissem a altura actual, encolhiam
+			// ao rolar e a página dava um salto.
+			document.documentElement.style.setProperty('--header-now', hh + 'px');
+			if (!h.classList.contains('compacto')) {
+				document.documentElement.style.setProperty('--header-h', hh + 'px');
+			}
 			// A faixa da pesquisa é absoluta dentro do cabeçalho: quando o site a mantém
 			// aberta ela cai por baixo dele, por isso mede-se o quanto sobra e reserva-se.
 			var campo = document.getElementById('search_tag_all');
@@ -1537,6 +1568,28 @@
 		if (document.fonts) {
 			document.fonts.ready.then(setHeaderOffset);
 		}
+
+		// Cabeçalho compacto ao rolar: esconde a barra de topo (pesquisa, login e carrinho) e
+		// encolhe o logótipo, devolvendo cerca de metade da altura ao ecrã. Os dois limiares
+		// são diferentes de propósito — sem essa folga, parar mesmo em cima do limiar punha o
+		// cabeçalho a abrir e fechar a cada pixel de scroll.
+		(function () {
+			var cabecalho = document.getElementById('navtop');
+			if (!cabecalho) return;
+			var COMPACTA_A = 90, EXPANDE_A = 20;
+
+			function aoRolar() {
+				var y = window.scrollY || document.documentElement.scrollTop || 0;
+				var compacto = cabecalho.classList.contains('compacto');
+				if (!compacto && y > COMPACTA_A) cabecalho.classList.add('compacto');
+				else if (compacto && y < EXPANDE_A) cabecalho.classList.remove('compacto');
+				else return;
+				setHeaderOffset(); // republica --header-now com a altura nova
+			}
+
+			window.addEventListener('scroll', aoRolar, { passive: true });
+			aoRolar(); // a página pode abrir já rolada (recarregar, voltar atrás, âncora)
+		})();
 
 		// Dropdown de idioma (pt | en)
 		var liActive = document.querySelector('#languages-flags .li-active');
