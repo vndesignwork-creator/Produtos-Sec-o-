@@ -239,13 +239,23 @@
 			#navtop .menu-center{transition:height .26s cubic-bezier(.4,0,.2,1),
 				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
 			#navtop ul.sf-menu{transition:margin-block-start .26s cubic-bezier(.4,0,.2,1)}
-			/* A pesquisa esvai-se antes do resto; visibility só comuta no fim, para o campo
-			   deixar de apanhar cliques enquanto ainda se vê. */
-			#navtop #search-input-section{transition:opacity .18s ease,visibility 0s linear .18s}
+			/* A pesquisa é irmã da barra de topo, não filha, por isso não recolhe com ela: se
+			   ficasse no sítio, atravessava o menu durante a animação. Sobe com a barra (de
+			   6px para -40px, os mesmos 46px que a barra perde) enquanto se esvai.
+			   O `visibility 0s` sem atraso é o que a faz reaparecer de imediato ao voltar ao
+			   topo; o atraso só existe no sentido inverso, na regra .compacto abaixo. */
+			#navtop #search-input-section{transition:opacity .2s ease,
+				inset-block-start .26s cubic-bezier(.4,0,.2,1),visibility 0s}
 
 			#navtop.compacto .navtop-top-bar{height:0!important;opacity:0}
 			#navtop.compacto #navtopinner{height:74px!important}
-			#navtop.compacto #search-input-section{opacity:0;visibility:hidden}
+			/* Esvai-se depressa (.14s) para já lá não estar quando passa pela zona do menu.
+			   O !important na opacidade é preciso: a regra base da faixa fixa opacity:1!important
+			   (vem de quando a pesquisa era uma faixa que o site escondia por opacidade). */
+			#navtop.compacto #search-input-section{opacity:0!important;visibility:hidden;
+				inset-block-start:-40px!important;
+				transition:opacity .14s ease,inset-block-start .26s cubic-bezier(.4,0,.2,1),
+				visibility 0s linear .14s}
 			#navtop.compacto .logo img{height:50px!important;width:auto!important}
 			#navtop.compacto .menu-left{height:50px!important;margin-block-start:12px!important;
 				padding-block-end:12px!important}
