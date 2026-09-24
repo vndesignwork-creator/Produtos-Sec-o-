@@ -161,6 +161,19 @@
 				border-left:0!important;font-size:20px!important;color:var(--azul-escuro)!important}
 			/* em ecrã estreito o campo ocupa a largura toda da faixa */
 			#navtop #search-input-section form#searchform{max-width:none!important}
+			/* Abaixo de 992px a stylesheet.css do site arruma a faixa fora do ecrã
+			   (visibility:hidden, display:none e max-width:0 nos elementos interiores),
+			   por isso a lupa abria uma faixa vazia. Aqui fica reposta. */
+			#navtop #search-input-section{visibility:visible!important}
+			#navtop #search-input-section.fechada{visibility:hidden!important}
+			#navtop #search-input-section-inside{display:block!important;visibility:visible!important;
+				position:relative!important;inset:auto!important;width:100%!important;
+				max-width:none!important;height:auto!important}
+			#navtop #search-input-section form#searchform{display:block!important;visibility:visible!important;
+				width:100%!important;height:auto!important}
+			#navtop #search-input-section .search-input{display:block!important;visibility:visible!important;
+				width:100%!important}
+			#navtop #search-input-section .form-button{display:block!important;visibility:visible!important}
 		}
 
 		/* O ecrã de espera do site (loading2.gif) não deve intercetar cliques */
