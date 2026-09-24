@@ -616,12 +616,20 @@
 		}
 
 		/* --- Vídeo de abertura, a toda a largura ---
-		   Ocupa a janela inteira por baixo do cabeçalho fixo: 100svh menos a altura real do
-		   cabeçalho (--header-h) e da faixa de pesquisa (--search-h), ambas definidas por JS.
-		   Nunca passa dos 16/9 para não esticar o vídeo em ecrãs muito altos. */
+		   Ocupa a janela por baixo do cabeçalho fixo: 100svh menos a altura real do cabeçalho
+		   (--header-h), da faixa de pesquisa (--search-h) e da barra de secções (--subnav-h),
+		   todas definidas por JS.
+
+		   O clamp tem os dois extremos por boas razões. O máximo de 56.25vw é o 16/9 exacto:
+		   acima disso a faixa ficaria mais alta do que o vídeo e sobrariam barras pretas.
+		   O mínimo de 49.5vw limita o recorte: como o vídeo é sempre 16/9 à largura toda, uma
+		   faixa mais baixa corta-lhe o topo e o fundo, e numa janela de 700px de altura isso
+		   chegava a esconder 37% da imagem — apanhava os controlos e o título do leitor. Com
+		   este mínimo o recorte nunca passa dos 12%; em janelas baixas a faixa passa um pouco
+		   abaixo da dobra, o que é preferível a cortar o vídeo a meio. */
 		#produtos-main .video-abertura{background:#00141f}
 		#produtos-main .video-abertura-frame{position:relative;width:100%;overflow:hidden;background:#00141f;
-			height:min(56.25vw,calc(100svh - var(--header-h,90px) - var(--search-h,0px) - var(--subnav-h,49px)))}
+			height:clamp(49.5vw,calc(100svh - var(--header-h,90px) - var(--search-h,0px) - var(--subnav-h,49px)),56.25vw)}
 		/* O iframe mantém-se sempre em 16/9 e à largura toda; como a caixa nunca é mais alta do que
 		   16/9, o vídeo cobre-a sempre, e o excesso em altura é cortado em cima e em baixo — sem
 		   barras pretas e sem esticar a imagem. */
@@ -634,7 +642,7 @@
 		#produtos-main .video-abertura-nota a{color:#fff;text-decoration:underline}
 		/* Navegadores sem suporte de svh (Safari antigo): usa vh, que é equivalente no desktop. */
 		@supports not (height:1svh){
-			#produtos-main .video-abertura-frame{height:min(56.25vw,calc(100vh - var(--header-h,90px) - var(--search-h,0px) - var(--subnav-h,49px)))}
+			#produtos-main .video-abertura-frame{height:clamp(49.5vw,calc(100vh - var(--header-h,90px) - var(--search-h,0px) - var(--subnav-h,49px)),56.25vw)}
 		}
 
 		#produtos-main .aplicacoes{padding-block:72px;background:var(--branco)}
