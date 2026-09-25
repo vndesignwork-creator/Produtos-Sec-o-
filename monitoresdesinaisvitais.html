@@ -1949,7 +1949,30 @@
 			if (porId[activa.id]) {
 				porId[activa.id].classList.add('is-ativo');
 				porId[activa.id].setAttribute('aria-current', 'true');
+				trazerAVista(porId[activa.id]);
 			}
+		}
+
+		// Em ecrãs estreitos a barra não cabe toda e rola na horizontal, por isso a secção
+		// activa podia ficar fora de vista — a barra mostrava "Visão geral" com a página já
+		// no fim. Aqui centra-se a ligação activa dentro da faixa.
+		var faixa = barra.querySelector('.sub-nav-inner');
+		var semAnimacao = window.matchMedia('(prefers-reduced-motion:reduce)');
+
+		function trazerAVista(a) {
+			if (!faixa || faixa.scrollWidth <= faixa.clientWidth + 1) return; // cabe toda: nada a fazer
+			var rFaixa = faixa.getBoundingClientRect();
+			var rA = a.getBoundingClientRect();
+			// Deslocamento relativo, medido a partir das posições actuais: não depende de
+			// offsetParent nem do scrollLeft em que a faixa esteja.
+			var d = Math.round((rA.left - rFaixa.left) - (rFaixa.width - rA.width) / 2);
+			if (!d) return;
+			// O deslizamento suave fica suspenso em documentos ocultos: nesse caso a barra
+			// nunca chegava a acompanhar. Com a página escondida salta directamente, que é o
+			// que interessa — ninguém está a ver o percurso.
+			var suave = !semAnimacao.matches && document.visibilityState === 'visible';
+			if (faixa.scrollBy) faixa.scrollBy({ left: d, behavior: suave ? 'smooth' : 'auto' });
+			else faixa.scrollLeft += d;
 		}
 
 		// Sem requestAnimationFrame de propósito: em separadores em segundo plano o rAF fica
