@@ -663,9 +663,20 @@
 
 		/* --- Responsivo (herói, números e tabela) --- */
 		@media (max-width:960px){
-			#produtos-main .heroi-grid{grid-template-columns:1fr;gap:36px;padding-block:48px!important}
+			/* Empilhado, a ordem é: etiqueta, título, fotografia, texto e botões. O rótulo e o
+			   título passam para cima da imagem para se verem de imediato, sem ter de rolar.
+			   `display:contents` no .heroi-texto promove os filhos a itens da grelha, que é o
+			   que permite intercalar a figura entre o título e o parágrafo sem mexer no HTML
+			   (e sem alterar a ordem de leitura no desktop). O espaçamento passa a vir das
+			   margens de cada peça, por isso o gap da grelha é zerado. */
+			#produtos-main .heroi-grid{grid-template-columns:1fr;gap:0;padding-block:48px!important}
 			#produtos-main .heroi::after{inset-inline-end:-25%;width:90%}
-			#produtos-main .heroi-figura{order:-1}
+			#produtos-main .heroi-texto{display:contents}
+			#produtos-main .heroi-eyebrow{order:1}
+			#produtos-main .heroi h1{order:2}
+			#produtos-main .heroi-figura{order:3;margin-block-start:28px}
+			#produtos-main .heroi-lead{order:4}
+			#produtos-main .heroi-acoes{order:5}
 			#produtos-main .numeros-grid{grid-template-columns:repeat(2,1fr)}
 			#produtos-main .numero{text-align:start;border-block-start:1px solid var(--cinza-borda)}
 			#produtos-main .numero + .numero{border-inline-start:0}
