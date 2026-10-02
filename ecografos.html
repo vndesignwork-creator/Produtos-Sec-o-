@@ -478,7 +478,7 @@
 		/* ===== PÁGINA DA GAMA (Ecógrafos Samsung) =====                 */
 		/* Junta a base das páginas de produto (cabeçalho compacto, barra de  */
 		/* secções, botões, filas de imagem + texto) ao tom escuro da página  */
-		/* do R20: herói com fotografia e números, e grelha sobre fundo escuro.*/
+		/* do R20: herói escuro com os equipamentos, e grelha sobre fundo escuro.*/
 		/* ============================================================= */
 
 		/* --- Barra de secções ---
@@ -498,7 +498,7 @@
 			background:radial-gradient(circle at 12% 0%,rgba(0,112,175,.34),transparent 46%),
 				linear-gradient(160deg,#00141f 0%,#00263c 58%,#003a5c 100%)}
 		#produtos-main .eco-heroi-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
-			gap:32px 40px;align-items:center;padding-block:72px 68px!important}
+			gap:32px 40px;align-items:center;padding-block:72px 92px!important}
 		#produtos-main .eco-heroi-texto{min-width:0}
 		#produtos-main .eco-lineup{position:relative;display:flex;align-items:flex-end;justify-content:center;padding-inline:7%;
 			-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%)}
@@ -520,14 +520,18 @@
 			line-height:1;letter-spacing:-.035em;color:#fff;text-align:start;text-shadow:0 2px 18px rgba(0,15,25,.5)}
 		#produtos-main .eco-heroi h1 span{display:block;margin-block-start:14px;font-size:max(.36em,1.05rem);font-weight:600;
 			line-height:1.25;letter-spacing:-.01em;color:#a9e5f3}
+		/* Seta no fundo do herói: um círculo discreto com a divisa a descer e a voltar, para
+		   dizer que há mais página. Sem animação para quem pediu menos movimento. */
+		#produtos-main .eco-descer{position:absolute;inset-block-end:18px;inset-inline-start:50%;
+			display:grid;place-items:center;width:42px;height:42px;margin-inline-start:-21px;border-radius:50%;
+			border:1px solid rgba(255,255,255,.3);color:#fff;background:rgba(0,20,31,.35);
+			transition:background .2s,border-color .2s}
+		#produtos-main .eco-descer svg{width:20px;height:20px;stroke:currentColor;animation:eco-descer 1.8s ease-in-out infinite}
+		#produtos-main .eco-descer:hover,#produtos-main .eco-descer:focus-visible{background:var(--azul-claro);border-color:var(--azul-claro)}
+		@keyframes eco-descer{0%,100%{transform:translateY(-3px);opacity:.55}50%{transform:translateY(4px);opacity:1}}
+		@media (prefers-reduced-motion:reduce){#produtos-main .eco-descer svg{animation:none}}
 		#produtos-main .eco-heroi-lead{margin-block-start:22px;max-width:56ch;font-size:1.05rem;line-height:1.7;
 			color:rgba(255,255,255,.88)}
-		#produtos-main .eco-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
-			grid-column:1 / -1;margin-block-start:12px}
-		#produtos-main .eco-stat{padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:14px;
-			background:rgba(6,28,41,.66);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-		#produtos-main .eco-stat strong{display:block;font-size:1.7rem;font-weight:700;line-height:1;color:#8beaff}
-		#produtos-main .eco-stat span{display:block;margin-block-start:8px;font-size:.78rem;line-height:1.45;color:#bfd3dc}
 
 
 		/* --- Modelos, sobre fundo escuro --- */
@@ -634,10 +638,18 @@
 
 		/* --- Responsivo --- */
 		@media (max-width:960px){
-			/* Empilhado: texto, depois os ecógrafos e, por fim, os números. */
-			#produtos-main .eco-heroi-inner{grid-template-columns:1fr;gap:28px;padding-block:52px 48px!important}
-			#produtos-main .eco-lineup{max-width:560px;margin-inline:auto;width:100%}
-			#produtos-main .eco-stats{margin-block-start:0}
+			/* Empilhado, a ordem é: etiqueta, título, texto, ecógrafos e só depois os botões.
+			   `display:contents` no bloco de texto promove os filhos a itens da grelha, que é o
+			   que permite pôr a imagem entre o texto e os botões sem mexer no HTML (nem na
+			   ordem de leitura do ecrã largo). O espaçamento vem das margens de cada peça,
+			   por isso o gap da grelha é zerado. */
+			#produtos-main .eco-heroi-inner{grid-template-columns:minmax(0,1fr);gap:0;padding-block:52px 84px!important}
+			#produtos-main .eco-heroi-texto{display:contents}
+			#produtos-main .eco-pill{order:1;justify-self:start}
+			#produtos-main .eco-heroi h1{order:2}
+			#produtos-main .eco-heroi-lead{order:3}
+			#produtos-main .eco-lineup{order:4;max-width:560px;width:100%;margin:28px auto 0}
+			#produtos-main .eco-heroi .heroi-acoes{order:5;margin-block-start:28px}
 			#produtos-main .destaque{padding-block:52px}
 			#produtos-main .eco-modelos{padding-block:60px}
 		}
@@ -650,10 +662,6 @@
 			#produtos-main .eco-chip{font-size:.82rem;padding:0 0 12px}
 		}
 		@media (max-width:560px){
-			#produtos-main .eco-stats{grid-template-columns:1fr}
-			#produtos-main .eco-stat{display:flex;align-items:center;gap:14px;padding:14px 16px}
-			#produtos-main .eco-stat strong{flex:0 0 auto;min-width:2.4ch}
-			#produtos-main .eco-stat span{margin-block-start:0}
 			#produtos-main .eco-heroi .heroi-acoes .btn{width:100%}
 			#produtos-main .eco-grelha{grid-template-columns:1fr;gap:18px}
 		}
@@ -803,22 +811,12 @@
 				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-gi-v8-527px.png" alt="" width="527" height="527">
 				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-v6-527px-1.png" alt="" width="527" height="527">
 			</div>
-
-			<div class="eco-stats">
-				<div class="eco-stat">
-					<strong>14</strong>
-					<span>Modelos na gama</span>
-				</div>
-				<div class="eco-stat">
-					<strong>6</strong>
-					<span>Áreas clínicas</span>
-				</div>
-				<div class="eco-stat">
-					<strong>PT</strong>
-					<span>Distribuição em Portugal pela Speculum</span>
-				</div>
-			</div>
 		</div>
+
+		<!-- Indica que a página continua: leva à grelha de modelos, logo abaixo. -->
+		<a class="eco-descer" href="#modelos" aria-label="Continuar para os modelos">
+			<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+		</a>
 	</section>
 
 	<!-- ===== Modelos =====
