@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index,follow">
 	<title>Ecógrafos Samsung | Speculum</title>
-	<meta name="description" content="Ecógrafos Samsung distribuídos pela Speculum: HERA Z20, W10 Elite, R20, RS85 Prestige, séries V, HS e CV — por área clínica.">
-	<meta name="keywords" content="Ecógrafos, Samsung, ultrassonografia, HERA, Z20, W10 Elite, RS85, V8, V7, V6, V5, HS40, HS30, CV7, Speculum">
+	<meta name="description" content="Ecógrafos Samsung distribuídos pela Speculum: HERA Z20, HERA W10 Elite, Q10 EVO, R20, RS85 Prestige e as séries V, HS e CV — organizados por área clínica.">
+	<meta name="keywords" content="Ecógrafos, Samsung, ultrassonografia, ecografia, HERA Z20, W10 Elite, Q10 EVO, R20, RS85 Prestige, V8, V7, V6, V5, HS40, HS30, CV7, CV6, CV5, Speculum">
 
 	<!-- Folhas de estilo REAIS do site Speculum (idênticas às da medicoshospitalares.html) -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
@@ -27,14 +27,22 @@
 		   Resultado: uma só barra vertical, sem barra horizontal. */
 		html{overflow-x:clip!important;height:auto!important}
 		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
-		/* Offset do cabeçalho fixo — --header-h é definido por JS com a altura real (responsivo).
+		/* Offset do cabeçalho fixo. Duas variáveis, ambas mantidas por JS:
+		     --header-h   altura do cabeçalho por extenso; só muda com a largura da janela.
+		     --header-now altura neste momento, que baixa quando o cabeçalho fica compacto.
+		   O espaço reservado aqui usa --header-h: se seguisse a altura actual, encolheria ao
+		   rolar e a página daria um salto. Quem acompanha o cabeçalho ao rolar (a barra de
+		   secções e o destino das âncoras) é que usa --header-now.
 		   --search-h acrescenta a faixa da pesquisa quando esta fica por baixo do cabeçalho
-		   (no desktop o site mantém-na sempre aberta), para não tapar a barra de especialidades. */
+		   (abaixo de 992px, ao abrir pela lupa), para não tapar o conteúdo. */
 		#produtos-main{padding-block-start:calc(var(--header-h,90px) + var(--search-h,0px))}
 
 		:root{
 			color-scheme: light;
 			--azul-escuro:#00416b; --azul-claro:#0070af;
+			/* Cor de acento: o ciano dos ecrãs e botões da página do R20. O tom escuro é o mesmo
+			   ciano puxado para baixo, para o traço dos ícones se ler bem sobre fundo claro. */
+			--acento:#20b8e5; --acento-escuro:#087fa8;
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
 			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
 			--radius:10px; --container:1240px;
@@ -47,7 +55,7 @@
 
 		/* Cabeçalho fixo: o offset do body e o topo do menu mobile são definidos por JS (--header-h) */
 		#navtop .toggle-menu{top:50%!important;transform:translateY(-50%);margin:0!important}
-		#navtop .mobile-menu{top:var(--header-h,80px)!important;background:#fff!important}
+		#navtop .mobile-menu{top:var(--header-now,80px)!important;background:#fff!important}
 		/* Rodapé sempre à largura toda (o site limitava a largura de .site-footer) */
 		#grid-wrap-footer .site-footer{width:100%!important;max-width:none!important;box-sizing:border-box!important}
 		/* Espaço em cinza-claro entre a secção do orçamento e o rodapé (separa as duas secções em azul) */
@@ -98,6 +106,11 @@
 			right:auto!important;display:inline-block;width:100%!important;max-width:380px!important;
 			height:50px!important;margin:0!important;padding:0!important;background:transparent!important;
 			border:0!important;z-index:auto!important;box-shadow:0 10px 26px rgba(0,65,107,.18)!important}
+		/* Na barra de topo o campo é pequeno: a sombra da faixa larga (26px de desfoque,
+		   10px de deslocamento) pesava demasiado. Aqui fica um pousio discreto. */
+		@media (min-width:992px){
+			#navtop #search-input-section form#searchform{box-shadow:0 1px 3px rgba(0,65,107,.1)!important}
+		}
 
 		/* Campo + botão */
 		#navtop #search-input-section .search-input{box-sizing:border-box!important;width:100%!important;height:50px!important;
@@ -148,6 +161,105 @@
 		#navtop #search-input-section .cc_wrapper .button-send:hover,
 		#navtop #search-input-section .cc_wrapper .button-send:focus-visible{background:var(--azul-escuro)!important}
 
+		/* ===== Pesquisa na barra de topo (≥992px) =====
+		   Anula a faixa própria e põe o campo em linha com o Login e o carrinho. A barra de topo
+		   cresce de 30 para 46px para acomodar o campo; em troca desaparecem os 62px da faixa,
+		   pelo que o cabeçalho fica mais baixo e a barra de secções encosta-lhe. */
+		@media (min-width:992px){
+			/* A barra de topo cresce de 30 para 46px para acolher o campo; em troca desaparecem
+			   os 62px da faixa, pelo que o cabeçalho fica mais baixo do que estava. */
+			#navtop .navtop-top-bar{height:46px!important}
+			#navtop .navtop-top-buttons{display:flex!important;align-items:center;justify-content:flex-end;
+				gap:26px;height:46px!important;padding-inline-start:0!important}
+			/* Ocupava 52px de espaço com visibility:hidden — fora do fluxo fica tudo alinhado. */
+			#navtop .logout-btn-wrapper{display:none!important}
+			/* Como itens flex os links passam a bloco e herdavam line-height:45px, o que os
+			   partia em duas linhas de 90px de altura. Aqui centram-se na barra numa só linha. */
+			#navtop .user-btn-wrapper,#navtop .shopping-btn-wrapper{display:flex!important;
+				align-items:center;height:auto!important;line-height:1!important;white-space:nowrap;
+				margin:0!important;padding:0!important;flex:0 0 auto}
+			#navtop .user-btn-wrapper .fa,#navtop .shopping-btn-wrapper .fa{line-height:1!important}
+			#navtop #languages-flags{inset-block-start:6px!important}
+
+			/* Sobreposta à barra de topo, à esquerda do Login. --busca-right é a distância ao
+			   bordo direito do cabeçalho, medida por JS a partir da posição real dos botões. */
+			#navtop #search-input-section{position:absolute!important;inset-block-start:6px!important;
+				inset-inline-end:var(--busca-right,420px)!important;inset-inline-start:auto!important;
+				width:320px!important;max-width:320px!important;height:34px!important;
+				padding:0!important;z-index:10002!important}
+			#navtop #search-input-section-inside{max-width:none!important;width:100%!important;
+				height:34px!important;margin:0!important;padding:0!important}
+			#navtop #search-input-section form#searchform{max-width:none!important;width:100%!important;
+				height:34px!important;display:block!important}
+			#navtop #search-input-section .search-input{height:34px!important;font-size:.85rem!important;
+				padding:0 44px 0 14px!important;border-radius:6px!important}
+			#navtop #search-input-section .form-button{top:2px!important;right:2px!important;
+				width:34px!important;height:30px!important;border-radius:5px!important;font-size:15px!important}
+			/* A lista de resultados cai por baixo do campo, sobre o resto do cabeçalho. */
+			#navtop #search-input-section #search-content{width:380px!important;max-width:none!important;
+				inset-inline-end:0!important;inset-inline-start:auto!important;z-index:10003!important}
+		}
+
+		/* ===== Cabeçalho compacto ao rolar =====
+		   A classe .compacto é posta por JS a partir dos ~90px de scroll: a barra de topo
+		   recolhe-se e o logótipo encolhe, levando o cabeçalho de 146 para 74px.
+
+		   Tudo o que muda são propriedades animáveis — alturas, margens, preenchimentos e
+		   opacidade. Nada de `display:none` nem de trocar `position`, que cortam a meio: a
+		   barra de topo fecha-se de 46 para 0 de altura, e as peças por baixo sobem com ela.
+
+		   A stylesheet.css do site afina a vertical destas peças para o cabeçalho por extenso
+		   (margin-top:-10px na .menu-left, padding-bottom:20px na .menu-center, margin-top:26px
+		   na lista do menu). Com o cabeçalho mais baixo esses valores punham o logótipo a sair
+		   por cima, cortado, e o menu a transbordar por baixo; no estado compacto são
+		   substituídos por valores que centram as duas colunas nos 74px — e, por serem margens
+		   e preenchimentos, fazem-no a deslizar em vez de aos saltos. */
+		@media (min-width:992px){
+			#navtop .navtop-top-bar{overflow:hidden;
+				transition:height .26s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+			/* O site fixa #navtopinner em 100px, por isso o cabeçalho nunca desceria abaixo
+			   disso só por encolher o que está lá dentro. Como ambos os extremos são valores
+			   explícitos, a altura interpola-se. */
+			#navtop #navtopinner{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .logo img{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			/* As duas colunas também têm altura fixa do site (80px); sem a encolher, o cabeçalho
+			   ficava pelos 104px mesmo com o interior a 74. */
+			#navtop .menu-left{transition:height .26s cubic-bezier(.4,0,.2,1),
+				margin-block-start .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .menu-center{transition:height .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop ul.sf-menu{transition:margin-block-start .26s cubic-bezier(.4,0,.2,1)}
+			/* A pesquisa é irmã da barra de topo, não filha, por isso não recolhe com ela: se
+			   ficasse no sítio, atravessava o menu durante a animação. Sobe com a barra (de
+			   6px para -40px, os mesmos 46px que a barra perde) enquanto se esvai.
+			   O `visibility 0s` sem atraso é o que a faz reaparecer de imediato ao voltar ao
+			   topo; o atraso só existe no sentido inverso, na regra .compacto abaixo. */
+			#navtop #search-input-section{transition:opacity .2s ease,
+				inset-block-start .26s cubic-bezier(.4,0,.2,1),visibility 0s}
+
+			#navtop.compacto .navtop-top-bar{height:0!important;opacity:0}
+			#navtop.compacto #navtopinner{height:74px!important}
+			/* Esvai-se depressa (.14s) para já lá não estar quando passa pela zona do menu.
+			   O !important na opacidade é preciso: a regra base da faixa fixa opacity:1!important
+			   (vem de quando a pesquisa era uma faixa que o site escondia por opacidade). */
+			#navtop.compacto #search-input-section{opacity:0!important;visibility:hidden;
+				inset-block-start:-40px!important;
+				transition:opacity .14s ease,inset-block-start .26s cubic-bezier(.4,0,.2,1),
+				visibility 0s linear .14s}
+			#navtop.compacto .logo img{height:50px!important;width:auto!important}
+			#navtop.compacto .menu-left{height:50px!important;margin-block-start:12px!important;
+				padding-block-end:12px!important}
+			#navtop.compacto .menu-center{height:71px!important;padding-block-end:3px!important}
+			#navtop.compacto ul.sf-menu{margin-block-start:2px!important}
+		}
+		@media (prefers-reduced-motion:reduce){
+			#navtop .navtop-top-bar,#navtop #navtopinner,#navtop .logo img,#navtop .menu-left,
+			#navtop .menu-center,#navtop ul.sf-menu,#navtop #search-input-section{transition:none!important}
+		}
+		/* Abaixo de 992px não há modo compacto: a barra de topo já está escondida e o cabeçalho
+		   tem min-height:58px, por isso encolher o logótipo não devolveria altura nenhuma. */
+
 		/* A lupa só faz sentido onde a faixa arranca fechada (ecrãs estreitos); à direita do
 		   logótipo e à esquerda do menu de hambúrguer, sem lhe tocar. */
 		#navtop .menu-right{display:none}
@@ -160,11 +272,13 @@
 				border-left:0!important;font-size:20px!important;color:var(--azul-escuro)!important}
 			/* em ecrã estreito o campo ocupa a largura toda da faixa */
 			#navtop #search-input-section form#searchform{max-width:none!important}
-			/* Abaixo de 992px a stylesheet.css do site arruma a faixa fora do ecrã
-			   (visibility:hidden, display:none e max-width:0 nos elementos interiores),
-			   por isso a lupa abria uma faixa vazia. Aqui fica reposta. */
+			/* Abaixo de 992px a stylesheet.css do site esconde a faixa com visibility:hidden e
+			   display:none nos elementos interiores — a lupa abria uma faixa vazia. (O mesmo
+			   acontece nas outras páginas do site; aqui fica reposto.) */
 			#navtop #search-input-section{visibility:visible!important}
 			#navtop #search-input-section.fechada{visibility:hidden!important}
+			/* O site arruma-o fora do ecrã com position:absolute e left/top:-9999px. */
+			/* max-width:0 era o que colapsava a faixa toda — daí o campo sair com 80px. */
 			#navtop #search-input-section-inside{display:block!important;visibility:visible!important;
 				position:relative!important;inset:auto!important;width:100%!important;
 				max-width:none!important;height:auto!important}
@@ -179,82 +293,26 @@
 		#navtop #search-input-section #search-input-section-inside.loading:before{pointer-events:none}
 
 		/* ===== Correções de cor e tipografia do conteúdo (o CSS do site sobrepunha-se) ===== */
+		/* `strong` e `b` incluídos porque a stylesheet.css do site lhes impõe
+		   `MiniSerifBold, Times, ...` — e a MiniSerifBold já não existe no servidor, pelo que
+		   caíam todos para Times. Afectava os números-chave e as legendas dos ecrãs. */
 		#produtos-main h1,#produtos-main h2,#produtos-main h3,#produtos-main h4,
-		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button{
+		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button,
+		#produtos-main strong,#produtos-main b,#produtos-main li,#produtos-main th,
+		#produtos-main td,#produtos-main caption,#produtos-main figcaption{
 			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 		}
+		#produtos-main .section-head{text-align:center;margin-block-end:44px}
+		#produtos-main .section-head h2{color:var(--azul-escuro);font-weight:700;position:relative;padding-block-end:6px}
+		#produtos-main .section-head h2::after{content:"";position:absolute;inset-inline-start:50%;bottom:0;width:48px;height:3px;border-radius:999px;background:var(--azul-claro);transform:translateX(-50%)}
+		#produtos-main .section-head p{color:var(--cinza-texto)}
+		#produtos-main .hl-body h3{color:var(--azul-escuro)}
+		#produtos-main .hl-cta{color:var(--azul-claro)}
 
 		/* ============================================================= */
-		/* ===== PÁGINA DE CATÁLOGOS ===== */
+		/* ===== BASE DA PÁGINA DE PRODUTO (partilhada com a omniview-bed-license.html) ===== */
 		/* Reutiliza as mesmas variáveis, tipografia e raio da página de produtos. */
 		/* ============================================================= */
-
-
-		/* --- Listagem de ecógrafos --- */
-		#produtos-main .ecografos{padding-block:72px;background:var(--cinza-claro)}
-
-		/* A stylesheet.css do site não traz utilitário de "só para leitores de ecrã". */
-		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
-
-		/* Filtro por área clínica: botões que filtram a grelha aqui, sem sair da página.
-		   A stylesheet.css do site tem uma regra base (fora de qualquer @media) que aplica
-		   max-width:160px a TODOS os <button> — daí o max-width:none aqui; sem isto,
-		   etiquetas mais compridas como "Ginecologia e Obstetrícia" ficavam cortadas. */
-		#produtos-main .eco-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-block-end:24px}
-		#produtos-main .eco-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:999px;
-			background:#fff;border:1px solid var(--cinza-borda);font-family:inherit;font-size:.82rem;font-weight:600;
-			color:var(--azul-escuro);cursor:pointer;transition:background .2s,color .2s,border-color .2s;
-			white-space:nowrap;flex-shrink:0;max-width:none}
-		#produtos-main .eco-chip span{font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:999px;
-			background:var(--cinza-claro);color:var(--cinza-texto);transition:background .2s,color .2s}
-		#produtos-main .eco-chip:hover,#produtos-main .eco-chip:focus-visible{border-color:var(--azul-claro);color:var(--azul-claro)}
-		#produtos-main .eco-chip.is-ativo{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
-		#produtos-main .eco-chip.is-ativo span{background:rgba(255,255,255,.22);color:#fff}
-		/* Abaixo de 768px a stylesheet.css do site força width:100% em todos os <button>
-		   (regra dos formulários). Sem isto os chips viravam barras de largura total. */
-		@media (max-width:768px){
-			#produtos-main .eco-chip{width:auto;max-width:none;min-height:0;padding:8px 16px;font-size:.8rem}
-		}
-
-		#produtos-main .eco-contagem{text-align:center;margin-block-end:28px;font-size:.85rem;color:var(--cinza-texto)}
-		#produtos-main .eco-vazio{text-align:center;padding-block:40px;color:var(--cinza-texto)}
-
-		#produtos-main .eco-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
-		#produtos-main .eco-item{display:flex;flex-direction:column;background:#fff;border:1px solid var(--cinza-borda);
-			border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 8px rgba(0,65,107,.05);
-			transition:transform .22s,box-shadow .22s,border-color .22s}
-		#produtos-main .eco-item:hover,#produtos-main .eco-item:focus-visible{transform:translateY(-4px);
-			box-shadow:0 6px 16px rgba(0,65,107,.1);border-color:var(--azul-claro)}
-		#produtos-main .eco-item[hidden]{display:none}
-		/* Fotos de equipamento com fundos e proporções diferentes: contain sobre branco
-		   para nenhuma ficar cortada. */
-		#produtos-main .eco-imagem{aspect-ratio:4/3;display:grid;place-items:center;padding:20px;background:#fff;overflow:hidden}
-		#produtos-main .eco-imagem img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
-			transition:transform .35s}
-		#produtos-main .eco-item:hover .eco-imagem img{transform:scale(1.04)}
-		#produtos-main .eco-info{display:flex;flex-direction:column;flex:1;padding:20px;
-			border-block-start:1px solid var(--cinza-borda)}
-		#produtos-main .eco-info h3{font-size:1.25rem;font-weight:700;line-height:1.25;color:var(--azul-escuro)}
-		#produtos-main .eco-meta{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:10px}
-		#produtos-main .eco-etiqueta{font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;
-			background:var(--cinza-claro);color:var(--cinza-texto)}
-		#produtos-main .eco-cta{display:inline-flex;align-items:center;gap:6px;margin-block-start:auto;padding-block-start:16px;
-			font-size:.82rem;font-weight:600;color:var(--azul-claro)}
-		#produtos-main .eco-cta::after{content:"→";transition:transform .2s}
-		#produtos-main .eco-item:hover .eco-cta::after{transform:translateX(4px)}
-		@media (max-width:520px){
-			#produtos-main .eco-grelha{grid-template-columns:1fr;gap:20px}
-			#produtos-main .ecografos{padding-block:52px}
-		}
-
-		/* --- Faixa de contacto --- */
-		#produtos-main .cta-band{background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%)}
-		#produtos-main .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px!important;color:#fff}
-		#produtos-main .cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2;color:#fff}
-		#produtos-main .cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch;color:#fff}
-		#produtos-main .cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:var(--radius);transition:transform .18s,box-shadow .18s;white-space:nowrap}
-		#produtos-main .cta-btn:hover,#produtos-main .cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
 
 		/* --- Migalhas --- */
 		#produtos-main .breadcrumbs{background:var(--branco);border-block-end:1px solid var(--cinza-borda)}
@@ -264,8 +322,345 @@
 		#produtos-main .bc-inner .sep{opacity:.4;font-size:.85rem}
 		#produtos-main .bc-inner .atual{color:var(--azul-escuro);font-weight:600}
 
+		#produtos-main .prod-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-block-start:32px}
+		#produtos-main .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:var(--radius);font-size:.92rem;font-weight:700;transition:background .2s,color .2s,transform .18s,box-shadow .2s}
+		#produtos-main .btn svg{width:18px;height:18px;stroke:currentColor}
+		#produtos-main .btn-primario{background:var(--azul-claro);color:#fff;border:2px solid var(--azul-claro)}
+		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{background:var(--azul-escuro);border-color:var(--azul-escuro);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,65,107,.24)}
+		#produtos-main .btn-secundario{background:transparent;color:var(--azul-claro);border:2px solid var(--azul-claro)}
+		#produtos-main .btn-secundario:hover,#produtos-main .btn-secundario:focus-visible{background:var(--azul-claro);color:#fff;transform:translateY(-2px)}
+
+
+		/* --- Capacidades --- */
+		#produtos-main .capacidades{padding-block:72px;background:var(--cinza-claro)}
+		/* Seis cartões: colunas fixas em 3, para dar duas filas cheias (3+3). Com auto-fit os ecrãs
+		   largos abriam quatro colunas e a segunda fila ficava a meio, com dois buracos à direita. */
+		#produtos-main .cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+		@media (max-width:900px){#produtos-main .cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+		@media (max-width:560px){#produtos-main .cap-grid{grid-template-columns:1fr}}
+		#produtos-main .cap-card{background:#fff;border:1px solid var(--cinza-borda);border-radius:var(--radius);padding:28px;box-shadow:0 1px 4px rgba(0,65,107,.04);transition:transform .22s,box-shadow .22s}
+		#produtos-main .cap-card:hover{transform:translateY(-4px);box-shadow:0 5px 14px rgba(0,65,107,.09)}
+		#produtos-main .cap-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:rgba(32,184,229,.14)}
+		#produtos-main .cap-icon svg{width:24px;height:24px;stroke:var(--acento-escuro)}
+		#produtos-main .cap-card h3{margin-block-start:18px;font-size:1.02rem;font-weight:700;line-height:1.3;color:var(--azul-escuro)}
+		#produtos-main .cap-card p{margin-block-start:8px;font-size:.88rem;line-height:1.6;color:var(--cinza-texto)}
+
+		/* --- Faixa de imagem a toda a largura --- */
+		#produtos-main .faixa-imagem{position:relative;overflow:hidden;background:#00141f;isolation:isolate}
+		#produtos-main .faixa-imagem img{width:100%;height:100%;min-height:300px;max-height:460px;
+			object-fit:cover;object-position:center right;display:block;position:absolute;inset:0;z-index:-1}
+		/* Véu só do lado do texto: a metade direita da foto, onde está o produto, fica limpa. */
+		#produtos-main .faixa-imagem::before{content:"";position:absolute;inset:0;z-index:-1;
+			background:linear-gradient(90deg,rgba(0,20,31,.92) 0%,rgba(0,20,31,.7) 38%,transparent 72%)}
+		#produtos-main .faixa-texto{display:flex;flex-direction:column;justify-content:center;
+			min-height:300px;max-height:460px;height:46vw;padding-block:48px!important;color:#fff}
+		#produtos-main .faixa-texto h2{max-width:14ch;font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:700;
+			line-height:1.15;color:#fff;text-align:start}
+		#produtos-main .faixa-texto p{margin-block-start:14px;max-width:38ch;font-size:1rem;
+			line-height:1.6;color:rgba(255,255,255,.88)}
+
+		/* --- Tecnologias em filas alternadas de imagem + texto --- */
+		#produtos-main .tec-linha{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+			gap:56px;align-items:center;margin-block-start:56px}
+		#produtos-main .tec-linha:first-of-type{margin-block-start:0}
+		/* A fila invertida troca a ordem visual sem mexer na ordem de leitura do HTML. */
+		#produtos-main .tec-invertida .tec-figura{order:2}
+		#produtos-main .tec-figura{border-radius:var(--radius);overflow:hidden;background:var(--cinza-claro);
+			border:1px solid var(--cinza-borda)}
+		#produtos-main .tec-figura img{width:100%;height:auto;display:block}
+		/* Os esquemas com fundo escuro dispensam a moldura clara. */
+		#produtos-main .tec-figura-escura{background:#00141f;border-color:transparent}
+		/* Sem text-transform: senão "iFAST" sairia "IFAST". As etiquetas já vêm na caixa certa. */
+		#produtos-main .tec-etiqueta{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.08em;
+			color:var(--acento-escuro);background:rgba(32,184,229,.14);
+			border-radius:999px;padding:5px 14px}
+		#produtos-main .tec-texto h3{margin-block-start:16px;font-size:clamp(1.15rem,2.2vw,1.6rem);
+			font-weight:700;line-height:1.25;color:var(--azul-escuro)}
+		#produtos-main .tec-texto p{margin-block-start:14px;font-size:.96rem;line-height:1.7;color:var(--cinza-texto)}
+		#produtos-main .tec-pontos{list-style:none;display:grid;gap:11px;margin-block-start:18px}
+		#produtos-main .tec-pontos li{display:flex;align-items:flex-start;gap:11px;font-size:.92rem;
+			line-height:1.5;color:var(--azul-escuro)}
+		#produtos-main .tec-pontos li::before{content:"";flex:0 0 7px;width:7px;height:7px;margin-block-start:7px;
+			border-radius:50%;background:var(--acento)}
+		/* Os cartões curtos ficam bem separados das filas de imagem. */
+		#produtos-main .capacidades .cap-grid{margin-block-start:56px}
+
+
+		/* --- Responsivo --- */
+		@media (max-width:960px){
+			#produtos-main .produto-grid{grid-template-columns:1fr;gap:36px}
+			#produtos-main .galeria{position:static}
+			#produtos-main .produto{padding-block:36px 48px}
+			#produtos-main .capacidades,#produtos-main .especificacoes,#produtos-main .ecras{padding-block:52px}
+			/* Empilha as filas: imagem sempre primeiro, nas duas variantes. */
+			#produtos-main .tec-linha{grid-template-columns:1fr;gap:28px;margin-block-start:44px}
+			#produtos-main .tec-invertida .tec-figura{order:0}
+			#produtos-main .capacidades .cap-grid,#produtos-main .esp-cartoes{margin-block-start:44px}
+			#produtos-main .faixa-texto{min-height:0;max-height:none;height:auto;padding-block:120px 40px!important}
+			#produtos-main .faixa-imagem img{position:absolute;min-height:0;max-height:none;height:100%;object-position:70% 30%}
+			#produtos-main .faixa-imagem::before{background:linear-gradient(180deg,transparent 0%,rgba(0,20,31,.55) 42%,rgba(0,20,31,.92) 100%)}
+			#produtos-main .faixa-texto h2,#produtos-main .faixa-texto p{max-width:none}
+		}
+		/* Abaixo de 768px a stylesheet.css do site aplica a TODOS os h1 a regra do título da
+		   página de pesquisa (font-size:20px, text-align:center, margin e cor, tudo !important).
+		   A produtos.html não dá por isso porque não tem h1; aqui o título do produto é um h1,
+		   por isso a regra é reposta com a mesma força. */
+		@media (max-width:768px){
+			#produtos-main .prod-titulo{font-size:1.7rem!important;line-height:1.15!important;
+				text-align:start!important;margin:20px 0 0!important;color:var(--azul-escuro)!important;font-weight:700!important}
+		}
+
+		@media (max-width:520px){
+			#produtos-main .prod-acoes .btn{width:100%}
+		}
 
 		/* Cores forçadas (o CSS do site sobrepunha-se) */
+		#produtos-main .prod-titulo{color:var(--azul-escuro)}
+		#produtos-main .cap-card h3,#produtos-main .tec-texto h3{color:var(--azul-escuro)}
+		#produtos-main .btn-primario{color:#fff}
+		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{color:#fff}
+
+		/* --- Botões sobre fundo escuro (herói) --- */
+		#produtos-main .heroi-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-block-start:32px}
+		#produtos-main .btn-claro{background:#fff;color:var(--azul-escuro);border:2px solid #fff}
+		#produtos-main .btn-claro:hover,#produtos-main .btn-claro:focus-visible{background:transparent;color:#fff;transform:translateY(-2px)}
+		#produtos-main .btn-contorno-claro{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
+		#produtos-main .btn-contorno-claro:hover,#produtos-main .btn-contorno-claro:focus-visible{background:#fff;color:var(--azul-escuro);border-color:#fff;transform:translateY(-2px)}
+
+
+		/* --- Aplicações clínicas --- */
+		/* --- Barra de navegação das secções ---
+		   Cola por baixo do cabeçalho fixo do site. --subnav-h é preenchida por JS com a altura
+		   real da barra e serve para as âncoras pararem no sítio certo (scroll-margin-top). */
+		#produtos-main .sub-nav{position:sticky;inset-block-start:calc(var(--header-now,90px) + var(--search-h,0px));
+			z-index:900;background:rgba(0,20,31,.97);border-block-end:1px solid rgba(255,255,255,.1);
+			-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+		/* Rola na horizontal quando não cabe, sem barra de scroll à vista. */
+		#produtos-main .sub-nav-inner{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;
+			padding-block:0!important;-webkit-overflow-scrolling:touch}
+		#produtos-main .sub-nav-inner::-webkit-scrollbar{display:none}
+		#produtos-main .sub-nav a{position:relative;flex:0 0 auto;padding:15px 0;white-space:nowrap;
+			font-size:.78rem;font-weight:700;letter-spacing:.04em;color:#bed3dd;
+			transition:color .18s}
+		#produtos-main .sub-nav a::after{content:"";position:absolute;inset-inline:0;inset-block-end:0;height:2px;
+			background:var(--acento);transform:scaleX(0);transition:transform .2s}
+		#produtos-main .sub-nav a:hover,#produtos-main .sub-nav a:focus-visible,
+		#produtos-main .sub-nav a.is-ativo{color:#fff}
+		#produtos-main .sub-nav a:hover::after,#produtos-main .sub-nav a.is-ativo::after{transform:scaleX(1)}
+		/* As âncoras param abaixo do cabeçalho e da barra, não por baixo deles. */
+		#produtos-main section[id]{scroll-margin-top:calc(var(--header-now,90px) + var(--search-h,0px) + var(--subnav-h,49px))}
+		@media (max-width:560px){
+			#produtos-main .sub-nav-inner{gap:20px}
+			#produtos-main .sub-nav a{font-size:.74rem;padding:13px 0}
+		}
+
+
+
+		/* Cores forçadas (o CSS do site sobrepunha-se) */
+		#produtos-main .btn-claro{color:var(--azul-escuro)}
+		#produtos-main .btn-claro:hover,#produtos-main .btn-claro:focus-visible{color:#fff}
+		#produtos-main .btn-contorno-claro{color:#fff}
+		#produtos-main .btn-contorno-claro:hover,#produtos-main .btn-contorno-claro:focus-visible{color:var(--azul-escuro)}
+
+		/* --- Utilitário de leitores de ecrã (a stylesheet.css do site não o traz) --- */
+		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+		/* --- Faixa de contacto (igual à das restantes páginas de produto) --- */
+		#produtos-main .cta-band{background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%)}
+		#produtos-main .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px!important;color:#fff}
+		#produtos-main .cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2;color:#fff}
+		#produtos-main .cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch;color:#fff}
+		#produtos-main .cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:var(--radius);transition:transform .18s,box-shadow .18s;white-space:nowrap}
+		#produtos-main .cta-btn:hover,#produtos-main .cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
+
+		/* ============================================================= */
+		/* ===== PÁGINA DA GAMA (Ecógrafos Samsung) =====                 */
+		/* Junta a base das páginas de produto (cabeçalho compacto, barra de  */
+		/* secções, botões, filas de imagem + texto) ao tom escuro da página  */
+		/* do R20: herói com fotografia e números, e grelha sobre fundo escuro.*/
+		/* ============================================================= */
+
+		/* --- Barra de secções ---
+		   Na página dos monitores a barra tem um filete claro por baixo, que a separa do vídeo.
+		   Aqui assenta num herói escuro e o filete lia-se como uma risca branca. Sai o filete e
+		   entra uma sombra de 1px na cor da barra: tapa também a costura que aparece quando a
+		   altura da barra dá um valor fraccionário (ecrãs a 125% ou 150%) e deixa ver o fundo
+		   branco da página entre a barra e o herói. */
+		#produtos-main .sub-nav{border-block-end:0;box-shadow:0 1px 0 #00141f}
+
+		/* --- Herói ---
+		   Texto à esquerda e, à direita, quatro ecógrafos da gama lado a lado. São os recortes
+		   oficiais da Samsung, com fundo transparente, por isso assentam directamente no fundo
+		   escuro; o brilho por trás destaca-os e a máscara esbate-lhes a base, onde o recorte
+		   original acaba a direito. */
+		#produtos-main .eco-heroi{position:relative;overflow:hidden;isolation:isolate;color:#fff;
+			background:radial-gradient(circle at 12% 0%,rgba(0,112,175,.34),transparent 46%),
+				linear-gradient(160deg,#00141f 0%,#00263c 58%,#003a5c 100%)}
+		#produtos-main .eco-heroi-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+			gap:32px 40px;align-items:center;padding-block:72px 68px!important}
+		#produtos-main .eco-heroi-texto{min-width:0}
+		#produtos-main .eco-lineup{position:relative;display:flex;align-items:flex-end;justify-content:center;padding-inline:7%;
+			-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%)}
+		#produtos-main .eco-lineup::before{content:"";position:absolute;inset:4% 2% 0;z-index:-1;
+			background:radial-gradient(ellipse at 50% 58%,rgba(32,184,229,.34),transparent 66%)}
+		/* Cada recorte é um quadrado com o equipamento a ocupar a metade central; as margens
+		   negativas comem esse vazio, para os quatro ficarem ombro a ombro. Os dois do meio
+		   vêm à frente e um pouco maiores. */
+		#produtos-main .eco-lineup img{flex:0 0 50%;width:50%;max-width:none;height:auto;margin-inline:-12.5%;
+			transform-origin:50% 100%;filter:drop-shadow(0 18px 26px rgba(0,10,18,.55))}
+		#produtos-main .eco-lineup img:nth-child(1),#produtos-main .eco-lineup img:nth-child(4){transform:scale(.9)}
+		#produtos-main .eco-lineup img:nth-child(2),#produtos-main .eco-lineup img:nth-child(3){position:relative;z-index:1;
+			transform:scale(1.08)}
+		#produtos-main .eco-pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;
+			border:1px solid rgba(80,222,255,.38);background:rgba(0,119,154,.14);color:#a6ecff;
+			font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+		#produtos-main .eco-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acento)}
+		#produtos-main .eco-heroi h1{margin-block-start:20px;font-size:clamp(2.3rem,4.4vw,3.7rem);font-weight:700;
+			line-height:1;letter-spacing:-.035em;color:#fff;text-align:start;text-shadow:0 2px 18px rgba(0,15,25,.5)}
+		#produtos-main .eco-heroi h1 span{display:block;margin-block-start:14px;font-size:max(.36em,1.05rem);font-weight:600;
+			line-height:1.25;letter-spacing:-.01em;color:#a9e5f3}
+		#produtos-main .eco-heroi-lead{margin-block-start:22px;max-width:56ch;font-size:1.05rem;line-height:1.7;
+			color:rgba(255,255,255,.88)}
+		#produtos-main .eco-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
+			grid-column:1 / -1;margin-block-start:12px}
+		#produtos-main .eco-stat{padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:14px;
+			background:rgba(6,28,41,.66);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+		#produtos-main .eco-stat strong{display:block;font-size:1.7rem;font-weight:700;line-height:1;color:#8beaff}
+		#produtos-main .eco-stat span{display:block;margin-block-start:8px;font-size:.78rem;line-height:1.45;color:#bfd3dc}
+
+
+		/* --- Modelos, sobre fundo escuro --- */
+		#produtos-main .eco-modelos{padding-block:80px;color:#fff;
+			background:radial-gradient(circle at 50% -10%,rgba(0,144,190,.2),transparent 42%),#00141f}
+		#produtos-main .eco-modelos .section-head{margin-block-end:34px}
+		#produtos-main .eco-modelos .section-head h2{color:#fff}
+		#produtos-main .eco-modelos .section-head h2::after{background:var(--acento)}
+		#produtos-main .eco-modelos .section-head p{color:#b7cad4}
+
+		/* Filtro por área clínica, em separadores sublinhados — a mesma linguagem da barra de
+		   secções do topo. Uma linha só: quando não cabe, rola na horizontal sem barra à vista.
+		   A stylesheet.css do site aplica a TODOS os <button> max-width:160px, caixa alta e,
+		   abaixo de 768px, width:100% (regra dos formulários); daí as reposições aqui. */
+		#produtos-main .eco-chips{display:flex;justify-content:safe center;gap:30px;overflow-x:auto;
+			scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-block-end:16px;
+			border-block-end:1px solid rgba(255,255,255,.12)}
+		#produtos-main .eco-chips::-webkit-scrollbar{display:none}
+		#produtos-main .eco-chip{position:relative;display:inline-flex;align-items:baseline;gap:7px;flex:0 0 auto;
+			padding:0 0 13px;border:0;border-radius:0;background:none;box-shadow:none;color:#a8c3d6;
+			font-family:inherit;font-size:.86rem;font-weight:600;line-height:1.2;text-transform:none;letter-spacing:0;
+			white-space:nowrap;cursor:pointer;width:auto;max-width:none;min-height:0;transition:color .18s}
+		#produtos-main .eco-chip span{font-size:.76rem;font-weight:500;color:#6f8ca2;transition:color .18s}
+		#produtos-main .eco-chip::after{content:"";position:absolute;inset-inline:0;inset-block-end:0;height:2px;
+			background:var(--acento);transform:scaleX(0);transition:transform .2s}
+		#produtos-main .eco-chip:hover,#produtos-main .eco-chip:focus-visible,
+		#produtos-main .eco-chip.is-ativo{color:#fff;background:none}
+		#produtos-main .eco-chip:hover::after,#produtos-main .eco-chip.is-ativo::after{transform:scaleX(1)}
+		#produtos-main .eco-chip.is-ativo span{color:#a8c3d6}
+		#produtos-main .eco-contagem{text-align:center;margin-block-end:30px;font-size:.84rem;color:#9eb6ca}
+		#produtos-main .eco-vazio{text-align:center;padding-block:40px;color:#b7cad4}
+
+		/* Três colunas fixas: com auto-fill os ecrãs largos abriam quatro e os cartões ficavam
+		   apertados para as etiquetas das áreas. align-items:start para que abrir os catálogos
+		   de um cartão não estique os vizinhos da mesma fila. */
+		#produtos-main .eco-grelha{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+		@media (max-width:960px){#produtos-main .eco-grelha{grid-template-columns:repeat(2,minmax(0,1fr))}}
+		#produtos-main .eco-item{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(255,255,255,.1);
+			border-radius:14px;overflow:hidden;transition:transform .22s,box-shadow .22s}
+		#produtos-main .eco-item:hover,#produtos-main .eco-item:focus-within{transform:translateY(-4px);
+			box-shadow:0 18px 40px rgba(0,0,0,.38)}
+		#produtos-main .eco-item[hidden]{display:none}
+		/* Fundo #edf1f5: é o das imagens de produto da Samsung, por isso as que o trazem
+		   gravado e as transparentes ficam iguais. As quadradas (.eco-quadrada) ocupam a altura
+		   toda da caixa, sem margem: o equipamento já traz folga em cima e em baixo, e
+		   preenchê-la a toda a largura cortava o monitor e as rodas. */
+		#produtos-main .eco-imagem{aspect-ratio:4/3;display:grid;place-items:center;padding:18px;background:#edf1f5;overflow:hidden}
+		#produtos-main .eco-imagem img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+			transition:transform .35s}
+		#produtos-main .eco-item:hover .eco-imagem img{transform:scale(1.04)}
+		/* Posição absoluta: a altura da caixa vem do aspect-ratio, e contra uma altura dessas
+		   um height:100% não se resolve — a imagem ficava quadrada e a transbordar. */
+		#produtos-main .eco-imagem-cheia{position:relative;padding:0}
+		#produtos-main .eco-imagem-cheia img.eco-quadrada{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none}
+		#produtos-main .eco-info{display:flex;flex-direction:column;flex:1;padding:20px;
+			border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .eco-info h3{font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--azul-escuro)}
+		#produtos-main .eco-rotulo{margin-block-start:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
+			text-transform:uppercase;color:#8a97a3}
+		#produtos-main .eco-areas{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin-block-start:9px}
+		/* Cada área é uma ligação: abre a página ou o catálogo desse modelo para essa área. */
+		#produtos-main .eco-area{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;
+			border:1px solid var(--cinza-borda);background:var(--cinza-claro);font-size:.74rem;font-weight:600;
+			line-height:1.3;color:var(--azul-escuro);transition:background .2s,color .2s,border-color .2s}
+		#produtos-main a.eco-area::after{content:"↗";font-size:.82em;color:var(--azul-claro);transition:color .2s}
+		#produtos-main a.eco-area:hover,#produtos-main a.eco-area:focus-visible{background:var(--azul-claro);
+			border-color:var(--azul-claro);color:#fff}
+		#produtos-main a.eco-area:hover::after,#produtos-main a.eco-area:focus-visible::after{color:#fff}
+		#produtos-main .eco-area small{font-size:.62rem;font-weight:700;letter-spacing:.05em;padding:1px 5px;
+			border-radius:4px;background:rgba(0,112,175,.12);color:var(--azul-claro)}
+		#produtos-main a.eco-area:hover small,#produtos-main a.eco-area:focus-visible small{background:rgba(255,255,255,.24);color:#fff}
+		#produtos-main span.eco-area{color:var(--cinza-texto)}
+		/* Catálogos: a etiqueta PDF vai à frente e dispensa a seta; "A pedido" leva aos contactos. */
+		#produtos-main a.eco-pdf::after{content:none}
+		#produtos-main a.eco-pedir{background:#fff;border-style:dashed;color:var(--cinza-texto)}
+		#produtos-main a.eco-pedir::after{content:"→"}
+		/* Catálogos recolhidos: <details> nativo, abre e fecha sem JS e com o teclado. */
+		#produtos-main .eco-mais{margin-block-start:18px;border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .eco-mais summary{display:flex;align-items:center;gap:8px;padding-block:14px 2px;cursor:pointer;
+			list-style:none;font-size:.84rem;font-weight:700;color:var(--azul-escuro);transition:color .2s}
+		#produtos-main .eco-mais summary::-webkit-details-marker{display:none}
+		#produtos-main .eco-mais summary:hover,#produtos-main .eco-mais summary:focus-visible{color:var(--azul-claro)}
+		#produtos-main .eco-mais summary span{font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px;
+			background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--cinza-texto)}
+		#produtos-main .eco-mais summary::after{content:"";margin-inline-start:auto;width:8px;height:8px;
+			border-inline-end:2px solid var(--azul-claro);border-block-end:2px solid var(--azul-claro);
+			transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+		#produtos-main .eco-mais[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+		#produtos-main .eco-mais .eco-areas{margin-block-start:12px}
+		#produtos-main .eco-mais .eco-cta{margin-block-start:0;padding-block-start:14px}
+		#produtos-main .eco-cta{display:inline-flex;align-items:center;gap:6px;margin-block-start:auto;padding-block-start:16px;
+			font-size:.82rem;font-weight:600;color:var(--azul-claro)}
+		#produtos-main .eco-cta::after{content:"→";transition:transform .2s}
+		#produtos-main .eco-item:hover .eco-cta::after{transform:translateX(4px)}
+
+		/* --- Em destaque: R20 --- */
+		#produtos-main .destaque{padding-block:72px;background:var(--branco)}
+		#produtos-main .destaque .tec-figura{display:grid;place-items:center;padding:28px;aspect-ratio:4/3}
+		#produtos-main .destaque .tec-figura img{width:auto;max-width:100%;max-height:100%;object-fit:contain}
+		#produtos-main .dest-titulo{margin-block-start:16px;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;
+			line-height:1.15;color:var(--azul-escuro)}
+		#produtos-main .destaque .btn{margin-block-start:28px}
+
+
+		/* --- Responsivo --- */
+		@media (max-width:960px){
+			/* Empilhado: texto, depois os ecógrafos e, por fim, os números. */
+			#produtos-main .eco-heroi-inner{grid-template-columns:1fr;gap:28px;padding-block:52px 48px!important}
+			#produtos-main .eco-lineup{max-width:560px;margin-inline:auto;width:100%}
+			#produtos-main .eco-stats{margin-block-start:0}
+			#produtos-main .destaque{padding-block:52px}
+			#produtos-main .eco-modelos{padding-block:60px}
+		}
+		/* Abaixo de 768px a stylesheet.css do site reescreve todos os h1 com !important
+		   (regra do título da página de pesquisa); aqui é reposto com a mesma força. */
+		@media (max-width:768px){
+			#produtos-main .eco-heroi h1{font-size:2.2rem!important;line-height:1.05!important;text-align:start!important;
+				margin:20px 0 0!important;color:#fff!important;font-weight:700!important}
+			#produtos-main .eco-chips{gap:22px}
+			#produtos-main .eco-chip{font-size:.82rem;padding:0 0 12px}
+		}
+		@media (max-width:560px){
+			#produtos-main .eco-stats{grid-template-columns:1fr}
+			#produtos-main .eco-stat{display:flex;align-items:center;gap:14px;padding:14px 16px}
+			#produtos-main .eco-stat strong{flex:0 0 auto;min-width:2.4ch}
+			#produtos-main .eco-stat span{margin-block-start:0}
+			#produtos-main .eco-heroi .heroi-acoes .btn{width:100%}
+			#produtos-main .eco-grelha{grid-template-columns:1fr;gap:18px}
+		}
+
+		/* Cores forçadas (o CSS do site sobrepunha-se) */
+		#produtos-main .eco-heroi h1{color:#fff}
+		#produtos-main .eco-info h3,#produtos-main .dest-titulo{color:var(--azul-escuro)}
 		#produtos-main .cta-btn{color:var(--azul-escuro)}
 	</style>
 </head>
@@ -336,7 +731,10 @@
 <div class="clear"></div>
 </div>
 
-<!-- Pesquisa em tempo real — mesma marcação do speculum.pt (estilizada pela stylesheet.css do site) -->
+<!-- Pesquisa em tempo real — mesma marcação do speculum.pt. Fica aqui, como filha directa do
+     cabeçalho, porque em ecrãs estreitos o site esconde a barra de topo inteira e a pesquisa
+     deixaria de funcionar se vivesse lá dentro. Em ≥992px é o CSS que a posiciona sobre a barra
+     de topo, alinhada com o Login e o carrinho; o `right` vem de --busca-right, medido por JS. -->
 <div id="search-input-section">
 <div id="search-input-section-inside">
 <form autocomplete="off" id="searchform" action="https://www.speculum.pt/pt/pesquisar" method="post" role="search">
@@ -357,155 +755,388 @@
 <!-- ============================================================= -->
 <main id="produtos-main">
 
-	<h1 class="so-leitores">Ecógrafos Samsung</h1>
-
-	<!-- ===== Migalhas ===== -->
-	<nav class="breadcrumbs" aria-label="Está aqui">
-		<div class="container bc-inner">
-			<a href="https://www.speculum.pt/pt/inicio">Início</a>
-			<span class="sep" aria-hidden="true">›</span>
-			<a href="produtos.html">Produtos</a>
-			<span class="sep" aria-hidden="true">›</span>
-			<span class="atual" aria-current="page">Ecógrafos</span>
+	<!-- ===== Navegação da página =====
+	     Barra fixa com as secções, como na página dos monitores e na do R20. Cola-se por baixo
+	     do cabeçalho do site: o topo vem de --header-now e --search-h, mantidas por JS. -->
+	<nav class="sub-nav" id="sub-nav" aria-label="Secções desta página">
+		<div class="container sub-nav-inner">
+			<a href="#visao-geral">Visão geral</a>
+			<a href="#modelos">Modelos</a>
+			<a href="#r20">R20 em destaque</a>
 		</div>
 	</nav>
 
-	<!-- ===== Listagem de ecógrafos =====
-	     Modelos, áreas clínicas e destinos são os do speculum.pt/ecografos.html. Nessa
-	     página o RS85 Prestige aparece duas vezes — aqui só uma. As etiquetas do site
-	     escrevem a mesma coisa de duas maneiras ("Imagem Geral"/"Imagiologia Geral",
-	     "Obstetrícia"/"Ginecologia e Obstetrícia"); foram unificadas para o filtro não
-	     ficar com chips repetidos. As fotos dos modelos que a Speculum tem em catálogo
-	     vêm do speculum.pt; as restantes ficam nos URLs do site de origem. -->
-	<section class="ecografos" aria-labelledby="eco-title">
+	<!-- ===== Herói ===== -->
+	<section class="eco-heroi" id="visao-geral" aria-labelledby="prod-titulo">
+		<div class="container eco-heroi-inner">
+			<div class="eco-heroi-texto">
+				<p class="eco-pill">Samsung · Ecografia</p>
+
+				<h1 id="prod-titulo">
+					Ecógrafos Samsung
+					<span>Uma gama para cada área clínica.</span>
+				</h1>
+
+				<p class="eco-heroi-lead">
+					Da obstetrícia à imagem geral, à cardiologia e ao point of care: os ecógrafos
+					Samsung distribuídos pela Speculum, organizados por área clínica.
+				</p>
+
+				<div class="heroi-acoes">
+					<a class="btn btn-claro" href="#modelos">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0 5-5m-5 5-5-5"></path></svg>
+						Ver os modelos
+					</a>
+					<a class="btn btn-contorno-claro" href="https://www.speculum.pt/pt/contactos">
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v12H7l-3 3z"></path></svg>
+						Agendar demonstração
+					</a>
+				</div>
+
+			</div>
+
+			<!-- Recortes oficiais da Samsung (fundo transparente). São decorativos: o nome de
+			     cada modelo está na grelha, por isso o conjunto leva uma só descrição. -->
+			<div class="eco-lineup" role="img" aria-label="Quatro ecógrafos Samsung lado a lado: HS40, HERA Z20, V8 e V6">
+				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-hs40-527px-1.png" alt="" width="527" height="527">
+				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-z20-527px.png" alt="" width="527" height="527" fetchpriority="high">
+				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-gi-v8-527px.png" alt="" width="527" height="527">
+				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-v6-527px-1.png" alt="" width="527" height="527">
+			</div>
+
+			<div class="eco-stats">
+				<div class="eco-stat">
+					<strong>14</strong>
+					<span>Modelos na gama</span>
+				</div>
+				<div class="eco-stat">
+					<strong>6</strong>
+					<span>Áreas clínicas</span>
+				</div>
+				<div class="eco-stat">
+					<strong>PT</strong>
+					<span>Distribuição em Portugal pela Speculum</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===== Modelos =====
+	     Na página de origem cada área de cada modelo é um botão com destino próprio (página
+	     do produto ou catálogo); aqui são as etiquetas do cartão que fazem esse papel. Os
+	     destinos foram revistos: os endereços previous.samsunghealthcare.com e os antigos
+	     /en/products/ deixaram de responder e foram trocados pelas páginas actuais da Samsung.
+	     O RS85 Prestige aparecia duas vezes na origem — aqui só uma. -->
+	<section class="eco-modelos" id="modelos" aria-labelledby="eco-title">
 		<div class="container">
-			<h2 class="so-leitores" id="eco-title">Modelos disponíveis</h2>
+			<div class="section-head">
+				<h2 id="eco-title">Modelos disponíveis</h2>
+				<p>Filtre por área clínica. Cada modelo tem as páginas por área e, ao abrir “Catálogo”, os PDF.</p>
+			</div>
 
 			<div class="eco-chips" role="group" aria-label="Filtrar por área clínica">
-				<button type="button" class="eco-chip is-ativo" data-cat="">Todos <span>14</span></button>
-				<button type="button" class="eco-chip" data-cat="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia <span>9</span></button>
-				<button type="button" class="eco-chip" data-cat="Imagem Geral">Imagem Geral <span>9</span></button>
-				<button type="button" class="eco-chip" data-cat="Cardiovascular">Cardiovascular <span>3</span></button>
-				<button type="button" class="eco-chip" data-cat="Point of Care">Point of Care <span>3</span></button>
-				<button type="button" class="eco-chip" data-cat="Radiologia">Radiologia <span>2</span></button>
-				<button type="button" class="eco-chip" data-cat="Musculoesquelética">Musculoesquelética <span>1</span></button>			</div>
+				<button type="button" class="eco-chip is-ativo" data-cat="" aria-pressed="true">Todos <span>14</span></button>
+				<button type="button" class="eco-chip" data-cat="Ginecologia e Obstetrícia" aria-pressed="false">Ginecologia e Obstetrícia <span>9</span></button>
+				<button type="button" class="eco-chip" data-cat="Imagem Geral" aria-pressed="false">Imagem Geral <span>9</span></button>
+				<button type="button" class="eco-chip" data-cat="Cardiovascular" aria-pressed="false">Cardiovascular <span>3</span></button>
+				<button type="button" class="eco-chip" data-cat="Point of Care" aria-pressed="false">Point of Care <span>3</span></button>
+				<button type="button" class="eco-chip" data-cat="Radiologia" aria-pressed="false">Radiologia <span>2</span></button>
+				<button type="button" class="eco-chip" data-cat="Musculoesquelética" aria-pressed="false">Musculoesquelética <span>1</span></button>
+			</div>
 			<p class="eco-contagem" id="eco-contagem" role="status"></p>
 
 			<div class="eco-grelha" id="eco-grelha">
-				<a class="eco-item" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20/overview" target="_blank" rel="noopener" data-cats="Ginecologia e Obstetrícia" data-busca="z20 ginecologia e obstetricia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://usa.samsunghealthcare.com/hs-fs/hubfs/r20-pr-heroimage.jpg?width=800&amp;height=458&amp;name=r20-pr-heroimage.jpg" alt="Ecógrafo Samsung Z20"></div>
+
+				<article class="eco-item" data-cats="Ginecologia e Obstetrícia">
+					<a class="eco-imagem eco-imagem-cheia" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/469a7d74-0fb4-49bc-98a8-ab645d4b4672.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
-						<h3>Z20</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Ginecologia e Obstetrícia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<h3>HERA Z20</h3>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo</summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://usa.samsunghealthcare.com/ultrasound" target="_blank" rel="noopener" data-cats="Imagem Geral|Ginecologia e Obstetrícia" data-busca="q10 evo imagem geral ginecologia e obstetricia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://usa.samsunghealthcare.com/hs-fs/hubfs/usa-samsung-vet-q10-evo.jpg?width=493&amp;height=321&amp;name=usa-samsung-vet-q10-evo.jpg" alt="Ecógrafo Samsung Q10 EVO"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
+					<a class="eco-imagem eco-imagem-cheia" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/evo-q10" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/af9044d6-84af-4874-8ec9-a89b0a0d07e1.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>Q10 EVO</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span><span class="eco-etiqueta">Ginecologia e Obstetrícia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/evo-q10" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/q10" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.samsunghealthcare.com/upload/d8cfe4a5-a7e7-4ad7-9981-610d977d29a1.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo (EN)</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/r20" target="_blank" rel="noopener" data-cats="Imagem Geral" data-busca="r20 imagem geral samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://img.global.news.samsung.com/be_fr/wp-content/uploads/2025/06/Samsung-Liver-Cirrhosis-e1750413803695.png" alt="Ecógrafo Samsung R20"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.speculum.pt/rs20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/cf59d3d7-9b6b-4c7d-95dd-8f1665750702.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>R20</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.speculum.pt/rs20.html">Imagem Geral</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.samsunghealthcare.com/upload/1463de80-350f-4bf0-8e60-f7c4b3a9f86e.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo (EN)</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://previous.samsunghealthcare.com/en/products/UltrasoundSystem/RS85%20Prestige/General%20Imaging/benefit" target="_blank" rel="noopener" data-cats="Radiologia|Musculoesquelética" data-busca="rs85 prestige radiologia musculoesqueletica samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-RS85F40.jpg" alt="Ecógrafo Samsung RS85 Prestige"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Radiologia|Musculoesquelética">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/bedc88aa-93d8-416c-be73-a19722f3e1be.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>RS85 Prestige</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Radiologia</span><span class="eco-etiqueta">Musculoesquelética</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Radiologia</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Musculoesquelética</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
+							</ul>
+							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53908-ecografo-samsung-rs85">Ver no catálogo Speculum</a>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://www.samsunghealthcare.com/en/products/UltrasoundSystem/V8/General%20Imaging/benefit" target="_blank" rel="noopener" data-cats="Imagem Geral|Ginecologia e Obstetrícia" data-busca="v8 imagem geral ginecologia e obstetricia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-V8NBFBK3.jpg" alt="Ecógrafo Samsung V8"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/0b9c0148-9a5d-4cf7-a8bf-88c9be45884a.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>V8</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span><span class="eco-etiqueta">Ginecologia e Obstetrícia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V8" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogos <span>2</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_CV_210914_spread-20230725-103233.pdf" target="_blank" rel="noopener"><small>PDF</small>Cardiovascular</a></li>
+							</ul>
+							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53914-ecografo-v8-3p-cw-keyboard-battery-v10101">Ver no catálogo Speculum</a>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener" data-cats="Ginecologia e Obstetrícia|Imagem Geral" data-busca="v7 ginecologia e obstetricia imagem geral samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-V7NBF0K3.jpg" alt="Ecógrafo Samsung V7"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>V7</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Ginecologia e Obstetrícia</span><span class="eco-etiqueta">Imagem Geral</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V7" target="_blank" rel="noopener">Imagem Geral</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogos <span>2</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_OBGyn_230125-20230725-110916.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_GI_230125-20230725-111103.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
+							</ul>
+							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53911-ecografo-v7-3p-cw">Ver no catálogo Speculum</a>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener" data-cats="Ginecologia e Obstetrícia|Imagem Geral" data-busca="v6 ginecologia e obstetricia imagem geral samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIR4-9l4frKyw_rZ4B4uDMUE3HahauUnKTew&amp;s" alt="Ecógrafo Samsung V6"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V6" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>V6</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Ginecologia e Obstetrícia</span><span class="eco-etiqueta">Imagem Geral</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V6" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener">Imagem Geral</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogos <span>2</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20OBGYN_230725-20230725-113222.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20GI_230725-20230725-113118.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://previous.samsunghealthcare.com/en/ultrasound/womens-health/v5/overview" target="_blank" rel="noopener" data-cats="Ginecologia e Obstetrícia|Imagem Geral" data-busca="v5 ginecologia e obstetricia imagem geral samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSuE9qLzOxyQvDFI5wrNZ72-zqKPpi29-Tjg&amp;s" alt="Ecógrafo Samsung V5"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V5" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>V5</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Ginecologia e Obstetrícia</span><span class="eco-etiqueta">Imagem Geral</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V5" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V5" target="_blank" rel="noopener">Imagem Geral</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V5_Catalog_All_0911-2-20251104-094631.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://www.speculum.pt/files/files/catalog/HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf" target="_blank" rel="noopener" data-cats="Imagem Geral|Ginecologia e Obstetrícia" data-busca="hera w10 elite imagem geral ginecologia e obstetricia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/_img/sub/product/HERA_W10_Elite/mainVisual_img.png" alt="Ecógrafo Samsung HERA W10 Elite"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
+					<a class="eco-imagem" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/hera-w10-elite" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://usa.samsunghealthcare.com/hs-fs/hubfs/WH-W10-Elite-Hero-450x600.png" alt=""></a>
 					<div class="eco-info">
 						<h3>HERA W10 Elite</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span><span class="eco-etiqueta">Ginecologia e Obstetrícia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/hera-w10-elite" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAW10Elite" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://www.speculum.pt/hs40.html" target="_blank" rel="noopener" data-cats="Imagem Geral|Ginecologia e Obstetrícia|Radiologia" data-busca="hs40 imagem geral ginecologia e obstetricia radiologia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-HS4NL3B.jpg" alt="Ecógrafo Samsung HS40"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia|Radiologia">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.speculum.pt/hs40.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/6bd1fc5b-015a-4c18-bd23-9ae6a250adc9.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>HS40</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span><span class="eco-etiqueta">Ginecologia e Obstetrícia</span><span class="eco-etiqueta">Radiologia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.speculum.pt/hs40.html">Imagem Geral</a></li>
+							<li><a class="eco-area" href="https://www.speculum.pt/hs40obgyn.html">Ginecologia e Obstetrícia</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS40" target="_blank" rel="noopener">Radiologia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogos <span>2</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_GI_CE%20mark_200129_spread-20230731-104018.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_OB_CE%20mark_200129_spread-20230731-105324.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
+							</ul>
+							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53899-ecografo-samsung-hs40">Ver no catálogo Speculum</a>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://www.samsunghealthcare.com/en/products/UltrasoundSystem/HS30/General%20Imaging/benefit" target="_blank" rel="noopener" data-cats="Imagem Geral|Ginecologia e Obstetrícia" data-busca="hs30 imagem geral ginecologia e obstetricia samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://www.speculum.pt/files/images/products/SMS-HS3NN2X.jpg" alt="Ecógrafo Samsung HS30"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/2ced30d5-3b23-4aa6-a927-ca89eae89e56.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>HS30</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Imagem Geral</span><span class="eco-etiqueta">Ginecologia e Obstetrícia</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener">Ginecologia e Obstetrícia</a></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo <span>1</span></summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/pdfs/SMS-HS3NN2X%20%20%20%20%20%20%20.pdf" target="_blank" rel="noopener"><small>PDF</small>Ficha do produto (PT)</a></li>
+							</ul>
+							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53895-ecografo-samsung-hs30">Ver no catálogo Speculum</a>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://previous.samsunghealthcare.com/resources/_file/cV_catalogue_en_20241126.pdf" target="_blank" rel="noopener" data-cats="Cardiovascular|Point of Care" data-busca="cv7 cardiovascular point of care samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/product/cardiovascular_en/tab_img_V7.png" alt="Ecógrafo Samsung CV7"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>CV7</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Cardiovascular</span><span class="eco-etiqueta">Point of Care</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Point of Care</span></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo</summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://previous.samsunghealthcare.com/resources/_file/cV_catalogue_en_20241126.pdf" target="_blank" rel="noopener" data-cats="Cardiovascular|Point of Care" data-busca="cv6 cardiovascular point of care samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/product/cardiovascular_en/tab_img_V6.png" alt="Ecógrafo Samsung CV6"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>CV6</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Cardiovascular</span><span class="eco-etiqueta">Point of Care</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Point of Care</span></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo</summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>
-				<a class="eco-item" href="https://previous.samsunghealthcare.com/resources/_file/cV_catalogue_en_20241126.pdf" target="_blank" rel="noopener" data-cats="Cardiovascular|Point of Care" data-busca="cv5 cardiovascular point of care samsung">
-					<div class="eco-imagem"><img loading="lazy" src="https://previous.samsunghealthcare.com/resources/product/cardiovascular_en/tab_img_V5.png" alt="Ecógrafo Samsung CV5"></div>
+				</article>
+
+				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
+					<a class="eco-imagem eco-imagem-cheia" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3>CV5</h3>
-						<div class="eco-meta"><span class="eco-etiqueta">Cardiovascular</span><span class="eco-etiqueta">Point of Care</span></div>
-						<span class="eco-cta">Ver especificações</span>
+						<p class="eco-rotulo">Páginas por área clínica</p>
+						<ul class="eco-areas">
+							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Point of Care</span></li>
+						</ul>
+						<details class="eco-mais">
+							<summary>Catálogo</summary>
+							<ul class="eco-areas">
+								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
+							</ul>
+						</details>
 					</div>
-				</a>			</div>
+				</article>
+			</div>
 
 			<p class="eco-vazio" id="eco-vazio" hidden>Nenhum ecógrafo corresponde a esse filtro.</p>
+		</div>
+	</section>
+
+	<!-- ===== Em destaque: R20 =====
+	     O único modelo com página própria e completa no site. Os dados são os dessa página
+	     (speculum.pt/rs20.html), não acrescentados aqui. -->
+	<section class="destaque" id="r20" aria-labelledby="dest-title">
+		<div class="container">
+			<article class="tec-linha">
+				<div class="tec-figura">
+					<img src="https://usa.samsunghealthcare.com/hs-fs/hubfs/GI-R20-Hero-image3-450x600.png" alt="Ecógrafo Samsung R20, visto de frente, com monitor e painel de controlo" loading="lazy">
+				</div>
+				<div class="tec-texto">
+					<p class="tec-etiqueta">Em destaque</p>
+					<h2 class="dest-titulo" id="dest-title">Samsung R20</h2>
+					<p>Plataforma de imagem geral com softwares clínicos assistidos e uma ergonomia pensada para exames de corpo inteiro.</p>
+					<ul class="tec-pontos">
+						<li>Monitor OLED de 27" e ecrã tátil inclinável de 15,6"</li>
+						<li>3.ª Harmónica, ClearVision e ShadowHDR™</li>
+						<li>Live LiverAssist™, Live BreastAssist™ e EzSWI™</li>
+						<li>MV CEUS com TOA, DeepUSFF™ e NerveTrack™</li>
+					</ul>
+					<a class="btn btn-primario" href="https://www.speculum.pt/rs20.html">
+						Conhecer o R20
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"></path></svg>
+					</a>
+				</div>
+			</article>
 		</div>
 	</section>
 
@@ -519,7 +1150,6 @@
 			<a class="cta-btn" href="https://www.speculum.pt/pt/contactos">Agendar demonstração</a>
 		</div>
 	</section>
-
 </main>
 
 
@@ -745,7 +1375,14 @@
 			var h = document.getElementById('navtop');
 			if (!h) return;
 			var hh = h.offsetHeight;
-			document.documentElement.style.setProperty('--header-h', hh + 'px');
+			// --header-now é a altura actual; --header-h fica com a altura por extenso e só é
+			// actualizada fora do modo compacto. O espaço reservado no topo do conteúdo
+			// depende de --header-h: se seguisse a altura actual, encolhia ao rolar e a página
+			// dava um salto.
+			document.documentElement.style.setProperty('--header-now', hh + 'px');
+			if (!h.classList.contains('compacto')) {
+				document.documentElement.style.setProperty('--header-h', hh + 'px');
+			}
 			// A faixa da pesquisa é absoluta dentro do cabeçalho: quando o site a mantém
 			// aberta ela cai por baixo dele, por isso mede-se o quanto sobra e reserva-se.
 			var campo = document.getElementById('search_tag_all');
@@ -755,6 +1392,16 @@
 				extra = Math.max(0, Math.round(campo.getBoundingClientRect().bottom - h.getBoundingClientRect().bottom) + 12);
 			}
 			document.documentElement.style.setProperty('--search-h', extra + 'px');
+
+			// Em ≥992px a pesquisa fica sobreposta à barra de topo, à esquerda do Login. A
+			// distância ao bordo direito depende da largura dos botões (que varia com o texto
+			// do carrinho), por isso mede-se aqui em vez de ficar fixa no CSS.
+			var botoes = h.querySelector('.navtop-top-buttons');
+			if (botoes) {
+				var caixaBotoes = botoes.getBoundingClientRect();
+				var direita = Math.max(0, Math.round(h.getBoundingClientRect().right - caixaBotoes.left) + 26);
+				document.documentElement.style.setProperty('--busca-right', direita + 'px');
+			}
 			// O offset vive no #produtos-main (via --header-h). Zeramos o padding-top do
 			// body para não somar ao offset: inline !important vence qualquer regra do site.
 			document.body.style.setProperty('padding-top', '0', 'important');
@@ -777,6 +1424,43 @@
 		if (document.fonts) {
 			document.fonts.ready.then(setHeaderOffset);
 		}
+
+		// Cabeçalho compacto ao rolar: esconde a barra de topo (pesquisa, login e carrinho) e
+		// encolhe o logótipo, devolvendo cerca de metade da altura ao ecrã. Os dois limiares
+		// são diferentes de propósito — sem essa folga, parar mesmo em cima do limiar punha o
+		// cabeçalho a abrir e fechar a cada pixel de scroll.
+		(function () {
+			var cabecalho = document.getElementById('navtop');
+			if (!cabecalho) return;
+			var COMPACTA_A = 90, EXPANDE_A = 20;
+
+			// A altura do cabeçalho muda ao longo da transição, não de uma vez. A barra de
+			// secções e o destino das âncoras seguem --header-now, por isso essa variável é
+			// remedida a cada fotograma enquanto a transição decorre — senão a barra saltava
+			// para a posição final ainda o cabeçalho ia a meio do caminho.
+			function seguirTransicao() {
+				var fim = performance.now() + 320;
+				(function passo() {
+					setHeaderOffset();
+					if (performance.now() < fim) requestAnimationFrame(passo);
+				})();
+				// Em separadores em segundo plano o requestAnimationFrame fica suspenso;
+				// este temporizador garante o valor final mesmo nesse caso.
+				setTimeout(setHeaderOffset, 340);
+			}
+
+			function aoRolar() {
+				var y = window.scrollY || document.documentElement.scrollTop || 0;
+				var compacto = cabecalho.classList.contains('compacto');
+				if (!compacto && y > COMPACTA_A) cabecalho.classList.add('compacto');
+				else if (compacto && y < EXPANDE_A) cabecalho.classList.remove('compacto');
+				else return;
+				seguirTransicao();
+			}
+
+			window.addEventListener('scroll', aoRolar, { passive: true });
+			aoRolar(); // a página pode abrir já rolada (recarregar, voltar atrás, âncora)
+		})();
 
 		// Dropdown de idioma (pt | en)
 		var liActive = document.querySelector('#languages-flags .li-active');
@@ -1011,47 +1695,131 @@
 			if (e.key === 'Escape' && lista.childNodes.length) { limpar(); campo.blur(); }
 		});
 	})();
+</script>
 
-	/* --- Filtro da listagem de ecógrafos ---
-	   Área clínica (chips) e texto, combináveis. Filtragem local, só sobre o que já está
-	   na página: nada é pedido ao servidor. Sem JS a grelha fica toda visível — perde-se
-	   o filtro, não o conteúdo. */
+<!-- Barra de secções: mantém --subnav-h com a altura real da barra (de que depende o ponto onde
+     as âncoras param) e assinala a secção que está a ser lida. -->
+<script>
+	(function () {
+		var barra = document.getElementById('sub-nav');
+		if (!barra) return;
+
+		function medir() {
+			document.documentElement.style.setProperty('--subnav-h', barra.offsetHeight + 'px');
+		}
+		medir();
+		window.addEventListener('resize', medir);
+		if (window.ResizeObserver) new ResizeObserver(medir).observe(barra);
+
+		var ligacoes = [].slice.call(barra.querySelectorAll('a[href^="#"]'));
+		var porId = {};
+		var seccoes = [];
+		ligacoes.forEach(function (a) {
+			var alvo = document.getElementById(a.getAttribute('href').slice(1));
+			if (!alvo) return;
+			porId[alvo.id] = a;
+			seccoes.push(alvo);
+		});
+		if (!seccoes.length || !window.IntersectionObserver) return;
+
+		var activaAgora = null;
+		function marcar() {
+			// Activa é a última secção cujo topo já passou a linha de leitura, logo abaixo da barra.
+			var linha = barra.getBoundingClientRect().bottom + 8;
+			var activa = seccoes[0];
+			seccoes.forEach(function (s) {
+				if (s.getBoundingClientRect().top <= linha) activa = s;
+			});
+			// Já no fim da página, assinala a última secção — senão a barra nunca lá chega.
+			if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+				activa = seccoes[seccoes.length - 1];
+			}
+			if (activa === activaAgora) return;
+			activaAgora = activa;
+			ligacoes.forEach(function (a) { a.classList.remove('is-ativo'); a.removeAttribute('aria-current'); });
+			if (porId[activa.id]) {
+				porId[activa.id].classList.add('is-ativo');
+				porId[activa.id].setAttribute('aria-current', 'true');
+				trazerAVista(porId[activa.id]);
+			}
+		}
+
+		// Em ecrãs estreitos a barra não cabe toda e rola na horizontal, por isso a secção
+		// activa podia ficar fora de vista — a barra mostrava "Visão geral" com a página já
+		// no fim. Aqui centra-se a ligação activa dentro da faixa.
+		var faixa = barra.querySelector('.sub-nav-inner');
+		var semAnimacao = window.matchMedia('(prefers-reduced-motion:reduce)');
+
+		function trazerAVista(a) {
+			if (!faixa || faixa.scrollWidth <= faixa.clientWidth + 1) return; // cabe toda: nada a fazer
+			var rFaixa = faixa.getBoundingClientRect();
+			var rA = a.getBoundingClientRect();
+			// Deslocamento relativo, medido a partir das posições actuais: não depende de
+			// offsetParent nem do scrollLeft em que a faixa esteja.
+			var d = Math.round((rA.left - rFaixa.left) - (rFaixa.width - rA.width) / 2);
+			if (!d) return;
+			// O deslizamento suave fica suspenso em documentos ocultos: nesse caso a barra
+			// nunca chegava a acompanhar. Com a página escondida salta directamente, que é o
+			// que interessa — ninguém está a ver o percurso.
+			var suave = !semAnimacao.matches && document.visibilityState === 'visible';
+			if (faixa.scrollBy) faixa.scrollBy({ left: d, behavior: suave ? 'smooth' : 'auto' });
+			else faixa.scrollLeft += d;
+		}
+
+		// Sem requestAnimationFrame de propósito: em separadores em segundo plano o rAF fica
+		// suspenso e o realce deixava de acompanhar. São poucas medições, não compensa adiar.
+		window.addEventListener('scroll', marcar, { passive: true });
+		window.addEventListener('resize', marcar);
+		marcar();
+	})();
+</script>
+
+<!-- Filtro da grelha de ecógrafos: filtragem local, só sobre o que já está na página — nada é
+     pedido ao servidor. Sem JS a grelha fica toda visível: perde-se o filtro, não o conteúdo. -->
+<script>
 	(function () {
 		var grelha   = document.getElementById('eco-grelha');
 		var contagem = document.getElementById('eco-contagem');
 		var vazio    = document.getElementById('eco-vazio');
-		var chips    = document.querySelectorAll('.eco-chip');
+		var chips    = [].slice.call(document.querySelectorAll('#produtos-main .eco-chip'));
+		var fila     = document.querySelector('#produtos-main .eco-chips');
 		if (!grelha) return;
 
-		var itens = Array.prototype.map.call(grelha.querySelectorAll('.eco-item'), function (el) {
-			return { el: el, cats: (el.dataset.cats || '').split('|').filter(Boolean) };
+		var itens = [].map.call(grelha.querySelectorAll('.eco-item'), function (el) {
+			return { el: el, cats: (el.getAttribute('data-cats') || '').split('|').filter(Boolean) };
 		});
 		var total = itens.length;
-		var categoria = '';
 
-		function filtrar() {
+		function filtrar(categoria) {
 			var visiveis = 0;
 			itens.forEach(function (i) {
 				var ok = !categoria || i.cats.indexOf(categoria) !== -1;
 				i.el.hidden = !ok;
 				if (ok) visiveis++;
 			});
+			chips.forEach(function (c) {
+				var activo = (c.getAttribute('data-cat') || '') === categoria;
+				c.classList.toggle('is-ativo', activo);
+				c.setAttribute('aria-pressed', activo ? 'true' : 'false');
+				// Em ecrãs estreitos a fila de separadores rola na horizontal: o activo vem
+				// para o centro. Deslocamento relativo, sem scrollIntoView, para não mexer
+				// no scroll vertical da página.
+				if (activo && fila && fila.scrollWidth > fila.clientWidth + 1) {
+					var rf = fila.getBoundingClientRect(), rc = c.getBoundingClientRect();
+					fila.scrollLeft += Math.round((rc.left - rf.left) - (rf.width - rc.width) / 2);
+				}
+			});
 			contagem.textContent = visiveis === total
 				? total + ' ecógrafos'
-				: visiveis + ' de ' + total + ' ecógrafos';
+				: visiveis + ' de ' + total + ' ecógrafos — ' + categoria;
 			vazio.hidden = visiveis !== 0;
 		}
 
 		chips.forEach(function (chip) {
-			chip.addEventListener('click', function () {
-				chips.forEach(function (c) { c.classList.remove('is-ativo'); });
-				chip.classList.add('is-ativo');
-				categoria = chip.dataset.cat || '';
-				filtrar();
-			});
+			chip.addEventListener('click', function () { filtrar(chip.getAttribute('data-cat') || ''); });
 		});
 
-		filtrar();
+		filtrar('');
 	})();
 </script>
 </body>
