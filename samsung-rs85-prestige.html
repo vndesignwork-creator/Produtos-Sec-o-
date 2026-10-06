@@ -1,70 +1,759 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-PT">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="robots" content="index,follow">
-	<title>Ecógrafos Samsung | Speculum</title>
-	<meta name="description" content="Ecógrafos Samsung distribuídos pela Speculum: HERA Z20, HERA W10 Elite, Q10 EVO, R20, RS85 Prestige e as séries V, HS e CV — organizados por área clínica.">
-	<meta name="keywords" content="Ecógrafos, Samsung, ultrassonografia, ecografia, HERA Z20, W10 Elite, Q10 EVO, R20, RS85 Prestige, V8, V7, V6, V5, HS40, HS30, CV7, CV6, CV5, Speculum">
+  <!--
+    As imagens são servidas pelo jsDelivr com o endereço fixado a um commit, para ficarem
+    disponíveis de imediato. Ao substituir um ficheiro de imagem, atualizar o commit nos URLs.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Folhas de estilo REAIS do site Speculum (idênticas às da medicoshospitalares.html) -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
-	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/stylesheet.css" type="text/css">
-	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/core.css" type="text/css">
-	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/select2.css" type="text/css">
-	<link rel="stylesheet" href="https://www.speculum.pt/layout/css/font-awesome.min.css" type="text/css">
+  <title>Samsung RS85 Prestige | Ecógrafos | Speculum</title>
 
-	<!-- Fonte para o conteúdo de produtos (não afeta cabeçalho/rodapé) -->
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="Samsung RS85 Prestige em Portugal pela Speculum: ecógrafo premium de imagem geral e radiologia, com Crystal Architecture™, ShadowHDR™, S-Shearwave Imaging™, S-Fusion™ e monitor OLED de 27&quot;."
+  >
 
-	<!-- Estilos do CONTEÚDO de produtos — isolados sob #produtos-main para não colidir com o CSS do site -->
-	<style>
-		/* Corrige as barras de rolagem:
-		   - overflow-x:clip corta o excesso lateral do SVG do herói (usa 100vw)
-		   - height:auto anula o height:100% do CSS do site (que punha html e body a rolar → barra vertical dupla)
-		   Resultado: uma só barra vertical, sem barra horizontal. */
-		html{overflow-x:clip!important;height:auto!important}
-		body{overflow-x:clip!important;overflow-y:visible!important;height:auto!important;min-height:0!important}
-		/* Offset do cabeçalho fixo. Duas variáveis, ambas mantidas por JS:
-		     --header-h   altura do cabeçalho por extenso; só muda com a largura da janela.
-		     --header-now altura neste momento, que baixa quando o cabeçalho fica compacto.
-		   O espaço reservado aqui usa --header-h: se seguisse a altura actual, encolheria ao
-		   rolar e a página daria um salto. Quem acompanha o cabeçalho ao rolar (a barra de
-		   secções e o destino das âncoras) é que usa --header-now.
-		   --search-h acrescenta a faixa da pesquisa quando esta fica por baixo do cabeçalho
-		   (abaixo de 992px, ao abrir pela lupa), para não tapar o conteúdo. */
-		#produtos-main{padding-block-start:calc(var(--header-h,90px) + var(--search-h,0px))}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
+  <!-- Folhas de estilo do site Speculum: são elas que dão o aspeto ao cabeçalho (#navtop)
+       e ao rodapé. Ficam antes do <style> desta página para que, em caso de empate de
+       especificidade, prevaleçam as regras do conteúdo. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
+  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/stylesheet.css" type="text/css">
+  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/core.css" type="text/css">
+  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/select2.css" type="text/css">
+  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/font-awesome.min.css" type="text/css">
+
+  <style>
+    :root {
+      --blue: #00527f;
+      --blue2: #008cc2;
+      --cyan: #16d8ff;
+      --dark: #020817;
+      --dark2: #071322;
+      --dark3: #0d1b30;
+      --text: #173043;
+      --muted: #607481;
+      --soft: #f4f7f9;
+      --line: #dfe7eb;
+      --white: #ffffff;
+      --shadow: 0 10px 28px rgba(0, 36, 58, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .r20-container { width: min(1240px, calc(100% - 36px)); margin-inline: auto; }
+    .r20-section { padding: 92px 0; }
+    .r20-soft { background: var(--soft); }
+
+    .r20-dark {
+      color: #ffffff;
+      background: radial-gradient(circle at 50% -10%, rgba(0, 144, 190, 0.12), transparent 36%), var(--dark);
+    }
+
+    .r20-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 14px;
+      color: #087fa8;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .r20-kicker::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    .r20-dark .r20-kicker { color: #70e4ff; }
+
+    .r20-title {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(32px, 4.7vw, 55px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .r20-lead { max-width: 880px; margin: 20px 0 0; color: #586d7a; font-size: 18px; line-height: 1.72; }
+    .r20-dark .r20-lead { color: #b7cad4; }
+
+    /* TOP */
+    .r20-topbar { color: #75828a; background: #f7f9fa; border-bottom: 1px solid #e5ebee; font-size: 11px; }
+    .r20-topbar .r20-container { min-height: 33px; display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+
+    /* HEADER */
+    .r20-header { position: sticky; top: 0; z-index: 1000; background: #ffffff; border-bottom: 1px solid #dde6ea; }
+    .r20-header-inner { min-height: 84px; display: flex; align-items: center; gap: 30px; }
+    .r20-logo img { width: auto; height: 52px; }
+
+    .r20-main-nav { display: flex; align-items: center; gap: 23px; margin-left: auto; }
+    .r20-main-nav a { color: var(--blue); font-family: "Montserrat", sans-serif; font-size: 12px; font-weight: 700; }
+    .r20-main-nav a:hover { color: var(--blue2); }
+
+    .r20-menu-button { display: none; margin-left: auto; border: 0; color: var(--blue); background: transparent; font-size: 25px; cursor: pointer; }
+
+    .r20-mobile-menu { display: none; padding: 12px 18px 18px; background: #ffffff; border-top: 1px solid #e3e9ec; }
+    .r20-mobile-menu.open { display: grid; }
+    .r20-mobile-menu a { padding: 9px 4px; color: var(--blue); font-weight: 700; font-size: 13px; }
+
+    /* SUBNAV */
+    .r20-subnav {
+      position: sticky;
+      top: 84px;
+      z-index: 900;
+      background: rgba(4, 16, 27, 0.97);
+      color: #bed3dd;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .r20-subnav .r20-container { display: flex; gap: 25px; overflow-x: auto; scrollbar-width: none; }
+    .r20-subnav a { flex: 0 0 auto; padding: 13px 0; white-space: nowrap; font-size: 12px; font-weight: 700; }
+    .r20-subnav a:hover { color: #ffffff; }
+
+    /* HERO */
+    .r20-hero { position: relative; min-height: 690px; display: flex; align-items: center; overflow: hidden; color: #ffffff; background: #06131f; }
+
+    .r20-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(100deg, rgba(3, 16, 27, 0.97) 0%, rgba(3, 16, 27, 0.93) 38%, rgba(4, 19, 31, 0.62) 63%, rgba(6, 22, 35, 0.4) 100%),
+        url("https://cdn.jsdelivr.net/gh/vndesignwork-creator/Produtos-Sec-o-@e14c2c7190c376013c695190f05d6a0ffbc906eb/images/products/r20-hero-studio.png")
+        top center / 100% auto no-repeat;
+    }
+
+    .r20-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 140px;
+      background: linear-gradient(transparent, #071722);
+    }
+
+    .r20-hero-inner { position: relative; z-index: 2; max-width: 790px; padding: 90px 0 105px; }
+
+    .r20-pill {
+      display: inline-flex;
+      padding: 7px 12px;
+      border: 1px solid rgba(80, 222, 255, 0.35);
+      border-radius: 999px;
+      color: #96eaff;
+      background: rgba(0, 119, 154, 0.12);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .r20-hero h1 {
+      margin: 18px 0 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(58px, 8vw, 100px);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+    }
+
+    .r20-hero h1 span { display: block; margin-top: 15px; color: #a9e5f3; font-size: 0.38em; letter-spacing: -0.025em; }
+    .r20-hero p { max-width: 710px; margin: 27px 0 0; color: #d2e4ec; font-size: 19px; line-height: 1.7; }
+
+    .r20-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+
+    .r20-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 21px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .r20-btn-primary { color: #051722; background: #20b8e5; }
+    .r20-btn-primary:hover { background: #72def7; transform: translateY(-1px); }
+    .r20-btn-outline { color: #ffffff; background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.25); }
+
+    .r20-hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 46px; }
+
+    .r20-hero-stat { padding: 17px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 15px; background: rgba(6, 28, 41, 0.65); }
+    .r20-hero-stat strong { display: block; color: #8beaff; font-family: "Montserrat", sans-serif; font-size: 25px; line-height: 1; }
+    .r20-hero-stat span { display: block; margin-top: 8px; color: #bfd3dc; font-size: 11px; line-height: 1.45; }
+
+    /* GENERIC GRID */
+    .r20-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: stretch; }
+    .r20-feature-list { display: grid; gap: 13px; margin-top: 30px; }
+    .r20-feature { display: grid; grid-template-columns: 45px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .r20-feature:last-child { border-bottom: 0; }
+
+    .r20-feature-icon {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      color: #057ea6;
+      background: #e8f6fa;
+      font-weight: 900;
+    }
+
+    .r20-feature-icon svg { width: 23px; height: 23px; }
+
+    .r20-feature h3 { margin: 0 0 5px; font-family: "Montserrat", sans-serif; font-size: 17px; }
+    .r20-feature p { margin: 0; color: #617581; font-size: 14px; line-height: 1.65; }
+
+    .r20-image-card { position: relative; min-height: 470px; overflow: hidden; border-radius: 23px; background: #000; box-shadow: var(--shadow); }
+    .r20-image-card img { width: 100%; height: 100%; min-height: 470px; object-fit: contain; }
+
+    /* SOFTWARES */
+    .r20-software-heading { max-width: 890px; margin: 0 auto; text-align: center; }
+    .r20-software-heading .r20-lead { margin-left: auto; margin-right: auto; }
+
+    .r20-software-pill {
+      display: inline-flex;
+      padding: 6px 13px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(0, 203, 255, 0.34);
+      border-radius: 999px;
+      color: #17d9ff;
+      background: rgba(0, 165, 211, 0.08);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .r20-software-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin-top: 42px; }
+
+    .r20-software-tab {
+      padding: 10px 17px;
+      border: 1px solid #24344d;
+      border-radius: 11px;
+      color: #98b3d0;
+      background: #0b1425;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .r20-software-tab:hover { color: #ffffff; border-color: #1487b2; }
+
+    .r20-software-tab.active {
+      color: #ffffff;
+      border-color: #00baef;
+      background: linear-gradient(135deg, #06b5e7, #0879f9);
+      box-shadow: 0 8px 23px rgba(0, 184, 235, 0.25);
+    }
+
+    .r20-software-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 19px; margin-top: 40px; }
+
+    .r20-software-note { max-width: 890px; margin: 44px auto 0; padding-top: 34px; border-top: 1px solid rgba(146, 187, 216, 0.22); text-align: center; }
+    .r20-software-note h3 { margin: 0 0 12px; font-family: "Montserrat", sans-serif; font-size: 19px; color: #fff; }
+    .r20-software-note p { margin: 0 0 12px; color: #9eb6ca; font-size: 14px; line-height: 1.75; }
+    .r20-software-note p:last-child { margin-bottom: 0; }
+    .r20-software-note a { color: #12dcff; text-decoration: none; border-bottom: 1px solid rgba(18, 220, 255, 0.4); }
+    .r20-software-note a:hover { border-bottom-color: #12dcff; }
+
+    .r20-software-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid #23324a;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #111d31, #091425);
+      transition: 0.2s ease;
+    }
+
+    .r20-software-card:hover { transform: translateY(-4px); border-color: rgba(0, 207, 255, 0.46); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3); }
+    .r20-software-card.hidden { display: none; }
+
+    .r20-software-top { min-height: 34px; display: flex; align-items: flex-start; justify-content: space-between; gap: 9px; margin-bottom: 12px; }
+    .r20-software-category { max-width: 70%; color: #12dcff; font-size: 10px; font-weight: 800; line-height: 1.45; text-transform: uppercase; }
+
+    .r20-software-badge {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border: 1px solid rgba(0, 208, 255, 0.55);
+      border-radius: 999px;
+      color: #30ddff;
+      background: rgba(0, 193, 239, 0.10);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .r20-software-image { position: relative; aspect-ratio: 1.62 / 1; overflow: hidden; border: 1px solid #203149; border-radius: 12px; background: #02050a; }
+    .r20-software-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .r20-software-image-label {
+      position: absolute;
+      left: 9px; bottom: 8px;
+      padding: 4px 7px;
+      border-radius: 4px;
+      color: #13e1ff;
+      background: rgba(0, 8, 18, 0.82);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .r20-software-card h3 { margin: 16px 0 10px; color: #ffffff; font-family: "Montserrat", sans-serif; font-size: 17px; line-height: 1.45; }
+    .r20-software-summary { min-height: 52px; margin: 0; color: #9eb6ca; font-size: 12px; line-height: 1.65; }
+
+    .r20-software-benefits { display: grid; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .r20-software-benefit { display: grid; grid-template-columns: 18px 1fr; gap: 7px; align-items: flex-start; }
+    .r20-software-benefit span { color: #10d9ff; font-weight: 900; font-size: 12px; }
+    .r20-software-benefit p { margin: 0; color: #d6e5ee; font-size: 10px; line-height: 1.55; }
+
+    /* ERGONOMIA */
+    .r20-ergo-showcase { margin-top: 46px; }
+
+    .r20-ergo-device-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      padding: 20px;
+    }
+
+    .r20-ergo-device-card img { width: auto; height: 100%; max-height: 480px; max-width: 100%; object-fit: contain; }
+
+    .r20-ergo-slider {
+      position: relative;
+      margin-top: 46px;
+      border-radius: 23px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .r20-ergo-slider-track {
+      display: flex;
+      transition: transform 0.45s ease;
+    }
+
+    .r20-ergo-diagram-card {
+      flex: 0 0 100%;
+      width: 100%;
+      margin: 0;
+      background: #e7edf0;
+    }
+
+    .r20-ergo-diagram-card img { width: 100%; height: auto; display: block; }
+
+    .r20-ergo-slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: #173043;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 20px rgba(0, 20, 35, 0.18);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .r20-ergo-slider-nav:hover { background: #ffffff; }
+    .r20-ergo-slider-prev { left: 16px; }
+    .r20-ergo-slider-next { right: 16px; }
+
+    .r20-ergo-slider-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .r20-ergo-slider-dots button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(23, 48, 67, 0.25);
+      cursor: pointer;
+    }
+
+    .r20-ergo-slider-dots button.active { background: #087fa8; }
+
+    .r20-ergo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 35px; }
+    .r20-ergo-stat { padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: #ffffff; }
+    .r20-ergo-stat strong { display: block; color: #087fa8; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
+    .r20-ergo-stat span { display: block; margin-top: 9px; color: #627581; font-size: 13px; line-height: 1.5; }
+
+    .r20-ergo-highlight { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 25px; margin-top: 35px; }
+
+    .r20-ergo-score {
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 420px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #ffffff;
+    }
+
+    .r20-ergo-score strong { color: #087fa8; font-family: "Montserrat", sans-serif; font-size: clamp(62px, 8vw, 95px); line-height: 0.9; }
+    .r20-ergo-score h3 { margin: 20px 0 9px; font-family: "Montserrat", sans-serif; font-size: 24px; }
+    .r20-ergo-score p { margin: 0; color: #617581; font-size: 14px; line-height: 1.7; }
+
+    .r20-ergo-visual {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #e7edf0;
+    }
+
+    .r20-ergo-block {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 420px;
+      padding: 28px;
+      background-image: linear-gradient(180deg, rgba(10, 24, 36, 0) 40%, rgba(6, 17, 26, 0.82) 100%), url("https://usa.samsunghealthcare.com/hs-fs/hubfs/GI-R20-Hero-image3-450x600.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .r20-ergo-block--monitor { background-position: center 8%; }
+    .r20-ergo-block--panel { background-position: center 92%; }
+
+    .r20-ergo-block strong { display: block; color: #8beaff; font-family: "Montserrat", sans-serif; font-size: 33px; }
+    .r20-ergo-block p { margin: 8px 0 0; color: #d7e6ec; font-size: 13px; line-height: 1.6; }
+
+    /* FLEX */
+    .r20-flex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 38px; }
+
+    .r20-flex-visual {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      overflow: hidden;
+      border-radius: 23px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(28, 181, 219, 0.25), transparent 38%),
+        linear-gradient(145deg, #0d1f30, #071322);
+    }
+
+    .r20-flex-visual img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .r20-flex-info { padding: 32px; border: 1px solid rgba(113, 225, 252, 0.16); border-radius: 23px; background: #0b2536; }
+    .r20-flex-info h3 { margin: 0 0 14px; font-family: "Montserrat", sans-serif; font-size: 30px; line-height: 1.16; }
+    .r20-flex-info > p { margin: 0; color: #bbd0da; font-size: 14px; line-height: 1.75; }
+
+    .r20-flex-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .r20-flex-metric { padding: 18px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.045); }
+    .r20-flex-metric strong { display: block; color: #82e8ff; font-family: "Montserrat", sans-serif; font-size: 27px; line-height: 1; }
+    .r20-flex-metric span { display: block; margin-top: 8px; color: #aec3cd; font-size: 11px; line-height: 1.5; }
+
+    .r20-flex-list { display: grid; gap: 11px; margin-top: 24px; }
+    .r20-flex-item { display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+
+    .r20-flex-check {
+      width: 27px; height: 27px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      color: #05271d;
+      background: #79e1be;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .r20-flex-check svg { width: 16px; height: 16px; }
+
+    .r20-flex-item p { margin: 2px 0 0; color: #c1d2da; font-size: 13px; line-height: 1.6; }
+
+    /* CTA */
+    .r20-cta { padding: 68px 0; color: #ffffff; background: linear-gradient(120deg, #00446d, #0079ad 65%, #12a5cc); }
+    .r20-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .r20-cta h2 { max-width: 750px; margin: 0; font-family: "Montserrat", sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; }
+    .r20-cta p { max-width: 720px; margin: 13px 0 0; color: #d6edf6; font-size: 15px; line-height: 1.7; }
+
+    .r20-contact-button { flex: 0 0 auto; padding: 14px 21px; border-radius: 11px; color: #005a85; background: #ffffff; font-size: 13px; font-weight: 800; }
+
+    /* FOOTER */
+    .r20-footer { padding: 55px 0 25px; color: #d2e1e8; background: #003353; }
+    .r20-footer-grid { display: grid; grid-template-columns: 1.1fr 0.9fr 0.9fr 1.3fr auto; align-items: start; gap: 35px; }
+    .r20-footer-logo img { width: auto; height: 48px; margin-bottom: 17px; }
+    .r20-footer h4 { margin: 0 0 15px; color: #ffffff; font-family: "Montserrat", sans-serif; font-size: 13px; }
+    .r20-footer p, .r20-footer a, .r20-footer li { color: #d1e0e7; font-size: 12px; line-height: 1.65; }
+    .r20-footer ul { list-style: none; display: grid; gap: 8px; margin: 0; padding: 0; }
+    .r20-footer-reclamacoes { display: inline-block; line-height: 0; }
+    .r20-footer-reclamacoes svg { width: 84px; height: auto; display: block; }
+
+    .r20-footer-note { margin-top: 28px; color: #9fb7c2; font-size: 10px; line-height: 1.6; }
+
+    .r20-footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 26px;
+      padding-top: 19px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #b8ccd5;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .r20-footer-bottom a { color: #b8ccd5; font-size: 10px; }
+    .r20-footer-bottom a:hover { color: #ffffff; }
+    .r20-footer-bottom span { color: #4f6d7c; }
+
+    /* REVEAL */
+    .r20-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .r20-reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .r20-main-nav { display: none; }
+      .r20-menu-button { display: block; }
+      .r20-software-grid { grid-template-columns: repeat(2, 1fr); }
+      .r20-footer-grid { grid-template-columns: 1fr 1fr; }
+
+      /* controls move below the diagram so they stop covering its labels */
+      .r20-ergo-slider { padding-bottom: 58px; background: #e7edf0; }
+      .r20-ergo-slider-nav { top: auto; bottom: 11px; transform: none; width: 36px; height: 36px; font-size: 19px; background: #ffffff; box-shadow: 0 3px 10px rgba(0, 20, 35, 0.16); }
+      .r20-ergo-slider-prev { left: 14px; }
+      .r20-ergo-slider-next { right: 14px; }
+      .r20-ergo-slider-dots { bottom: 25px; }
+    }
+
+    @media (max-width: 820px) {
+      .r20-section { padding: 68px 0; }
+      .r20-grid-2, .r20-ergo-highlight, .r20-flex-grid { grid-template-columns: 1fr; }
+      .r20-ergo-stats { grid-template-columns: 1fr 1fr; }
+      .r20-hero-stats { grid-template-columns: 1fr 1fr; }
+      .r20-hero { min-height: 760px; }
+      .r20-hero-inner { padding: 180px 0 80px; }
+      .r20-cta-inner { display: block; }
+      .r20-contact-button { display: inline-flex; margin-top: 24px; }
+      .r20-image-card { min-height: 0; }
+      .r20-image-card img { height: auto; min-height: 0; display: block; }
+    }
+
+    @media (max-width: 620px) {
+      .r20-container { width: calc(100% - 24px); }
+      .r20-topbar { display: none; }
+      .r20-header-inner { min-height: 72px; }
+      .r20-logo img { height: 43px; }
+      .r20-subnav { top: 72px; }
+      .r20-software-grid { grid-template-columns: 1fr; }
+      .r20-software-tabs { justify-content: flex-start; }
+      .r20-ergo-stats, .r20-flex-metrics { grid-template-columns: 1fr; }
+      .r20-hero h1 { font-size: 52px; }
+
+      .r20-ergo-visual { min-height: 0; }
+
+      .r20-ergo-block,
+      .r20-ergo-block--monitor,
+      .r20-ergo-block--panel {
+        min-height: 230px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-color: #0d1f30;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      .r20-flex-visual { min-height: 0; padding: 14px; }
+      .r20-flex-visual img { width: 100%; }
+
+      .r20-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .r20-footer-grid > *:nth-child(1),
+      .r20-footer-grid > *:nth-child(4),
+      .r20-footer-grid > *:nth-child(5) { grid-column: 1 / -1; }
+    }
+  </style>
+
+  <style>
+    /* ============================================================
+       Cabeçalho e rodapé do site — CSS igual ao da monitoresdesinaisvitais.html
+       ============================================================
+       O #navtop é fixo e o script no fim da página publica a sua altura em --header-h
+       (altura por extenso) e --header-now (altura neste momento, menor quando o cabeçalho
+       fica compacto ao rolar). --search-h acrescenta a faixa da pesquisa quando esta abre
+       por baixo do cabeçalho, abaixo dos 992px. */
+
+    /* Variáveis usadas pelas regras do cabeçalho copiadas do site. */
 		:root{
 			color-scheme: light;
 			--azul-escuro:#00416b; --azul-claro:#0070af;
-			/* Cor de acento: o ciano dos ecrãs e botões da página do R20. O tom escuro é o mesmo
-			   ciano puxado para baixo, para o traço dos ícones se ler bem sobre fundo claro. */
-			--acento:#20b8e5; --acento-escuro:#087fa8;
+			/* Verde EDAN, retirado do logótipo da arte oficial (#52c32f). O tom escuro é o mesmo
+			   verde puxado para baixo, para o traço do ícone se ler bem sobre fundo claro. */
+			--verde-edan:#52c32f; --verde-edan-escuro:#3f9d24;
 			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
 			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
 			--radius:10px; --container:1240px;
 		}
-		#produtos-main{font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--azul-escuro);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
-		#produtos-main *{box-sizing:border-box;margin:0;padding:0}
-		#produtos-main a{color:inherit;text-decoration:none}
-		#produtos-main img{max-width:100%;display:block}
-		#produtos-main .container{width:100%;max-width:var(--container);margin-inline:auto;padding-block:0!important;padding-inline:20px}
 
-		/* Cabeçalho fixo: o offset do body e o topo do menu mobile são definidos por JS (--header-h) */
-		#navtop .toggle-menu{top:50%!important;transform:translateY(-50%);margin:0!important}
-		#navtop .mobile-menu{top:var(--header-now,80px)!important;background:#fff!important}
-		/* Rodapé sempre à largura toda (o site limitava a largura de .site-footer) */
-		#grid-wrap-footer .site-footer{width:100%!important;max-width:none!important;box-sizing:border-box!important}
-		/* Espaço em cinza-claro entre a secção do orçamento e o rodapé (separa as duas secções em azul) */
-		#grid-wrap-footer{margin-top:0!important;padding-block-start:64px!important;background:var(--cinza-claro)!important}
-		/* No mobile, o cabeçalho branco cresce para conter o logótipo (não invade a zona azul) */
-		@media (max-width:991px){
-			#navtop{padding-bottom:18px}
-		}
+    /* O CSS do site põe html e body a 100% de altura, o que criava uma segunda barra de
+       rolagem vertical. */
+    html { overflow-x: clip !important; height: auto !important; }
+    body {
+      overflow-x: clip !important;
+      overflow-y: visible !important;
+      height: auto !important;
+      min-height: 0 !important;
+      background: #ffffff !important;
+    }
 
+    /* Espaço para o cabeçalho fixo. Usa --header-h e não --header-now: se seguisse a altura
+       actual, encolhia ao rolar e a página dava um salto. */
+    #root { padding-block-start: calc(var(--header-h, 90px) + var(--search-h, 0px)); }
+
+    /* O body do site traz line-height 1.5 e letter-spacing .1px; o conteúdo desta página
+       foi desenhado com os valores por omissão, e quem precisa de outros declara-os. */
+    #root { line-height: normal; letter-spacing: normal; }
+
+    /* A barra de secções deixa de colar ao topo da janela e passa a colar por baixo do
+       cabeçalho, acompanhando-o quando este encolhe. Vem depois da regra de telemóvel
+       (top: 72px) do bloco acima, por isso vale nas duas larguras. */
+    .r20-subnav { inset-block-start: calc(var(--header-now, 90px) + var(--search-h, 0px)); }
+
+    /* As âncoras da barra de secções param abaixo do cabeçalho e da própria barra
+       (--subnav-h é medida por JS, como na monitoresdesinaisvitais.html). */
+    #root section[id] { scroll-margin-top: calc(var(--header-now, 90px) + var(--search-h, 0px) + var(--subnav-h, 45px)); }
+
+    /* Barra de secções: realce da secção que está a ser lida e ao passar o rato, com o
+       mesmo traço por baixo da monitoresdesinaisvitais.html. */
+    .r20-subnav .r20-container { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+    .r20-subnav .r20-container::-webkit-scrollbar { display: none; }
+    .r20-subnav a { position: relative; transition: color 0.18s; }
+    .r20-subnav a::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: 0;
+      height: 2px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    .r20-subnav a:hover, .r20-subnav a:focus-visible, .r20-subnav a.is-ativo { color: #ffffff; }
+    .r20-subnav a:hover::after, .r20-subnav a:focus-visible::after, .r20-subnav a.is-ativo::after { transform: scaleX(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .r20-subnav .r20-container { scroll-behavior: auto; }
+      .r20-subnav a, .r20-subnav a::after { transition: none; }
+    }
+
+    /* Cabeçalho fixo: o offset do conteúdo e o topo do menu mobile são definidos por JS. */
+    #navtop .toggle-menu { top: 50% !important; transform: translateY(-50%); margin: 0 !important; }
+    #navtop .mobile-menu { top: var(--header-now, 80px) !important; background: #fff !important; }
+
+    /* No telemóvel, o cabeçalho branco cresce para conter o logótipo. */
+    @media (max-width: 991px) {
+      #navtop { padding-bottom: 18px; }
+    }
+
+    /* O site limitava a largura do rodapé. */
+    #grid-wrap-footer { margin-top: 0 !important; }
+    #grid-wrap-footer .site-footer { width: 100% !important; max-width: none !important; box-sizing: border-box !important; }
+
+    /* ============================================================
+       Tipografia do conteúdo
+       ============================================================
+       A stylesheet.css do site estiliza directamente h1…h6, p, a, span e afins. Uma regra
+       que declara um valor no próprio elemento ganha sempre a um valor herdado, por isso
+       o `font-family` que esta página punha no body deixava de chegar ao conteúdo e o texto
+       caía para MiniSerif/Times.
+
+       As regras seguintes repõem os valores desta página ao nível do elemento. O selector
+       vai dentro de :where(#root), que limita o alcance ao conteúdo (deixando de fora o
+       cabeçalho e o rodapé) sem somar especificidade: contam como um selector de elemento,
+       ganham às regras do site por virem depois e continuam a perder para qualquer regra
+       .r20-* que declare o mesmo — que é o que se pretende. */
+    :where(#root) h1, :where(#root) h2, :where(#root) h3,
+    :where(#root) h4, :where(#root) h5, :where(#root) h6 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: normal;
+      color: inherit;
+    }
+    /* Os elementos de texto voltam a herdar do contexto, como antes de a folha do site
+       entrar: é o que devolve a Plus Jakarta Sans do body e, dentro do h1 do herói, a
+       Montserrat do próprio título. */
+    :where(#root) p, :where(#root) span, :where(#root) a, :where(#root) li,
+    :where(#root) em, :where(#root) button, :where(#root) th, :where(#root) td,
+    :where(#root) figcaption {
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: normal;
+      color: inherit;
+      text-transform: none;
+    }
+    /* O site colore os links com `a:link` / `a:visited`, mais específico do que `a`. */
+    :where(#root) a:link, :where(#root) a:visited { color: inherit; }
+    /* Os links a que esta página dá cor própria têm de voltar a ganhar à regra acima,
+       daí o par classe + :link (que vale mais do que elemento + :link). */
+    :where(#root) .r20-btn-primary:link, :where(#root) .r20-btn-primary:visited { color: #051722; }
+    :where(#root) .r20-btn-outline:link, :where(#root) .r20-btn-outline:visited { color: #ffffff; }
+    :where(#root) .r20-contact-button:link, :where(#root) .r20-contact-button:visited { color: #005a85; }
+    :where(#root) .r20-software-note a:link, :where(#root) .r20-software-note a:visited { color: #12dcff; }
+    /* strong e b mantêm-se a negrito (o site impunha-lhes a MiniSerifBold, que já não
+       existe no servidor, e o texto caía para Times). */
+    :where(#root) strong, :where(#root) b {
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: normal;
+    }
+
+    /* Abaixo dos 768px o site reescreve o h1 com !important (20px, centrado, azul). É a
+       única regra do site que obriga a responder também com !important; os valores são os
+       que esta página já usava. */
+    #root .r20-hero h1 {
+      margin: 18px 0 0 !important;
+      font-size: clamp(58px, 8vw, 100px) !important;
+      font-weight: 700 !important;
+      line-height: 0.9 !important;
+      text-align: start !important;
+      color: inherit !important;
+    }
+    @media (max-width: 620px) {
+      #root .r20-hero h1 { font-size: 52px !important; }
+    }
 
 		/* Remove o padding-bottom que o site reserva para o chat fixo (não usado aqui) → tira o espaço em branco do rodapé */
 		body.has-mainnav{padding-bottom:0}
@@ -291,400 +980,78 @@
 
 		/* O ecrã de espera do site (loading2.gif) não deve intercetar cliques */
 		#navtop #search-input-section #search-input-section-inside.loading:before{pointer-events:none}
+  </style>
 
-		/* ===== Correções de cor e tipografia do conteúdo (o CSS do site sobrepunha-se) ===== */
-		/* `strong` e `b` incluídos porque a stylesheet.css do site lhes impõe
-		   `MiniSerifBold, Times, ...` — e a MiniSerifBold já não existe no servidor, pelo que
-		   caíam todos para Times. Afectava os números-chave e as legendas dos ecrãs. */
-		#produtos-main h1,#produtos-main h2,#produtos-main h3,#produtos-main h4,
-		#produtos-main p,#produtos-main span,#produtos-main a,#produtos-main button,
-		#produtos-main strong,#produtos-main b,#produtos-main li,#produtos-main th,
-		#produtos-main td,#produtos-main caption,#produtos-main figcaption{
-			font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-		}
-		#produtos-main .section-head{text-align:center;margin-block-end:44px}
-		#produtos-main .section-head h2{color:var(--azul-escuro);font-weight:700;position:relative;padding-block-end:6px}
-		#produtos-main .section-head h2::after{content:"";position:absolute;inset-inline-start:50%;bottom:0;width:48px;height:3px;border-radius:999px;background:var(--azul-claro);transform:translateX(-50%)}
-		#produtos-main .section-head p{color:var(--cinza-texto)}
-		#produtos-main .hl-body h3{color:var(--azul-escuro)}
-		#produtos-main .hl-cta{color:var(--azul-claro)}
+  <style>
+    /* ===== Página do RS85 Prestige — acrescentos ao esqueleto da página do R20 ===== */
 
-		/* ============================================================= */
-		/* ===== BASE DA PÁGINA DE PRODUTO (partilhada com a omniview-bed-license.html) ===== */
-		/* Reutiliza as mesmas variáveis, tipografia e raio da página de produtos. */
-		/* ============================================================= */
+    /* Fotografia de estúdio da Samsung para este modelo, com o mesmo véu da página do R20. */
+    .r20-hero::before {
+      background:
+        linear-gradient(100deg, rgb(3, 16, 27) 0%, rgb(3, 16, 27) 46%, rgba(4, 19, 31, 0.62) 66%, rgba(6, 22, 35, 0.4) 100%),
+        url("https://www.samsunghealthcare.com/upload/232957d7-31b9-4cd2-932d-3b00507084dd.png") top center / 100% auto no-repeat;
+    }
 
-		/* --- Migalhas --- */
-		#produtos-main .breadcrumbs{background:var(--branco);border-block-end:1px solid var(--cinza-borda)}
-		#produtos-main .bc-inner{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-block:16px!important;font-size:.95rem;color:var(--cinza-texto)}
-		#produtos-main .bc-inner a{color:var(--cinza-texto);transition:color .18s}
-		#produtos-main .bc-inner a:hover,#produtos-main .bc-inner a:focus-visible{color:var(--azul-claro)}
-		#produtos-main .bc-inner .sep{opacity:.4;font-size:.85rem}
-		#produtos-main .bc-inner .atual{color:var(--azul-escuro);font-weight:600}
+    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+    @media (max-width: 620px) {
+      #root .r20-hero--longo h1 { font-size: 40px !important; }
+    }
 
-		#produtos-main .prod-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-block-start:32px}
-		#produtos-main .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:var(--radius);font-size:.92rem;font-weight:700;transition:background .2s,color .2s,transform .18s,box-shadow .2s}
-		#produtos-main .btn svg{width:18px;height:18px;stroke:currentColor}
-		#produtos-main .btn-primario{background:var(--azul-claro);color:#fff;border:2px solid var(--azul-claro)}
-		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{background:var(--azul-escuro);border-color:var(--azul-escuro);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,65,107,.24)}
-		#produtos-main .btn-secundario{background:transparent;color:var(--azul-claro);border:2px solid var(--azul-claro)}
-		#produtos-main .btn-secundario:hover,#produtos-main .btn-secundario:focus-visible{background:var(--azul-claro);color:#fff;transform:translateY(-2px)}
+    /* Números do herói: três colunas quando são três, uma linha só quando é um. */
+    .r20-hero-stats.eco-n3 { grid-template-columns: repeat(3, 1fr); }
+    .r20-hero-stats.eco-n1 { grid-template-columns: minmax(0, 360px); }
+    .r20-hero-stat strong { white-space: nowrap; }
 
+    /* Ligação de volta à lista, à esquerda das secções. Não é âncora, por isso a barra
+       não a trata como secção. */
+    .r20-subnav a.eco-voltar { color: #8fb3c6; }
+    .r20-subnav a.eco-voltar::after { display: none; }
+    .r20-subnav a.eco-voltar:hover { color: #fff; }
 
-		/* --- Capacidades --- */
-		#produtos-main .capacidades{padding-block:72px;background:var(--cinza-claro)}
-		/* Seis cartões: colunas fixas em 3, para dar duas filas cheias (3+3). Com auto-fit os ecrãs
-		   largos abriam quatro colunas e a segunda fila ficava a meio, com dois buracos à direita. */
-		#produtos-main .cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-		@media (max-width:900px){#produtos-main .cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-		@media (max-width:560px){#produtos-main .cap-grid{grid-template-columns:1fr}}
-		#produtos-main .cap-card{background:#fff;border:1px solid var(--cinza-borda);border-radius:var(--radius);padding:28px;box-shadow:0 1px 4px rgba(0,65,107,.04);transition:transform .22s,box-shadow .22s}
-		#produtos-main .cap-card:hover{transform:translateY(-4px);box-shadow:0 5px 14px rgba(0,65,107,.09)}
-		#produtos-main .cap-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:rgba(32,184,229,.14)}
-		#produtos-main .cap-icon svg{width:24px;height:24px;stroke:var(--acento-escuro)}
-		#produtos-main .cap-card h3{margin-block-start:18px;font-size:1.02rem;font-weight:700;line-height:1.3;color:var(--azul-escuro)}
-		#produtos-main .cap-card p{margin-block-start:8px;font-size:.88rem;line-height:1.6;color:var(--cinza-texto)}
+    /* Botão de contorno também sobre fundo claro (o herói é escuro, o CTA é azul). */
+    .r20-actions .r20-btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
 
-		/* --- Faixa de imagem a toda a largura --- */
-		#produtos-main .faixa-imagem{position:relative;overflow:hidden;background:#00141f;isolation:isolate}
-		#produtos-main .faixa-imagem img{width:100%;height:100%;min-height:300px;max-height:460px;
-			object-fit:cover;object-position:center right;display:block;position:absolute;inset:0;z-index:-1}
-		/* Véu só do lado do texto: a metade direita da foto, onde está o produto, fica limpa. */
-		#produtos-main .faixa-imagem::before{content:"";position:absolute;inset:0;z-index:-1;
-			background:linear-gradient(90deg,rgba(0,20,31,.92) 0%,rgba(0,20,31,.7) 38%,transparent 72%)}
-		#produtos-main .faixa-texto{display:flex;flex-direction:column;justify-content:center;
-			min-height:300px;max-height:460px;height:46vw;padding-block:48px!important;color:#fff}
-		#produtos-main .faixa-texto h2{max-width:14ch;font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:700;
-			line-height:1.15;color:#fff;text-align:start}
-		#produtos-main .faixa-texto p{margin-block-start:14px;max-width:38ch;font-size:1rem;
-			line-height:1.6;color:rgba(255,255,255,.88)}
+    /* Nota de rodapé das ferramentas */
+    .eco-nota { max-width: 760px; margin: 34px auto 0; text-align: center; color: #8ea6ba; font-size: 12px; line-height: 1.6; }
 
-		/* --- Tecnologias em filas alternadas de imagem + texto --- */
-		#produtos-main .tec-linha{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
-			gap:56px;align-items:center;margin-block-start:56px}
-		#produtos-main .tec-linha:first-of-type{margin-block-start:0}
-		/* A fila invertida troca a ordem visual sem mexer na ordem de leitura do HTML. */
-		#produtos-main .tec-invertida .tec-figura{order:2}
-		#produtos-main .tec-figura{border-radius:var(--radius);overflow:hidden;background:var(--cinza-claro);
-			border:1px solid var(--cinza-borda)}
-		#produtos-main .tec-figura img{width:100%;height:auto;display:block}
-		/* Os esquemas com fundo escuro dispensam a moldura clara. */
-		#produtos-main .tec-figura-escura{background:#00141f;border-color:transparent}
-		/* Sem text-transform: senão "iFAST" sairia "IFAST". As etiquetas já vêm na caixa certa. */
-		#produtos-main .tec-etiqueta{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.08em;
-			color:var(--acento-escuro);background:rgba(32,184,229,.14);
-			border-radius:999px;padding:5px 14px}
-		#produtos-main .tec-texto h3{margin-block-start:16px;font-size:clamp(1.15rem,2.2vw,1.6rem);
-			font-weight:700;line-height:1.25;color:var(--azul-escuro)}
-		#produtos-main .tec-texto p{margin-block-start:14px;font-size:.96rem;line-height:1.7;color:var(--cinza-texto)}
-		#produtos-main .tec-pontos{list-style:none;display:grid;gap:11px;margin-block-start:18px}
-		#produtos-main .tec-pontos li{display:flex;align-items:flex-start;gap:11px;font-size:.92rem;
-			line-height:1.5;color:var(--azul-escuro)}
-		#produtos-main .tec-pontos li::before{content:"";flex:0 0 7px;width:7px;height:7px;margin-block-start:7px;
-			border-radius:50%;background:var(--acento)}
-		/* Os cartões curtos ficam bem separados das filas de imagem. */
-		#produtos-main .capacidades .cap-grid{margin-block-start:56px}
+    /* Cartões com imagem (fluxo de trabalho, design) */
+    .eco-cartoes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 42px; }
+    .eco-cartoes.eco-n4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .eco-cartao { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: #ffffff; box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .eco-cartao:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0, 36, 58, 0.13); }
+    .eco-cartao-img { aspect-ratio: 3 / 2; overflow: hidden; background: #e7edf0; }
+    .eco-cartao-img img { width: 100%; height: 100%; object-fit: cover; }
+    .eco-cartao-corpo { padding: 18px 20px 22px; }
+    .eco-cartao h3 { margin: 0 0 7px; font-family: "Montserrat", sans-serif; font-size: 16px; line-height: 1.35; color: var(--text); }
+    .eco-cartao p { margin: 0; color: #617581; font-size: 13.5px; line-height: 1.62; }
+    .r20-dark .eco-cartao { border-color: #23324a; background: linear-gradient(145deg, #111d31, #091425); box-shadow: none; }
+    .r20-dark .eco-cartao:hover { border-color: rgba(0, 207, 255, 0.46); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3); }
+    .r20-dark .eco-cartao h3 { color: #ffffff; }
+    .r20-dark .eco-cartao p { color: #9eb6ca; }
+    .r20-dark .eco-cartao-img { background: #02050a; }
 
+    /* Catálogos no fecho da página */
+    .eco-cta-acoes { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px; flex: 0 0 auto; }
+    .eco-cta-pdf { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 11px; color: #ffffff; font-size: 13px; font-weight: 700; transition: background 0.2s; }
+    .eco-cta-pdf:hover { background: rgba(255, 255, 255, 0.12); }
+    .eco-cta-pdf small { padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.18); font-size: 10px; letter-spacing: 0.05em; }
 
-		/* --- Responsivo --- */
-		@media (max-width:960px){
-			#produtos-main .produto-grid{grid-template-columns:1fr;gap:36px}
-			#produtos-main .galeria{position:static}
-			#produtos-main .produto{padding-block:36px 48px}
-			#produtos-main .capacidades,#produtos-main .especificacoes,#produtos-main .ecras{padding-block:52px}
-			/* Empilha as filas: imagem sempre primeiro, nas duas variantes. */
-			#produtos-main .tec-linha{grid-template-columns:1fr;gap:28px;margin-block-start:44px}
-			#produtos-main .tec-invertida .tec-figura{order:0}
-			#produtos-main .capacidades .cap-grid,#produtos-main .esp-cartoes{margin-block-start:44px}
-			#produtos-main .faixa-texto{min-height:0;max-height:none;height:auto;padding-block:120px 40px!important}
-			#produtos-main .faixa-imagem img{position:absolute;min-height:0;max-height:none;height:100%;object-position:70% 30%}
-			#produtos-main .faixa-imagem::before{background:linear-gradient(180deg,transparent 0%,rgba(0,20,31,.55) 42%,rgba(0,20,31,.92) 100%)}
-			#produtos-main .faixa-texto h2,#produtos-main .faixa-texto p{max-width:none}
-		}
-		/* Abaixo de 768px a stylesheet.css do site aplica a TODOS os h1 a regra do título da
-		   página de pesquisa (font-size:20px, text-align:center, margin e cor, tudo !important).
-		   A produtos.html não dá por isso porque não tem h1; aqui o título do produto é um h1,
-		   por isso a regra é reposta com a mesma força. */
-		@media (max-width:768px){
-			#produtos-main .prod-titulo{font-size:1.7rem!important;line-height:1.15!important;
-				text-align:start!important;margin:20px 0 0!important;color:var(--azul-escuro)!important;font-weight:700!important}
-		}
-
-		@media (max-width:520px){
-			#produtos-main .prod-acoes .btn{width:100%}
-		}
-
-		/* Cores forçadas (o CSS do site sobrepunha-se) */
-		#produtos-main .prod-titulo{color:var(--azul-escuro)}
-		#produtos-main .cap-card h3,#produtos-main .tec-texto h3{color:var(--azul-escuro)}
-		#produtos-main .btn-primario{color:#fff}
-		#produtos-main .btn-primario:hover,#produtos-main .btn-primario:focus-visible{color:#fff}
-
-		/* --- Botões sobre fundo escuro (herói) --- */
-		#produtos-main .heroi-acoes{display:flex;flex-wrap:wrap;gap:14px;margin-block-start:32px}
-		#produtos-main .btn-claro{background:#fff;color:var(--azul-escuro);border:2px solid #fff}
-		#produtos-main .btn-claro:hover,#produtos-main .btn-claro:focus-visible{background:transparent;color:#fff;transform:translateY(-2px)}
-		#produtos-main .btn-contorno-claro{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
-		#produtos-main .btn-contorno-claro:hover,#produtos-main .btn-contorno-claro:focus-visible{background:#fff;color:var(--azul-escuro);border-color:#fff;transform:translateY(-2px)}
-
-
-		/* --- Aplicações clínicas --- */
-		/* --- Barra de navegação das secções ---
-		   Cola por baixo do cabeçalho fixo do site. --subnav-h é preenchida por JS com a altura
-		   real da barra e serve para as âncoras pararem no sítio certo (scroll-margin-top). */
-		#produtos-main .sub-nav{position:sticky;inset-block-start:calc(var(--header-now,90px) + var(--search-h,0px));
-			z-index:900;background:rgba(0,20,31,.97);border-block-end:1px solid rgba(255,255,255,.1);
-			-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-		/* Rola na horizontal quando não cabe, sem barra de scroll à vista. */
-		#produtos-main .sub-nav-inner{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;
-			padding-block:0!important;-webkit-overflow-scrolling:touch}
-		#produtos-main .sub-nav-inner::-webkit-scrollbar{display:none}
-		#produtos-main .sub-nav a{position:relative;flex:0 0 auto;padding:15px 0;white-space:nowrap;
-			font-size:.78rem;font-weight:700;letter-spacing:.04em;color:#bed3dd;
-			transition:color .18s}
-		#produtos-main .sub-nav a::after{content:"";position:absolute;inset-inline:0;inset-block-end:0;height:2px;
-			background:var(--acento);transform:scaleX(0);transition:transform .2s}
-		#produtos-main .sub-nav a:hover,#produtos-main .sub-nav a:focus-visible,
-		#produtos-main .sub-nav a.is-ativo{color:#fff}
-		#produtos-main .sub-nav a:hover::after,#produtos-main .sub-nav a.is-ativo::after{transform:scaleX(1)}
-		/* As âncoras param abaixo do cabeçalho e da barra, não por baixo deles. */
-		#produtos-main section[id]{scroll-margin-top:calc(var(--header-now,90px) + var(--search-h,0px) + var(--subnav-h,49px))}
-		@media (max-width:560px){
-			#produtos-main .sub-nav-inner{gap:20px}
-			#produtos-main .sub-nav a{font-size:.74rem;padding:13px 0}
-		}
-
-
-
-		/* Cores forçadas (o CSS do site sobrepunha-se) */
-		#produtos-main .btn-claro{color:var(--azul-escuro)}
-		#produtos-main .btn-claro:hover,#produtos-main .btn-claro:focus-visible{color:#fff}
-		#produtos-main .btn-contorno-claro{color:#fff}
-		#produtos-main .btn-contorno-claro:hover,#produtos-main .btn-contorno-claro:focus-visible{color:var(--azul-escuro)}
-
-		/* --- Utilitário de leitores de ecrã (a stylesheet.css do site não o traz) --- */
-		#produtos-main .so-leitores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-			overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
-
-		/* --- Faixa de contacto (igual à das restantes páginas de produto) --- */
-		#produtos-main .cta-band{background:linear-gradient(90deg,#0072b0 0%,#00466d 18%,#00253c 36%,#001119 50%,#00253c 64%,#00466d 82%,#0072b0 100%)}
-		#produtos-main .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:40px!important;color:#fff}
-		#produtos-main .cta-text h2{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:700;line-height:1.2;color:#fff}
-		#produtos-main .cta-text p{opacity:.9;margin-block-start:8px;max-width:54ch;color:#fff}
-		#produtos-main .cta-btn{flex:0 0 auto;background:#fff;color:var(--azul-escuro);font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:var(--radius);transition:transform .18s,box-shadow .18s;white-space:nowrap}
-		#produtos-main .cta-btn:hover,#produtos-main .cta-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
-
-		/* ============================================================= */
-		/* ===== PÁGINA DA GAMA (Ecógrafos Samsung) =====                 */
-		/* Junta a base das páginas de produto (cabeçalho compacto, barra de  */
-		/* secções, botões, filas de imagem + texto) ao tom escuro da página  */
-		/* do R20: herói escuro com os equipamentos, e grelha sobre fundo escuro.*/
-		/* ============================================================= */
-
-		/* --- Barra de secções ---
-		   Na página dos monitores a barra tem um filete claro por baixo, que a separa do vídeo.
-		   Aqui assenta num herói escuro e o filete lia-se como uma risca branca. Sai o filete e
-		   entra uma sombra de 1px na cor da barra: tapa também a costura que aparece quando a
-		   altura da barra dá um valor fraccionário (ecrãs a 125% ou 150%) e deixa ver o fundo
-		   branco da página entre a barra e o herói. */
-		#produtos-main .sub-nav{border-block-end:0;box-shadow:0 1px 0 #00141f}
-
-		/* --- Herói ---
-		   Texto à esquerda e, à direita, quatro ecógrafos da gama lado a lado. São os recortes
-		   oficiais da Samsung, com fundo transparente, por isso assentam directamente no fundo
-		   escuro; o brilho por trás destaca-os e a máscara esbate-lhes a base, onde o recorte
-		   original acaba a direito. */
-		#produtos-main .eco-heroi{position:relative;overflow:hidden;isolation:isolate;color:#fff;
-			background:radial-gradient(circle at 12% 0%,rgba(0,112,175,.34),transparent 46%),
-				linear-gradient(160deg,#00141f 0%,#00263c 58%,#003a5c 100%)}
-		#produtos-main .eco-heroi-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
-			gap:32px 40px;align-items:center;padding-block:72px 92px!important}
-		#produtos-main .eco-heroi-texto{min-width:0}
-		#produtos-main .eco-lineup{position:relative;display:flex;align-items:flex-end;justify-content:center;padding-inline:7%;
-			-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%)}
-		#produtos-main .eco-lineup::before{content:"";position:absolute;inset:4% 2% 0;z-index:-1;
-			background:radial-gradient(ellipse at 50% 58%,rgba(32,184,229,.34),transparent 66%)}
-		/* Cada recorte é um quadrado com o equipamento a ocupar a metade central; as margens
-		   negativas comem esse vazio, para os quatro ficarem ombro a ombro. Os dois do meio
-		   vêm à frente e um pouco maiores. */
-		#produtos-main .eco-lineup img{flex:0 0 50%;width:50%;max-width:none;height:auto;margin-inline:-12.5%;
-			transform-origin:50% 100%;filter:drop-shadow(0 18px 26px rgba(0,10,18,.55))}
-		#produtos-main .eco-lineup img:nth-child(1),#produtos-main .eco-lineup img:nth-child(4){transform:scale(.9)}
-		#produtos-main .eco-lineup img:nth-child(2),#produtos-main .eco-lineup img:nth-child(3){position:relative;z-index:1;
-			transform:scale(1.08)}
-		#produtos-main .eco-pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;
-			border:1px solid rgba(80,222,255,.38);background:rgba(0,119,154,.14);color:#a6ecff;
-			font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-		#produtos-main .eco-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acento)}
-		#produtos-main .eco-heroi h1{margin-block-start:20px;font-size:clamp(2.3rem,4.4vw,3.7rem);font-weight:700;
-			line-height:1;letter-spacing:-.035em;color:#fff;text-align:start;text-shadow:0 2px 18px rgba(0,15,25,.5)}
-		#produtos-main .eco-heroi h1 span{display:block;margin-block-start:14px;font-size:max(.36em,1.05rem);font-weight:600;
-			line-height:1.25;letter-spacing:-.01em;color:#a9e5f3}
-		/* Seta no fundo do herói: um círculo discreto com a divisa a descer e a voltar, para
-		   dizer que há mais página. Sem animação para quem pediu menos movimento. */
-		#produtos-main .eco-descer{position:absolute;inset-block-end:18px;inset-inline-start:50%;
-			display:grid;place-items:center;width:42px;height:42px;margin-inline-start:-21px;border-radius:50%;
-			border:1px solid rgba(255,255,255,.3);color:#fff;background:rgba(0,20,31,.35);
-			transition:background .2s,border-color .2s}
-		#produtos-main .eco-descer svg{width:20px;height:20px;stroke:currentColor;animation:eco-descer 1.8s ease-in-out infinite}
-		#produtos-main .eco-descer:hover,#produtos-main .eco-descer:focus-visible{background:var(--azul-claro);border-color:var(--azul-claro)}
-		@keyframes eco-descer{0%,100%{transform:translateY(-3px);opacity:.55}50%{transform:translateY(4px);opacity:1}}
-		@media (prefers-reduced-motion:reduce){#produtos-main .eco-descer svg{animation:none}}
-		#produtos-main .eco-heroi-lead{margin-block-start:22px;max-width:56ch;font-size:1.05rem;line-height:1.7;
-			color:rgba(255,255,255,.88)}
-
-
-		/* --- Modelos, sobre fundo escuro --- */
-		#produtos-main .eco-modelos{padding-block:80px;color:#fff;
-			background:radial-gradient(circle at 50% -10%,rgba(0,144,190,.2),transparent 42%),#00141f}
-		#produtos-main .eco-modelos .section-head{margin-block-end:34px}
-		#produtos-main .eco-modelos .section-head h2{color:#fff}
-		#produtos-main .eco-modelos .section-head h2::after{background:var(--acento)}
-		#produtos-main .eco-modelos .section-head p{color:#b7cad4}
-
-		/* Filtro por área clínica, em separadores sublinhados — a mesma linguagem da barra de
-		   secções do topo. Uma linha só: quando não cabe, rola na horizontal sem barra à vista.
-		   A stylesheet.css do site aplica a TODOS os <button> max-width:160px, caixa alta e,
-		   abaixo de 768px, width:100% (regra dos formulários); daí as reposições aqui. */
-		#produtos-main .eco-chips{display:flex;justify-content:safe center;gap:30px;overflow-x:auto;
-			scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-block-end:16px;
-			border-block-end:1px solid rgba(255,255,255,.12)}
-		#produtos-main .eco-chips::-webkit-scrollbar{display:none}
-		#produtos-main .eco-chip{position:relative;display:inline-flex;align-items:baseline;gap:7px;flex:0 0 auto;
-			padding:0 0 13px;border:0;border-radius:0;background:none;box-shadow:none;color:#a8c3d6;
-			font-family:inherit;font-size:.86rem;font-weight:600;line-height:1.2;text-transform:none;letter-spacing:0;
-			white-space:nowrap;cursor:pointer;width:auto;max-width:none;min-height:0;transition:color .18s}
-		#produtos-main .eco-chip span{font-size:.76rem;font-weight:500;color:#6f8ca2;transition:color .18s}
-		#produtos-main .eco-chip::after{content:"";position:absolute;inset-inline:0;inset-block-end:0;height:2px;
-			background:var(--acento);transform:scaleX(0);transition:transform .2s}
-		#produtos-main .eco-chip:hover,#produtos-main .eco-chip:focus-visible,
-		#produtos-main .eco-chip.is-ativo{color:#fff;background:none}
-		#produtos-main .eco-chip:hover::after,#produtos-main .eco-chip.is-ativo::after{transform:scaleX(1)}
-		#produtos-main .eco-chip.is-ativo span{color:#a8c3d6}
-		#produtos-main .eco-contagem{text-align:center;margin-block-end:30px;font-size:.84rem;color:#9eb6ca}
-		#produtos-main .eco-vazio{text-align:center;padding-block:40px;color:#b7cad4}
-
-		/* Três colunas fixas: com auto-fill os ecrãs largos abriam quatro e os cartões ficavam
-		   apertados para as etiquetas das áreas. Os cartões de cada fila têm todos a mesma
-		   altura (o stretch da grelha): o bloco dos catálogos encosta ao fundo, por isso
-		   alinha de cartão para cartão mesmo quando um tem mais áreas do que os outros. */
-		#produtos-main .eco-grelha{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-		@media (max-width:960px){#produtos-main .eco-grelha{grid-template-columns:repeat(2,minmax(0,1fr))}}
-		#produtos-main .eco-item{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(255,255,255,.1);
-			border-radius:14px;overflow:hidden;transition:transform .22s,box-shadow .22s}
-		#produtos-main .eco-item:hover,#produtos-main .eco-item:focus-within{transform:translateY(-4px);
-			box-shadow:0 18px 40px rgba(0,0,0,.38)}
-		#produtos-main .eco-item[hidden]{display:none}
-		/* Fundo #edf1f5: é o das imagens de produto da Samsung, por isso as que o trazem
-		   gravado e as transparentes ficam iguais. As quadradas (.eco-quadrada) ocupam a altura
-		   toda da caixa, sem margem: o equipamento já traz folga em cima e em baixo, e
-		   preenchê-la a toda a largura cortava o monitor e as rodas. */
-		#produtos-main .eco-imagem{aspect-ratio:4/3;display:grid;place-items:center;padding:18px;background:#edf1f5;overflow:hidden}
-		#produtos-main .eco-imagem img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
-			transition:transform .35s}
-		#produtos-main .eco-item:hover .eco-imagem img{transform:scale(1.04)}
-		/* Posição absoluta: a altura da caixa vem do aspect-ratio, e contra uma altura dessas
-		   um height:100% não se resolve — a imagem ficava quadrada e a transbordar. */
-		#produtos-main .eco-imagem-cheia{position:relative;padding:0}
-		#produtos-main .eco-imagem-cheia img.eco-quadrada{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none}
-		#produtos-main .eco-info{display:flex;flex-direction:column;flex:1;padding:20px;
-			border-block-start:1px solid var(--cinza-borda)}
-		#produtos-main .eco-info h3{font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--azul-escuro)}
-		#produtos-main .eco-rotulo{margin-block-start:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
-			text-transform:uppercase;color:#8a97a3}
-		#produtos-main .eco-areas{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-block-start:9px}
-		/* Cada área é uma ligação: abre a página ou o catálogo desse modelo para essa área. */
-		#produtos-main .eco-area{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;
-			border:1px solid var(--cinza-borda);background:var(--cinza-claro);font-size:.72rem;font-weight:600;white-space:nowrap;
-			line-height:1.3;color:var(--azul-escuro);transition:background .2s,color .2s,border-color .2s}
-		#produtos-main a.eco-area:hover,#produtos-main a.eco-area:focus-visible{background:var(--azul-claro);
-			border-color:var(--azul-claro);color:#fff}
-		#produtos-main .eco-area small{font-size:.62rem;font-weight:700;letter-spacing:.05em;padding:1px 5px;
-			border-radius:4px;background:rgba(0,112,175,.12);color:var(--azul-claro)}
-		#produtos-main a.eco-area:hover small,#produtos-main a.eco-area:focus-visible small{background:rgba(255,255,255,.24);color:#fff}
-		#produtos-main span.eco-area{color:var(--cinza-texto)}
-		/* Catálogos: a etiqueta PDF vai à frente e dispensa a seta; "A pedido" leva aos contactos. */
-		#produtos-main a.eco-pedir{background:#fff;border-style:dashed;color:var(--cinza-texto)}
-		#produtos-main a.eco-pedir::after{content:"→";color:var(--azul-claro)}
-		#produtos-main .eco-area abbr{text-decoration:none;border:0;cursor:inherit}
-		/* Catálogos recolhidos: <details> nativo, abre e fecha sem JS e com o teclado. */
-		#produtos-main .eco-info > .eco-areas{margin-block-end:18px}
-		/* Cada cartão leva à página do modelo: pela imagem, pelo nome e pela ligação por baixo
-		   das áreas. */
-		#produtos-main .eco-info h3 a{color:var(--azul-escuro);font:inherit;letter-spacing:inherit;transition:color .18s}
-		#produtos-main .eco-info h3 a:hover,#produtos-main .eco-info h3 a:focus-visible{color:var(--azul-claro)}
-		#produtos-main .eco-ver{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;
-			margin-block:-4px 16px;font-size:.84rem;font-weight:700;color:var(--azul-claro)}
-		#produtos-main .eco-ver::after{content:"→";transition:transform .2s}
-		#produtos-main .eco-item:hover .eco-ver::after{transform:translateX(4px)}
-		#produtos-main .eco-mais{margin-block-start:auto;border-block-start:1px solid var(--cinza-borda)}
-		#produtos-main .eco-mais summary{display:flex;align-items:center;gap:8px;padding-block:14px 2px;cursor:pointer;
-			list-style:none;font-size:.84rem;font-weight:700;color:var(--azul-escuro);transition:color .2s}
-		#produtos-main .eco-mais summary::-webkit-details-marker{display:none}
-		#produtos-main .eco-mais summary:hover,#produtos-main .eco-mais summary:focus-visible{color:var(--azul-claro)}
-		#produtos-main .eco-mais summary span{font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px;
-			background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--cinza-texto)}
-		#produtos-main .eco-mais summary::after{content:"";margin-inline-start:auto;width:8px;height:8px;
-			border-inline-end:2px solid var(--azul-claro);border-block-end:2px solid var(--azul-claro);
-			transform:translateY(-2px) rotate(45deg);transition:transform .2s}
-		#produtos-main .eco-mais[open] summary::after{transform:translateY(2px) rotate(-135deg)}
-		#produtos-main .eco-mais .eco-areas{margin-block-start:12px}
-		#produtos-main .eco-mais .eco-cta{margin-block-start:0;padding-block-start:14px}
-		#produtos-main .eco-cta{display:inline-flex;align-items:center;gap:6px;margin-block-start:auto;padding-block-start:16px;
-			font-size:.82rem;font-weight:600;color:var(--azul-claro)}
-		#produtos-main .eco-cta::after{content:"→";transition:transform .2s}
-		#produtos-main .eco-item:hover .eco-cta::after{transform:translateX(4px)}
-
-		/* --- Em destaque: R20 --- */
-		#produtos-main .destaque{padding-block:72px;background:var(--branco)}
-		#produtos-main .destaque .tec-figura{display:grid;place-items:center;padding:28px;aspect-ratio:4/3}
-		#produtos-main .destaque .tec-figura img{width:auto;max-width:100%;max-height:100%;object-fit:contain}
-		#produtos-main .dest-titulo{margin-block-start:16px;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;
-			line-height:1.15;color:var(--azul-escuro)}
-		#produtos-main .destaque .btn{margin-block-start:28px}
-
-
-		/* --- Responsivo --- */
-		@media (max-width:960px){
-			/* Empilhado, a ordem é: etiqueta, título, texto, ecógrafos e só depois os botões.
-			   `display:contents` no bloco de texto promove os filhos a itens da grelha, que é o
-			   que permite pôr a imagem entre o texto e os botões sem mexer no HTML (nem na
-			   ordem de leitura do ecrã largo). O espaçamento vem das margens de cada peça,
-			   por isso o gap da grelha é zerado. */
-			#produtos-main .eco-heroi-inner{grid-template-columns:minmax(0,1fr);gap:0;padding-block:52px 84px!important}
-			#produtos-main .eco-heroi-texto{display:contents}
-			#produtos-main .eco-pill{order:1;justify-self:start}
-			#produtos-main .eco-heroi h1{order:2}
-			#produtos-main .eco-heroi-lead{order:3}
-			#produtos-main .eco-lineup{order:4;max-width:560px;width:100%;margin:28px auto 0}
-			#produtos-main .eco-heroi .heroi-acoes{order:5;margin-block-start:28px}
-			#produtos-main .destaque{padding-block:52px}
-			#produtos-main .eco-modelos{padding-block:60px}
-		}
-		/* Abaixo de 768px a stylesheet.css do site reescreve todos os h1 com !important
-		   (regra do título da página de pesquisa); aqui é reposto com a mesma força. */
-		@media (max-width:768px){
-			#produtos-main .eco-heroi h1{font-size:2.2rem!important;line-height:1.05!important;text-align:start!important;
-				margin:20px 0 0!important;color:#fff!important;font-weight:700!important}
-			#produtos-main .eco-chips{gap:22px}
-			#produtos-main .eco-chip{font-size:.82rem;padding:0 0 12px}
-		}
-		@media (max-width:560px){
-			#produtos-main .eco-heroi .heroi-acoes .btn{width:100%}
-			#produtos-main .eco-grelha{grid-template-columns:1fr;gap:18px}
-		}
-
-		/* Cores forçadas (o CSS do site sobrepunha-se) */
-		#produtos-main .eco-heroi h1{color:#fff}
-		#produtos-main .eco-info h3,#produtos-main .dest-titulo{color:var(--azul-escuro)}
-		#produtos-main .cta-btn{color:var(--azul-escuro)}
-	</style>
+    @media (max-width: 1100px) {
+      .eco-cartoes, .eco-cartoes.eco-n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 820px) {
+      .r20-hero-stats.eco-n3 { grid-template-columns: 1fr 1fr; }
+      .eco-cta-acoes { justify-content: flex-start; margin-top: 24px; }
+    }
+    @media (max-width: 620px) {
+      .eco-cartoes, .eco-cartoes.eco-n4 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body class="has-mainnav mouse-user">
 
-<!-- ============================================================= -->
-<!-- CABEÇALHO — HTML exato do site Speculum (estilizado pela stylesheet.css do site) -->
-<!-- ============================================================= -->
 <header id="navtop">
 
 <div class="navtop-top-bar">
@@ -735,15 +1102,15 @@
 <div class="menu-center similar">
 <nav class="fright show">
 
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="produtos.html" class="selected">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
-<select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option selected="selected" value="produtos.html">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="produtos.html">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
+<select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option value="produtos.html">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
 </div>
 
 
 
 <div class="toggle-menu" role="button" tabindex="0" aria-label="Abrir menu"></div>
 <div class="mobile-menu">
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="produtos.html" class="selected ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="produtos.html" class=" ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
 <div class="clear"></div>
 </div>
 
@@ -764,417 +1131,298 @@
 
 </header>
 
+  <div id="root">
 
-<!-- ============================================================= -->
-<!-- CONTEÚDO DA PÁGINA DE PRODUTO (isolado) — mesmo id #produtos-main da produtos.html,
-     porque todo o CSS do conteúdo está escopado a esse id -->
-<!-- ============================================================= -->
-<main id="produtos-main">
+    <!-- SUBNAV -->
+    <nav class="r20-subnav" aria-label="Secções desta página">
+      <div class="r20-container">
+        <a class="eco-voltar" href="ecografos.html">← Ecógrafos</a>
+        <a href="#visao-geral">Visão geral</a>
+        <a href="#tecnologia">Tecnologia</a>
+        <a href="#ferramentas">Ferramentas clínicas</a>
+        <a href="#fluxo">Fluxo de trabalho</a>
+        <a href="#design">Design</a>
+      </div>
+    </nav>
 
-	<!-- ===== Navegação da página =====
-	     Barra fixa com as secções, como na página dos monitores e na do R20. Cola-se por baixo
-	     do cabeçalho do site: o topo vem de --header-now e --search-h, mantidas por JS. -->
-	<nav class="sub-nav" id="sub-nav" aria-label="Secções desta página">
-		<div class="container sub-nav-inner">
-			<a href="#visao-geral">Visão geral</a>
-			<a href="#modelos">Modelos</a>
-			<a href="#r20">R20 em destaque</a>
-		</div>
-	</nav>
+    <main>
 
-	<!-- ===== Herói ===== -->
-	<section class="eco-heroi" id="visao-geral" aria-labelledby="prod-titulo">
-		<div class="container eco-heroi-inner">
-			<div class="eco-heroi-texto">
-				<p class="eco-pill">Samsung · Ecografia</p>
+      <!-- HERO -->
+      <section id="visao-geral" class="r20-hero r20-hero--longo">
+        <div class="r20-container">
+          <div class="r20-hero-inner r20-reveal visible">
+            <span class="r20-pill">Samsung · Radiologia · Musculoesquelética</span>
 
-				<h1 id="prod-titulo">
-					Ecógrafos Samsung
-					<span>Uma gama para cada área clínica.</span>
-				</h1>
+            <h1>
+              RS85 Prestige
+              <span>A verdadeira revolução.</span>
+            </h1>
 
-				<p class="eco-heroi-lead">
-					Da obstetrícia à imagem geral, à cardiologia e ao point of care: os ecógrafos
-					Samsung distribuídos pela Speculum, organizados por área clínica.
-				</p>
+            <p>Tecnologias avançadas para confirmar com confiança os casos mais difíceis, num sistema fácil de usar que acompanha o esforço da rotina diária.</p>
 
-				<div class="heroi-acoes">
-					<a class="btn btn-claro" href="#modelos">
-						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0 5-5m-5 5-5-5"></path></svg>
-						Ver os modelos
-					</a>
-					<a class="btn btn-contorno-claro" href="https://www.speculum.pt/pt/contactos">
-						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v12H7l-3 3z"></path></svg>
-						Agendar demonstração
-					</a>
-				</div>
+            <div class="r20-actions">
+              <a class="r20-btn r20-btn-primary" href="https://www.speculum.pt/pt/contactos">Pedir demonstração</a>
+              <a class="r20-btn r20-btn-outline" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener">Ver catálogo (PDF)</a>
+            </div>
 
-			</div>
+            <div class="r20-hero-stats eco-n4">
+              <div class="r20-hero-stat">
+                <strong>27”</strong>
+                <span>Monitor OLED (opcional; 23,8” de série)</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>23%</strong>
+                <span>Mais campo lateral com WideScreen</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>14”</strong>
+                <span>Ecrã tátil inclinável</span>
+              </div>
+              <div class="r20-hero-stat">
+                <strong>6</strong>
+                <span>Direções de ajuste do painel de controlo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-			<!-- Recortes oficiais da Samsung (fundo transparente). São decorativos: o nome de
-			     cada modelo está na grelha, por isso o conjunto leva uma só descrição. -->
-			<div class="eco-lineup" role="img" aria-label="Quatro ecógrafos Samsung lado a lado: HS40, HERA Z20, V8 e V6">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-hs40-527px-1.png" alt="" width="527" height="527">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-z20-527px.png" alt="" width="527" height="527" fetchpriority="high">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-gi-v8-527px.png" alt="" width="527" height="527">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-v6-527px-1.png" alt="" width="527" height="527">
-			</div>
-		</div>
+      <!-- TECNOLOGIA -->
+      <section id="tecnologia" class="r20-section">
+        <div class="r20-container r20-grid-2">
+          <div class="r20-reveal">
+            <h2 class="r20-title">Imagem redefinida pela Crystal Architecture™.</h2>
 
-		<!-- Indica que a página continua: leva à grelha de modelos, logo abaixo. -->
-		<a class="eco-descer" href="#modelos" aria-label="Continuar para os modelos">
-			<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
-		</a>
-	</section>
+            <p class="r20-lead">A Crystal Architecture™ combina o CrystalBeam™ e o CrystalPure™ com a tecnologia S-Vue Transducer™, para imagens nítidas mesmo nos casos complexos.</p>
 
-	<!-- ===== Modelos =====
-	     Na página de origem cada área de cada modelo é um botão com destino próprio (página
-	     do produto ou catálogo); aqui são as etiquetas do cartão que fazem esse papel. Os
-	     destinos foram revistos: os endereços previous.samsunghealthcare.com e os antigos
-	     /en/products/ deixaram de responder e foram trocados pelas páginas actuais da Samsung.
-	     O RS85 Prestige aparecia duas vezes na origem — aqui só uma. -->
-	<section class="eco-modelos" id="modelos" aria-labelledby="eco-title">
-		<div class="container">
-			<div class="section-head">
-				<h2 id="eco-title">Modelos disponíveis</h2>
-			</div>
+            <div class="r20-feature-list">
+              <div class="r20-feature">
+                <div class="r20-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12q2.375-6.5 4.75 0t4.75 0 4.75 0 4.75 0"/></svg></div>
+                <div>
+                  <h3>CrystalBeam™</h3>
+                  <p>Formação de feixe que melhora a resolução e a uniformidade da imagem.</p>
+                </div>
+              </div>
 
-			<div class="eco-chips" role="group" aria-label="Filtrar por área clínica">
-				<button type="button" class="eco-chip is-ativo" data-cat="" aria-pressed="true">Todos <span>14</span></button>
-				<button type="button" class="eco-chip" data-cat="Ginecologia e Obstetrícia" aria-pressed="false">Ginecologia e Obstetrícia <span>9</span></button>
-				<button type="button" class="eco-chip" data-cat="Imagem Geral" aria-pressed="false">Imagem Geral <span>9</span></button>
-				<button type="button" class="eco-chip" data-cat="Cardiovascular" aria-pressed="false">Cardiovascular <span>3</span></button>
-				<button type="button" class="eco-chip" data-cat="Point of Care" aria-pressed="false">Point of Care <span>3</span></button>
-				<button type="button" class="eco-chip" data-cat="Radiologia" aria-pressed="false">Radiologia <span>2</span></button>
-				<button type="button" class="eco-chip" data-cat="Musculoesquelética" aria-pressed="false">Musculoesquelética <span>1</span></button>
-			</div>
-			<p class="eco-contagem" id="eco-contagem" role="status"></p>
+              <div class="r20-feature">
+                <div class="r20-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></div>
+                <div>
+                  <h3>CrystalPure™</h3>
+                  <p>Processamento 2D e de cor mais apurado, com menos ruído e melhor sinal de cor.</p>
+                </div>
+              </div>
 
-			<div class="eco-grelha" id="eco-grelha">
+              <div class="r20-feature">
+                <div class="r20-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="6.3"/><path d="M12 5.7a6.3 6.3 0 0 0 0 12.6Z" fill="currentColor" stroke="none"/><path d="M12 1.6v1.8M12 20.6v1.8M1.6 12h1.8M20.6 12h1.8"/></svg></div>
+                <div>
+                  <h3>ShadowHDR™</h3>
+                  <p>Aplica frequências altas e baixas de forma seletiva para revelar estruturas em zonas de sombra acústica.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-				<article class="eco-item" data-cats="Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hera-z20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/469a7d74-0fb4-49bc-98a8-ab645d4b4672.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-hera-z20.html">HERA Z20</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-hera-z20.html">Conhecer o HERA Z20</a>
-						<details class="eco-mais">
-							<summary>Catálogo</summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+          <figure class="r20-image-card r20-reveal">
+            <img src="https://www.samsunghealthcare.com/upload/a6b931ab-ce4b-4024-bb4c-31ae1762f8d4.png" alt="Fígado com ShadowHDR™ desligado e ligado: mais contraste e menos sombra acústica" loading="lazy">
+          </figure>
+        </div>
+      </section>
 
-				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-q10-evo.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/af9044d6-84af-4874-8ec9-a89b0a0d07e1.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-q10-evo.html">Q10 EVO</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/evo-q10" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/q10" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-q10-evo.html">Conhecer o Q10 EVO</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.samsunghealthcare.com/upload/d8cfe4a5-a7e7-4ad7-9981-610d977d29a1.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo (EN)</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+      <!-- FERRAMENTAS -->
+      <section id="ferramentas" class="r20-section r20-dark">
+        <div class="r20-container">
 
-				<article class="eco-item" data-cats="Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="rs20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/cf59d3d7-9b6b-4c7d-95dd-8f1665750702.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="rs20.html">R20</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.speculum.pt/rs20.html">Imagem Geral</a></li>
-						</ul>
-						<a class="eco-ver" href="rs20.html">Conhecer o R20</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.samsunghealthcare.com/upload/1463de80-350f-4bf0-8e60-f7c4b3a9f86e.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo (EN)</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+          <div class="r20-software-heading r20-reveal">
+            <h2 class="r20-title">Avaliação quantitativa e procedimentos de intervenção</h2>
+            <p class="r20-lead">Ferramentas para medir a rigidez dos tecidos e para guiar biópsias com fusão de imagem.</p>
+          </div>
 
-				<article class="eco-item" data-cats="Radiologia|Musculoesquelética">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-rs85-prestige.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/bedc88aa-93d8-416c-be73-a19722f3e1be.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-rs85-prestige.html">RS85 Prestige</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Radiologia</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Musculoesquelética</a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-rs85-prestige.html">Conhecer o RS85 Prestige</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
-							</ul>
-							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53908-ecografo-samsung-rs85">Ver no catálogo Speculum</a>
-						</details>
-					</div>
-				</article>
+          <div class="r20-software-grid">
+            <article class="r20-software-card r20-reveal">
+              <div class="r20-software-top">
+                <span class="r20-software-category">Elastografia</span>
+                <span class="r20-software-badge">SWE</span>
+              </div>
+              <div class="r20-software-image">
+                <img src="https://www.samsunghealthcare.com/upload/a7c36b1f-2545-4aa2-92d4-b871aa6a8ece.png" alt="S-Shearwave Imaging™ no Samsung RS85 Prestige" loading="lazy">
+              </div>
+              <h3>S-Shearwave Imaging™</h3>
+              <p class="r20-software-summary">Avalia de forma não invasiva a rigidez dos tecidos, com elastograma a cores, medições quantitativas e ROI à escolha.</p>
+            </article>
 
-				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v8.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/0b9c0148-9a5d-4cf7-a8bf-88c9be45884a.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-v8.html">V8</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V8" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-v8.html">Conhecer o V8</a>
-						<details class="eco-mais">
-							<summary>Catálogos <span>2</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_CV_210914_spread-20230725-103233.pdf" target="_blank" rel="noopener"><small>PDF</small>Cardiovascular</a></li>
-							</ul>
-							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53914-ecografo-v8-3p-cw-keyboard-battery-v10101">Ver no catálogo Speculum</a>
-						</details>
-					</div>
-				</article>
+            <article class="r20-software-card r20-reveal">
+              <div class="r20-software-top">
+                <span class="r20-software-category">Intervenção</span>
+                <span class="r20-software-badge">Fusão</span>
+              </div>
+              <div class="r20-software-image">
+                <img src="https://www.samsunghealthcare.com/upload/eaac514f-c9f6-4564-814a-bfbb235aba06.png" alt="S-Fusion™ no Samsung RS85 Prestige" loading="lazy">
+              </div>
+              <h3>S-Fusion™</h3>
+              <p class="r20-software-summary">Localiza lesões com ecografia em tempo real fundida com TC ou RM, para biópsias mais precisas.</p>
+            </article>
 
-				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v7.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-v7.html">V7</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V7" target="_blank" rel="noopener">Imagem Geral</a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-v7.html">Conhecer o V7</a>
-						<details class="eco-mais">
-							<summary>Catálogos <span>2</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_OBGyn_230125-20230725-110916.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V7%20catalog%20v1.03_GI_230125-20230725-111103.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
-							</ul>
-							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53911-ecografo-v7-3p-cw">Ver no catálogo Speculum</a>
-						</details>
-					</div>
-				</article>
+            <article class="r20-software-card r20-reveal">
+              <div class="r20-software-top">
+                <span class="r20-software-category">Intervenção</span>
+                <span class="r20-software-badge">Auto</span>
+              </div>
+              <div class="r20-software-image">
+                <img src="https://www.samsunghealthcare.com/upload/44a311df-3831-4bfb-ad04-dfd1ba96eee5.png" alt="Matching Auto no Samsung RS85 Prestige" loading="lazy">
+              </div>
+              <h3>Matching Auto</h3>
+              <p class="r20-software-summary">Um marcador externo no doente permite o registo inicial automático antes do exame S-Fusion™.</p>
+            </article>
 
-				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v6.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-v6.html">V6</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V6" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener">Imagem Geral</a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-v6.html">Conhecer o V6</a>
-						<details class="eco-mais">
-							<summary>Catálogos <span>2</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20OBGYN_230725-20230725-113222.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V6%20catalog%20GI_230725-20230725-113118.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+            <article class="r20-software-card r20-reveal">
+              <div class="r20-software-top">
+                <span class="r20-software-category">Intervenção</span>
+                <span class="r20-software-badge">Auto</span>
+              </div>
+              <div class="r20-software-image">
+                <img src="https://www.samsunghealthcare.com/upload/af05c829-6540-4607-a456-dd435ff22917.png" alt="Positioning Auto no Samsung RS85 Prestige" loading="lazy">
+              </div>
+              <h3>Positioning Auto</h3>
+              <p class="r20-software-summary">Registo inicial num só passo entre TC/RM e ecografia, com a sonda posicionada no epigastro.</p>
+            </article>
+          </div>
 
-				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v5.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-v5.html">V5</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V5" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V5" target="_blank" rel="noopener">Imagem Geral</a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-v5.html">Conhecer o V5</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/V5_Catalog_All_0911-2-20251104-094631.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+          <p class="eco-nota r20-reveal">Algumas funções são opcionais e podem exigir aquisição adicional; a configuração disponível varia de país para país.</p>
+        </div>
+      </section>
 
-				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem" href="samsung-hera-w10-elite.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://usa.samsunghealthcare.com/hs-fs/hubfs/WH-W10-Elite-Hero-450x600.png" alt=""></a>
-					<div class="eco-info">
-						<h3><a href="samsung-hera-w10-elite.html">HERA W10 Elite</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/hera-w10-elite" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAW10Elite" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-hera-w10-elite.html">Conhecer o HERA W10 Elite</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+      <!-- FLUXO DE TRABALHO -->
+      <section id="fluxo" class="r20-section r20-soft">
+        <div class="r20-container">
+          <div class="r20-reveal">
+            <h2 class="r20-title">Menos teclas, mais exames.</h2>
+            <p class="r20-lead">Soluções colaborativas e um fluxo simplificado que junta várias ações numa só.</p>
+          </div>
 
-				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia|Radiologia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs40.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/6bd1fc5b-015a-4c18-bd23-9ae6a250adc9.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-hs40.html">HS40</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.speculum.pt/hs40.html">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.speculum.pt/hs40obgyn.html" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS40" target="_blank" rel="noopener">Radiologia</a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-hs40.html">Conhecer o HS40</a>
-						<details class="eco-mais">
-							<summary>Catálogos <span>2</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_GI_CE%20mark_200129_spread-20230731-104018.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a></li>
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/catalog/HS40_V1.02_OB_CE%20mark_200129_spread-20230731-105324.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a></li>
-							</ul>
-							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53899-ecografo-samsung-hs40">Ver no catálogo Speculum</a>
-						</details>
-					</div>
-				</article>
+          <div class="eco-cartoes">
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/a64abb4c-8cc7-4a5c-8610-d1c0f87ae0df.png" alt="SonoSync™, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>SonoSync™</h3>
+                <p>Partilha de imagem em tempo real com PC ou smartphone, com chat de voz e texto. Não é uma função de diagnóstico.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/3674d65e-59f3-4c9d-ac1b-dc2bf239a340.png" alt="EzPrep™, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>EzPrep™</h3>
+                <p>Escolhe a sonda e o preset a partir da lista de trabalho.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/b09f6935-b098-44ce-b724-17df028206b6.png" alt="EzExam+™, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>EzExam+™</h3>
+                <p>Protocolos predefinidos para que nenhuma imagem ou medição fique por fazer.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/81277104-f0cf-4f54-9d8c-88cc9c39f12e.png" alt="Touch Customization, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Touch Customization</h3>
+                <p>Coloca as funções mais usadas na primeira página do ecrã tátil.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/fd63f527-befb-4220-b710-fd4ab18498ac.png" alt="QuickPreset, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>QuickPreset</h3>
+                <p>Combinações de sonda e preset num só clique.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/b92d99bd-6d90-472d-9920-bd08c223411a.png" alt="RIS Browser, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>RIS Browser</h3>
+                <p>Acesso ao RIS no próprio ecógrafo, sem passar para um PC.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs30.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/2ced30d5-3b23-4aa6-a927-ca89eae89e56.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-hs30.html">HS30</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-						</ul>
-						<a class="eco-ver" href="samsung-hs30.html">Conhecer o HS30</a>
-						<details class="eco-mais">
-							<summary>Catálogo <span>1</span></summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pdf" href="https://www.speculum.pt/files/files/pdfs/SMS-HS3NN2X%20%20%20%20%20%20%20.pdf" target="_blank" rel="noopener"><small>PDF</small>Ficha do produto (PT)</a></li>
-							</ul>
-							<a class="eco-cta" href="https://www.speculum.pt/pt/produtos/1834-ecografos/53895-ecografo-samsung-hs30">Ver no catálogo Speculum</a>
-						</details>
-					</div>
-				</article>
+      <!-- DESIGN -->
+      <section id="design" class="r20-section r20-dark">
+        <div class="r20-container">
+          <div class="r20-reveal">
+            <h2 class="r20-title">Produtividade em cada detalhe.</h2>
+            <p class="r20-lead">Ecrãs maiores, painel ajustável e mobilidade para trabalhar com menos esforço.</p>
+          </div>
 
-				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-cv.html">CV7</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
-							<li><span class="eco-area">Point of Care</span></li>
-						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
-						<details class="eco-mais">
-							<summary>Catálogo</summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+          <div class="eco-cartoes">
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/538f6577-834c-4e3c-b7e3-da4f003d39e5.png" alt="Monitor OLED de 27”, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Monitor OLED de 27”</h3>
+                <p>Pretos reais, adequados à imagem ecográfica. Opcional; de série, 23,8”.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/3ab64864-e629-43f5-91d5-b25d82c3325f.png" alt="WideScreen, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>WideScreen</h3>
+                <p>Cerca de 23% mais informação lateral do que o ecrã normal.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/28426c1d-0a21-46e3-8d10-b42d66b4e7c9.png" alt="Ecrã tátil de 14”, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Ecrã tátil de 14”</h3>
+                <p>Inclinável, para qualquer ambiente de exame.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/02b304a1-a37a-4d1a-b838-4df35b399a98.png" alt="Painel em 6 direções, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Painel em 6 direções</h3>
+                <p>Reduz o esforço dos movimentos repetitivos e volta à posição inicial ao desligar.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/f22fbe1b-58c0-4080-a691-6aa59fd0fd2e.png" alt="Bloqueio central, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Bloqueio central</h3>
+                <p>Um só pedal fixa a consola no lugar.</p>
+              </div>
+            </article>
+            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="https://www.samsunghealthcare.com/upload/dee93543-676a-4709-9fb4-13cfb7376ae2.png" alt="Rodas manobráveis, Samsung RS85 Prestige" loading="lazy"></div>
+              <div class="eco-cartao-corpo">
+                <h3>Rodas manobráveis</h3>
+                <p>Quatro rodas giratórias, com bloqueio.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-cv.html">CV6</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
-							<li><span class="eco-area">Point of Care</span></li>
-						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
-						<details class="eco-mais">
-							<summary>Catálogo</summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
+      <!-- CTA -->
+      <section class="r20-cta">
+        <div class="r20-container r20-cta-inner">
+          <div>
+            <h2>Conheça o RS85 Prestige em detalhe.</h2>
+            <p>
+              Para informação técnica, configuração, disponibilidade ou demonstração do sistema
+              em Portugal, contacte a Speculum.
+            </p>
+          </div>
 
-				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
-					<div class="eco-info">
-						<h3><a href="samsung-cv.html">CV5</a></h3>
-						<p class="eco-rotulo">Áreas clínicas</p>
-						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
-							<li><span class="eco-area">Point of Care</span></li>
-						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
-						<details class="eco-mais">
-							<summary>Catálogo</summary>
-							<ul class="eco-areas">
-								<li><a class="eco-area eco-pedir" href="https://www.speculum.pt/pt/contactos">A pedido</a></li>
-							</ul>
-						</details>
-					</div>
-				</article>
-			</div>
+          <div class="eco-cta-acoes">
+            <a class="eco-cta-pdf" href="https://www.speculum.pt/files/files/catalog/RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a>
+            <a class="r20-contact-button" href="https://www.speculum.pt/pt/contactos">Contactar Speculum</a>
+          </div>
+        </div>
+      </section>
 
-			<p class="eco-vazio" id="eco-vazio" hidden>Nenhum ecógrafo corresponde a esse filtro.</p>
-		</div>
-	</section>
+    </main>
 
-	<!-- ===== Em destaque: R20 =====
-	     O único modelo com página própria e completa no site. Os dados são os dessa página
-	     (speculum.pt/rs20.html), não acrescentados aqui. -->
-	<section class="destaque" id="r20" aria-labelledby="dest-title">
-		<div class="container">
-			<article class="tec-linha">
-				<div class="tec-figura">
-					<img src="https://usa.samsunghealthcare.com/hs-fs/hubfs/GI-R20-Hero-image3-450x600.png" alt="Ecógrafo Samsung R20, visto de frente, com monitor e painel de controlo" loading="lazy">
-				</div>
-				<div class="tec-texto">
-					<p class="tec-etiqueta">Em destaque</p>
-					<h2 class="dest-titulo" id="dest-title">Samsung R20</h2>
-					<p>Plataforma de imagem geral com softwares clínicos assistidos e uma ergonomia pensada para exames de corpo inteiro.</p>
-					<ul class="tec-pontos">
-						<li>Monitor OLED de 27" e ecrã tátil inclinável de 15,6"</li>
-						<li>3.ª Harmónica, ClearVision e ShadowHDR™</li>
-						<li>Live LiverAssist™, Live BreastAssist™ e EzSWI™</li>
-						<li>MV CEUS com TOA, DeepUSFF™ e NerveTrack™</li>
-					</ul>
-					<a class="btn btn-primario" href="https://www.speculum.pt/rs20.html">
-						Conhecer o R20
-						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"></path></svg>
-					</a>
-				</div>
-			</article>
-		</div>
-	</section>
+  </div>
 
-	<!-- ===== Faixa de contacto (a mesma chamada da página de origem) ===== -->
-	<section class="cta-band" aria-label="Peça uma demonstração">
-		<div class="container cta-inner">
-			<div class="cta-text">
-				<h2>Peça uma demonstração</h2>
-				<p>Conheça ao vivo as funcionalidades, as tecnologias de IA e os acessórios clínicos dos ecógrafos Samsung — adaptados às necessidades do seu serviço.</p>
-			</div>
-			<a class="cta-btn" href="https://www.speculum.pt/pt/contactos">Agendar demonstração</a>
-		</div>
-	</section>
-</main>
-
-
-<!-- ============================================================= -->
-<!-- RODAPÉ — bloco exato da medicoshospitalares.html (com o seu próprio CSS embutido) -->
-<!-- ============================================================= -->
 <div id="grid-wrap-footer" style="margin-top: -30px;">
 
 <!-- FOOTER -->
@@ -1381,8 +1629,6 @@
 
 </div>
 
-
-<!-- ============================================================= -->
 <!-- Comportamento (vanilla, sem dependências importadas) -->
 <!-- ============================================================= -->
 <script>
@@ -1395,9 +1641,9 @@
 			if (!h) return;
 			var hh = h.offsetHeight;
 			// --header-now é a altura actual; --header-h fica com a altura por extenso e só é
-			// actualizada fora do modo compacto. O espaço reservado no topo do conteúdo
-			// depende de --header-h: se seguisse a altura actual, encolhia ao rolar e a página
-			// dava um salto.
+			// actualizada fora do modo compacto. O espaço reservado no topo do conteúdo e a
+			// altura do vídeo dependem de --header-h: se seguissem a altura actual, encolhiam
+			// ao rolar e a página dava um salto.
 			document.documentElement.style.setProperty('--header-now', hh + 'px');
 			if (!h.classList.contains('compacto')) {
 				document.documentElement.style.setProperty('--header-h', hh + 'px');
@@ -1717,10 +1963,10 @@
 </script>
 
 <!-- Barra de secções: mantém --subnav-h com a altura real da barra (de que depende o ponto onde
-     as âncoras param) e assinala a secção que está a ser lida. -->
+     as âncoras param) e assinala a secção que está a ser lida. Adaptado da monitoresdesinaisvitais.html. -->
 <script>
 	(function () {
-		var barra = document.getElementById('sub-nav');
+		var barra = document.querySelector('.r20-subnav');
 		if (!barra) return;
 
 		function medir() {
@@ -1739,7 +1985,29 @@
 			porId[alvo.id] = a;
 			seccoes.push(alvo);
 		});
-		if (!seccoes.length || !window.IntersectionObserver) return;
+		if (!seccoes.length) return;
+
+		// Em ecrãs estreitos a barra não cabe toda e rola na horizontal, por isso a secção
+		// activa podia ficar fora de vista — a barra mostrava "Visão Geral" com a página já
+		// no fim. Aqui centra-se a ligação activa dentro da faixa.
+		var faixa = barra.querySelector('.r20-container');
+		var semAnimacao = window.matchMedia('(prefers-reduced-motion:reduce)');
+
+		function trazerAVista(a) {
+			if (!faixa || faixa.scrollWidth <= faixa.clientWidth + 1) return; // cabe toda: nada a fazer
+			var rFaixa = faixa.getBoundingClientRect();
+			var rA = a.getBoundingClientRect();
+			// Deslocamento relativo, medido a partir das posições actuais: não depende de
+			// offsetParent nem do scrollLeft em que a faixa esteja.
+			var d = Math.round((rA.left - rFaixa.left) - (rFaixa.width - rA.width) / 2);
+			if (!d) return;
+			// O deslizamento suave fica suspenso em documentos ocultos: nesse caso a barra
+			// nunca chegava a acompanhar. Com a página escondida salta directamente, que é o
+			// que interessa — ninguém está a ver o percurso.
+			var suave = !semAnimacao.matches && document.visibilityState === 'visible';
+			if (faixa.scrollBy) faixa.scrollBy({ left: d, behavior: suave ? 'smooth' : 'auto' });
+			else faixa.scrollLeft += d;
+		}
 
 		var activaAgora = null;
 		function marcar() {
@@ -1763,83 +2031,70 @@
 			}
 		}
 
-		// Em ecrãs estreitos a barra não cabe toda e rola na horizontal, por isso a secção
-		// activa podia ficar fora de vista — a barra mostrava "Visão geral" com a página já
-		// no fim. Aqui centra-se a ligação activa dentro da faixa.
-		var faixa = barra.querySelector('.sub-nav-inner');
-		var semAnimacao = window.matchMedia('(prefers-reduced-motion:reduce)');
-
-		function trazerAVista(a) {
-			if (!faixa || faixa.scrollWidth <= faixa.clientWidth + 1) return; // cabe toda: nada a fazer
-			var rFaixa = faixa.getBoundingClientRect();
-			var rA = a.getBoundingClientRect();
-			// Deslocamento relativo, medido a partir das posições actuais: não depende de
-			// offsetParent nem do scrollLeft em que a faixa esteja.
-			var d = Math.round((rA.left - rFaixa.left) - (rFaixa.width - rA.width) / 2);
-			if (!d) return;
-			// O deslizamento suave fica suspenso em documentos ocultos: nesse caso a barra
-			// nunca chegava a acompanhar. Com a página escondida salta directamente, que é o
-			// que interessa — ninguém está a ver o percurso.
-			var suave = !semAnimacao.matches && document.visibilityState === 'visible';
-			if (faixa.scrollBy) faixa.scrollBy({ left: d, behavior: suave ? 'smooth' : 'auto' });
-			else faixa.scrollLeft += d;
-		}
-
 		// Sem requestAnimationFrame de propósito: em separadores em segundo plano o rAF fica
-		// suspenso e o realce deixava de acompanhar. São poucas medições, não compensa adiar.
+		// suspenso e o realce deixava de acompanhar. São cinco medições, não compensa adiar.
 		window.addEventListener('scroll', marcar, { passive: true });
 		window.addEventListener('resize', marcar);
 		marcar();
 	})();
 </script>
 
-<!-- Filtro da grelha de ecógrafos: filtragem local, só sobre o que já está na página — nada é
-     pedido ao servidor. Sem JS a grelha fica toda visível: perde-se o filtro, não o conteúdo. -->
-<script>
-	(function () {
-		var grelha   = document.getElementById('eco-grelha');
-		var contagem = document.getElementById('eco-contagem');
-		var vazio    = document.getElementById('eco-vazio');
-		var chips    = [].slice.call(document.querySelectorAll('#produtos-main .eco-chip'));
-		var fila     = document.querySelector('#produtos-main .eco-chips');
-		if (!grelha) return;
+  <script>
+    (function () {
+      "use strict";
 
-		var itens = [].map.call(grelha.querySelectorAll('.eco-item'), function (el) {
-			return { el: el, cats: (el.getAttribute('data-cats') || '').split('|').filter(Boolean) };
-		});
-		var total = itens.length;
+      var ergoSlider = document.getElementById("r20ErgoSlider");
 
-		function filtrar(categoria) {
-			var visiveis = 0;
-			itens.forEach(function (i) {
-				var ok = !categoria || i.cats.indexOf(categoria) !== -1;
-				i.el.hidden = !ok;
-				if (ok) visiveis++;
-			});
-			chips.forEach(function (c) {
-				var activo = (c.getAttribute('data-cat') || '') === categoria;
-				c.classList.toggle('is-ativo', activo);
-				c.setAttribute('aria-pressed', activo ? 'true' : 'false');
-				// Em ecrãs estreitos a fila de separadores rola na horizontal: o activo vem
-				// para o centro. Deslocamento relativo, sem scrollIntoView, para não mexer
-				// no scroll vertical da página.
-				if (activo && fila && fila.scrollWidth > fila.clientWidth + 1) {
-					var rf = fila.getBoundingClientRect(), rc = c.getBoundingClientRect();
-					fila.scrollLeft += Math.round((rc.left - rf.left) - (rf.width - rc.width) / 2);
-				}
-			});
-			contagem.textContent = visiveis === total
-				? total + ' ecógrafos'
-				: visiveis + ' de ' + total + ' ecógrafos — ' + categoria;
-			vazio.hidden = visiveis !== 0;
-		}
+      if (ergoSlider) {
+        var ergoTrack = ergoSlider.querySelector(".r20-ergo-slider-track");
+        var ergoSlides = ergoSlider.querySelectorAll(".r20-ergo-diagram-card");
+        var ergoDots = ergoSlider.querySelectorAll(".r20-ergo-slider-dots button");
+        var ergoIndex = 0;
 
-		chips.forEach(function (chip) {
-			chip.addEventListener('click', function () { filtrar(chip.getAttribute('data-cat') || ''); });
-		});
+        function goToErgoSlide(index) {
+          ergoIndex = (index + ergoSlides.length) % ergoSlides.length;
+          ergoTrack.style.transform = "translateX(-" + ergoIndex * 100 + "%)";
+          ergoDots.forEach(function (dot, i) {
+            dot.classList.toggle("active", i === ergoIndex);
+          });
+        }
 
-		filtrar('');
-	})();
-</script>
+        ergoSlider.querySelector(".r20-ergo-slider-prev").addEventListener("click", function () {
+          goToErgoSlide(ergoIndex - 1);
+        });
+
+        ergoSlider.querySelector(".r20-ergo-slider-next").addEventListener("click", function () {
+          goToErgoSlide(ergoIndex + 1);
+        });
+
+        ergoDots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            goToErgoSlide(i);
+          });
+        });
+      }
+
+      var revealEls = document.querySelectorAll(".r20-reveal");
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        revealEls.forEach(function (el) { observer.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("visible"); });
+      }
+    })();
+  </script>
+
 </body>
 </html>
