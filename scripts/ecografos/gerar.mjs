@@ -15,6 +15,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { modelos, CONTACTOS } from './modelos.mjs';
+import { mais } from './mais.mjs';
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const RAIZ = join(AQUI, '..', '..');
@@ -84,6 +85,10 @@ const css = m => `
     .r20-actions .r20-btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
 
     /* Nota de rodapé das ferramentas */
+    .r20-software-note p.eco-mais-grupo { margin-bottom: 8px; }
+    /* font-family explícita: a stylesheet.css do site dá aos <strong> uma fonte que já não
+       existe no servidor, e o texto caía para Times. */
+    .r20-software-note p.eco-mais-grupo strong { color: #ffffff; font-family: "Montserrat", sans-serif; font-weight: 700; }
     .eco-nota { max-width: 760px; margin: 34px auto 0; text-align: center; color: #8ea6ba; font-size: 12px; line-height: 1.6; }
 
     /* Cartões com imagem (fluxo de trabalho, design) */
@@ -189,6 +194,25 @@ ${m.tecnologia.pontos.map(([ic, t, p]) => `              <div class="r20-feature
       </section>
 `;
 
+// Lista de nomes em português corrido: "A, B e C".
+const lista = nomes => nomes.length > 1 ? nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1] : nomes[0];
+
+// Como na página do R20: os cartões mostram uma seleção e este bloco nomeia o resto, para
+// que nenhuma ferramenta do modelo fique de fora.
+const notaFerramentas = m => {
+	const grupos = mais[m.ficheiro];
+	if (!grupos) return `          <p class="eco-nota r20-reveal">${esc(m.ferramentas.nota)}</p>`;
+	return `          <div class="r20-software-note r20-reveal">
+            <h3>E ainda mais aplicações disponíveis</h3>
+            <p>Além das ferramentas acima, o ${esc(m.curto)} integra também:</p>
+${grupos.map(([rotulo, nomes]) => `            <p class="eco-mais-grupo"><strong>${esc(rotulo)}:</strong> ${esc(lista(nomes))}.</p>`).join('\n')}
+            <p>
+              ${esc(m.ferramentas.nota)}
+              <a href="${CONTACTOS}">Fale connosco</a> para saber quais fazem sentido para o seu serviço.
+            </p>
+          </div>`;
+};
+
 const ferramentas = m => `
       <!-- FERRAMENTAS -->
       <section id="ferramentas" class="r20-section r20-dark">
@@ -213,7 +237,7 @@ ${m.ferramentas.cartoes.map(([cat, selo, img, t, p]) => `            <article cl
             </article>`).join('\n\n')}
           </div>
 
-          <p class="eco-nota r20-reveal">${esc(m.ferramentas.nota)}</p>
+${notaFerramentas(m)}
         </div>
       </section>
 `;

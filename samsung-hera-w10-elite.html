@@ -1013,6 +1013,10 @@
     .r20-actions .r20-btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
 
     /* Nota de rodapé das ferramentas */
+    .r20-software-note p.eco-mais-grupo { margin-bottom: 8px; }
+    /* font-family explícita: a stylesheet.css do site dá aos <strong> uma fonte que já não
+       existe no servidor, e o texto caía para Times. */
+    .r20-software-note p.eco-mais-grupo strong { color: #ffffff; font-family: "Montserrat", sans-serif; font-weight: 700; }
     .eco-nota { max-width: 760px; margin: 34px auto 0; text-align: center; color: #8ea6ba; font-size: 12px; line-height: 1.6; }
 
     /* Cartões com imagem (fluxo de trabalho, design) */
@@ -1347,7 +1351,17 @@
             </article>
           </div>
 
-          <p class="eco-nota r20-reveal">Algumas funções são opcionais e podem exigir aquisição adicional; a configuração disponível varia de país para país.</p>
+          <div class="r20-software-note r20-reveal">
+            <h3>E ainda mais aplicações disponíveis</h3>
+            <p>Além das ferramentas acima, o HERA W10 Elite integra também:</p>
+            <p class="eco-mais-grupo"><strong>Imagem e Doppler:</strong> ShadowHDR™, ClearVision, HQ-Vision™, MV-Flow™ e Advanced MV-Flow™, LumiFlow™, S-Flow™ e HDVI™.</p>
+            <p class="eco-mais-grupo"><strong>3D e 5D:</strong> CrystalVue™, CrystalVue Flow™, RealisticVue™, 5D LB™ e Slice A.</p>
+            <p class="eco-mais-grupo"><strong>Ferramentas clínicas:</strong> UterineAssist™, E-Cervix™, ElastoScan+™ e S-Detect™.</p>
+            <p>
+              Algumas funções são opcionais e podem exigir aquisição adicional; a configuração disponível varia de país para país.
+              <a href="https://www.speculum.pt/pt/contactos">Fale connosco</a> para saber quais fazem sentido para o seu serviço.
+            </p>
+          </div>
         </div>
       </section>
 
