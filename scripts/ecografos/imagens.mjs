@@ -56,6 +56,8 @@ for (const m of modelos) {
 	for (const c of m.ferramentas.cartoes) usos.push([c[2], pasta, c[3], 1600, FUNDO.ferramenta]);
 	for (const b of m.blocos) for (const c of b.cartoes) usos.push([c[0], pasta, c[1], 1600, FUNDO[b.tom]]);
 }
+// As imagens L() de modelos.mjs já estão no site e não passam por aqui.
+for (let i = usos.length - 1; i >= 0; i--) if (!/^https:/.test(usos[i][0])) usos.splice(i, 1);
 
 // Página ecografos.html: fotografia de produto de cada modelo (a do V7, V6 e V5 serve
 // também a gama CV) e os recortes do herói.

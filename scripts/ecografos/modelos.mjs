@@ -6,10 +6,14 @@
 // Os números citados (dimensões, percentagens, contagens) são os que essas páginas indicam;
 // não se acrescentou nada que lá não esteja.
 //
-// As imagens ficam alojadas na Samsung: U() para o site global, H() para o site dos EUA.
+// As imagens vêm da Samsung: U() para o site global, H() para o site dos EUA. O imagens.mjs
+// copia-as para images/ecografos/ e o gerar.mjs usa as cópias. L() aponta diretamente para uma
+// imagem que já está no site: as versões em português de infográficos da Samsung com texto
+// em inglês, preparadas pela Speculum.
 
 const U = (id, ext = 'png') => `https://www.samsunghealthcare.com/upload/${id}.${ext}`;
 const H = nome => `https://usa.samsunghealthcare.com/hs-fs/hubfs/${nome}`;
+const L = ficheiro => `images/ecografos/${ficheiro}`;
 
 const CAT = 'https://www.speculum.pt/files/files/catalog/';
 const CONTACTOS = 'https://www.speculum.pt/pt/contactos';
@@ -134,8 +138,8 @@ export const modelos = [
 				titulo: 'Menos passos, do primeiro toque ao relatório.',
 				lead: 'Personalização, gestos e comandos por voz para simplificar a utilização e manter o foco no doente.',
 				cartoes: [
-					[H('usa-samsung-gi-evoq10-mirror-touch-2.jpg'), 'MirrorTouch™', 'Ecrã tátil espelhado que simplifica o fluxo de trabalho.', 'object-position: 0% 50%'],
-					[U('2a04236e-3183-4436-aacf-c79ec7162835', 'jpg'), 'EzStructure™', 'Otimiza a imagem 2D num só toque.', 'transform: scale(2.3); transform-origin: 96.5% 19.6%'],
+					[L('q10-evo/samsung-q10-evo-mirrortouch.jpg'), 'MirrorTouch™', 'Ecrã tátil espelhado que simplifica o fluxo de trabalho.', 'object-position: 50% 75%'],
+					[L('q10-evo/samsung-q10-evo-ezstructure.jpg'), 'EzStructure™', 'Otimiza a imagem 2D num só toque.'],
 					[H('usa-samsung-wh-q10-designed-user.jpg'), 'MyTune™ e comandos por voz', 'Personalização, controlo por gestos no ecrã tátil e comandos por voz, sem mãos.'],
 					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real e controlo remoto. Não é uma função de diagnóstico.'],
 					[U('2b99d245-4167-40e3-b11c-f8eafa298419'), 'S-Hub', 'Gestão centralizada do parque de ecógrafos.', 'transform: scale(1.06)'],
@@ -191,7 +195,7 @@ export const modelos = [
 			lead: 'Ferramentas para medir a rigidez dos tecidos e para guiar biópsias com fusão de imagem.',
 			cartoes: [
 				['Elastografia', 'SWE', U('a7c36b1f-2545-4aa2-92d4-b871aa6a8ece'), 'S-Shearwave Imaging™', 'Avalia de forma não invasiva a rigidez dos tecidos, com elastograma a cores, medições quantitativas e ROI à escolha.'],
-				['Intervenção', 'Fusão', U('eaac514f-c9f6-4564-814a-bfbb235aba06'), 'S-Fusion™', 'Localiza lesões com ecografia em tempo real fundida com TC ou RM, para biópsias mais precisas.'],
+				['Intervenção', 'Fusão', L('rs85-prestige/samsung-rs85-prestige-s-fusion.jpg'), 'S-Fusion™', 'Localiza lesões com ecografia em tempo real fundida com TC ou RM, para biópsias mais precisas.'],
 				['Intervenção', 'Auto', U('44a311df-3831-4bfb-ad04-dfd1ba96eee5'), 'Matching Auto', 'Um marcador externo no doente permite o registo inicial automático antes do exame S-Fusion™.'],
 				['Intervenção', 'Auto', U('af05c829-6540-4607-a456-dd435ff22917'), 'Positioning Auto', 'Registo inicial num só passo entre TC/RM e ecografia, com a sonda posicionada no epigastro.']
 			],
@@ -254,7 +258,7 @@ export const modelos = [
 				['camadas', 'CrystalLive™', 'Motor de imagem com 2D, 3D e cor mais apurados, também nos casos complexos.'],
 				['brilho', 'Live Q-Scan', 'Ajusta em tempo real o brilho e a uniformidade da imagem a cada órgão e região.']
 			],
-			imagem: [H('usa-samsung-gi-rs85-crystal-arch.jpg'), 'Imagem clínica obtida com Crystal Architecture™']
+			imagem: [L('v8/samsung-v8-crystal-architecture.jpg'), 'Diagrama da Crystal Architecture™: CrystalBeam™, CrystalLive™ e S-Vue Transducer™']
 		},
 		ferramentas: {
 			titulo: 'Ferramentas Intelligent Assist',
@@ -560,7 +564,7 @@ export const modelos = [
 					[U('73b9c11a-3ce3-4fa4-9fb9-b2d923173a13'), 'Suporte de sondas', 'Sondas arrumadas e à mão.'],
 					[U('1b3083aa-cde2-43de-9e54-481997466cea'), 'Gestão de cabos', 'Cabos organizados durante o exame.'],
 					[U('8d59f0b3-ffe5-43d1-ba30-716113a8a2a6'), 'Iluminação de apoio', 'Visibilidade em salas escuras.'],
-					[U('48c78626-e74d-4edf-9363-c06412e4f5fc'), 'MobileSleep', 'Arranque cerca de 63% mais rápido do que um arranque normal.']
+					[L('hera-w10-elite/samsung-hera-w10-elite-mobilesleep.jpg'), 'MobileSleep', 'Arranque cerca de 63% mais rápido do que um arranque normal.']
 				]
 			}
 		]
