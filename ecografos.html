@@ -577,8 +577,17 @@
 		   um height:100% não se resolve — a imagem ficava quadrada e a transbordar. */
 		#produtos-main .eco-imagem-cheia{position:relative;padding:0}
 		#produtos-main .eco-imagem-cheia img.eco-quadrada{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none}
-		#produtos-main .eco-info{display:flex;flex-direction:column;flex:1;padding:20px;
-			border-block-start:1px solid var(--cinza-borda)}
+		/* Grelha de duas colunas: o nome à esquerda e os dois botões à direita, na mesma linha;
+		   rótulo, áreas e catálogos ocupam a largura toda (as três áreas do HS40 não cabiam ao
+		   lado de uma coluna de botões). A quarta linha absorve a altura que sobra, para os
+		   catálogos ficarem sempre no fundo do cartão. */
+		#produtos-main .eco-info{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto auto 1fr auto;
+			column-gap:12px;flex:1;padding:20px;border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .eco-info > h3{grid-area:1/1;align-self:center}
+		#produtos-main .eco-info > .eco-rotulo{grid-area:2/1/3/3}
+		#produtos-main .eco-info > .eco-areas{grid-area:3/1/4/3}
+		#produtos-main .eco-info > .eco-ligacoes{grid-area:1/2}
+		#produtos-main .eco-info > .eco-mais{grid-area:5/1/6/3}
 		#produtos-main .eco-info h3{font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--azul-escuro)}
 		#produtos-main .eco-rotulo{margin-block-start:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
 			text-transform:uppercase;color:#8a97a3}
@@ -603,11 +612,11 @@
 		   das áreas. */
 		#produtos-main .eco-info h3 a{color:var(--azul-escuro);font:inherit;letter-spacing:inherit;transition:color .18s}
 		#produtos-main .eco-info h3 a:hover,#produtos-main .eco-info h3 a:focus-visible{color:var(--azul-claro)}
-		/* Dois botões discretos, só com ícone: à esquerda a página do modelo neste site, à direita
-		   a página oficial no site da Samsung. A descrição de cada um aparece por cima ao passar
-		   o rato ou ao focar com o teclado; é um elemento à parte, ligado por aria-describedby,
-		   e o nome do botão vem do aria-label. */
-		#produtos-main .eco-ligacoes{display:flex;justify-content:space-between;align-items:center;margin-block:-4px 14px}
+		/* Dois botões discretos, só com ícone, lado a lado: a página do modelo neste site e a
+		   página oficial no site da Samsung. A descrição de cada um aparece à esquerda ao
+		   passar o rato ou ao focar com o teclado; é um elemento à parte, ligado por
+		   aria-describedby, e o nome do botão vem do aria-label. */
+		#produtos-main .eco-ligacoes{display:flex;gap:8px}
 		#produtos-main .eco-botao{position:relative;display:flex}
 		#produtos-main .eco-ver,#produtos-main .eco-oficial{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;
 			border:1px solid var(--cinza-borda);background:#fff;color:#7d8c97;transition:background .2s,color .2s,border-color .2s}
@@ -616,14 +625,12 @@
 		#produtos-main .eco-oficial:hover,#produtos-main .eco-oficial:focus-visible{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
 		#produtos-main .eco-item:hover .eco-ver{border-color:var(--azul-claro);color:var(--azul-claro)}
 		#produtos-main .eco-item:hover .eco-ver:hover{color:#fff}
-		#produtos-main .eco-dica{position:absolute;bottom:calc(100% + 9px);left:0;z-index:3;width:max-content;max-width:min(230px,80vw);
+		#produtos-main .eco-dica{position:absolute;top:50%;right:calc(100% + 10px);z-index:3;width:max-content;max-width:min(230px,80vw);
 			padding:8px 11px;border-radius:8px;background:var(--azul-escuro);color:#fff;font-size:.72rem;font-weight:500;line-height:1.45;
-			box-shadow:0 8px 22px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(4px);pointer-events:none;
+			box-shadow:0 8px 22px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translate(4px,-50%);pointer-events:none;
 			transition:opacity .18s,transform .18s,visibility .18s}
-		#produtos-main .eco-dica::after{content:"";position:absolute;top:100%;left:18px;border:6px solid transparent;border-top-color:var(--azul-escuro)}
-		#produtos-main .eco-botao-dir .eco-dica{left:auto;right:0}
-		#produtos-main .eco-botao-dir .eco-dica::after{left:auto;right:18px}
-		#produtos-main .eco-botao:hover .eco-dica,#produtos-main .eco-botao a:focus-visible + .eco-dica{opacity:1;visibility:visible;transform:none}
+		#produtos-main .eco-dica::after{content:"";position:absolute;top:50%;left:100%;margin-top:-6px;border:6px solid transparent;border-left-color:var(--azul-escuro)}
+		#produtos-main .eco-botao:hover .eco-dica,#produtos-main .eco-botao a:focus-visible + .eco-dica{opacity:1;visibility:visible;transform:translate(0,-50%)}
 		@media (hover:none){#produtos-main .eco-dica{display:none}}
 		#produtos-main .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 		#produtos-main .eco-mais{margin-block-start:auto;border-block-start:1px solid var(--cinza-borda)}
