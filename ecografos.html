@@ -577,16 +577,15 @@
 		   um height:100% não se resolve — a imagem ficava quadrada e a transbordar. */
 		#produtos-main .eco-imagem-cheia{position:relative;padding:0}
 		#produtos-main .eco-imagem-cheia img.eco-quadrada{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none}
-		/* Grelha de duas colunas: o nome à esquerda e os dois botões à direita, na mesma linha;
-		   rótulo, áreas e catálogos ocupam a largura toda (as três áreas do HS40 não cabiam ao
-		   lado de uma coluna de botões). A quarta linha absorve a altura que sobra, para os
-		   catálogos ficarem sempre no fundo do cartão. */
+		/* Grelha de duas colunas: nome, rótulo e áreas à esquerda; os dois botões empilhados à
+		   direita. A quarta linha absorve a altura que sobra, para os catálogos ficarem sempre
+		   no fundo do cartão. */
 		#produtos-main .eco-info{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto auto 1fr auto;
-			column-gap:12px;flex:1;padding:20px;border-block-start:1px solid var(--cinza-borda)}
-		#produtos-main .eco-info > h3{grid-area:1/1;align-self:center}
-		#produtos-main .eco-info > .eco-rotulo{grid-area:2/1/3/3}
-		#produtos-main .eco-info > .eco-areas{grid-area:3/1/4/3}
-		#produtos-main .eco-info > .eco-ligacoes{grid-area:1/2}
+			column-gap:14px;flex:1;padding:20px;border-block-start:1px solid var(--cinza-borda)}
+		#produtos-main .eco-info > h3{grid-area:1/1}
+		#produtos-main .eco-info > .eco-rotulo{grid-area:2/1}
+		#produtos-main .eco-info > .eco-areas{grid-area:3/1}
+		#produtos-main .eco-info > .eco-ligacoes{grid-area:1/2/4/3}
 		#produtos-main .eco-info > .eco-mais{grid-area:5/1/6/3}
 		#produtos-main .eco-info h3{font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--azul-escuro)}
 		#produtos-main .eco-rotulo{margin-block-start:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
@@ -612,11 +611,11 @@
 		   das áreas. */
 		#produtos-main .eco-info h3 a{color:var(--azul-escuro);font:inherit;letter-spacing:inherit;transition:color .18s}
 		#produtos-main .eco-info h3 a:hover,#produtos-main .eco-info h3 a:focus-visible{color:var(--azul-claro)}
-		/* Dois botões discretos, só com ícone, lado a lado: a página do modelo neste site e a
-		   página oficial no site da Samsung. A descrição de cada um aparece à esquerda ao
+		/* Dois botões discretos, só com ícone, um por cima do outro: a página do modelo neste
+		   site e a página oficial no site da Samsung. A descrição de cada um aparece à esquerda ao
 		   passar o rato ou ao focar com o teclado; é um elemento à parte, ligado por
 		   aria-describedby, e o nome do botão vem do aria-label. */
-		#produtos-main .eco-ligacoes{display:flex;gap:8px}
+		#produtos-main .eco-ligacoes{display:flex;flex-direction:column;gap:8px}
 		#produtos-main .eco-botao{position:relative;display:flex}
 		#produtos-main .eco-ver,#produtos-main .eco-oficial{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;
 			border:1px solid var(--cinza-borda);background:#fff;color:#7d8c97;transition:background .2s,color .2s,border-color .2s}
