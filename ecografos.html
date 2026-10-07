@@ -603,10 +603,29 @@
 		   das áreas. */
 		#produtos-main .eco-info h3 a{color:var(--azul-escuro);font:inherit;letter-spacing:inherit;transition:color .18s}
 		#produtos-main .eco-info h3 a:hover,#produtos-main .eco-info h3 a:focus-visible{color:var(--azul-claro)}
-		#produtos-main .eco-ver{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;
-			margin-block:-4px 16px;font-size:.84rem;font-weight:700;color:var(--azul-claro)}
-		#produtos-main .eco-ver::after{content:"→";transition:transform .2s}
-		#produtos-main .eco-item:hover .eco-ver::after{transform:translateX(4px)}
+		/* Dois botões discretos, só com ícone: à esquerda a página do modelo neste site, à direita
+		   a página oficial no site da Samsung. A descrição de cada um aparece por cima ao passar
+		   o rato ou ao focar com o teclado; é um elemento à parte, ligado por aria-describedby,
+		   e o nome do botão vem do aria-label. */
+		#produtos-main .eco-ligacoes{display:flex;justify-content:space-between;align-items:center;margin-block:-4px 14px}
+		#produtos-main .eco-botao{position:relative;display:flex}
+		#produtos-main .eco-ver,#produtos-main .eco-oficial{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;
+			border:1px solid var(--cinza-borda);background:#fff;color:#7d8c97;transition:background .2s,color .2s,border-color .2s}
+		#produtos-main .eco-ver svg,#produtos-main .eco-oficial svg{width:17px;height:17px;stroke:currentColor}
+		#produtos-main .eco-ver:hover,#produtos-main .eco-ver:focus-visible,
+		#produtos-main .eco-oficial:hover,#produtos-main .eco-oficial:focus-visible{background:var(--azul-claro);border-color:var(--azul-claro);color:#fff}
+		#produtos-main .eco-item:hover .eco-ver{border-color:var(--azul-claro);color:var(--azul-claro)}
+		#produtos-main .eco-item:hover .eco-ver:hover{color:#fff}
+		#produtos-main .eco-dica{position:absolute;bottom:calc(100% + 9px);left:0;z-index:3;width:max-content;max-width:min(230px,80vw);
+			padding:8px 11px;border-radius:8px;background:var(--azul-escuro);color:#fff;font-size:.72rem;font-weight:500;line-height:1.45;
+			box-shadow:0 8px 22px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(4px);pointer-events:none;
+			transition:opacity .18s,transform .18s,visibility .18s}
+		#produtos-main .eco-dica::after{content:"";position:absolute;top:100%;left:18px;border:6px solid transparent;border-top-color:var(--azul-escuro)}
+		#produtos-main .eco-botao-dir .eco-dica{left:auto;right:0}
+		#produtos-main .eco-botao-dir .eco-dica::after{left:auto;right:18px}
+		#produtos-main .eco-botao:hover .eco-dica,#produtos-main .eco-botao a:focus-visible + .eco-dica{opacity:1;visibility:visible;transform:none}
+		@media (hover:none){#produtos-main .eco-dica{display:none}}
+		#produtos-main .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 		#produtos-main .eco-mais{margin-block-start:auto;border-block-start:1px solid var(--cinza-borda)}
 		#produtos-main .eco-mais summary{display:flex;align-items:center;gap:8px;padding-block:14px 2px;cursor:pointer;
 			list-style:none;font-size:.84rem;font-weight:700;color:var(--azul-escuro);transition:color .2s}
@@ -846,7 +865,16 @@
 						<ul class="eco-areas">
 							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-hera-z20.html">Conhecer o HERA Z20</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-hera-z20.html" aria-label="Conhecer o HERA Z20" aria-describedby="dica-hera-z20-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-hera-z20-ver" role="tooltip">Página do HERA Z20 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAZ20" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-hera-z20-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-hera-z20-oficial" role="tooltip">Página oficial do HERA Z20 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo</summary>
 							<ul class="eco-areas">
@@ -865,7 +893,16 @@
 							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/evo-q10" target="_blank" rel="noopener">Imagem Geral</a></li>
 							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/q10" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-q10-evo.html">Conhecer o Q10 EVO</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-q10-evo.html" aria-label="Conhecer o Q10 EVO" aria-describedby="dica-q10-evo-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-q10-evo-ver" role="tooltip">Página do Q10 EVO na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Pointofcare/EVOQ10" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-q10-evo-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-q10-evo-oficial" role="tooltip">Página oficial do Q10 EVO no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -883,7 +920,16 @@
 						<ul class="eco-areas">
 							<li><a class="eco-area" href="https://www.speculum.pt/rs20.html">Imagem Geral</a></li>
 						</ul>
-						<a class="eco-ver" href="rs20.html">Conhecer o R20</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="rs20.html" aria-label="Conhecer o R20" aria-describedby="dica-r20-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-r20-ver" role="tooltip">Página do R20 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/R20" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-r20-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-r20-oficial" role="tooltip">Página oficial do R20 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -902,7 +948,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Radiologia</a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Musculoesquelética</a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-rs85-prestige.html">Conhecer o RS85 Prestige</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-rs85-prestige.html" aria-label="Conhecer o RS85 Prestige" aria-describedby="dica-rs85-prestige-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-rs85-prestige-ver" role="tooltip">Página do RS85 Prestige na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-rs85-prestige-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-rs85-prestige-oficial" role="tooltip">Página oficial do RS85 Prestige no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -922,7 +977,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener">Imagem Geral</a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V8" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-v8.html">Conhecer o V8</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-v8.html" aria-label="Conhecer o V8" aria-describedby="dica-v8-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-v8-ver" role="tooltip">Página do V8 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-v8-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-v8-oficial" role="tooltip">Página oficial do V8 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogos <span>2</span></summary>
 							<ul class="eco-areas">
@@ -943,7 +1007,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V7" target="_blank" rel="noopener">Imagem Geral</a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-v7.html">Conhecer o V7</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-v7.html" aria-label="Conhecer o V7" aria-describedby="dica-v7-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-v7-ver" role="tooltip">Página do V7 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V7" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-v7-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-v7-oficial" role="tooltip">Página oficial do V7 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogos <span>2</span></summary>
 							<ul class="eco-areas">
@@ -964,7 +1037,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V6" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener">Imagem Geral</a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-v6.html">Conhecer o V6</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-v6.html" aria-label="Conhecer o V6" aria-describedby="dica-v6-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-v6-ver" role="tooltip">Página do V6 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-v6-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-v6-oficial" role="tooltip">Página oficial do V6 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogos <span>2</span></summary>
 							<ul class="eco-areas">
@@ -984,7 +1066,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V5" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V5" target="_blank" rel="noopener">Imagem Geral</a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-v5.html">Conhecer o V5</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-v5.html" aria-label="Conhecer o V5" aria-describedby="dica-v5-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-v5-ver" role="tooltip">Página do V5 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V5" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-v5-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-v5-oficial" role="tooltip">Página oficial do V5 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -1003,7 +1094,16 @@
 							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/hera-w10-elite" target="_blank" rel="noopener">Imagem Geral</a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAW10Elite" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-hera-w10-elite.html">Conhecer o HERA W10 Elite</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-hera-w10-elite.html" aria-label="Conhecer o HERA W10 Elite" aria-describedby="dica-hera-w10-elite-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-hera-w10-elite-ver" role="tooltip">Página do HERA W10 Elite na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAW10Elite" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-hera-w10-elite-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-hera-w10-elite-oficial" role="tooltip">Página oficial do HERA W10 Elite no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -1023,7 +1123,16 @@
 							<li><a class="eco-area" href="https://www.speculum.pt/hs40obgyn.html" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS40" target="_blank" rel="noopener">Radiologia</a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-hs40.html">Conhecer o HS40</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-hs40.html" aria-label="Conhecer o HS40" aria-describedby="dica-hs40-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-hs40-ver" role="tooltip">Página do HS40 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS40" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-hs40-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-hs40-oficial" role="tooltip">Página oficial do HS40 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogos <span>2</span></summary>
 							<ul class="eco-areas">
@@ -1044,7 +1153,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener">Imagem Geral</a></li>
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
 						</ul>
-						<a class="eco-ver" href="samsung-hs30.html">Conhecer o HS30</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-hs30.html" aria-label="Conhecer o HS30" aria-describedby="dica-hs30-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-hs30-ver" role="tooltip">Página do HS30 na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-hs30-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-hs30-oficial" role="tooltip">Página oficial do HS30 no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo <span>1</span></summary>
 							<ul class="eco-areas">
@@ -1064,7 +1182,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-cv.html" aria-label="Conhecer a gama CV" aria-describedby="dica-cv7-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-cv7-ver" role="tooltip">Página da gama CV na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-cv7-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-cv7-oficial" role="tooltip">Página da linha cardiovascular no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo</summary>
 							<ul class="eco-areas">
@@ -1083,7 +1210,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-cv.html" aria-label="Conhecer a gama CV" aria-describedby="dica-cv6-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-cv6-ver" role="tooltip">Página da gama CV na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-cv6-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-cv6-oficial" role="tooltip">Página da linha cardiovascular no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo</summary>
 							<ul class="eco-areas">
@@ -1102,7 +1238,16 @@
 							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
-						<a class="eco-ver" href="samsung-cv.html">Conhecer a gama CV</a>
+						<div class="eco-ligacoes">
+							<div class="eco-botao">
+								<a class="eco-ver" href="samsung-cv.html" aria-label="Conhecer a gama CV" aria-describedby="dica-cv5-ver"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+								<span class="eco-dica" id="dica-cv5-ver" role="tooltip">Página da gama CV na Speculum: tecnologia, ferramentas clínicas, design e catálogos.</span>
+							</div>
+							<div class="eco-botao eco-botao-dir">
+								<a class="eco-oficial" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener" aria-label="Site oficial da Samsung, abre numa nova janela" aria-describedby="dica-cv5-oficial"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+								<span class="eco-dica" id="dica-cv5-oficial" role="tooltip">Página da linha cardiovascular no site da Samsung, em inglês. Abre numa nova janela.</span>
+							</div>
+						</div>
 						<details class="eco-mais">
 							<summary>Catálogo</summary>
 							<ul class="eco-areas">
