@@ -66,10 +66,10 @@ export const modelos = [
 				titulo: 'Uma experiência pensada para quem examina.',
 				lead: 'Personalização, 3D assistido por IA e cabos mais leves: o Z20 adapta-se a cada utilizador e a cada exame.',
 				cartoes: [
-					[H('MyHERA%20Personalized%20Thumbnail.jpg'), 'MyHERA™', 'Ao iniciar sessão, o sistema carrega as preferências de cada utilizador: definições, ecrã tátil, presets de imagem e até a iluminação.'],
+					[U('fbc0fcaa-c585-46eb-ab71-ce6573d529e2'), 'MyHERA™', 'Ao iniciar sessão, o sistema carrega as preferências de cada utilizador: definições, ecrã tátil, presets de imagem e até a iluminação.', 'object-position: 72% 58%; transform: scale(2.6); transform-origin: 84% 55%'],
 					[H('usa-samsung-wh-z20-volume-seg-thumb.jpg'), 'EzVolume™', 'Segmenta e colore automaticamente estruturas fetais em 3D, para uma visualização anatómica mais clara.'],
 					[H('PortraitVue%20Thumbnail%202.jpg'), 'PortraitVue™', 'Otimiza a face fetal em 3D sem manipulação demorada. Função não diagnóstica, pensada para a família.'],
-					[H('samsung-flex-cable-wp-inset.png'), 'Cabos flex™', 'Acompanham os movimentos naturais e reduzem o arrasto e a torção que sobrecarregam o pulso e o ombro.']
+					[U('0fc16ae1-eada-4559-a828-d8a920a22ad5'), 'Cabos flex™', 'Acompanham os movimentos naturais e reduzem o arrasto e a torção que sobrecarregam o pulso e o ombro.', 'transform: scale(1.08)']
 				]
 			},
 			{
@@ -134,11 +134,11 @@ export const modelos = [
 				titulo: 'Menos passos, do primeiro toque ao relatório.',
 				lead: 'Personalização, gestos e comandos por voz para simplificar a utilização e manter o foco no doente.',
 				cartoes: [
-					[U('e22d59df-eadd-40fd-b8ca-25c095a55b19', 'jpg'), 'MirrorTouch™', 'Ecrã tátil espelhado que simplifica o fluxo de trabalho.'],
-					[U('2a04236e-3183-4436-aacf-c79ec7162835', 'jpg'), 'EzStructure™', 'Otimiza a imagem 2D num só toque.'],
-					[H('Q10-wh-callouts.jpg'), 'MyTune™ e comandos por voz', 'Personalização, controlo por gestos no ecrã tátil e comandos por voz, sem mãos.'],
-					[U('e69b969a-ad53-4670-a590-d5837dab095e', 'jpg'), 'SonoSync™', 'Partilha de imagem em tempo real e controlo remoto. Não é uma função de diagnóstico.'],
-					[U('c7fbdd25-1163-4960-ae97-099d47c25aac', 'jpg'), 'S-Hub', 'Gestão centralizada do parque de ecógrafos.'],
+					[H('usa-samsung-gi-evoq10-mirror-touch-2.jpg'), 'MirrorTouch™', 'Ecrã tátil espelhado que simplifica o fluxo de trabalho.', 'object-position: 0% 50%'],
+					[U('2a04236e-3183-4436-aacf-c79ec7162835', 'jpg'), 'EzStructure™', 'Otimiza a imagem 2D num só toque.', 'transform: scale(2.3); transform-origin: 96.5% 19.6%'],
+					[H('usa-samsung-wh-q10-designed-user.jpg'), 'MyTune™ e comandos por voz', 'Personalização, controlo por gestos no ecrã tátil e comandos por voz, sem mãos.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real e controlo remoto. Não é uma função de diagnóstico.'],
+					[U('2b99d245-4167-40e3-b11c-f8eafa298419'), 'S-Hub', 'Gestão centralizada do parque de ecógrafos.', 'transform: scale(1.06)'],
 					[H('Q10-security.jpg'), 'Segurança', 'Proteção do sistema e dos dados dos doentes, agora com Windows 11.']
 				]
 			},
@@ -203,12 +203,12 @@ export const modelos = [
 				titulo: 'Menos teclas, mais exames.',
 				lead: 'Soluções colaborativas e um fluxo simplificado que junta várias ações numa só.',
 				cartoes: [
-					[U('a64abb4c-8cc7-4a5c-8610-d1c0f87ae0df'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone, com chat de voz e texto. Não é uma função de diagnóstico.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone, com chat de voz e texto. Não é uma função de diagnóstico.'],
 					[U('3674d65e-59f3-4c9d-ac1b-dc2bf239a340'), 'EzPrep™', 'Escolhe a sonda e o preset a partir da lista de trabalho.'],
 					[U('b09f6935-b098-44ce-b724-17df028206b6'), 'EzExam+™', 'Protocolos predefinidos para que nenhuma imagem ou medição fique por fazer.'],
 					[U('81277104-f0cf-4f54-9d8c-88cc9c39f12e'), 'Touch Customization', 'Coloca as funções mais usadas na primeira página do ecrã tátil.'],
 					[U('fd63f527-befb-4220-b710-fd4ab18498ac'), 'QuickPreset', 'Combinações de sonda e preset num só clique.'],
-					[U('b92d99bd-6d90-472d-9920-bd08c223411a'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo, sem passar para um PC.']
+					[U('b92d99bd-6d90-472d-9920-bd08c223411a'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo, sem passar para um PC.', 'transform: scale(2); transform-origin: 1.5% 36%']
 				]
 			},
 			{
@@ -275,12 +275,12 @@ export const modelos = [
 				titulo: 'Um fluxo de trabalho redesenhado.',
 				lead: 'Funções práticas e soluções colaborativas que reduzem várias tarefas a poucos passos.',
 				cartoes: [
-					[U('b8637aaa-30dc-4aa6-85b5-35ae6fb22cfb'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
 					[U('5a2463cb-2cbc-4289-9ae8-c85ef8b81db2'), 'EzExam+™', 'Protocolos predefinidos para os exames de rotina do serviço.'],
 					[U('6daa08ed-8c13-4896-92ee-cd3c9391540b'), 'EzCompare™', 'Compara lado a lado o exame anterior e o atual, com as mesmas definições.'],
 					[U('dd6497bd-76ff-46d6-b308-a5985fc898e4'), 'Vista expandida', 'Imagens e cines ampliados na proporção que preferir.'],
 					[U('833fbf8a-0514-45ac-9574-5a84c905e327'), 'QuickPreset', 'Combinações de sonda e preset num só toque.'],
-					[U('2e088216-6793-471d-a120-d1c0bbaf1483'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo.']
+					[U('2e088216-6793-471d-a120-d1c0bbaf1483'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo.', 'transform: scale(2); transform-origin: 1.5% 36%']
 				]
 			},
 			{
@@ -343,12 +343,12 @@ export const modelos = [
 				titulo: 'Um fluxo de trabalho mais simples.',
 				lead: 'Menos passos e menos teclas, com os dados do exame apresentados de forma clara.',
 				cartoes: [
-					[U('922943f9-cfc1-43ec-bda3-f60146ebf08e'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
 					[U('ff1af564-88be-452e-84cb-0f3d2342f9aa'), 'EzExam+™', 'Protocolos predefinidos para que nenhum passo fique por fazer.'],
 					[U('4794bcd6-cb17-423b-ba60-215ebf1c9de5'), 'Vista expandida', 'Imagens e cines ampliados na proporção que preferir.'],
 					[U('eddd3bb3-5347-442f-b584-9f41f8e6131d'), 'TouchEdit', 'Funções mais usadas na primeira página do ecrã tátil.'],
 					[U('f59dc93f-0afc-4115-a7ed-943ed90fc296'), 'QuickPreset', 'Combinações de sonda e preset num só clique.'],
-					[U('2f8a66ce-96d0-4ba3-878f-6c62c93c0557'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo.']
+					[U('2f8a66ce-96d0-4ba3-878f-6c62c93c0557'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo.', 'transform: scale(2); transform-origin: 1.5% 36%']
 				]
 			},
 			{
@@ -410,7 +410,7 @@ export const modelos = [
 				titulo: 'Simples, do início ao fim do exame.',
 				lead: 'Tarefas complexas reduzidas a poucos passos.',
 				cartoes: [
-					[U('61e070a8-49a5-4870-ae26-f13278dd7de6'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone.'],
 					[U('77255328-0a0d-4900-a6ef-c5675227cac2'), 'EzExam+™', 'Protocolos predefinidos para os exames de rotina.'],
 					[U('3fc84703-1c08-4314-9e25-0790c92457d9'), 'EzCompare™', 'Exame anterior e atual lado a lado, com as mesmas definições.'],
 					[U('710e2680-cfb4-4147-9f29-9f11e287546f'), 'Vista expandida', 'Imagens e cines ampliados na proporção que preferir.'],
@@ -454,7 +454,7 @@ export const modelos = [
 				['fluxo', 'MV-Flow™', 'Deteta fluxo microvascular muito lento, sem artefactos.'],
 				['coracao', 'LumiFlow™', 'Fluxo a cores com aspeto tridimensional, para melhor perceção espacial.']
 			],
-			imagem: [U('a08cdf39-0953-49b7-a420-30b57c0685d5'), 'Imagem clínica do V5']
+			imagem: [U('0356a36d-c244-4564-a45c-d1d0caf3dd58'), 'Imagem clínica do V5 com MV-Flow™']
 		},
 		ferramentas: {
 			titulo: 'IA para a rotina de saúde da mulher',
@@ -485,7 +485,7 @@ export const modelos = [
 				titulo: 'Mais eficiência no dia a dia.',
 				lead: 'Fluxo de trabalho avançado, acesso remoto, ecrã maior e uma estrutura compacta e robusta com bateria.',
 				cartoes: [
-					[U('a187e147-5aa8-44e3-88af-98a8c7ee89f2'), 'SonoSync™', 'Partilha de imagem em tempo real, com chat, videoconferência e marcações.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real, com chat, videoconferência e marcações.'],
 					[U('a1acdb05-f6c4-44c8-b6e3-d1f348e7193b'), 'Vista expandida', 'Imagens e cines ampliados na proporção que preferir.'],
 					[U('0fb88de4-9543-4680-a06f-01505b905a90'), 'BatteryAssist™', 'Continua a examinar sem corrente e muda de sala sem desligar.'],
 					[U('1c108177-801a-4518-962c-bd250ac412fd'), 'EzExam+™', 'Protocolos predefinidos para que nenhum passo fique por fazer.']
@@ -543,9 +543,9 @@ export const modelos = [
 				titulo: 'Colaboração em tempo real, à sua maneira.',
 				lead: 'Menos teclas, várias ações numa só e definições personalizadas por protocolo.',
 				cartoes: [
-					[U('e3117f01-3ffe-441e-ad55-760fc91b608a'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
-					[U('74c5f712-9ef1-4dee-9f8b-333a289898a6'), 'HelloMom™', 'Imagens fetais para o telemóvel da família através de um código QR, sem instalar aplicações.'],
-					[U('a443a3ab-701e-4e67-b193-6f4a1e650b1c'), 'Monitor OLED de 27”', '57% maior do que o do HERA W10, com pretos reais.'],
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
+					[U('240d084b-9ae4-43da-9c51-f603da19f519'), 'HelloMom™', 'Imagens fetais para o telemóvel da família através de um código QR, sem instalar aplicações.'],
+					[U('970b1cc0-ded1-4df3-9db0-01acb85e0c62'), 'Monitor OLED de 27”', '57% maior do que o do HERA W10, com pretos reais.', 'transform: scale(2.44); transform-origin: 90.7% 6.8%'],
 					[U('efd44ddf-d7f8-4ec8-ae97-59e81604b2bf'), 'QuickPreset', 'Combinações de sonda e preset num só toque.'],
 					[U('a52a39b8-70cc-4a5b-b2fa-57a6d8aca9fa'), 'TouchGesture', 'Rodar, ampliar, recortar e mover volumes 3D no ecrã tátil.'],
 					[U('326a9e9c-ed74-4a72-b9be-707a14899f02'), 'Botões contextuais', 'As funções de cada exame atribuídas aos botões do painel.']
@@ -602,7 +602,7 @@ export const modelos = [
 				['Obstetrícia', 'IA', H('usa-samsung-wh-v7-biometry-assist.jpg'), 'BiometryAssist™', 'Biometria fetal semiautomática, mais rápida e rigorosa.'],
 				['Ginecologia', 'IA', H('usa-samsung-wh-hs40-uterine-assist.jpg'), 'UterineAssist™', 'Mede automaticamente o tamanho e a forma do útero.'],
 				['Sala de partos', 'AoP', H('usa-samsung-wh-hs40-labor-assist.jpg'), 'LaborAssist™', 'Mede o ângulo de progressão e a direção da cabeça fetal, segundo as orientações da ISUOG.'],
-				['1.º trimestre', '5D', H('usa-samsung-wh-hs40-5nt.jpg'), '5D NT™', 'Apoio à medição da translucência da nuca a partir de um volume.'],
+				['1.º trimestre', '3D', H('3_2.%20CrystalVue_2-1.jpg'), 'CrystalVue™', 'Renderização 3D que realça contornos e estruturas, aqui num feto do primeiro trimestre.'],
 				['3D', 'Render', H('usa-samsung-wh-hs40-realistic-view.jpg'), 'RealisticVue™', 'Anatomia 3D em alta resolução, com luz ajustável e sombras graduais.'],
 				['Fertilidade', 'Auto', H('2D_Follicle.png'), '2D Follicle™', 'Medição de folículos ováricos em 2D.']
 			],
@@ -658,7 +658,7 @@ export const modelos = [
 				['camadas', 'ElastoScan™', 'Elastografia por deformação que mostra a rigidez relativa dos tecidos a cores.'],
 				['toque', 'EzAssist™', 'Informação anatómica no ecrã para guiar o exame.']
 			],
-			imagem: [U('4fd41e64-8de8-4115-add4-3eca2e724609'), 'Imagem 2D do HS30 com ClearVision']
+			imagem: [U('b902261f-edd8-4b41-aa57-52200a30f4e6'), 'Ecógrafo Samsung HS30', '#f4f4f4']
 		},
 		ferramentas: {
 			titulo: 'Ferramentas essenciais, imagem clara',
@@ -733,7 +733,7 @@ export const modelos = [
 					[U('d6fc96ea-85d5-4ed3-b230-33bee7b28d35'), 'Vista expandida', 'Imagens e cines ampliados na proporção que preferir.'],
 					[U('4dd4a8ad-b79a-4334-83d3-694e084e28ab'), 'QuickPreset', 'Combinações de sonda e preset num só clique.'],
 					[U('eab87116-b1ad-4f70-b67c-6f5abe010f40'), 'TouchEdit', 'Funções mais usadas na primeira página do ecrã tátil.'],
-					[U('33317782-1b5b-4f60-9834-bc35cbec3005'), 'SonoSync™', 'Partilha de imagem em tempo real, voz e controlo remoto entre locais.']
+					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real, voz e controlo remoto entre locais.']
 				]
 			},
 			{

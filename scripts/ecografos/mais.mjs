@@ -63,7 +63,8 @@ export const mais = {
 	],
 
 	'samsung-hs40.html': [
-		['Imagem', ['HQ-Vision™', 'CrystalVue™', 'Panoramic']],
+		['Imagem', ['HQ-Vision™', 'Panoramic']],
+		['3D e 5D', ['5D NT™']],
 		['Ferramentas clínicas', ['ElastoScan™', 'E-Strain™', 'Strain+', 'StressEcho', 'AutoIMT+', 'NeedleMate+™']]
 	],
 

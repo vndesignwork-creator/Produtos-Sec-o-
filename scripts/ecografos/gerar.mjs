@@ -187,7 +187,7 @@ ${m.tecnologia.pontos.map(([ic, t, p]) => `              <div class="r20-feature
             </div>
           </div>
 
-          <figure class="r20-image-card r20-reveal">
+          <figure class="r20-image-card r20-reveal"${m.tecnologia.imagem[2] ? ` style="background: ${esc(m.tecnologia.imagem[2])}"` : ''}>
             <img src="${esc(m.tecnologia.imagem[0])}" alt="${esc(m.tecnologia.imagem[1])}" loading="lazy">
           </figure>
         </div>
@@ -252,8 +252,8 @@ const bloco = (m, b) => `
           </div>
 
           <div class="eco-cartoes${b.cartoes.length === 4 ? ' eco-n4' : ''}">
-${b.cartoes.map(([img, t, p]) => `            <article class="eco-cartao r20-reveal">
-              <div class="eco-cartao-img"><img src="${esc(img)}" alt="${esc(t + ', Samsung ' + m.curto)}" loading="lazy"></div>
+${b.cartoes.map(([img, t, p, enq]) => `            <article class="eco-cartao r20-reveal">
+              <div class="eco-cartao-img"><img src="${esc(img)}" alt="${esc(t + ', Samsung ' + m.curto)}" loading="lazy"${enq ? ` style="${esc(enq)}"` : ''}></div>
               <div class="eco-cartao-corpo">
                 <h3>${esc(t)}</h3>
                 <p>${esc(p)}</p>
