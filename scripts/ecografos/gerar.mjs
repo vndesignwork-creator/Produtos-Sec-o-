@@ -10,6 +10,10 @@
 //
 // Escreve samsung-*.html na raiz do site. Voltar a correr depois de mexer em modelos.mjs ou
 // na rs20-v2.html.
+//
+// Os endereços das imagens em modelos.mjs são os originais da Samsung; o imagens.mjs copia-as
+// para images/ecografos/ com nomes descritivos e o mapa imagens.json troca-os aqui pelos
+// caminhos locais. Uma imagem nova em modelos.mjs exige correr primeiro o imagens.mjs.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -20,6 +24,17 @@ import { mais } from './mais.mjs';
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const RAIZ = join(AQUI, '..', '..');
 const ESQUELETO = readFileSync(join(RAIZ, 'rs20-v2.html'), 'utf8');
+const IMAGENS = JSON.parse(readFileSync(join(AQUI, 'imagens.json'), 'utf8'));
+
+// Troca cada endereço da Samsung pelo ficheiro local; falha se algum não tiver cópia. Os que
+// já vêm no CSS da rs20-v2.html (secções do R20 que estas páginas não usam) ficam como estão.
+const imagensLocais = (html, m) => {
+	for (const [url, local] of Object.entries(IMAGENS)) html = html.split(url).join(local);
+	const fora = [...new Set(html.match(/https:\/\/(?:www|usa)\.samsunghealthcare\.com\/(?:upload|hs-fs\/hubfs|hubfs)\/[^"')\s]+\.(?:png|jpe?g)/g) || [])]
+		.filter(u => !ESQUELETO.includes(u));
+	if (fora.length) throw new Error(`${m.ficheiro}: imagens sem cópia local (correr imagens.mjs): ${fora.join(', ')}`);
+	return html;
+};
 
 /* ---------- utilitários ---------- */
 
@@ -188,7 +203,7 @@ ${m.tecnologia.pontos.map(([ic, t, p]) => `              <div class="r20-feature
           </div>
 
           <figure class="r20-image-card r20-reveal"${m.tecnologia.imagem[2] ? ` style="background: ${esc(m.tecnologia.imagem[2])}"` : ''}>
-            <img src="${esc(m.tecnologia.imagem[0])}" alt="${esc(m.tecnologia.imagem[1])}" loading="lazy">
+            <img src="${esc(m.tecnologia.imagem[0])}" alt="${esc(m.tecnologia.imagem[1])}" loading="lazy"${m.tecnologia.imagem[3] ? ` style="${esc(m.tecnologia.imagem[3])}"` : ''}>
           </figure>
         </div>
       </section>
@@ -313,10 +328,10 @@ modelos.forEach(m => {
 	if (!topo.includes(`<title>Samsung ${esc(m.nome)}`)) throw new Error('título por trocar');
 	if (!topo.includes(esc(m.descricao))) throw new Error('descrição por trocar');
 
-	const html = topo + css(m) + inicioCorpo
+	const html = imagensLocais(topo + css(m) + inicioCorpo
 		+ barra(m)
 		+ heroi(m) + tecnologia(m) + ferramentas(m) + m.blocos.map(b => bloco(m, b)).join('') + fecho(m)
-		+ '\n' + resto;
+		+ '\n' + resto, m);
 
 	writeFileSync(join(RAIZ, m.ficheiro), html, 'utf8');
 	console.log(`${m.ficheiro}: ${Math.round(Buffer.byteLength(html) / 1024)} KB`);

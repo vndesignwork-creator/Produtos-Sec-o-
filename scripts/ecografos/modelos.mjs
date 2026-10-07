@@ -658,7 +658,8 @@ export const modelos = [
 				['camadas', 'ElastoScan™', 'Elastografia por deformação que mostra a rigidez relativa dos tecidos a cores.'],
 				['toque', 'EzAssist™', 'Informação anatómica no ecrã para guiar o exame.']
 			],
-			imagem: [U('b902261f-edd8-4b41-aa57-52200a30f4e6'), 'Ecógrafo Samsung HS30', '#f4f4f4']
+			// Fotografia larga com o ecógrafo à direita: corte em cover, encostado à direita e ao fundo.
+			imagem: [U('e74cbbc1-b61c-43ae-9887-6c87c02aa5f2'), 'Ecógrafo Samsung HS30', '#f4f4f4', 'object-fit: cover; object-position: 90% 100%; aspect-ratio: 4 / 3']
 		},
 		ferramentas: {
 			titulo: 'Ferramentas essenciais, imagem clara',

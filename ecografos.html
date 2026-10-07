@@ -591,7 +591,7 @@
 		#produtos-main .eco-rotulo{margin-block-start:12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
 			text-transform:uppercase;color:#8a97a3}
 		#produtos-main .eco-areas{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-block-start:9px}
-		/* Cada área é uma ligação: abre a página ou o catálogo desse modelo para essa área. */
+		/* As áreas são etiquetas; o mesmo estilo serve as ligações aos PDF dos catálogos. */
 		#produtos-main .eco-area{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;
 			border:1px solid var(--cinza-borda);background:var(--cinza-claro);font-size:.72rem;font-weight:600;white-space:nowrap;
 			line-height:1.3;color:var(--azul-escuro);transition:background .2s,color .2s,border-color .2s}
@@ -600,7 +600,7 @@
 		#produtos-main .eco-area small{font-size:.62rem;font-weight:700;letter-spacing:.05em;padding:1px 5px;
 			border-radius:4px;background:rgba(0,112,175,.12);color:var(--azul-claro)}
 		#produtos-main a.eco-area:hover small,#produtos-main a.eco-area:focus-visible small{background:rgba(255,255,255,.24);color:#fff}
-		#produtos-main span.eco-area{color:var(--cinza-texto)}
+		#produtos-main span.eco-area{color:var(--azul-escuro)}
 		/* Catálogos: a etiqueta PDF vai à frente e dispensa a seta; "A pedido" leva aos contactos. */
 		#produtos-main a.eco-pedir{background:#fff;border-style:dashed;color:var(--cinza-texto)}
 		#produtos-main a.eco-pedir::after{content:"→";color:var(--azul-claro)}
@@ -830,10 +830,10 @@
 			<!-- Recortes oficiais da Samsung (fundo transparente). São decorativos: o nome de
 			     cada modelo está na grelha, por isso o conjunto leva uma só descrição. -->
 			<div class="eco-lineup" role="img" aria-label="Quatro ecógrafos Samsung lado a lado: HS40, HERA Z20, V8 e V6">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-hs40-527px-1.png" alt="" width="527" height="527">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-z20-527px.png" alt="" width="527" height="527" fetchpriority="high">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-gi-v8-527px.png" alt="" width="527" height="527">
-				<img src="https://usa.samsunghealthcare.com/hubfs/usa-samsung-wh-v6-527px-1.png" alt="" width="527" height="527">
+				<img src="images/ecografos/lista/samsung-hs40-recorte.png" alt="" width="527" height="527">
+				<img src="images/ecografos/lista/samsung-hera-z20-recorte.png" alt="" width="527" height="527" fetchpriority="high">
+				<img src="images/ecografos/lista/samsung-v8-recorte.png" alt="" width="527" height="527">
+				<img src="images/ecografos/lista/samsung-v6-recorte.png" alt="" width="527" height="527">
 			</div>
 		</div>
 	</section>
@@ -864,12 +864,12 @@
 			<div class="eco-grelha" id="eco-grelha">
 
 				<article class="eco-item" data-cats="Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hera-z20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/469a7d74-0fb4-49bc-98a8-ab645d4b4672.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-hera-z20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-hera-z20-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-hera-z20.html">HERA Z20</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/z20" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -891,13 +891,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-q10-evo.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/af9044d6-84af-4874-8ec9-a89b0a0d07e1.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-q10-evo.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-q10-evo-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-q10-evo.html">Q10 EVO</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/general-imaging/evo-q10" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/q10" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -919,12 +919,12 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="rs20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/cf59d3d7-9b6b-4c7d-95dd-8f1665750702.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="rs20.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-r20-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="rs20.html">R20</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.speculum.pt/rs20.html">Imagem Geral</a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -946,13 +946,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Radiologia|Musculoesquelética">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-rs85-prestige.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/bedc88aa-93d8-416c-be73-a19722f3e1be.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-rs85-prestige.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-rs85-prestige-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-rs85-prestige.html">RS85 Prestige</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Radiologia</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/RS85Prestige" target="_blank" rel="noopener">Musculoesquelética</a></li>
+							<li><span class="eco-area">Radiologia</span></li>
+							<li><span class="eco-area">Musculoesquelética</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -975,13 +975,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v8.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/0b9c0148-9a5d-4cf7-a8bf-88c9be45884a.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-v8.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v8-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-v8.html">V8</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V8" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V8" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1005,13 +1005,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v7.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-v7.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v7-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-v7.html">V7</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V7" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V7" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1035,13 +1035,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v6.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-v6.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v6-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-v6.html">V6</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V6" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V6" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1064,13 +1064,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Ginecologia e Obstetrícia|Imagem Geral">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-v5.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-v5.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v5-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-v5.html">V5</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/V5" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/V5" target="_blank" rel="noopener">Imagem Geral</a></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1092,13 +1092,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem" href="samsung-hera-w10-elite.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://usa.samsunghealthcare.com/hs-fs/hubfs/WH-W10-Elite-Hero-450x600.png" alt=""></a>
+					<a class="eco-imagem" href="samsung-hera-w10-elite.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-hera-w10-elite-produto.jpg" alt=""></a>
 					<div class="eco-info">
 						<h3><a href="samsung-hera-w10-elite.html">HERA W10 Elite</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://usa.samsunghealthcare.com/ultrasound/womens-health/hera-w10-elite" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/WomensHealth/HERAW10Elite" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1120,14 +1120,14 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia|Radiologia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs40.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/6bd1fc5b-015a-4c18-bd23-9ae6a250adc9.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs40.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-hs40-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-hs40.html">HS40</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.speculum.pt/hs40.html">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.speculum.pt/hs40obgyn.html" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS40" target="_blank" rel="noopener">Radiologia</a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
+							<li><span class="eco-area">Radiologia</span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1151,13 +1151,13 @@
 				</article>
 
 				<article class="eco-item" data-cats="Imagem Geral|Ginecologia e Obstetrícia">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs30.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/2ced30d5-3b23-4aa6-a927-ca89eae89e56.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-hs30.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-hs30-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-hs30.html">HS30</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener">Imagem Geral</a></li>
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/GeneralImaging/HS30" target="_blank" rel="noopener" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></a></li>
+							<li><span class="eco-area">Imagem Geral</span></li>
+							<li><span class="eco-area" aria-label="Ginecologia e Obstetrícia"><abbr title="Ginecologia e Obstetrícia">Gin. e Obstetrícia</abbr></span></li>
 						</ul>
 						<div class="eco-ligacoes">
 							<div class="eco-botao">
@@ -1180,12 +1180,12 @@
 				</article>
 
 				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v7-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-cv.html">CV7</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Cardiovascular</span></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
 						<div class="eco-ligacoes">
@@ -1208,12 +1208,12 @@
 				</article>
 
 				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/4c14036f-308c-4020-b55c-9ce545c5e167.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v6-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-cv.html">CV6</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Cardiovascular</span></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
 						<div class="eco-ligacoes">
@@ -1236,12 +1236,12 @@
 				</article>
 
 				<article class="eco-item" data-cats="Cardiovascular|Point of Care">
-					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="https://www.samsunghealthcare.com/upload/fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png" alt="" class="eco-quadrada"></a>
+					<a class="eco-imagem eco-imagem-cheia" href="samsung-cv.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="images/ecografos/lista/samsung-v5-produto.jpg" alt="" class="eco-quadrada"></a>
 					<div class="eco-info">
 						<h3><a href="samsung-cv.html">CV5</a></h3>
 						<p class="eco-rotulo">Áreas clínicas</p>
 						<ul class="eco-areas">
-							<li><a class="eco-area" href="https://www.samsunghealthcare.com/en/Product/UltrasoundSystem/Cardiovascular" target="_blank" rel="noopener">Cardiovascular</a></li>
+							<li><span class="eco-area">Cardiovascular</span></li>
 							<li><span class="eco-area">Point of Care</span></li>
 						</ul>
 						<div class="eco-ligacoes">
@@ -1275,7 +1275,7 @@
 		<div class="container">
 			<article class="tec-linha">
 				<div class="tec-figura">
-					<img src="https://usa.samsunghealthcare.com/hs-fs/hubfs/GI-R20-Hero-image3-450x600.png" alt="Ecógrafo Samsung R20, visto de frente, com monitor e painel de controlo" loading="lazy">
+					<img src="images/ecografos/lista/samsung-r20-destaque.png" alt="Ecógrafo Samsung R20, visto de frente, com monitor e painel de controlo" loading="lazy">
 				</div>
 				<div class="tec-texto">
 					<p class="tec-etiqueta">Em destaque</p>
