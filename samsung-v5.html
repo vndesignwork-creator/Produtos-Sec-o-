@@ -992,8 +992,12 @@
         url("images/ecografos/v5/samsung-v5-heroi.png") top center / 100% auto no-repeat;
     }
 
-    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    /* "R20" cabe a 100px; "HERA Z20" e afins não. */
     #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+
+    /* A frase por baixo do nome (as áreas clínicas) não passa da largura do parágrafo, para
+       não chegar à fotografia do ecógrafo; as linhas ficam equilibradas. */
+    #root .r20-hero h1 span { max-width: 710px; text-wrap: balance; }
     @media (max-width: 620px) {
       #root .r20-hero--longo h1 { font-size: 40px !important; }
     }
@@ -1159,7 +1163,7 @@
 
             <h1>
               V5
-              <span>Do essencial ao extraordinário.</span>
+              <span>CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.</span>
             </h1>
 
             <p>Fino e compacto, sem abdicar de potência: o V5 junta imagem nítida, ferramentas de IA e mobilidade para a ecografia de todos os dias, da imagem geral à saúde da mulher.</p>
@@ -1407,6 +1411,7 @@
 
           <div class="eco-cta-acoes">
             <a class="eco-cta-pdf" href="https://www.speculum.pt/files/files/catalog/V5_Catalog_All_0911-2-20251104-094631.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo</a>
+            <a class="eco-cta-pdf" href="https://www.samsunghealthcare.com/upload/52d280f4-1619-466e-a506-1b1956b108ad.pdf" target="_blank" rel="noopener"><small>PDF</small>Infertilidade</a>
             <a class="r20-contact-button" href="https://www.speculum.pt/pt/contactos">Contactar Speculum</a>
           </div>
         </div>

@@ -29,7 +29,7 @@ export const modelos = [
 		nome: 'HERA Z20',
 		curto: 'Z20',
 		area: 'Ginecologia e Obstetrícia',
-		frase: 'Visão ao serviço da saúde da mulher.',
+		frase: 'Ginecologia e Obstetrícia, DPN, Saúde da mulher.',
 		lead: 'O HERA Z20 adapta-se a cada doente, com imagem 2D, 3D e Doppler a cores ajustada a cada caso. A IA integrada e as funções automáticas apoiam a decisão clínica e libertam tempo para o que importa: a doente.',
 		descricao: 'Samsung HERA Z20 em Portugal pela Speculum: ecógrafo premium para ginecologia e obstetrícia, com Crystal Architecture™ de 2.ª geração, Live ViewAssist™, HeartAssist™, BrainVue™ e monitor OLED de 27".',
 		heroi: U('6d346346-d17b-4836-94d1-2ab43e4aa2d1'),
@@ -39,7 +39,7 @@ export const modelos = [
 			['47', 'Estruturas anotadas pelo Live ViewAssist™'],
 			['52%', 'Menos tempo de exame no 2.º trimestre, com Live ViewAssist™']
 		],
-		catalogos: [],
+		catalogos: [['Catálogo (EN)', U('90df2cf0-3cf5-44a9-b42d-bb938eec54d1', 'pdf')]],
 		tecnologia: {
 			titulo: 'Imagem cristalina, com detalhe em cada plano.',
 			lead: 'A Crystal Architecture™ de 2.ª geração junta os pontos fortes do CrystalBeam™ e do CrystalLive™ aos últimos avanços da tecnologia S-Vue Transducer™, para imagens nítidas e ricas em detalhe.',
@@ -98,7 +98,7 @@ export const modelos = [
 		nome: 'Q10 EVO',
 		curto: 'Q10 EVO',
 		area: 'Portátil · Point of Care',
-		frase: 'Rapidez com qualidade.',
+		frase: 'Ginecologia e Obstetrícia, Imagem Geral, MSK, Radiologia, Emergência e Point of Care.',
 		lead: 'Ecografia portátil já não significa compromisso. Assente na mesma arquitetura dos sistemas em carro, o Q10 EVO leva imagem de alta resolução e ferramentas automáticas para onde os cuidados acontecem.',
 		descricao: 'Samsung Q10 EVO em Portugal pela Speculum: ecógrafo portátil para point of care, imagem geral e saúde da mulher, com painel IP22, estrutura em magnésio, até 7 horas de bateria e HeartAssist™.',
 		heroi: U('0240b114-82e3-43f6-9ee1-0981597d09e5'),
@@ -160,84 +160,13 @@ export const modelos = [
 		]
 	},
 
-	/* ===================================================================== RS85 PRESTIGE */
-	{
-		ficheiro: 'samsung-rs85-prestige.html',
-		nome: 'RS85 Prestige',
-		curto: 'RS85 Prestige',
-		area: 'Radiologia · Musculoesquelética',
-		frase: 'A verdadeira revolução.',
-		lead: 'Tecnologias avançadas para confirmar com confiança os casos mais difíceis, num sistema fácil de usar que acompanha o esforço da rotina diária.',
-		descricao: 'Samsung RS85 Prestige em Portugal pela Speculum: ecógrafo premium de imagem geral e radiologia, com Crystal Architecture™, ShadowHDR™, S-Shearwave Imaging™, S-Fusion™ e monitor OLED de 27".',
-		heroi: U('232957d7-31b9-4cd2-932d-3b00507084dd'),
-		// A fotografia traz o nome do modelo gravado à esquerda; o véu fica opaco até meio,
-		// para esse texto não aparecer por trás do título.
-		heroiVeu: 'linear-gradient(100deg, rgb(3, 16, 27) 0%, rgb(3, 16, 27) 46%, rgba(4, 19, 31, 0.62) 66%, rgba(6, 22, 35, 0.4) 100%)',
-		numeros: [
-			['27”', 'Monitor OLED (opcional; 23,8” de série)'],
-			['23%', 'Mais campo lateral com WideScreen'],
-			['14”', 'Ecrã tátil inclinável'],
-			['6', 'Direções de ajuste do painel de controlo']
-		],
-		catalogos: [['Catálogo', CAT + 'RS85%20Prestige%20V2.02_Catalog_CE_200908_single%20page-compactado-20230725-100107.pdf']],
-		tecnologia: {
-			titulo: 'Imagem redefinida pela Crystal Architecture™.',
-			lead: 'A Crystal Architecture™ combina o CrystalBeam™ e o CrystalPure™ com a tecnologia S-Vue Transducer™, para imagens nítidas mesmo nos casos complexos.',
-			pontos: [
-				['onda', 'CrystalBeam™', 'Formação de feixe que melhora a resolução e a uniformidade da imagem.'],
-				['camadas', 'CrystalPure™', 'Processamento 2D e de cor mais apurado, com menos ruído e melhor sinal de cor.'],
-				['contraste', 'ShadowHDR™', 'Aplica frequências altas e baixas de forma seletiva para revelar estruturas em zonas de sombra acústica.']
-			],
-			imagem: [U('a6b931ab-ce4b-4024-bb4c-31ae1762f8d4'), 'Fígado com ShadowHDR™ desligado e ligado: mais contraste e menos sombra acústica']
-		},
-		ferramentas: {
-			titulo: 'Avaliação quantitativa e procedimentos de intervenção',
-			lead: 'Ferramentas para medir a rigidez dos tecidos e para guiar biópsias com fusão de imagem.',
-			cartoes: [
-				['Elastografia', 'SWE', U('a7c36b1f-2545-4aa2-92d4-b871aa6a8ece'), 'S-Shearwave Imaging™', 'Avalia de forma não invasiva a rigidez dos tecidos, com elastograma a cores, medições quantitativas e ROI à escolha.'],
-				['Intervenção', 'Fusão', L('rs85-prestige/samsung-rs85-prestige-s-fusion.jpg'), 'S-Fusion™', 'Localiza lesões com ecografia em tempo real fundida com TC ou RM, para biópsias mais precisas.'],
-				['Intervenção', 'Auto', U('44a311df-3831-4bfb-ad04-dfd1ba96eee5'), 'Matching Auto', 'Um marcador externo no doente permite o registo inicial automático antes do exame S-Fusion™.'],
-				['Intervenção', 'Auto', U('af05c829-6540-4607-a456-dd435ff22917'), 'Positioning Auto', 'Registo inicial num só passo entre TC/RM e ecografia, com a sonda posicionada no epigastro.']
-			],
-			nota: OPCIONAL
-		},
-		blocos: [
-			{
-				id: 'fluxo', menu: 'Fluxo de trabalho', tom: 'claro',
-				titulo: 'Menos teclas, mais exames.',
-				lead: 'Soluções colaborativas e um fluxo simplificado que junta várias ações numa só.',
-				cartoes: [
-					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone, com chat de voz e texto. Não é uma função de diagnóstico.'],
-					[U('3674d65e-59f3-4c9d-ac1b-dc2bf239a340'), 'EzPrep™', 'Escolhe a sonda e o preset a partir da lista de trabalho.'],
-					[U('b09f6935-b098-44ce-b724-17df028206b6'), 'EzExam+™', 'Protocolos predefinidos para que nenhuma imagem ou medição fique por fazer.'],
-					[U('81277104-f0cf-4f54-9d8c-88cc9c39f12e'), 'Touch Customization', 'Coloca as funções mais usadas na primeira página do ecrã tátil.'],
-					[U('fd63f527-befb-4220-b710-fd4ab18498ac'), 'QuickPreset', 'Combinações de sonda e preset num só clique.'],
-					[U('b92d99bd-6d90-472d-9920-bd08c223411a'), 'RIS Browser', 'Acesso ao RIS no próprio ecógrafo, sem passar para um PC.', 'transform: scale(2); transform-origin: 1.5% 36%']
-				]
-			},
-			{
-				id: 'design', menu: 'Design', tom: 'escuro',
-				titulo: 'Produtividade em cada detalhe.',
-				lead: 'Ecrãs maiores, painel ajustável e mobilidade para trabalhar com menos esforço.',
-				cartoes: [
-					[U('538f6577-834c-4e3c-b7e3-da4f003d39e5'), 'Monitor OLED de 27”', 'Pretos reais, adequados à imagem ecográfica. Opcional; de série, 23,8”.'],
-					[U('3ab64864-e629-43f5-91d5-b25d82c3325f'), 'WideScreen', 'Cerca de 23% mais informação lateral do que o ecrã normal.'],
-					[U('28426c1d-0a21-46e3-8d10-b42d66b4e7c9'), 'Ecrã tátil de 14”', 'Inclinável, para qualquer ambiente de exame.'],
-					[U('02b304a1-a37a-4d1a-b838-4df35b399a98'), 'Painel em 6 direções', 'Reduz o esforço dos movimentos repetitivos e volta à posição inicial ao desligar.'],
-					[U('f22fbe1b-58c0-4080-a691-6aa59fd0fd2e'), 'Bloqueio central', 'Um só pedal fixa a consola no lugar.'],
-					[U('dee93543-676a-4709-9fb4-13cfb7376ae2'), 'Rodas manobráveis', 'Quatro rodas giratórias, com bloqueio.']
-				]
-			}
-		]
-	},
-
 	/* ===================================================================== V8 */
 	{
 		ficheiro: 'samsung-v8.html',
 		nome: 'V8',
 		curto: 'V8',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'Mais confiança em cada exame.',
+		frase: 'CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.',
 		lead: 'Um sistema muito versátil, com ferramentas para casos clínicos e doentes diversos e funções de alta precisão para exames direcionados.',
 		descricao: 'Samsung V8 em Portugal pela Speculum: ecógrafo de imagem geral e saúde da mulher, com Crystal Architecture™, quantificação hepática EzHRI™, TAI™ e TSI™, medições com IA e CrystalVue Flow™.',
 		heroi: U('7116a24d-f745-41e1-bf17-166ac3da7397'),
@@ -248,7 +177,8 @@ export const modelos = [
 		],
 		catalogos: [
 			['Ginecologia e Obstetrícia', CAT + 'V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf'],
-			['Cardiovascular', CAT + 'V8_Catalog_CV_210914_spread-20230725-103233.pdf']
+			['Cardiovascular', CAT + 'V8_Catalog_CV_210914_spread-20230725-103233.pdf'],
+			['Imagem Geral', U('2d8f0425-e02e-4a90-8b8d-3c58ed5528b7', 'pdf')]
 		],
 		tecnologia: {
 			titulo: 'Imagem de excelência para decisões seguras.',
@@ -309,7 +239,7 @@ export const modelos = [
 		nome: 'V7',
 		curto: 'V7',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'Tudo o que precisa, ao seu alcance.',
+		frase: 'CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.',
 		lead: 'Ferramentas para casos diversos e exigentes, no sítio certo, e imagem 2D e Doppler a cores de grande qualidade para exames direcionados.',
 		descricao: 'Samsung V7 em Portugal pela Speculum: ecógrafo de imagem geral e saúde da mulher, com Crystal Architecture™, S-Shearwave Imaging™, MV-Flow™, CrystalVue Flow™ e BiometryAssist™.',
 		heroi: U('fc03a32c-9f13-4f52-97e8-9a1ac3006e42'),
@@ -376,7 +306,7 @@ export const modelos = [
 		nome: 'V6',
 		curto: 'V6',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'Inspira o seu dia a dia.',
+		frase: 'CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.',
 		lead: 'Um sistema simples de usar, pensado para aliviar a carga de trabalho, com bateria integrada e a eficiência de que precisa na ecografia de todos os dias.',
 		descricao: 'Samsung V6 em Portugal pela Speculum: ecógrafo de imagem geral e saúde da mulher, com Crystal Architecture™, S-Shearwave Imaging™, BiometryAssist™, UterineAssist™ e BatteryAssist™.',
 		heroi: U('d729761b-75ea-4ccd-a85e-9f515a9c21ad'),
@@ -385,7 +315,8 @@ export const modelos = [
 		],
 		catalogos: [
 			['Ginecologia e Obstetrícia', CAT + 'V6%20catalog%20OBGYN_230725-20230725-113222.pdf'],
-			['Imagem Geral', CAT + 'V6%20catalog%20GI_230725-20230725-113118.pdf']
+			['Imagem Geral', CAT + 'V6%20catalog%20GI_230725-20230725-113118.pdf'],
+			['Musculoesquelética', U('9aef89ef-3864-4119-970b-9283dd44ebba', 'pdf')]
 		],
 		tecnologia: {
 			titulo: 'Desempenho de imagem que eleva a confiança.',
@@ -443,12 +374,12 @@ export const modelos = [
 		nome: 'V5',
 		curto: 'V5',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'Do essencial ao extraordinário.',
+		frase: 'CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.',
 		lead: 'Fino e compacto, sem abdicar de potência: o V5 junta imagem nítida, ferramentas de IA e mobilidade para a ecografia de todos os dias, da imagem geral à saúde da mulher.',
 		descricao: 'Samsung V5 em Portugal pela Speculum: ecógrafo compacto de imagem geral e saúde da mulher, com S-Vue Transducer™, MV-Flow™, S-Shearwave Imaging™, BiometryAssist™ e 5D Follicle™.',
 		heroi: U('7c7250d3-93d7-42c6-81de-1aef3944c8fb'),
 		numeros: [],
-		catalogos: [['Catálogo', CAT + 'V5_Catalog_All_0911-2-20251104-094631.pdf']],
+		catalogos: [['Catálogo', CAT + 'V5_Catalog_All_0911-2-20251104-094631.pdf'], ['Infertilidade', U('52d280f4-1619-466e-a506-1b1956b108ad', 'pdf')]],
 		tecnologia: {
 			titulo: 'Imagens nítidas, em formato compacto.',
 			lead: 'Pensado para apoiar a imagem geral, cardiovascular, musculoesquelética e de saúde da mulher, com tecnologias de imagem que vêm dos sistemas superiores.',
@@ -498,85 +429,13 @@ export const modelos = [
 		]
 	},
 
-	/* ===================================================================== HERA W10 ELITE */
-	{
-		ficheiro: 'samsung-hera-w10-elite.html',
-		nome: 'HERA W10 Elite',
-		curto: 'HERA W10 Elite',
-		area: 'Ginecologia e Obstetrícia',
-		frase: 'Uma mudança visionária.',
-		lead: 'IA integrada para a saúde da mulher: análise automática do crescimento fetal e relatórios completos, que reforçam a confiança clínica e agilizam o fluxo de trabalho.',
-		descricao: 'Samsung HERA W10 Elite em Portugal pela Speculum: ecógrafo de saúde da mulher com Crystal Architecture™, HeartAssist™, ViewAssist™, BiometryAssist™, 5D CNS+™ e monitor OLED de 27".',
-		heroi: U('4d83688c-965a-4fd2-b61b-54a50c63ac7d'),
-		numeros: [
-			['27”', 'Monitor OLED'],
-			['57%', 'Monitor maior do que o do HERA W10'],
-			['44', 'Medições cardíacas fetais automáticas com HeartAssist™'],
-			['63%', 'Arranque mais rápido a partir do modo MobileSleep']
-		],
-		catalogos: [['Catálogo', CAT + 'HERA%20W10%20Elite%20V1.03_Catalog_CE_230309_link-compactado-20230724-045600.pdf']],
-		tecnologia: {
-			titulo: 'Imagem redefinida pela Crystal Architecture™.',
-			lead: 'O CrystalBeam™ e o CrystalLive™, assentes na tecnologia S-Vue Transducer™, dão imagens claras e uniformes, com 2D melhorado, renderização 3D avançada e sinal de cor detalhado.',
-			pontos: [
-				['onda', 'CrystalBeam™', 'Transmissão de forma de onda arbitrária, formação de feixe paralela e abertura sintética: mais imagens por segundo e imagem mais uniforme.'],
-				['camadas', 'CrystalLive™', 'Motor de imagem com 2D, 3D e cor mais apurados nos casos complexos.'],
-				['sonda', 'Sonda volumétrica de banda larga', 'Imagem 3D/4D com a sonda CV1-8A.']
-			],
-			imagem: [H('usa-WH-HERA%20W10_Clinical%20Images_Fetal%20Abd%20Vasc-MV-Flow%203D.jpg'), 'Vascularização abdominal fetal com MV-Flow™ em 3D, imagem clínica do HERA W10 Elite']
-		},
-		ferramentas: {
-			titulo: 'Um sistema de diagnóstico elevado pela IA',
-			lead: 'Ferramentas automáticas para o crescimento fetal, o coração, o cérebro e a ginecologia.',
-			cartoes: [
-				['Coração fetal', 'IA', H('usa-WH-HERA%20W10_Elevated%20Diagnostic%20System_Fetal%20Heart-HeartAssist.jpg'), 'HeartAssist™', '44 medições cardíacas automáticas, 31 anotações e cálculo de Z-Score.'],
-				['Morfologia fetal', 'IA', H('usa-WH-w10-Automated%20image%20classification.jpg'), 'ViewAssist™', 'Reconhece os planos, identifica a anatomia e apresenta a biometria fetal.'],
-				['Biometria', 'IA', H('usa-WH-w10-Automated%20fetal%20biometry.jpg'), 'BiometryAssist™', 'Medições de crescimento fetal num só clique, com consistência.'],
-				['Cérebro fetal', '5D', H('usa-WH-HERA%20W10_Clinical%20Images_Fetal%20Brain-5D%20CNS.jpg'), '5D CNS+™', '9 planos e 6 medições do cérebro fetal, automaticamente.'],
-				['Ginecologia', 'IA', H('usa-WH-w10-Uterine%20cornal%20plane.jpg'), 'UterineContour™', 'Extrai o plano coronal do útero num clique, ajudando a identificar malformações.'],
-				['Fertilidade', '3D', H('usa-WH-HERA%20W10_Elevated%20Diagnostic%20System_Stimulated%20Ovary-5D%20Follicle.jpg'), '5D Follicle™', 'Identifica e mede vários folículos a partir de um volume 3D.'],
-				['Coração fetal', '5D', H('usa-WH-HERA%20W10_Elevated%20Diagnostic%20System_Fetal%20Heart-5D%20Heart%20Color.jpg'), '5D Heart Color™', 'A partir de dados STIC, identifica 9 planos cardíacos padrão, segundo as orientações da AIUM.'],
-				['Peso fetal', '5D', H('usa-WH-HERA%20W10_Elevated%20Diagnostic%20System_Fetal%20Thigh-5D%20Limb%20Vol.jpg'), '5D Limb Vol.™', 'Mede o volume do braço ou da coxa para estimar o peso fetal.'],
-				['Coração fetal', 'MPI', H('usa-WH-w10-Semi-automated%20Myocardial.jpg'), 'MPI+™', 'Índice de desempenho miocárdico dos dois ventrículos, de forma semiautomática.']
-			],
-			nota: OPCIONAL
-		},
-		blocos: [
-			{
-				id: 'fluxo', menu: 'Fluxo de trabalho', tom: 'claro',
-				titulo: 'Colaboração em tempo real, à sua maneira.',
-				lead: 'Menos teclas, várias ações numa só e definições personalizadas por protocolo.',
-				cartoes: [
-					[U('c75ab9ae-bdf4-44df-842b-1742339e8e9d'), 'SonoSync™', 'Partilha de imagem em tempo real com PC ou smartphone. Não é uma função de diagnóstico.'],
-					[U('240d084b-9ae4-43da-9c51-f603da19f519'), 'HelloMom™', 'Imagens fetais para o telemóvel da família através de um código QR, sem instalar aplicações.'],
-					[U('970b1cc0-ded1-4df3-9db0-01acb85e0c62'), 'Monitor OLED de 27”', '57% maior do que o do HERA W10, com pretos reais.', 'transform: scale(2.44); transform-origin: 90.7% 6.8%'],
-					[U('efd44ddf-d7f8-4ec8-ae97-59e81604b2bf'), 'QuickPreset', 'Combinações de sonda e preset num só toque.'],
-					[U('a52a39b8-70cc-4a5b-b2fa-57a6d8aca9fa'), 'TouchGesture', 'Rodar, ampliar, recortar e mover volumes 3D no ecrã tátil.'],
-					[U('326a9e9c-ed74-4a72-b9be-707a14899f02'), 'Botões contextuais', 'As funções de cada exame atribuídas aos botões do painel.']
-				]
-			},
-			{
-				id: 'design', menu: 'Design', tom: 'escuro',
-				titulo: 'Ergodinâmica para o seu conforto.',
-				lead: 'O tema FreeForm™ reduz deslocações à volta do doente, com um painel de grande amplitude e espaço para as pernas.',
-				cartoes: [
-					[U('9b816e1b-5632-48f7-b516-4f219f2bc318'), 'FreeForm™', 'Painel com grande amplitude de movimento, pensado para o alcance do braço.'],
-					[U('73b9c11a-3ce3-4fa4-9fb9-b2d923173a13'), 'Suporte de sondas', 'Sondas arrumadas e à mão.'],
-					[U('1b3083aa-cde2-43de-9e54-481997466cea'), 'Gestão de cabos', 'Cabos organizados durante o exame.'],
-					[U('8d59f0b3-ffe5-43d1-ba30-716113a8a2a6'), 'Iluminação de apoio', 'Visibilidade em salas escuras.'],
-					[L('hera-w10-elite/samsung-hera-w10-elite-mobilesleep.jpg'), 'MobileSleep', 'Arranque cerca de 63% mais rápido do que um arranque normal.']
-				]
-			}
-		]
-	},
-
 	/* ===================================================================== HS40 */
 	{
 		ficheiro: 'samsung-hs40.html',
 		nome: 'HS40',
 		curto: 'HS40',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'Eficiência para o dia a dia.',
+		frase: 'Imagem Geral, Ginecologia e Obstetrícia.',
 		lead: 'Imagem clara com as tecnologias avançadas da Samsung e um desenho inspirado nas sugestões dos utilizadores, distinguido com o iF Design Award 2017.',
 		descricao: 'Samsung HS40 em Portugal pela Speculum: ecógrafo de imagem geral e saúde da mulher, com ClearVision, S-Harmonic™, BiometryAssist™, LaborAssist™, monitor de 21,5" e braço articulado.',
 		heroi: U('dc77ce2b-e4a3-4045-a9cc-a5ba9ef5a44b'),
@@ -646,7 +505,7 @@ export const modelos = [
 		nome: 'HS30',
 		curto: 'HS30',
 		area: 'Imagem Geral · Ginecologia e Obstetrícia',
-		frase: 'O essencial, com valor.',
+		frase: 'Imagem Geral, Ginecologia e Obstetrícia.',
 		lead: 'Imagem clara e ferramentas essenciais, com funções versáteis para os exames necessários e um desenho ergonómico que aumenta a produtividade.',
 		descricao: 'Samsung HS30 em Portugal pela Speculum: ecógrafo de imagem geral e saúde da mulher, com ClearVision, ElastoScan™, EzAssist™ e monitor LED Full HD de 21,5".',
 		heroi: U('ef9ce5c6-f45c-4c11-9fd3-6d774e4189b2'),
@@ -698,12 +557,12 @@ export const modelos = [
 		nome: 'Gama CV',
 		curto: 'CV7, CV6 e CV5',
 		area: 'Cardiovascular',
-		frase: 'CV7, CV6 e CV5 para cardiologia.',
+		frase: 'Cardiovascular, Point of Care.',
 		lead: 'Os sistemas cardiovasculares da Samsung juntam qualidade de imagem a uma interface simplificada pelas ferramentas Intelligent Assist, para avaliações cardíacas e vasculares com mais confiança.',
 		descricao: 'Ecógrafos Samsung CV7, CV6 e CV5 em Portugal pela Speculum: sistemas cardiovasculares com Crystal Architecture™, HeartAssist™, Strain+, AutoEF, StressEcho, ArterialAnalysis™ e AutoIMT+.',
 		heroi: U('86439e46-b39a-4b8d-b1d3-22089a0d3606'),
 		numeros: [],
-		catalogos: [],
+		catalogos: [['Catálogo (EN)', U('e91ecd04-c0b4-49d7-9e01-0ad76c81c3a7', 'pdf')]],
 		tecnologia: {
 			titulo: 'Qualidade de imagem que dá confiança ao diagnóstico.',
 			lead: 'A Crystal Architecture™ combina processamento 2D melhorado com sinal de cor detalhado, para que o foco fique no doente e não na manipulação do sistema.',

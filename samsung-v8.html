@@ -992,8 +992,12 @@
         url("images/ecografos/v8/samsung-v8-heroi.jpg") top center / 100% auto no-repeat;
     }
 
-    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    /* "R20" cabe a 100px; "HERA Z20" e afins não. */
     #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+
+    /* A frase por baixo do nome (as áreas clínicas) não passa da largura do parágrafo, para
+       não chegar à fotografia do ecógrafo; as linhas ficam equilibradas. */
+    #root .r20-hero h1 span { max-width: 710px; text-wrap: balance; }
     @media (max-width: 620px) {
       #root .r20-hero--longo h1 { font-size: 40px !important; }
     }
@@ -1159,7 +1163,7 @@
 
             <h1>
               V8
-              <span>Mais confiança em cada exame.</span>
+              <span>CV, Imagem Geral, Radiologia, Ginecologia e Obstetrícia, MSK.</span>
             </h1>
 
             <p>Um sistema muito versátil, com ferramentas para casos clínicos e doentes diversos e funções de alta precisão para exames direcionados.</p>
@@ -1450,6 +1454,7 @@
           <div class="eco-cta-acoes">
             <a class="eco-cta-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_Ob_Gyn_210917_spread-20230725-104344.pdf" target="_blank" rel="noopener"><small>PDF</small>Ginecologia e Obstetrícia</a>
             <a class="eco-cta-pdf" href="https://www.speculum.pt/files/files/catalog/V8_Catalog_CV_210914_spread-20230725-103233.pdf" target="_blank" rel="noopener"><small>PDF</small>Cardiovascular</a>
+            <a class="eco-cta-pdf" href="https://www.samsunghealthcare.com/upload/2d8f0425-e02e-4a90-8b8d-3c58ed5528b7.pdf" target="_blank" rel="noopener"><small>PDF</small>Imagem Geral</a>
             <a class="r20-contact-button" href="https://www.speculum.pt/pt/contactos">Contactar Speculum</a>
           </div>
         </div>

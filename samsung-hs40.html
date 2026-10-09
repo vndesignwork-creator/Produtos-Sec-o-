@@ -992,8 +992,12 @@
         url("images/ecografos/hs40/samsung-hs40-heroi.jpg") top center / 100% auto no-repeat;
     }
 
-    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    /* "R20" cabe a 100px; "HERA Z20" e afins não. */
     #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+
+    /* A frase por baixo do nome (as áreas clínicas) não passa da largura do parágrafo, para
+       não chegar à fotografia do ecógrafo; as linhas ficam equilibradas. */
+    #root .r20-hero h1 span { max-width: 710px; text-wrap: balance; }
     @media (max-width: 620px) {
       #root .r20-hero--longo h1 { font-size: 40px !important; }
     }
@@ -1159,7 +1163,7 @@
 
             <h1>
               HS40
-              <span>Eficiência para o dia a dia.</span>
+              <span>Imagem Geral, Ginecologia e Obstetrícia.</span>
             </h1>
 
             <p>Imagem clara com as tecnologias avançadas da Samsung e um desenho inspirado nas sugestões dos utilizadores, distinguido com o iF Design Award 2017.</p>

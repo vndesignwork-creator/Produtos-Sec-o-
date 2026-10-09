@@ -65,12 +65,10 @@ const LISTA = [
 	[IMG + '469a7d74-0fb4-49bc-98a8-ab645d4b4672.png', 'hera-z20'],
 	[IMG + 'af9044d6-84af-4874-8ec9-a89b0a0d07e1.png', 'q10-evo'],
 	[IMG + 'cf59d3d7-9b6b-4c7d-95dd-8f1665750702.png', 'r20'],
-	[IMG + 'bedc88aa-93d8-416c-be73-a19722f3e1be.png', 'rs85-prestige'],
 	[IMG + '0b9c0148-9a5d-4cf7-a8bf-88c9be45884a.png', 'v8'],
 	[IMG + '947124f6-8d9a-40e5-ad15-1d4d0ebc5bb3.png', 'v7'],
 	[IMG + '4c14036f-308c-4020-b55c-9ce545c5e167.png', 'v6'],
 	[IMG + 'fbfe40f3-2131-4c78-923c-0b8fe4e0ac34.png', 'v5'],
-	[HUB + 'WH-W10-Elite-Hero-450x600.png', 'hera-w10-elite'],
 	[IMG + '6bd1fc5b-015a-4c18-bd23-9ae6a250adc9.png', 'hs40'],
 	[IMG + '2ced30d5-3b23-4aa6-a927-ca89eae89e56.png', 'hs30']
 ].map(([u, m]) => [u, 'lista', 'samsung-' + m + '-produto', 1600, FUNDO.lista]);

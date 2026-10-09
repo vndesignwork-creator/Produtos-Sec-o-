@@ -992,8 +992,12 @@
         url("images/ecografos/q10-evo/samsung-q10-evo-heroi.jpg") top center / 100% auto no-repeat;
     }
 
-    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    /* "R20" cabe a 100px; "HERA Z20" e afins não. */
     #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+
+    /* A frase por baixo do nome (as áreas clínicas) não passa da largura do parágrafo, para
+       não chegar à fotografia do ecógrafo; as linhas ficam equilibradas. */
+    #root .r20-hero h1 span { max-width: 710px; text-wrap: balance; }
     @media (max-width: 620px) {
       #root .r20-hero--longo h1 { font-size: 40px !important; }
     }
@@ -1159,7 +1163,7 @@
 
             <h1>
               Q10 EVO
-              <span>Rapidez com qualidade.</span>
+              <span>Ginecologia e Obstetrícia, Imagem Geral, MSK, Radiologia, Emergência e Point of Care.</span>
             </h1>
 
             <p>Ecografia portátil já não significa compromisso. Assente na mesma arquitetura dos sistemas em carro, o Q10 EVO leva imagem de alta resolução e ferramentas automáticas para onde os cuidados acontecem.</p>

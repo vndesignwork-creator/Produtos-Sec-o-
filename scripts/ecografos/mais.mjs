@@ -22,12 +22,6 @@ export const mais = {
 		['Fluxo de trabalho', ['EzExam+™', 'QuickPreset', 'QuickSave']]
 	],
 
-	'samsung-rs85-prestige.html': [
-		['Imagem e Doppler', ['S-Harmonic™', 'HQ-Vision™', 'PureVision™', 'MV-Flow™', 'LumiFlow™', 'S-Flow™']],
-		['Quantificação e elastografia', ['ElastoScan+™', 'EzHRI™', 'TAI™', 'TSI™']],
-		['Ferramentas clínicas', ['S-Detect™']]
-	],
-
 	'samsung-v8.html': [
 		['Imagem e Doppler', ['ShadowHDR™', 'HQ-Vision™', 'MV-Flow™', 'LumiFlow™', 'S-Flow™', 'HDVI™']],
 		['3D e 5D', ['CrystalVue™', 'RealisticVue™', '5D CNS+™', '5D Heart Color™', '5D Follicle™', '5D LB™', '5D Limb Vol.™', '5D NT™']],
@@ -54,12 +48,6 @@ export const mais = {
 		['3D e 5D', ['5D CNS+™']],
 		['Ferramentas clínicas', ['HeartAssist™', 'UterineContour™', 'ElastoScan+™', 'E-Strain™', 'EzHRI™', 'TAI™', 'TSI™', 'S-Detect™', 'NerveTrack™', 'NeedleMate+™', 'Panoramic+™']],
 		['Fluxo de trabalho', ['EzCompare™', 'QuickPreset', 'TouchEdit', 'Mobile Export', 'S-Hub']]
-	],
-
-	'samsung-hera-w10-elite.html': [
-		['Imagem e Doppler', ['ShadowHDR™', 'ClearVision', 'HQ-Vision™', 'MV-Flow™ e Advanced MV-Flow™', 'LumiFlow™', 'S-Flow™', 'HDVI™']],
-		['3D e 5D', ['CrystalVue™', 'CrystalVue Flow™', 'RealisticVue™', '5D LB™', 'Slice A']],
-		['Ferramentas clínicas', ['UterineAssist™', 'E-Cervix™', 'ElastoScan+™', 'S-Detect™']]
 	],
 
 	'samsung-hs40.html': [

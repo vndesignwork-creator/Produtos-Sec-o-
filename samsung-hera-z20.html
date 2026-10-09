@@ -992,8 +992,12 @@
         url("images/ecografos/hera-z20/samsung-hera-z20-heroi.png") top center / 100% auto no-repeat;
     }
 
-    /* "R20" cabe a 100px; "HERA W10 Elite" e afins não. */
+    /* "R20" cabe a 100px; "HERA Z20" e afins não. */
     #root .r20-hero--longo h1 { font-size: clamp(44px, 6vw, 80px) !important; line-height: 0.95 !important; }
+
+    /* A frase por baixo do nome (as áreas clínicas) não passa da largura do parágrafo, para
+       não chegar à fotografia do ecógrafo; as linhas ficam equilibradas. */
+    #root .r20-hero h1 span { max-width: 710px; text-wrap: balance; }
     @media (max-width: 620px) {
       #root .r20-hero--longo h1 { font-size: 40px !important; }
     }
@@ -1159,14 +1163,14 @@
 
             <h1>
               HERA Z20
-              <span>Visão ao serviço da saúde da mulher.</span>
+              <span>Ginecologia e Obstetrícia, DPN, Saúde da mulher.</span>
             </h1>
 
             <p>O HERA Z20 adapta-se a cada doente, com imagem 2D, 3D e Doppler a cores ajustada a cada caso. A IA integrada e as funções automáticas apoiam a decisão clínica e libertam tempo para o que importa: a doente.</p>
 
             <div class="r20-actions">
               <a class="r20-btn r20-btn-primary" href="https://www.speculum.pt/pt/contactos">Pedir demonstração</a>
-              <a class="r20-btn r20-btn-outline" href="#ferramentas">Explorar ferramentas</a>
+              <a class="r20-btn r20-btn-outline" href="https://www.samsunghealthcare.com/upload/90df2cf0-3cf5-44a9-b42d-bb938eec54d1.pdf" target="_blank" rel="noopener">Ver catálogo (PDF)</a>
             </div>
 
             <div class="r20-hero-stats eco-n4">
@@ -1444,7 +1448,7 @@
           </div>
 
           <div class="eco-cta-acoes">
-            
+            <a class="eco-cta-pdf" href="https://www.samsunghealthcare.com/upload/90df2cf0-3cf5-44a9-b42d-bb938eec54d1.pdf" target="_blank" rel="noopener"><small>PDF</small>Catálogo (EN)</a>
             <a class="r20-contact-button" href="https://www.speculum.pt/pt/contactos">Contactar Speculum</a>
           </div>
         </div>
