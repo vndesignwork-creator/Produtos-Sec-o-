@@ -657,6 +657,12 @@
 		#produtos-main .dest-titulo{margin-block-start:16px;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;
 			line-height:1.15;color:var(--azul-escuro)}
 		#produtos-main .destaque .btn{margin-block-start:28px}
+		/* Segundo destaque (NerveTrack™): continua o anterior sem duplicar o espaço entre os dois. */
+		#produtos-main .destaque-seguinte{padding-block-start:0}
+		#produtos-main .destaque .tec-figura-escura{padding:0}
+		#produtos-main .destaque .tec-figura-escura img{width:100%;height:100%;object-fit:cover}
+		#produtos-main .dest-link{color:var(--azul-claro);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+		#produtos-main .dest-link:hover,#produtos-main .dest-link:focus-visible{color:var(--azul-escuro)}
 
 
 		/* --- Responsivo --- */
@@ -794,6 +800,7 @@
 			<a href="#visao-geral">Visão geral</a>
 			<a href="#modelos">Modelos</a>
 			<a href="#r20">R20 em destaque</a>
+			<a href="#nervetrack">NerveTrack™</a>
 		</div>
 	</nav>
 
@@ -1243,10 +1250,37 @@
 						<li>Monitor OLED de 27" e ecrã tátil inclinável de 15,6"</li>
 						<li>3.ª Harmónica, ClearVision e ShadowHDR™</li>
 						<li>Live LiverAssist™, Live BreastAssist™ e EzSWI™</li>
-						<li>MV CEUS com TOA, DeepUSFF™ e NerveTrack™</li>
+						<li>MV CEUS com TOA, DeepUSFF™ e <a class="dest-link" href="nervetrack.html">NerveTrack™</a></li>
 					</ul>
 					<a class="btn btn-primario" href="rs20.html">
 						Conhecer o R20
+						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"></path></svg>
+					</a>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- ===== Em destaque: NerveTrack™ =====
+	     Os dados são os da página speculum.pt/nervetrack.html, não acrescentados aqui. -->
+	<section class="destaque destaque-seguinte" id="nervetrack" aria-labelledby="dest-nt-title">
+		<div class="container">
+			<article class="tec-linha tec-invertida">
+				<div class="tec-figura tec-figura-escura">
+					<img src="https://usa.samsunghealthcare.com/hs-fs/hubfs/samsung-r20-Nervetrack.jpg" alt="Ecrã do NerveTrack™ com o mapa anatómico dos nervos e duas imagens ecográficas com o nervo assinalado" loading="lazy" width="1000" height="630">
+				</div>
+				<div class="tec-texto">
+					<p class="tec-etiqueta">Inteligência Artificial</p>
+					<h2 class="dest-titulo" id="dest-nt-title">NerveTrack™</h2>
+					<p>Ferramenta de Inteligência Artificial da Samsung Medison, desenvolvida em colaboração com a Intel, que identifica nervos periféricos em tempo real durante a ecografia.</p>
+					<ul class="tec-pontos">
+						<li>Reconhece os pontos de referência à volta do nervo</li>
+						<li>Acompanha o nervo sempre que a sonda se desloca</li>
+						<li>Disponível no V7, V8, R20 e HS40</li>
+						<li>Aprovado pela FDA e com marcação CE</li>
+					</ul>
+					<a class="btn btn-primario" href="nervetrack.html">
+						Conhecer o NerveTrack™
 						<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"></path></svg>
 					</a>
 				</div>
