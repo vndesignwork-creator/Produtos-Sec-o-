@@ -50,7 +50,8 @@ function guiaCard(g) {
     : '';
   const acoes = [];
   if (g.url) acoes.push(`<a class="bx-link" href="${esc(g.url)}">Ver produto</a>`);
-  acoes.push(`<a class="bx-link bx-link-ghost" href="${CONTACTOS}">Pedir informação</a>`);
+  // com página de produto, o pedido faz-se no formulário dessa página ("Peça mais informações")
+  acoes.push(`<a class="bx-link bx-link-ghost" href="${esc(g.url || CONTACTOS)}">Pedir informação</a>`);
 
   return `
             <article class="bx-guia${g.img ? '' : ' bx-sem-img'}" data-brands="${g.brands.join(' ')}" data-probe="${g.probe}" data-search="${esc(search)}" data-refs="${esc(refs.join(' '))}">
@@ -72,7 +73,7 @@ const guiasHTML = guias.map(guiaCard).join('\n');
 const contaMarca = (b) => guias.filter((g) => g.brands.includes(b)).length;
 
 // ---------------------------------------------------------------- agulhas / pistolas
-function prodCard([nome, medida, img, slug], grupo) {
+function prodCard([nome, medida, img, slug, oficial], grupo) {
   // slug com categoria ('1772-outros/…') usa-se tal como está; sem slug, o produto não está no site → contactos
   const url = !slug ? CONTACTOS : P + (slug.includes('/') ? slug : grupo + '/' + slug);
   const cta = slug ? 'Ver detalhes →' : 'Pedir informação →';
@@ -85,6 +86,7 @@ function prodCard([nome, medida, img, slug], grupo) {
                 <div class="bx-prod-img">${pic}</div>
                 <div class="bx-prod-body">
                   <h4>${esc(nome)}</h4>
+                  <p class="bx-prod-nome">${oficial ? esc(oficial) : ''}</p>
                   <div class="bx-prod-specs"><span>${esc(cal)}</span><span>${esc(comp)}</span></div>
                   <em>${cta}</em>
                 </div>
@@ -123,8 +125,9 @@ const css = `
     .bx-cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 19px; margin-top: 40px; }
     .bx-cat { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #ffffff; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
     .bx-cat:hover { transform: translateY(-4px); border-color: #9fd7ea; box-shadow: 0 18px 36px rgba(0, 36, 58, 0.14); }
-    .bx-cat-img { display: grid; place-items: center; aspect-ratio: 16 / 9; padding: 18px; background: #f4f7f9; }
-    #root .bx-cat-img img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 0; box-shadow: none; background: transparent; mix-blend-mode: multiply; }
+    .bx-cat-img { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 9; padding: 18px; background: #f4f7f9; }
+    /* imagem absoluta: a área tem sempre 16:9, seja qual for a proporção da foto */
+    #root .bx-cat-img img { position: absolute; inset: 18px; width: calc(100% - 36px); height: calc(100% - 36px); object-fit: contain; padding: 0; border-radius: 0; box-shadow: none; background: transparent; mix-blend-mode: multiply; }
     .bx-cat-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; }
     .bx-cat-count { color: #087fa8; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .bx-cat h3 { margin: 6px 0 8px; font-family: "Montserrat", sans-serif; font-size: 21px; color: var(--text); }
@@ -132,7 +135,11 @@ const css = `
     .bx-cat em { margin-top: auto; padding-top: 16px; color: #005a85; font-style: normal; font-size: 13px; font-weight: 800; }
 
     /* Localizador de guias */
-    .bx-finder { margin-top: 36px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #ffffff; box-shadow: var(--shadow); }
+    .bx-result-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 28px; }
+    .bx-result-bar .bx-status { margin: 0; }
+    #root .bx-limpar { width: auto; max-width: none; min-height: 0; white-space: nowrap; line-height: 1.3; margin: 0; padding: 6px 12px; border: 1px solid #d3e0e6; border-radius: 999px; color: #00527f; background: #ffffff; box-shadow: none; font-size: 12.5px; font-weight: 800; text-transform: none; cursor: pointer; }
+    #root .bx-limpar:hover { border-color: #087fa8; background: #f0f8fb; }
+    #root .bx-limpar:focus-visible { outline: 2px solid #087fa8; outline-offset: 2px; }
     .bx-search { display: flex; align-items: center; gap: 12px; padding: 0 16px; border: 1px solid #c9d8df; border-radius: 12px; background: #f9fbfc; transition: border-color .2s, box-shadow .2s; }
     .bx-search:focus-within { border-color: #087fa8; box-shadow: 0 0 0 3px rgba(8, 127, 168, .15); background: #fff; }
     .bx-search svg { flex: 0 0 auto; width: 20px; height: 20px; color: #087fa8; }
@@ -154,6 +161,20 @@ const css = `
     #root .bx-chip:focus-visible { outline: 2px solid #087fa8; outline-offset: 2px; }
     .bx-status { margin: 18px 0 0; color: #607481; font-size: 14px; }
     .bx-status strong { color: var(--text); }
+    /* Atalho do localizador no hero (entre a guia e as agulhas/pistolas) */
+    .bx-hero-finder { grid-column: 1 / -1; padding: 14px; border-radius: 18px; background: #ffffff; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+    #root .bx-hero-finder .bx-search input { height: 44px; font-size: 15px; }
+    .bx-hero-finder .bx-search svg { width: 18px; height: 18px; }
+    .bx-hero-finder .bx-filters { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 12px; }
+    .bx-hero-finder .bx-filter-group { gap: 6px; }
+    .bx-hero-finder .bx-filter-label { min-width: 48px; font-size: 10px; }
+    #root .bx-hero-finder .bx-chip { padding: 6px 11px; font-size: 12px; }
+    .bx-hero-finder-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+    #root .bx-hero-finder .bx-status { flex: 1 1 auto; width: auto; margin: 0; padding: 0; color: #607481; font-size: 13px; line-height: 1.4; }
+    #root .bx-hero-finder .bx-status strong { color: var(--text); }
+    #root .bx-ver { flex: 0 0 auto; margin: 0; padding: 0; color: #005a85; font-size: 13px; font-weight: 800; text-decoration: none; }
+    #root .bx-ver:hover { text-decoration: underline; }
+    #root #bxGrid { scroll-margin-top: calc(var(--header-now, 90px) + var(--search-h, 0px) + var(--subnav-h, 45px) + 16px); }
 
     .bx-guia-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; margin-top: 22px; }
     .bx-guia { display: grid; grid-template-columns: 170px minmax(0, 1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #ffffff; transition: border-color .2s ease, box-shadow .2s ease; }
@@ -170,7 +191,7 @@ const css = `
     .bx-hero-visual figure.bx-sangra { padding-left: 0; }
     .bx-cat-img.bx-sangra { padding-left: 0; justify-items: start; }
     #root .bx-hero-visual figure.bx-sangra img { object-position: left center; }
-    #root .bx-cat-img.bx-sangra img { object-position: left center; }
+    #root .bx-cat-img.bx-sangra img { left: 0; width: calc(100% - 18px); object-position: left center; }
     .bx-guia-body { display: flex; flex-direction: column; min-width: 0; padding: 18px 20px; }
     .bx-guia-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .bx-guia-tags span { padding: 4px 9px; border-radius: 999px; color: #00527f; background: #e8f6fa; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
@@ -228,16 +249,18 @@ const css = `
     .bx-sub h3 { margin: 0; font-family: "Montserrat", sans-serif; font-size: 22px; color: var(--text); }
     .bx-sub span { color: #607481; font-size: 13px; font-weight: 700; }
     .bx-prod-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
-    .bx-prod { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #ffffff; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .bx-prod { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #ffffff; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
     .bx-prod:hover { transform: translateY(-3px); border-color: #9fd7ea; box-shadow: var(--shadow); }
-    .bx-prod-img { display: grid; place-items: center; aspect-ratio: 4 / 3; padding: 14px; background: #ffffff; border-bottom: 1px solid var(--line); }
-    #root .bx-prod-img img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 0; box-shadow: none; background: transparent; }
+    .bx-prod-img { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; padding: 14px; background: #ffffff; border-bottom: 1px solid var(--line); }
+    #root .bx-prod-img img { position: absolute; inset: 14px; width: calc(100% - 28px); height: calc(100% - 28px); object-fit: contain; padding: 0; border-radius: 0; box-shadow: none; background: transparent; }
     .bx-prod-sem { color: #8399a5; font-size: 12px; }
-    .bx-prod-body { display: flex; flex-direction: column; flex: 1; padding: 14px 16px 16px; }
-    .bx-prod h4 { margin: 0; font-family: "Montserrat", sans-serif; font-size: 14.5px; line-height: 1.4; color: var(--text); }
+    .bx-prod-body { display: contents; }
+    .bx-prod-body > * { padding-inline: 16px; }
+    .bx-prod h4 { margin: 0; padding-top: 14px; font-family: "Montserrat", sans-serif; font-size: 14.5px; line-height: 1.4; color: var(--text); }
+    .bx-prod-nome { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; font-weight: 700; line-height: 1.4; letter-spacing: .03em; text-transform: uppercase; }
     .bx-prod-specs { display: flex; gap: 6px; margin-top: 10px; }
     .bx-prod-specs span { padding: 4px 9px; border-radius: 8px; color: #00527f; background: #e8f6fa; font-size: 12px; font-weight: 800; }
-    .bx-prod em { margin-top: auto; padding-top: 14px; color: #005a85; font-style: normal; font-size: 12px; font-weight: 800; }
+    .bx-prod em { align-self: end; padding-top: 14px; padding-bottom: 16px; color: #005a85; font-style: normal; font-size: 12px; font-weight: 800; }
     .r20-soft .bx-prod, .r20-soft .bx-guia { background: #ffffff; }
 
     /* Benefícios (fundo escuro, cartões e ícones como na NerveTrack) */
@@ -251,9 +274,10 @@ const css = `
     }
     @media (max-width: 820px) {
       .bx-hero-grid { grid-template-columns: 1fr; }
-      .bx-hero-visual { display: none; }
+      .bx-hero-visual { display: block; padding-bottom: 48px; }
+      .bx-hero-visual figure { display: none; }
       .bx-hero { min-height: 0; }
-      .bx-hero .r20-hero-inner { padding: 64px 0 64px; }
+      .bx-hero .r20-hero-inner { padding: 64px 0 28px; }
       .bx-cat-grid { grid-template-columns: 1fr; }
       .bx-prod-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -263,8 +287,8 @@ const css = `
       #root .bx-guia-img img { max-width: 220px; }
       .bx-guia-img.bx-sangra { justify-content: flex-start; }
       .bx-benefit-grid { grid-template-columns: 1fr; }
-      .bx-finder { padding: 16px; }
       .bx-filters { gap: 14px; }
+      .bx-hero .r20-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 420px) {
       .bx-prod-grid { grid-template-columns: 1fr; }
@@ -333,16 +357,40 @@ const main = `  <div id="root">
             </div>
           </div>
 
-          <div class="bx-hero-visual r20-reveal visible" aria-hidden="true">
-            <figure class="bx-sangra">
+          <div class="bx-hero-visual r20-reveal visible">
+            <figure class="bx-sangra" aria-hidden="true">
               <img src="images/products/biopsia/1-535-5144.webp" alt="" width="253" height="132">
               <figcaption>Guia endocavitária</figcaption>
             </figure>
-            <figure>
+            <!-- Atalho do localizador: espelha a pesquisa e os filtros da secção Guias -->
+            <div class="bx-hero-finder" role="search" aria-label="Pesquisa rápida de guias de biópsia">
+              <label class="bx-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                <input class="bx-query" type="text" inputmode="search" enterkeyhint="search" aria-label="Pesquisar guia por modelo da sonda ou referência" placeholder="Modelo da sonda ou referência — ex.: EV4-9, E8C" autocomplete="off" spellcheck="false">
+              </label>
+              <div class="bx-filters">
+                <div class="bx-filter-group" role="group" aria-label="Marca do ecógrafo">
+                  <span class="bx-filter-label">Marca</span>
+                  ${chip('brand', 'all', 'Todas', null, true)}
+                  ${['samsung', 'ge', 'hitachi', 'toshiba', 'siemens'].map((b) => chip('brand', b, b === 'ge' ? 'GE' : BRAND[b], null, false)).join('\n                  ')}
+                </div>
+                <div class="bx-filter-group" role="group" aria-label="Tipo de sonda">
+                  <span class="bx-filter-label">Sonda</span>
+                  ${chip('probe', 'all', 'Todas', null, true)}
+                  ${chip('probe', 'endo', 'Endocavitária', null, false)}
+                  ${chip('probe', 'conv', 'Convexa / linear', null, false)}
+                </div>
+              </div>
+              <div class="bx-hero-finder-foot">
+                <p class="bx-status"><strong>${guias.length}</strong> guias</p>
+                <a class="bx-ver" href="#bxGrid">Ver resultados <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+            <figure aria-hidden="true">
               <img src="https://www.speculum.pt/files/images/products/SWCCH2220.jpg" alt="" width="400" height="300">
               <figcaption>Agulhas</figcaption>
             </figure>
-            <figure>
+            <figure aria-hidden="true">
               <img src="https://www.speculum.pt/files/images/products/SWMLC1611.jpg" alt="" width="400" height="300">
               <figcaption>Pistolas</figcaption>
             </figure>
@@ -402,32 +450,15 @@ const main = `  <div id="root">
             <h2 class="r20-title">Encontre a guia para a sua sonda.</h2>
             <p class="r20-lead">
               Guias descartáveis e estéreis que direcionam a agulha segundo a linha de biópsia
-              apresentada no ecrã do ecógrafo. Escreva o modelo da sonda, ou a referência, para ver
-              só as guias compatíveis.
+              apresentada no ecrã do ecógrafo. Pesquise pelo modelo da sonda ou pela referência no topo
+              da página para ver só as guias compatíveis.
             </p>
           </div>
 
-          <div class="bx-finder r20-reveal" role="search" aria-label="Localizador de guias de biópsia">
-            <label class="bx-search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-              <!-- type="text" de propósito: o stylesheet.css do site esconde todos os input[type=search] em ecrãs até 768px. -->
-              <input id="bxQuery" type="text" inputmode="search" enterkeyhint="search" aria-label="Pesquisar por modelo da sonda ou referência" placeholder="Modelo da sonda ou referência — ex.: EV4-9, E8C, C41V1, 5144" autocomplete="off" spellcheck="false">
-            </label>
-
-            <div class="bx-filters">
-              <div class="bx-filter-group" role="group" aria-label="Marca do ecógrafo">
-                <span class="bx-filter-label">Marca</span>
-                ${chip('brand', 'all', 'Todas', guias.length, true)}
-                ${['samsung', 'ge', 'hitachi', 'toshiba', 'siemens'].map((b) => chip('brand', b, b === 'ge' ? 'GE' : BRAND[b], contaMarca(b), false)).join('\n                ')}
-              </div>
-              <div class="bx-filter-group" role="group" aria-label="Tipo de sonda">
-                <span class="bx-filter-label">Sonda</span>
-                ${chip('probe', 'all', 'Todas', null, true)}
-                ${chip('probe', 'endo', 'Endocavitária', null, false)}
-                ${chip('probe', 'conv', 'Convexa / linear', null, false)}
-              </div>
-            </div>
-            <p class="bx-status" id="bxStatus" aria-live="polite"><strong>${guias.length}</strong> guias</p>
+          <!-- A pesquisa e os filtros estão no hero (.bx-hero-finder); aqui fica só o resultado -->
+          <div class="bx-result-bar">
+            <p class="bx-status" id="bxStatus" aria-live="polite" aria-atomic="true"><strong>${guias.length}</strong> guias</p>
+            <button type="button" class="bx-limpar" id="bxLimpar" hidden>Limpar pesquisa e filtros</button>
           </div>
 
           <div class="bx-guia-grid" id="bxGrid">
@@ -549,8 +580,10 @@ const finderJS = `
 		var grelha = document.getElementById('bxGrid');
 		if (!grelha) return;
 		var cartoes = [].slice.call(grelha.querySelectorAll('.bx-guia'));
-		var campo = document.getElementById('bxQuery');
-		var estado = document.getElementById('bxStatus');
+		var limpar = document.getElementById('bxLimpar');
+		// há dois campos (hero e secção Guias) e dois contadores, sempre iguais
+		var campos = [].slice.call(document.querySelectorAll('.bx-query'));
+		var estados = [].slice.call(document.querySelectorAll('.bx-status'));
 		var vazio = document.getElementById('bxEmpty');
 		var marca = 'all', sonda = 'all';
 
@@ -565,7 +598,7 @@ const finderJS = `
 		});
 
 		function aplicar() {
-			var termos = (campo.value || '').split(/[\\s,;]+/).map(norm).filter(Boolean);
+			var termos = ((campos[0] && campos[0].value) || '').split(/[\\s,;]+/).map(norm).filter(Boolean);
 			var n = 0;
 			cartoes.forEach(function (c) {
 				var ok = (marca === 'all' || (' ' + c.getAttribute('data-brands') + ' ').indexOf(' ' + marca + ' ') > -1) &&
@@ -580,23 +613,43 @@ const finderJS = `
 					if (c._det.open !== abrir) c._det.open = abrir;
 				}
 			});
-			estado.innerHTML = '<strong>' + n + '</strong> ' + (n === 1 ? 'guia' : 'guias');
+			var txt = '<strong>' + n + '</strong> ' + (n === 1 ? 'guia' : 'guias');
+			estados.forEach(function (e) { e.innerHTML = txt; });
 			vazio.hidden = n > 0;
+			if (limpar) limpar.hidden = !termos.length && marca === 'all' && sonda === 'all';
 		}
 
 		function grupo(attr, set) {
 			var botoes = [].slice.call(document.querySelectorAll('.bx-chip[data-' + attr + ']'));
 			botoes.forEach(function (b) {
 				b.addEventListener('click', function () {
-					botoes.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-					set(b.getAttribute('data-' + attr));
+					var v = b.getAttribute('data-' + attr);
+					// marca o botão e o seu gémeo no outro painel
+					botoes.forEach(function (o) { o.setAttribute('aria-pressed', o.getAttribute('data-' + attr) === v ? 'true' : 'false'); });
+					set(v);
 					aplicar();
 				});
 			});
 		}
 		grupo('brand', function (v) { marca = v; });
 		grupo('probe', function (v) { sonda = v; });
-		campo.addEventListener('input', aplicar);
+		campos.forEach(function (f) {
+			f.addEventListener('input', function () {
+				campos.forEach(function (o) { if (o !== f) o.value = f.value; });
+				aplicar();
+			});
+		});
+		// Enter no campo do hero desce até aos resultados
+		var desce = function () { grelha.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+		campos.forEach(function (f) {
+			f.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); desce(); } });
+		});
+		if (limpar) limpar.addEventListener('click', function () {
+			campos.forEach(function (f) { f.value = ''; });
+			marca = 'all'; sonda = 'all';
+			[].slice.call(document.querySelectorAll('.bx-chip')).forEach(function (b) { b.setAttribute('aria-pressed', (b.getAttribute('data-brand') || b.getAttribute('data-probe')) === 'all' ? 'true' : 'false'); });
+			aplicar();
+		});
 		aplicar();
 	})();
 </script>

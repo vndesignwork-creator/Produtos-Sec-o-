@@ -29,7 +29,7 @@ const guias = [
   // ---------- Samsung · endocavitárias ----------
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5275.webp'], compat: 'Samsung EV2-10A', kits: [['1-535-5275', D0]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5295.webp'], compat: 'Samsung EA2-11B', kits: [['1-535-5295', D0]] },
-  { brands: ['samsung'], probe: 'endo', img: ['@1-535-5580.webp', '@1-535-5590.webp'], compat: 'Samsung EA2-11AR, EA2-11AV',
+  { brands: ['samsung'], probe: 'endo', img: ['@1-535-5580.webp'], compat: 'Samsung EA2-11AR, EA2-11AV',
     kits: [['1-535-5580', 'Guia de biópsia descartável, versão curta'], ['1-535-5590', 'Guia de biópsia descartável, versão longa']] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5260.webp'], compat: 'Samsung E3-12A', kits: [['1-535-5260', D0], ['1-535-5261', SF]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5505.webp'], compat: 'Samsung 3D5-8EK, 3D5-9EK', kits: [['1-535-5505', D0]] },
@@ -100,43 +100,43 @@ const guias = [
     url: P + '514-guias-de-biopsia/49659-guia-biopsia-ec9-4ev9-4g40x150x300' },
   { brands: ['siemens', 'samsung', 'hitachi'], probe: 'endo', img: ['@leapmed-ec10-5w.webp'], compat: 'Siemens EC10-5w',
     also: 'Samsung E3-12A, NEV4-9ES, NER4-9ES · Alpinion E3-10 · BK 8819, E10C4, 9019 · Carestream E10C4 · Philips BP10-5ec, C9-4ec · Hitachi-Aloka UST-679',
-    title: 'Guia de biópsia para sonda endocavitária' },
-  { brands: ['siemens', 'esaote'], probe: 'endo', img: ['@leapmed-ec1123.webp', '@leapmed-ec1123-short.webp'], compat: 'Siemens EC1123 · Esaote EC1123, EC123, SE3123, SE3133', title: 'Guia de biópsia endocavitária (3,8), versões normal e curta' },
-  { brands: ['siemens'], probe: 'endo', img: ['@leapmed-mc9-4.webp'], compat: 'Siemens 9MC3, EC9-4W, MC9-4, 9EC4', title: 'Guia curta para sonda endocavitária' },
+    title: 'Guia de biópsia para sonda endocavitária', url: P + '514-guias-de-biopsia/50119-guia-biopsia-ec10-5w' },
+  { brands: ['siemens', 'esaote'], probe: 'endo', img: ['@leapmed-ec1123.webp', '@leapmed-ec1123-short.webp'], compat: 'Siemens EC1123 · Esaote EC1123, EC123, SE3123, SE3133', title: 'Guia de biópsia endocavitária (3,8), versões normal e curta', url: P + '514-guias-de-biopsia/49864-guia-biopsia-esaote-ec1123' },
+  { brands: ['siemens'], probe: 'endo', img: ['@leapmed-mc9-4.webp'], compat: 'Siemens 9MC3, EC9-4W, MC9-4, 9EC4', title: 'Guia curta para sonda endocavitária', url: P + '514-guias-de-biopsia/51414-guia-biopsia-mc9-4' },
 ];
 
 const nm = (s) => s;
 const agulhas = {
   mama: [
-    ['Agulha para pistola Fast Gun', '14G × 15 cm', 'SWFSC1410.jpg', '52582-agulha-biopsia-pfast-gun-14gx15cm'],
-    ['Agulha para pistola Fast Gun', '16G × 15 cm', 'SWFSC1410.jpg', '52583-agulha-biopsia-pfast-gun-16gx15cm'],
-    ['Agulha para pistola Fast Gun', '18G × 15 cm', 'SWFSC1410.jpg', '52553-agulha-biopsia-pfast-gun-18gx15cm'],
-    ['Agulha para pistola Magnum', '14G × 10 cm', 'SWSC1410B.jpg', '52548-agulha-biopsia-pmagnum-14gx10cm'],
-    ['Agulha para pistola Magnum', '16G × 10 cm', 'SWSC1610B.jpg', '52537-agulha-biopsia-pmagnum-16gx10cm'],
-    ['Agulha para pistola Magnum', '18G × 10 cm', 'SWSC1810B.jpg', '52555-agulha-biopsia-pmagnum-18gx10cm'],
+    ['Agulha para pistola Fast Gun', '14G × 15 cm', 'SWFSC1410.jpg', '52582-agulha-biopsia-pfast-gun-14gx15cm', 'Agulha biopsia p/fast gun 14gx15cm'],
+    ['Agulha para pistola Fast Gun', '16G × 15 cm', 'SWFSC1410.jpg', '52583-agulha-biopsia-pfast-gun-16gx15cm', 'Agulha biopsia p/fast gun 16gx15cm'],
+    ['Agulha para pistola Fast Gun', '18G × 15 cm', 'SWFSC1410.jpg', '52553-agulha-biopsia-pfast-gun-18gx15cm', 'Agulha biopsia p/fast gun 18gx15cm'],
+    ['Agulha para pistola Magnum', '14G × 10 cm', 'SWSC1410B.jpg', '52548-agulha-biopsia-pmagnum-14gx10cm', 'Agulha biopsia p/magnum 14gx10cm'],
+    ['Agulha para pistola Magnum', '16G × 10 cm', 'SWSC1610B.jpg', '52537-agulha-biopsia-pmagnum-16gx10cm', 'Agulha biopsia p/magnum 16gx10cm'],
+    ['Agulha para pistola Magnum', '18G × 10 cm', 'SWSC1810B.jpg', '52555-agulha-biopsia-pmagnum-18gx10cm', 'Agulha biopsia p/magnum 18gx10cm'],
   ],
   prostata: [
-    ['Agulha para pistola Fast Gun', '18G × 20 cm', 'SWFSC1410.jpg', '52533-agulha-biopsia-pfast-gun-18gx20cm'],
-    ['Agulha para pistola Magnum', '18G × 20 cm', 'SWSC1820B.jpg', '52530-agulha-biopsia-pmagnum-18gx20cm'],
+    ['Agulha para pistola Fast Gun', '18G × 20 cm', 'SWFSC1410.jpg', '52533-agulha-biopsia-pfast-gun-18gx20cm', 'Agulha biopsia p/fast gun 18gx20cm'],
+    ['Agulha para pistola Magnum', '18G × 20 cm', 'SWSC1820B.jpg', '52530-agulha-biopsia-pmagnum-18gx20cm', 'Agulha biopsia p/magnum 18gx20cm'],
     ['Agulha para pistola Magnum', '18G × 30 cm', 'RMUM18300.jpg', null],
-    ['Agulha Chiba', '18G × 20 cm', 'SWCCH1820.jpg', '52494-agulha-biopsia-chiba-18gx20cm'],
-    ['Agulha Chiba', '20G × 15 cm', 'SWCCH2015.jpg', '52505-agulha-biopsia-chiba-20gx15cm'],
-    ['Agulha Chiba', '20G × 20 cm', 'SWCCH2020.jpg', '52498-agulha-biopsia-chiba-20gx20cm'],
-    ['Agulha Chiba', '22G × 20 cm', 'SWCCH2220.jpg', '52531-agulha-biopsia-chiba-22gx20cm'],
-    ['Agulha Chiba', '22G × 25 cm', 'SWCCH2225.jpg', '52546-agulha-biopsia-chiba-22gx25cm'],
+    ['Agulha Chiba', '18G × 20 cm', 'SWCCH1820.jpg', '52494-agulha-biopsia-chiba-18gx20cm', 'Agulha biopsia chiba 18gx20cm'],
+    ['Agulha Chiba', '20G × 15 cm', 'SWCCH2015.jpg', '52505-agulha-biopsia-chiba-20gx15cm', 'Agulha biopsia chiba 20gx15cm'],
+    ['Agulha Chiba', '20G × 20 cm', 'SWCCH2020.jpg', '52498-agulha-biopsia-chiba-20gx20cm', 'Agulha biopsia chiba 20gx20cm'],
+    ['Agulha Chiba', '22G × 20 cm', 'SWCCH2220.jpg', '52531-agulha-biopsia-chiba-22gx20cm', 'Agulha biopsia chiba 22gx20cm'],
+    ['Agulha Chiba', '22G × 25 cm', 'SWCCH2225.jpg', '52546-agulha-biopsia-chiba-22gx25cm', 'Agulha biopsia chiba 22gx25cm'],
   ],
 };
 const pistolas = {
   mama: [
-    ['Pistola descartável Multicore', '14G × 11 cm', 'SWMLC1411.jpg', '1772-outros/53017-pistola-biopsia-desc-multicore-14gx11cm'],
-    ['Pistola descartável Multicore', '16G × 11 cm', 'SWMLC1611.jpg', '1772-outros/53019-pistola-biopsia-desc-multicore-16gx11cm'],
-    ['Pistola descartável Multicore', '18G × 15 cm', 'SWMLC1815.jpg', '1772-outros/53267-pistola-biopsia-desc-multicore-18gx15cm'],
-    ['Pistola descartável Primo Cut', '18G × 15 cm', 'PJ415S120150.jpg', '1772-outros/53255-pistola-biopsia-desc-primo-cut-18gx150m'],
+    ['Pistola descartável Multicore', '14G × 11 cm', 'SWMLC1411.jpg', '1772-outros/53017-pistola-biopsia-desc-multicore-14gx11cm', 'Pistola biopsia desc. multicore 14gx11cm'],
+    ['Pistola descartável Multicore', '16G × 11 cm', 'SWMLC1611.jpg', '1772-outros/53019-pistola-biopsia-desc-multicore-16gx11cm', 'Pistola biopsia desc. multicore 16gx11cm'],
+    ['Pistola descartável Multicore', '18G × 15 cm', 'SWMLC1815.jpg', '1772-outros/53267-pistola-biopsia-desc-multicore-18gx15cm', 'Pistola biopsia desc. multicore 18gx15cm'],
+    ['Pistola descartável Primo Cut', '18G × 15 cm', 'PJ415S120150.jpg', '1772-outros/53255-pistola-biopsia-desc-primo-cut-18gx150m', 'Pistola biopsia desc. primo cut 18gx150m'],
   ],
   prostata: [
-    ['Pistola descartável Multicore', '16G × 20 cm', 'SWMLC1620.jpg', '1772-outros/53020-pistola-biopsia-desc-multicore-16gx20cm'],
-    ['Pistola descartável Multicore', '18G × 20 cm', 'SWMLC1820.jpg', '1772-outros/53021-pistola-biopsia-desc-multicore-18gx20cm'],
-    ['Pistola descartável Multicore', '18G × 25 cm', 'SWMLC1825.jpg', '1772-outros/53022-pistola-biopsia-desc-multicore-18gx25cm'],
+    ['Pistola descartável Multicore', '16G × 20 cm', 'SWMLC1620.jpg', '1772-outros/53020-pistola-biopsia-desc-multicore-16gx20cm', 'Pistola biopsia desc. multicore 16gx20cm'],
+    ['Pistola descartável Multicore', '18G × 20 cm', 'SWMLC1820.jpg', '1772-outros/53021-pistola-biopsia-desc-multicore-18gx20cm', 'Pistola biopsia desc. multicore 18gx20cm'],
+    ['Pistola descartável Multicore', '18G × 25 cm', 'SWMLC1825.jpg', '1772-outros/53022-pistola-biopsia-desc-multicore-18gx25cm', 'Pistola biopsia desc. multicore 18gx25cm'],
   ],
 };
 
