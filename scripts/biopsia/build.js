@@ -12,7 +12,7 @@ let src = RAW.split('\r\n').join('\n');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const BRAND = { samsung: 'Samsung', ge: 'GE Healthcare', hitachi: 'Hitachi', toshiba: 'Toshiba', siemens: 'Siemens' };
 const PROBE = { endo: 'Endocavitária', conv: 'Convexa / linear' };
-const mail = (assunto) => 'mailto:cliente@speculum.pt?subject=' + encodeURIComponent('Pedido de informação – ' + assunto);
+const CONTACTOS = 'https://www.speculum.pt/pt/contactos';
 
 // ---------------------------------------------------------------- guias
 let nKits = 0;
@@ -48,10 +48,9 @@ function guiaCard(g) {
   const img = g.img
     ? `<div class="bx-guia-img${/^@1-535-[59]/.test(g.img[0]) ? ' bx-sangra' : ''}">${g.img.map((f) => `<img src="${f[0] === '@' ? 'images/products/biopsia/' + f.slice(1) : IMG + encodeURI(f).replace(/\(/g, '%28').replace(/\)/g, '%29')}" alt="" width="253" height="132" loading="lazy" onerror="this.closest('.bx-guia').classList.add('bx-sem-img')">`).join('')}</div>`
     : '';
-  const assunto = (refs[0] ? 'Guia ' + refs[0] : 'Guia de biópsia') + ' (' + g.compat.split(/[,·(]/)[0].trim() + ')';
   const acoes = [];
   if (g.url) acoes.push(`<a class="bx-link" href="${esc(g.url)}">Ver produto</a>`);
-  acoes.push(`<a class="bx-link bx-link-ghost" href="${esc(mail(assunto))}">Pedir informação</a>`);
+  acoes.push(`<a class="bx-link bx-link-ghost" href="${CONTACTOS}">Pedir informação</a>`);
 
   return `
             <article class="bx-guia${g.img ? '' : ' bx-sem-img'}" data-brands="${g.brands.join(' ')}" data-probe="${g.probe}" data-search="${esc(search)}" data-refs="${esc(refs.join(' '))}">
@@ -436,7 +435,7 @@ ${guiasHTML}
           <div class="bx-empty" id="bxEmpty" hidden>
             <h3>Não encontrámos guias para essa sonda.</h3>
             <p>Confirme o modelo escrito na própria sonda, ou fale connosco: a Speculum verifica a compatibilidade e indica a guia certa.</p>
-            <a class="bx-link" href="${esc(mail('Guia de biópsia para a minha sonda'))}">Pedir ajuda à Speculum</a>
+            <a class="bx-link" href="${CONTACTOS}">Pedir ajuda à Speculum</a>
           </div>
         </div>
       </section>
