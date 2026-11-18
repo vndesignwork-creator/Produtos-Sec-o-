@@ -34,12 +34,12 @@ const guias = [
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5260.webp'], compat: 'Samsung E3-12A', kits: [['1-535-5260', D0], ['1-535-5261', SF]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5505.webp'], compat: 'Samsung 3D5-8EK, 3D5-9EK', kits: [['1-535-5505', D0]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5144.webp'], compat: 'Samsung EV4-9/10ED, ER4-9/10ED, EC4-9, EVN4-9, EC4-9/10ED, EV4-9, ER4-9, EC4-9/10R',
-    url: P + '514-guias-de-biopsia/49171-guia-biopsia-samsung-h60-evn4-9',
+    url: P + '514-guias-de-biopsia/53872-guia-biopsia-samsung-h60-evn4-9',
     kits: [['1-535-5144', D0], ['1-535-5146', L35], ['1-535-5149', S4], ['1-535-5183', SF48]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5145.webp'], compat: 'Samsung BCC4-9', kits: [['1-535-5145', D0], ['1-535-5147', L20], ['1-535-5151', S52]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5250.webp'], compat: 'Samsung NEV4-9ES, NER4-9ES', kits: [['1-535-5250', D0]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-9000.webp'], compat: 'Samsung EC4-9IS, EC4-9ES, ER4-9ES, 10R EV/140D',
-    url: P + '515-guias-de-biopsia/44166-guia-biopsia-ec4-9es-samsungmedison',
+    url: P + '515-guias-de-biopsia/53877-guia-biopsia-ec4-9es-samsungmedison',
     kits: [['1-535-9000', D0], ['1-535-9001', L35], ['1-535-9002', S4], ['1-535-9003', L26], ['1-535-9005', SF]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5154.webp'], compat: 'Samsung 3D4-9, 3DEC4-9, 3D4-9ES, 3DEC4-9ES', kits: [['1-535-5154', D0]] },
   { brands: ['samsung'], probe: 'endo', img: ['@1-535-5070.webp'], compat: 'Samsung EV3-10B, V5-9', kits: [['1-535-5070', D0], ['1-535-5071', L35]] },
@@ -69,8 +69,8 @@ const guias = [
 
   // ---------- GE · endocavitárias ----------
   { brands: ['ge'], probe: 'endo', img: ['@1-535-5055.webp'], compat: 'GE Healthcare E8C, E721, E8C-RS, E72, IC5-9-D, IC5-9H, MTZ, MZ',
-    also: 'ECM E610P, Samsung VR5-9', url: P + '514-guias-de-biopsia/45706-guia-biopsia-ge-e8ce72e721ic5-9h',
-    kits: [['#5055', D0, P + '514-guias-de-biopsia/45706-guia-biopsia-ge-e8ce72e721ic5-9h'], ['#5056', L35, P + '514-guias-de-biopsia/45707-guia-biopsia-ge-e8c-gelpreservelastic'], ['#5058', S4], ['#5059', SF]] },
+    also: 'ECM E610P, Samsung VR5-9', url: P + '514-guias-de-biopsia/53985-guia-biopsia-ge-e8ce72e721ic5-9h',
+    kits: [['#5055', D0, P + '514-guias-de-biopsia/53985-guia-biopsia-ge-e8ce72e721ic5-9h'], ['#5056', L35, P + '514-guias-de-biopsia/53871-guia-biopsia-ge-e8c-gelpreservelastic'], ['#5058', S4], ['#5059', SF]] },
   { brands: ['ge'], probe: 'endo', img: ['@1-535-5145.webp'], compat: 'GE Healthcare IC5-9-RS',
     also: 'Esaote EC123, EC1123, SE3123, SE3133, TRT12, IVT12 · Philips E6509 · Siemens BE9-4 · Samsung BCC4-9 · Pie Medical C7-4R8TRD · Terason 8EC4',
     kits: [['#5145', D0], ['#5147', L20], ['#5148', S4], ['#5151', S52], ['#5152', SF]] },
@@ -88,8 +88,7 @@ const guias = [
 
   // ---------- Hitachi · endocavitárias ----------
   { brands: ['hitachi'], probe: 'endo', img: ['@1-535-5380.webp'], compat: 'Hitachi EUP-V33, EUP-CC31, EUP-CC531, EUP-V12, EUP-V33W, EUP-V53W, EZU-PA5V, C41V, CC41R, CC41R1',
-    url: P + '515-guias-de-biopsia/49802-guia-biopsia-eup-v53wpresgelel',
-    kits: [['1-535-5380', D0], ['1-535-5381', S4, P + '515-guias-de-biopsia/49802-guia-biopsia-eup-v53wpresgelel'], ['1-535-5382', 'Guia + protetores em látex 3,5 × 20 cm e 2,0 × 20 cm, gel estéril e elásticos']] },
+    kits: [['1-535-5380', D0], ['1-535-5381', S4], ['1-535-5382', 'Guia + protetores em látex 3,5 × 20 cm e 2,0 × 20 cm, gel estéril e elásticos']] },
   { brands: ['hitachi'], probe: 'endo', img: ['@1-535-5250.webp'], compat: 'Hitachi-Aloka UST-679', kits: [['1-535-5250', D0]] },
   { brands: ['hitachi'], probe: 'endo', img: ['@1-535-5370.webp'], compat: 'Hitachi C41V1, EUP-V73W', kits: [['1-535-5370', D0], ['1-535-5372', L35], ['1-535-5373', S4], ['1-535-5371', SF]] },
 
@@ -119,7 +118,7 @@ const agulhas = {
   prostata: [
     ['Agulha para pistola Fast Gun', '18G × 20 cm', 'SWFSC1410.jpg', '52533-agulha-biopsia-pfast-gun-18gx20cm'],
     ['Agulha para pistola Magnum', '18G × 20 cm', 'SWSC1820B.jpg', '52530-agulha-biopsia-pmagnum-18gx20cm'],
-    ['Agulha para pistola Magnum', '18G × 30 cm', 'RMUM18300.jpg', '52585-agulha-biopsia-pmagnum-18gx30cm'],
+    ['Agulha para pistola Magnum', '18G × 30 cm', 'RMUM18300.jpg', null],
     ['Agulha Chiba', '18G × 20 cm', 'SWCCH1820.jpg', '52494-agulha-biopsia-chiba-18gx20cm'],
     ['Agulha Chiba', '20G × 15 cm', 'SWCCH2015.jpg', '52505-agulha-biopsia-chiba-20gx15cm'],
     ['Agulha Chiba', '20G × 20 cm', 'SWCCH2020.jpg', '52498-agulha-biopsia-chiba-20gx20cm'],
@@ -129,15 +128,15 @@ const agulhas = {
 };
 const pistolas = {
   mama: [
-    ['Pistola descartável Multicore', '14G × 11 cm', 'SWMLC1411.jpg', '44666-pistola-biopsia-desc-multicore-14gx11cm'],
-    ['Pistola descartável Multicore', '16G × 11 cm', 'SWMLC1611.jpg', '44668-pistola-biopsia-desc-multicore-16gx11cm'],
-    ['Pistola descartável Multicore', '18G × 15 cm', 'SWMLC1815.jpg', '44669-pistola-biopsia-desc-multicore-18gx15cm'],
-    ['Pistola descartável Primo Cut', '18G × 15 cm', null, '51262-pistola-biopsia-desc-primo-cut-18gx150m'],
+    ['Pistola descartável Multicore', '14G × 11 cm', 'SWMLC1411.jpg', '1772-outros/53017-pistola-biopsia-desc-multicore-14gx11cm'],
+    ['Pistola descartável Multicore', '16G × 11 cm', 'SWMLC1611.jpg', '1772-outros/53019-pistola-biopsia-desc-multicore-16gx11cm'],
+    ['Pistola descartável Multicore', '18G × 15 cm', 'SWMLC1815.jpg', '1772-outros/53267-pistola-biopsia-desc-multicore-18gx15cm'],
+    ['Pistola descartável Primo Cut', '18G × 15 cm', 'PJ415S120150.jpg', '1772-outros/53255-pistola-biopsia-desc-primo-cut-18gx150m'],
   ],
   prostata: [
-    ['Pistola descartável Multicore', '16G × 20 cm', 'SWMLC1620.jpg', '49885-pistola-biopsia-desc-multicore-16gx20cm'],
-    ['Pistola descartável Multicore', '18G × 20 cm', 'SWMLC1820.jpg', '44670-pistola-biopsia-desc-multicore-18gx20cm'],
-    ['Pistola descartável Multicore', '18G × 25 cm', 'SWMLC1825.jpg', '44671-pistola-biopsia-desc-multicore-18gx25cm'],
+    ['Pistola descartável Multicore', '16G × 20 cm', 'SWMLC1620.jpg', '1772-outros/53020-pistola-biopsia-desc-multicore-16gx20cm'],
+    ['Pistola descartável Multicore', '18G × 20 cm', 'SWMLC1820.jpg', '1772-outros/53021-pistola-biopsia-desc-multicore-18gx20cm'],
+    ['Pistola descartável Multicore', '18G × 25 cm', 'SWMLC1825.jpg', '1772-outros/53022-pistola-biopsia-desc-multicore-18gx25cm'],
   ],
 };
 

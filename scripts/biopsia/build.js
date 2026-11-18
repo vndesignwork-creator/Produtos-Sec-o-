@@ -73,7 +73,9 @@ const contaMarca = (b) => guias.filter((g) => g.brands.includes(b)).length;
 
 // ---------------------------------------------------------------- agulhas / pistolas
 function prodCard([nome, medida, img, slug], grupo) {
-  const url = P + grupo + '/' + slug;
+  // slug com categoria ('1772-outros/…') usa-se tal como está; sem slug, o produto não está no site → contactos
+  const url = !slug ? CONTACTOS : P + (slug.includes('/') ? slug : grupo + '/' + slug);
+  const cta = slug ? 'Ver detalhes →' : 'Pedir informação →';
   const [cal, comp] = medida.split(' × ');
   const pic = img
     ? `<img src="https://www.speculum.pt/files/images/products/${img}" alt="" width="400" height="300" loading="lazy">`
@@ -84,7 +86,7 @@ function prodCard([nome, medida, img, slug], grupo) {
                 <div class="bx-prod-body">
                   <h4>${esc(nome)}</h4>
                   <div class="bx-prod-specs"><span>${esc(cal)}</span><span>${esc(comp)}</span></div>
-                  <em>Ver detalhes →</em>
+                  <em>${cta}</em>
                 </div>
               </a>`;
 }
