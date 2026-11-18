@@ -116,8 +116,12 @@ const css = `
     .bx-hero .r20-hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .bx-hero .r20-hero-stat strong { font-size: 22px; }
     .bx-hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .bx-hero-visual figure { margin: 0; padding: 14px; border-radius: 18px; background: #ffffff; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
-    .bx-hero-visual figure:first-child { grid-column: 1 / -1; }
+    .bx-hero-link { display: block; border-radius: 18px; text-decoration: none; transition: transform .2s ease; }
+    .bx-hero-link:hover { transform: translateY(-3px); }
+    .bx-hero-link:focus-visible { outline: 3px solid #5fd3f0; outline-offset: 3px; }
+    .bx-hero-link:hover figcaption { text-decoration: underline; }
+    .bx-hero-visual figure { height: 100%; box-sizing: border-box; margin: 0; padding: 14px; border-radius: 18px; background: #ffffff; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+    .bx-hero-visual > .bx-hero-link:first-child { grid-column: 1 / -1; }
     #root .bx-hero-visual img { width: 100%; height: 150px; object-fit: contain; padding: 0; border-radius: 0; box-shadow: none; background: transparent; }
     .bx-hero-visual figcaption { margin-top: 8px; color: #00527f; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; text-align: center; }
 
@@ -266,7 +270,7 @@ const css = `
     /* Benefícios (fundo escuro, cartões e ícones como na NerveTrack) */
     .bx-benefit-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-    @media (prefers-reduced-motion: reduce) { .bx-cat, .bx-prod { transition: none; } .bx-cat:hover, .bx-prod:hover { transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .bx-cat, .bx-prod, .bx-hero-link { transition: none; } .bx-hero-link:hover { transform: none; } .bx-cat:hover, .bx-prod:hover { transform: none; } }
     @media (max-width: 1100px) {
       .bx-prod-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .bx-guia-grid { grid-template-columns: 1fr; }
@@ -275,7 +279,7 @@ const css = `
     @media (max-width: 820px) {
       .bx-hero-grid { grid-template-columns: 1fr; }
       .bx-hero-visual { display: block; padding-bottom: 48px; }
-      .bx-hero-visual figure { display: none; }
+      .bx-hero-link { display: none; }
       .bx-hero { min-height: 0; }
       .bx-hero .r20-hero-inner { padding: 64px 0 28px; }
       .bx-cat-grid { grid-template-columns: 1fr; }
@@ -358,10 +362,12 @@ const main = `  <div id="root">
           </div>
 
           <div class="bx-hero-visual r20-reveal visible">
-            <figure class="bx-sangra" aria-hidden="true">
-              <img src="images/products/biopsia/1-535-5144.webp" alt="" width="253" height="132">
-              <figcaption>Guia endocavitária</figcaption>
-            </figure>
+            <a class="bx-hero-link" href="#bxGuias" aria-label="Ver guias de biópsia">
+              <figure class="bx-sangra">
+                <img src="images/products/biopsia/1-535-5144.webp" alt="" width="253" height="132">
+                <figcaption>Guia endocavitária</figcaption>
+              </figure>
+            </a>
             <!-- Atalho do localizador: espelha a pesquisa e os filtros da secção Guias -->
             <div class="bx-hero-finder" role="search" aria-label="Pesquisa rápida de guias de biópsia">
               <label class="bx-search">
@@ -386,14 +392,18 @@ const main = `  <div id="root">
                 <a class="bx-ver" href="#bxGrid">Ver resultados <span aria-hidden="true">↓</span></a>
               </div>
             </div>
-            <figure aria-hidden="true">
-              <img src="https://www.speculum.pt/files/images/products/SWCCH2220.jpg" alt="" width="400" height="300">
-              <figcaption>Agulhas</figcaption>
-            </figure>
-            <figure aria-hidden="true">
-              <img src="https://www.speculum.pt/files/images/products/SWMLC1611.jpg" alt="" width="400" height="300">
-              <figcaption>Pistolas</figcaption>
-            </figure>
+            <a class="bx-hero-link" href="#bxAgulhas" aria-label="Ver agulhas de biópsia">
+              <figure>
+                <img src="https://www.speculum.pt/files/images/products/SWCCH2220.jpg" alt="" width="400" height="300">
+                <figcaption>Agulhas</figcaption>
+              </figure>
+            </a>
+            <a class="bx-hero-link" href="#bxPistolas" aria-label="Ver pistolas de biópsia">
+              <figure>
+                <img src="https://www.speculum.pt/files/images/products/SWMLC1611.jpg" alt="" width="400" height="300">
+                <figcaption>Pistolas</figcaption>
+              </figure>
+            </a>
           </div>
         </div>
       </section>
