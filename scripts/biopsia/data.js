@@ -1,5 +1,5 @@
 // Imagens '@1-535-…' (todas as guias Aspen, endocavitárias e convexas/lineares): site oficial da Aspen Surgical (fabricante), aspensurgical.com/Product/1-535-xxxx,
-// guardadas em images/products/biopsia/. Imagens 'leapmed-…': site oficial da Leapmed (www.leapmed.com),
+// guardadas em files/images/products/ do speculum.pt, como biopsia-*.webp (cópia local em export-files-images-biopsia/). Imagens 'leapmed-…': site oficial da Leapmed (www.leapmed.com),
 // as mesmas que a página antiga carregava de lá por http.
 // Dados extraídos de https://www.speculum.pt/biopsia.html (novembro de 2026), revistos para pt-PT.
 const P = 'https://www.speculum.pt/pt/produtos/';
@@ -140,4 +140,20 @@ const pistolas = {
   ],
 };
 
-module.exports = { guias, agulhas, pistolas, P, IMG, BOX24 };
+
+// Referências Speculum (campo "Ref:" de cada página de produto em speculum.pt, lidas em novembro de 2026),
+// indexadas pelo ID do produto no endereço (…/53985-guia-biopsia-…).
+const SREF = {
+  // guias
+  53872: 'PK15355144', 53877: 'PK15359000', 53985: 'PK15355055', 53871: 'PK15355056',
+  49794: 'LP0102009', 49659: 'LP0102005', 50119: 'LP1020760', 49864: 'LP0102059', 51414: 'LP0102017',
+  // agulhas
+  52494: 'SWCCH1820', 52498: 'SWCCH2020', 52505: 'SWCCH2015', 52531: 'SWCCH2220', 52546: 'SWCCH2225',
+  52530: 'SWSC1820B', 52537: 'SWSC1610B', 52548: 'SWSC1410B', 52555: 'SWSC1810B',
+  52533: 'SWFSC1820', 52553: 'SWFSC1815', 52582: 'SWFSC1415', 52583: 'SWFSC1615',
+  // pistolas
+  53017: 'SWMLC1411', 53019: 'SWMLC1611', 53267: 'SWMLC1815', 53020: 'SWMLC1620',
+  53021: 'SWMLC1820', 53022: 'SWMLC1825', 53255: 'PJ415S120150',
+};
+
+module.exports = { guias, agulhas, pistolas, P, IMG, BOX24, SREF };

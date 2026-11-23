@@ -2,7 +2,9 @@
 // e dos dados em data.js.
 const fs = require('fs');
 const path = require('path');
-const { guias, agulhas, pistolas, P, IMG, BOX24 } = require('./data.js');
+const { guias, agulhas, pistolas, P, IMG, BOX24, SREF } = require('./data.js');
+// referência Speculum a partir do endereço da página de produto (ID de 5 dígitos)
+const srefDe = (url) => { const m = /\/(\d{5})-/.exec(url || ''); return m ? SREF[m[1]] || '' : ''; };
 
 const SITE = path.join(__dirname, '..', '..');
 const RAW = fs.readFileSync(path.join(SITE, 'nervetrack.html'), 'utf8');
@@ -18,12 +20,15 @@ const CONTACTOS = 'https://www.speculum.pt/pt/contactos';
 let nKits = 0;
 function guiaCard(g) {
   const refs = [];
+  const srefs = [];
   let body = '';
   if (g.kits) {
     body += '<table class="bx-kits"><thead><tr><th scope="col">Referência</th><th scope="col">Conteúdo</th></tr></thead><tbody>';
     g.kits.forEach(([ref, desc, url]) => {
       refs.push(ref); nKits++;
-      const r = url ? `<a href="${esc(url)}">${esc(ref)}</a>` : esc(ref);
+      const sr = srefDe(url);
+      if (sr) srefs.push(sr);
+      const r = (url ? `<a href="${esc(url)}">${esc(ref)}</a>` : esc(ref)) + (sr ? `<small class="bx-sref-kit">Speculum ${esc(sr)}</small>` : '');
       body += `<tr><th scope="row">${r}</th><td>${esc(desc)}</td></tr>`;
     });
     body += '</tbody></table>';
@@ -41,12 +46,14 @@ function guiaCard(g) {
     body = `<details class="bx-refs"><summary><span class="bx-refs-head"><span class="bx-refs-n">${refs.length} referências</span><span class="bx-refs-list">${esc(curtas)}</span></span><span class="bx-refs-toggle" aria-hidden="true"></span></summary>${body}</details>`;
   }
   if (g.note) body += `<p class="bx-note">${esc(g.note)}</p>`;
-  if (!refs.length) body += '<p class="bx-ref-tbd">Referência e conteúdo do kit sob consulta.</p>';
+  const srefCard = srefDe(g.url);
+  if (srefCard && !srefs.includes(srefCard)) srefs.unshift(srefCard);
+  if (!refs.length && !srefs.length) body += '<p class="bx-ref-tbd">Referência e conteúdo do kit sob consulta.</p>';
 
   const box = g.box || (g.kits ? BOX24 : '');
-  const search = [g.compat, g.also || '', refs.join(' '), BRAND[g.brands[0]] || ''].join(' ');
+  const search = [g.compat, g.also || '', refs.join(' '), srefs.join(' '), BRAND[g.brands[0]] || ''].join(' ');
   const img = g.img
-    ? `<div class="bx-guia-img${/^@1-535-[59]/.test(g.img[0]) ? ' bx-sangra' : ''}">${g.img.map((f) => `<img src="${f[0] === '@' ? 'images/products/biopsia/' + f.slice(1) : IMG + encodeURI(f).replace(/\(/g, '%28').replace(/\)/g, '%29')}" alt="" width="253" height="132" loading="lazy" onerror="this.closest('.bx-guia').classList.add('bx-sem-img')">`).join('')}</div>`
+    ? `<div class="bx-guia-img${/^@1-535-[59]/.test(g.img[0]) ? ' bx-sangra' : ''}">${g.img.map((f) => `<img src="${f[0] === '@' ? 'https://www.speculum.pt/files/images/products/biopsia-' + f.slice(1) : IMG + encodeURI(f).replace(/\(/g, '%28').replace(/\)/g, '%29')}" alt="" width="253" height="132" loading="lazy" onerror="this.closest('.bx-guia').classList.add('bx-sem-img')">`).join('')}</div>`
     : '';
   const acoes = [];
   if (g.url) acoes.push(`<a class="bx-link" href="${esc(g.url)}">Ver produto</a>`);
@@ -54,13 +61,14 @@ function guiaCard(g) {
   acoes.push(`<a class="bx-link bx-link-ghost" href="${esc(g.url || CONTACTOS)}">Pedir informação</a>`);
 
   return `
-            <article class="bx-guia${g.img ? '' : ' bx-sem-img'}" data-brands="${g.brands.join(' ')}" data-probe="${g.probe}" data-search="${esc(search)}" data-refs="${esc(refs.join(' '))}">
+            <article class="bx-guia${g.img ? '' : ' bx-sem-img'}" data-brands="${g.brands.join(' ')}" data-probe="${g.probe}" data-search="${esc(search)}" data-refs="${esc(refs.concat(srefs).join(' '))}">
               ${img}
               <div class="bx-guia-body">
                 <div class="bx-guia-tags"><span>${esc(BRAND[g.brands[0]])}</span><span>${PROBE[g.probe]}</span></div>
                 ${g.title ? `<p class="bx-guia-title">${esc(g.title)}</p>` : ''}
                 <h3><span>Compatível com</span>${esc(g.compat)}</h3>
                 ${g.also ? `<p class="bx-also"><span>Também serve</span>${esc(g.also)}</p>` : ''}
+                ${srefs.length ? `<p class="bx-sref"><span>Ref. Speculum</span>${srefs.map(esc).join(' · ')}</p>` : ''}
                 ${body}
                 <div class="bx-guia-foot">
                   ${box ? `<span class="bx-box">${esc(box)}</span>` : '<span></span>'}
@@ -77,6 +85,7 @@ function prodCard([nome, medida, img, slug, oficial], grupo) {
   // slug com categoria ('1772-outros/…') usa-se tal como está; sem slug, o produto não está no site → contactos
   const url = !slug ? CONTACTOS : P + (slug.includes('/') ? slug : grupo + '/' + slug);
   const cta = slug ? 'Ver detalhes →' : 'Pedir informação →';
+  const sr = srefDe(slug ? '/' + slug.split('/').pop() : '');
   const [cal, comp] = medida.split(' × ');
   const pic = img
     ? `<img src="https://www.speculum.pt/files/images/products/${img}" alt="" width="400" height="300" loading="lazy">`
@@ -86,7 +95,7 @@ function prodCard([nome, medida, img, slug, oficial], grupo) {
                 <div class="bx-prod-img">${pic}</div>
                 <div class="bx-prod-body">
                   <h4>${esc(nome)}</h4>
-                  <p class="bx-prod-nome">${oficial ? esc(oficial) : ''}</p>
+                  <p class="bx-prod-nome">${oficial ? esc(oficial) : ''}${sr ? `<span class="bx-prod-sref">Ref. ${esc(sr)}</span>` : ''}</p>
                   <div class="bx-prod-specs"><span>${esc(cal)}</span><span>${esc(comp)}</span></div>
                   <em>${cta}</em>
                 </div>
@@ -262,7 +271,11 @@ const css = `
     .bx-prod-body > * { padding-inline: 16px; }
     .bx-prod h4 { margin: 0; padding-top: 14px; font-family: "Montserrat", sans-serif; font-size: 14.5px; line-height: 1.4; color: var(--text); }
     .bx-prod-nome { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; font-weight: 700; line-height: 1.4; letter-spacing: .03em; text-transform: uppercase; }
+    .bx-prod-sref { display: block; margin-top: 2px; color: #087fa8; letter-spacing: .04em; }
     .bx-prod-specs { display: flex; gap: 6px; margin-top: 10px; }
+    .bx-sref { margin: 10px 0 0; color: var(--text); font-size: 14px; font-weight: 800; letter-spacing: .02em; }
+    .bx-sref span { display: block; margin-bottom: 2px; color: #607481; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .bx-sref-kit { display: block; margin-top: 2px; color: #607481; font-size: 11px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
     .bx-prod-specs span { padding: 4px 9px; border-radius: 8px; color: #00527f; background: #e8f6fa; font-size: 12px; font-weight: 800; }
     .bx-prod em { align-self: end; padding-top: 14px; padding-bottom: 16px; color: #005a85; font-style: normal; font-size: 12px; font-weight: 800; }
     .r20-soft .bx-prod, .r20-soft .bx-guia { background: #ffffff; }
@@ -364,7 +377,7 @@ const main = `  <div id="root">
           <div class="bx-hero-visual r20-reveal visible">
             <a class="bx-hero-link" href="#bxGuias" aria-label="Ver guias de biópsia">
               <figure class="bx-sangra">
-                <img src="images/products/biopsia/1-535-5144.webp" alt="" width="253" height="132">
+                <img src="https://www.speculum.pt/files/images/products/biopsia-1-535-5144.webp" alt="" width="253" height="132">
                 <figcaption>Guia endocavitária</figcaption>
               </figure>
             </a>
@@ -422,7 +435,7 @@ const main = `  <div id="root">
 
           <div class="bx-cat-grid r20-reveal">
             <a class="bx-cat" href="#bxGuias">
-              <div class="bx-cat-img bx-sangra"><img src="images/products/biopsia/1-535-9000.webp" alt="" width="253" height="132" loading="lazy"></div>
+              <div class="bx-cat-img bx-sangra"><img src="https://www.speculum.pt/files/images/products/biopsia-1-535-9000.webp" alt="" width="253" height="132" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">${guias.length} modelos · ${nKits} referências</span>
                 <h3>Guias de biópsia</h3>
@@ -583,7 +596,7 @@ ${guiasHTML}
 // ---------------------------------------------------------------- script do localizador
 const finderJS = `
 <!-- Imagens das guias com referência 1-535-xxxx: site oficial da Aspen Surgical (fundo transparente); guias
-     Leapmed (Toshiba, Siemens, alternativas GE): site oficial da Leapmed. Todas em images/products/biopsia/ — é preciso enviar essa pasta para o servidor junto com a página. -->
+     Leapmed (Toshiba, Siemens, alternativas GE): site oficial da Leapmed. Todas em https://www.speculum.pt/files/images/products/ (ficheiros biopsia-*.webp; cópia local em export-files-images-biopsia/) — é preciso enviá-las para essa pasta do servidor. -->
 <!-- Localizador de guias: pesquisa por modelo/referência e filtros por marca e tipo de sonda. -->
 <script>
 	(function () {
