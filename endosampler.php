@@ -147,6 +147,8 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
       // A loja empurra o rodapé para o fundo da janela; dentro da moldura (que já tem a altura certa)
       // isso cria um espaço vazio cada vez maior. Aqui não é preciso.
       '#grid-wrap-footer{margin-top:0!important}',
+      // Botão "Voltar atrás" da loja (history.go(-1)): removido a pedido; dentro da moldura também não funciona bem.
+      '.item-collection-detail a.amore-pdetails,.item-collection-detail p:has(> a.amore-pdetails){display:none}',
       '[data-es-desc] ul{margin:0 0 12px;padding-left:20px;list-style:disc}',
       '[data-es-desc] li{margin:0 0 4px}',
       '@media (max-width:991px){#es-extra .es-grid2,#es-extra .es-models,#es-extra .es-specwrap{grid-template-columns:1fr}#es-extra .es-cards{grid-template-columns:1fr 1fr}#es-extra .es-soft,#es-extra .es-dark{padding:44px 24px}}',
