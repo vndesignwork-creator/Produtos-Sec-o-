@@ -1110,6 +1110,8 @@
     /* O que procura? — 9 categorias */
     .gy-cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .gy-cat-grid .bx-cat-img { aspect-ratio: 16 / 10; }
+    .gy-cat-grid .bx-cat-img.gy-cat-full { padding: 0; overflow: hidden; }
+    #root .gy-cat-grid .bx-cat-img.gy-cat-full img { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; mix-blend-mode: normal; }
     .gy-cat-brands { margin-top: 10px; color: #8399a5; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 
     /* Cabeçalho de cada categoria */
@@ -1908,7 +1910,7 @@
 
           <div class="bx-cat-grid gy-cat-grid r20-reveal">
             <a class="bx-cat" href="#gyMarquesas">
-              <div class="bx-cat-img"><img src="images/products/gin-marquesas-cartao.webp" alt="" width="1200" height="750" loading="lazy"></div>
+              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-marquesas-cartao.webp" alt="" width="1200" height="750" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">3 modelos</span>
                 <h3>Marquesas</h3>
@@ -1928,7 +1930,7 @@
               </div>
             </a>
             <a class="bx-cat" href="#gySoftware">
-              <div class="bx-cat-img"><img src="images/products/gin-gynreport.webp" alt="" width="1200" height="640" loading="lazy"></div>
+              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-gynreport.webp" alt="" width="1200" height="640" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
                 <h3>Software clínico</h3>
