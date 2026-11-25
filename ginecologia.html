@@ -1104,8 +1104,13 @@
        O resto vem da biopsia.html (r20-*, nt-*, bx-*).
        ============================================================ */
     .gy-hero .r20-hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    #root .gy-hero .bx-hero-visual img { height: 170px; mix-blend-mode: multiply; }
-    #root .gy-hero .bx-hero-visual > .bx-hero-link:first-child img { height: 230px; }
+    /* Topo: as 3 imagens em linha e o localizador por baixo, a toda a largura */
+    .gy-hero .bx-hero-visual { grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: center; }
+    .gy-hero .bx-hero-visual > .bx-hero-link:first-child { grid-column: auto; }
+    .gy-hero .bx-hero-visual figure { padding: 12px 10px; }
+    #root .gy-hero .bx-hero-visual img { height: 140px; mix-blend-mode: multiply; }
+    .gy-hero .bx-hero-visual .gy-finder { grid-column: 1 / -1; }
+    @media (max-width: 560px) { #root .gy-hero .bx-hero-visual img { height: 92px; } .gy-hero .bx-hero-visual { gap: 10px; } .gy-hero .bx-hero-visual figcaption { font-size: 9.5px; letter-spacing: .05em; } }
 
     /* O que procura? — 9 categorias */
     .gy-cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1195,6 +1200,9 @@
     #root .gy-thumb:focus-visible { outline: 2px solid #087fa8; outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .gy-main img, #root .gy-thumb { transition: none; } #root .gy-thumb:hover { transform: none; } }
     @media (max-width: 560px) { .gy-gallery { gap: 6px; } #root .gy-thumb { border-radius: 9px; } }
+
+    /* Localizador do topo: fichas e secções filtradas */
+    .gy-prod[hidden], section[data-gy-sec][hidden], #gyProcura[hidden], .gy-ver[hidden] { display: none; }
 
     /* Quem somos (fundo escuro) */
     .gy-about-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -1892,6 +1900,32 @@
             <a class="bx-hero-link" href="#gyIluminacao" aria-label="Ver iluminação de precisão">
               <figure><img src="images/products/gin-acemst1.webp" alt="" width="544" height="1057"><figcaption>Iluminação</figcaption></figure>
             </a>
+            <!-- Localizador: pesquisa por modelo/marca e filtro por área; filtra as fichas das secções abaixo -->
+            <div class="bx-hero-finder gy-finder" role="search" aria-label="Pesquisar equipamentos de ginecologia">
+              <label class="bx-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                <input class="bx-query gy-query" type="text" inputmode="search" enterkeyhint="search" aria-label="Pesquisar equipamento por modelo ou marca" placeholder="Modelo ou marca — ex.: GOLEM, AC-5000, SCHMITZ" autocomplete="off" spellcheck="false">
+              </label>
+              <div class="bx-filters">
+                <div class="bx-filter-group" role="group" aria-label="Área">
+                  <span class="bx-filter-label">Área</span>
+                  <button type="button" class="bx-chip" data-gy-area="all" aria-pressed="true">Todas</button>
+                  <button type="button" class="bx-chip" data-gy-area="marquesas" aria-pressed="false">Marquesas <small>3</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="colposcopia" aria-pressed="false">Colposcopia <small>4</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="software" aria-pressed="false">Software <small>1</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="eletrocirurgia" aria-pressed="false">Eletrocirurgia <small>2</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="fumos" aria-pressed="false">Aspiração de fumos <small>1</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="crioterapia" aria-pressed="false">Crioterapia <small>1</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="laser" aria-pressed="false">Laser <small>1</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="iluminacao" aria-pressed="false">Iluminação <small>2</small></button>
+                  <button type="button" class="bx-chip" data-gy-area="instrumentos" aria-pressed="false">Instrumentos <small>1</small></button>
+                </div>
+              </div>
+              <div class="bx-hero-finder-foot">
+                <p class="bx-status gy-status" aria-live="polite"><strong>16</strong> equipamentos</p>
+                <a class="bx-ver gy-ver" href="#gyProcura">Ver resultados <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1908,9 +1942,9 @@
             </p>
           </div>
 
-          <div class="bx-cat-grid gy-cat-grid r20-reveal">
-            <a class="bx-cat" href="#gyMarquesas">
-              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-marquesas-cartao.webp" alt="" width="1200" height="750" loading="lazy"></div>
+          <div class="bx-cat-grid gy-cat-grid">
+            <a class="bx-cat r20-reveal" href="#gyMarquesas">
+              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-marquesas-cartao.webp" alt="" width="1200" height="750"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">3 modelos</span>
                 <h3>Marquesas</h3>
@@ -1919,8 +1953,8 @@
                 <em>Ver marquesas →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyColposcopia">
-              <div class="bx-cat-img"><img src="images/products/gin-ac-5000.webp" alt="" width="740" height="629" loading="lazy"></div>
+            <a class="bx-cat r20-reveal" href="#gyColposcopia">
+              <div class="bx-cat-img"><img src="images/products/gin-ac-5000.webp" alt="" width="740" height="629"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">4 modelos</span>
                 <h3>Colposcopia</h3>
@@ -1929,8 +1963,8 @@
                 <em>Ver colposcopia →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gySoftware">
-              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-gynreport.webp" alt="" width="1200" height="640" loading="lazy"></div>
+            <a class="bx-cat r20-reveal" href="#gySoftware">
+              <div class="bx-cat-img gy-cat-full"><img src="images/products/gin-gynreport.webp" alt="" width="1200" height="640"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
                 <h3>Software clínico</h3>
@@ -1939,7 +1973,7 @@
                 <em>Ver software clínico →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyEletrocirurgia">
+            <a class="bx-cat r20-reveal" href="#gyEletrocirurgia">
               <div class="bx-cat-img"><img src="images/products/gin-surtron-touch-200.webp" alt="" width="1245" height="514" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">2 modelos</span>
@@ -1949,7 +1983,7 @@
                 <em>Ver eletrocirurgia →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyFumos">
+            <a class="bx-cat r20-reveal" href="#gyFumos">
               <div class="bx-cat-img"><img src="images/products/gin-aspirador-fumos-tbh.webp" alt="" width="1155" height="1255" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
@@ -1959,7 +1993,7 @@
                 <em>Ver aspirador de fumos →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyCrioterapia">
+            <a class="bx-cat r20-reveal" href="#gyCrioterapia">
               <div class="bx-cat-img"><img src="images/products/gin-crioterapia.webp" alt="" width="735" height="1000" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
@@ -1969,7 +2003,7 @@
                 <em>Ver crioterapia →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyLaser">
+            <a class="bx-cat r20-reveal" href="#gyLaser">
               <div class="bx-cat-img"><img src="images/products/gin-gynelase.webp" alt="" width="1100" height="1100" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
@@ -1979,7 +2013,7 @@
                 <em>Ver laser →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyIluminacao">
+            <a class="bx-cat r20-reveal" href="#gyIluminacao">
               <div class="bx-cat-img"><img src="images/products/gin-acemst1.webp" alt="" width="544" height="1057" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">2 modelos</span>
@@ -1989,7 +2023,7 @@
                 <em>Ver iluminação de precisão →</em>
               </div>
             </a>
-            <a class="bx-cat" href="#gyInstrumentos">
+            <a class="bx-cat r20-reveal" href="#gyInstrumentos">
               <div class="bx-cat-img"><img src="images/products/gin-hebu-revestidos.webp" alt="" width="631" height="351" loading="lazy"></div>
               <div class="bx-cat-body">
                 <span class="bx-cat-count">1 modelo</span>
@@ -2004,7 +2038,7 @@
       </section>
 
       <!-- MARQUESAS -->
-      <section id="gyMarquesas" class="r20-section r20-soft">
+      <section id="gyMarquesas" class="r20-section r20-soft" data-gy-sec="marquesas">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2015,7 +2049,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>SCHMITZ</span><span>RQL</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyMediMatic">
+            <article class="gy-prod r20-reveal" id="gyMediMatic" data-gy-cat="marquesas" data-gy-q="schmitz medi-matic 9000 tecnologia e conforto ao mais alto nivel marquesa ginecologica schmitz medi-matic 9000 marquesas marquesas">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-medi-matic-9000.webp" alt="Marquesa ginecológica SCHMITZ medi-matic 9000" width="578" height="480" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:5" role="group" aria-label="Mais imagens de medi-matic® 9000"><button type="button" class="gy-thumb" data-src="images/products/gin-medi-matic-9000.webp" data-w="578" data-h="480" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-medi-matic-9000.webp" alt="" width="578" height="480" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-medi-matic-estudio.webp" data-w="1100" data-h="1027" data-cap="Vista lateral" data-full="1" aria-pressed="false" aria-label="Ver imagem: Vista lateral"><img src="images/products/gin-medi-matic-estudio.webp" alt="" width="1100" height="1027" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-medi-matic-acesso.webp" data-w="1100" data-h="733" data-cap="Acesso a partir da cadeira de rodas" data-full="1" aria-pressed="false" aria-label="Ver imagem: Acesso a partir da cadeira de rodas"><img src="images/products/gin-medi-matic-acesso.webp" alt="" width="1100" height="733" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-medi-matic-comando.webp" data-w="1100" data-h="795" data-cap="Comando manual" data-full="1" aria-pressed="false" aria-label="Ver imagem: Comando manual"><img src="images/products/gin-medi-matic-comando.webp" alt="" width="1100" height="795" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-medi-matic-luz.webp" data-w="1100" data-h="734" data-cap="Iluminação da base" data-full="1" aria-pressed="false" aria-label="Ver imagem: Iluminação da base"><img src="images/products/gin-medi-matic-luz.webp" alt="" width="1100" height="734" loading="lazy"></button></div><p class="gy-thumbs-label">Posições e configurações</p><div class="gy-thumbs"><figure class="gy-photo"><img src="images/products/gin-medi-matic-9000-pos1.webp" alt="" width="183" height="156" loading="lazy"></figure><figure class="gy-photo"><img src="images/products/gin-medi-matic-9000-pos2.webp" alt="" width="183" height="145" loading="lazy"></figure><figure class="gy-photo"><img src="images/products/gin-medi-matic-9000-pos3.webp" alt="" width="214" height="122" loading="lazy"></figure></div>
               </div>
@@ -2034,7 +2068,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod r20-reveal" id="gyArcoMatic">
+            <article class="gy-prod r20-reveal" id="gyArcoMatic" data-gy-cat="marquesas" data-gy-q="schmitz arco-matic 300 versatilidade e conforto em cada exame marquesa ginecologica schmitz arco-matic 300 marquesas marquesas altura minima 55 cm carga maxima 250 kg posicoes memorizaveis ate 4 apoios de pes motorizados, em opcao">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-arco-matic-300.webp" alt="Marquesa ginecológica SCHMITZ arco-matic 300" width="553" height="436" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:5" role="group" aria-label="Mais imagens de arco-matic® 300"><button type="button" class="gy-thumb" data-src="images/products/gin-arco-matic-300.webp" data-w="553" data-h="436" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-arco-matic-300.webp" alt="" width="553" height="436" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-arco-matic-posicoes.webp" data-w="1100" data-h="621" data-cap="Regulação do encosto e da elevação pélvica" data-full="1" aria-pressed="false" aria-label="Ver imagem: Regulação do encosto e da elevação pélvica"><img src="images/products/gin-arco-matic-posicoes.webp" alt="" width="1100" height="621" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-arco-matic-pedal.webp" data-w="1100" data-h="856" data-cap="Comando de pé" data-full="1" aria-pressed="false" aria-label="Ver imagem: Comando de pé"><img src="images/products/gin-arco-matic-pedal.webp" alt="" width="1100" height="856" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-arco-matic-apoios.webp" data-w="1100" data-h="856" data-cap="Apoios de pernas" data-full="1" aria-pressed="false" aria-label="Ver imagem: Apoios de pernas"><img src="images/products/gin-arco-matic-apoios.webp" alt="" width="1100" height="856" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-arco-matic-cuba.webp" data-w="1100" data-h="856" data-cap="Cuba em aço inoxidável" data-full="1" aria-pressed="false" aria-label="Ver imagem: Cuba em aço inoxidável"><img src="images/products/gin-arco-matic-cuba.webp" alt="" width="1100" height="856" loading="lazy"></button></div><p class="gy-thumbs-label">Posições e configurações</p><div class="gy-thumbs"><figure class="gy-photo"><img src="images/products/gin-arco-matic-300-pos1.webp" alt="" width="155" height="168" loading="lazy"></figure><figure class="gy-photo"><img src="images/products/gin-arco-matic-300-pos2.webp" alt="" width="155" height="163" loading="lazy"></figure><figure class="gy-photo"><img src="images/products/gin-arco-matic-300-pos3.webp" alt="" width="196" height="162" loading="lazy"></figure></div>
               </div>
@@ -2053,7 +2087,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/produtos/240-marquesas/49686-marquesa-ginec-arco-matic-300-m-schmitz">Ver ficha do produto</a><a class="bx-link bx-link-ghost" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod r20-reveal" id="gyGolem">
+            <article class="gy-prod r20-reveal" id="gyGolem" data-gy-cat="marquesas" data-gy-q="rql golem 6et posicionamento eletrico para ginecologia e urologia marquesa ginecologica rql golem 6et marquesas marquesas memorias 3 posicoes encosto 0 a 80 apoio de cabeca ajuste manual 30 altura 64 a 94 cm carga 150 kg">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-golem-6et.webp" alt="Marquesa ginecológica RQL GOLEM 6ET" width="516" height="467" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:5" role="group" aria-label="Mais imagens de GOLEM 6ET"><button type="button" class="gy-thumb" data-src="images/products/gin-golem-6et.webp" data-w="516" data-h="467" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-golem-6et.webp" alt="" width="516" height="467" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-golem-6et-plana.webp" data-w="880" data-h="822" data-cap="Posição horizontal" data-full="1" aria-pressed="false" aria-label="Ver imagem: Posição horizontal"><img src="images/products/gin-golem-6et-plana.webp" alt="" width="880" height="822" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-golem-6et-calcanhares.webp" data-w="1100" data-h="730" data-cap="Apoios de calcanhares" data-full="1" aria-pressed="false" aria-label="Ver imagem: Apoios de calcanhares"><img src="images/products/gin-golem-6et-calcanhares.webp" alt="" width="1100" height="730" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-golem-6et-cuba.webp" data-w="1100" data-h="730" data-cap="Cuba e tabuleiro em aço inoxidável" data-full="1" aria-pressed="false" aria-label="Ver imagem: Cuba e tabuleiro em aço inoxidável"><img src="images/products/gin-golem-6et-cuba.webp" alt="" width="1100" height="730" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-golem-6et-consultorio.webp" data-w="900" data-h="600" data-cap="Em consultório" data-full="1" aria-pressed="false" aria-label="Ver imagem: Em consultório"><img src="images/products/gin-golem-6et-consultorio.webp" alt="" width="900" height="600" loading="lazy"></button></div>
               </div>
@@ -2076,7 +2110,7 @@
         </div>
       </section>
       <!-- COLPOSCOPIA -->
-      <section id="gyColposcopia" class="r20-section">
+      <section id="gyColposcopia" class="r20-section" data-gy-sec="colposcopia">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2087,7 +2121,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>SCHMITZ</span><span>ALLTION</span><span>LABOMED</span><span>EDAN</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyVidan">
+            <article class="gy-prod r20-reveal" id="gyVidan" data-gy-cat="colposcopia" data-gy-q="schmitz vidan2 video-colposcopia hd, integrada na marquesa ou movel video-colposcopio schmitz vidan 2 na versao movel, com monitor colposcopia colposcopia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main gy-photo-full"><img src="images/products/gin-vidan2-movel.webp" alt="Vídeo-colposcópio SCHMITZ vidan 2 na versão móvel, com monitor" width="890" height="712" loading="lazy"><figcaption>Versão móvel</figcaption></figure><div class="gy-gallery" style="--gy-n:5" role="group" aria-label="Mais imagens de vidan®2"><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-vidan2-movel.webp" data-w="890" data-h="712" data-cap="Versão móvel" data-full="1" aria-pressed="true" aria-label="Ver imagem: Versão móvel"><img src="images/products/gin-vidan2-movel.webp" alt="" width="890" height="712" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-vidan2-movel-produto.webp" data-w="1100" data-h="1100" data-cap="Carro com monitor" data-full="0" aria-pressed="false" aria-label="Ver imagem: Carro com monitor"><img src="images/products/gin-vidan2-movel-produto.webp" alt="" width="1100" height="1100" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-vidan2-movel-exame.webp" data-w="1300" data-h="867" data-cap="Versão móvel em consulta" data-full="1" aria-pressed="false" aria-label="Ver imagem: Versão móvel em consulta"><img src="images/products/gin-vidan2-movel-exame.webp" alt="" width="1300" height="867" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-vidan2-integrado.webp" data-w="1100" data-h="795" data-cap="Integrado na marquesa" data-full="1" aria-pressed="false" aria-label="Ver imagem: Integrado na marquesa"><img src="images/products/gin-vidan2-integrado.webp" alt="" width="1100" height="795" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-vidan2-monitor.webp" data-w="1100" data-h="795" data-cap="Monitor orientável" data-full="1" aria-pressed="false" aria-label="Ver imagem: Monitor orientável"><img src="images/products/gin-vidan2-monitor.webp" alt="" width="1100" height="795" loading="lazy"></button></div>
               </div>
@@ -2106,7 +2140,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod gy-flip r20-reveal" id="gyAc5000">
+            <article class="gy-prod gy-flip r20-reveal" id="gyAc5000" data-gy-cat="colposcopia" data-gy-q="alltion ac-5000 colposcopia otica de elevada precisao colposcopio otico alltion ac-5000 colposcopia colposcopia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-ac-5000.webp" alt="Colposcópio ótico ALLTION AC-5000" width="740" height="629" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:4" role="group" aria-label="Mais imagens de AC-5000"><button type="button" class="gy-thumb" data-src="images/products/gin-ac-5000.webp" data-w="740" data-h="629" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-ac-5000.webp" alt="" width="740" height="629" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-ac-5000-cabeca.webp" data-w="497" data-h="283" data-cap="Cabeça ótica" data-full="1" aria-pressed="false" aria-label="Ver imagem: Cabeça ótica"><img src="images/products/gin-ac-5000-cabeca.webp" alt="" width="497" height="283" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-ac-5000-oculares.webp" data-w="466" data-h="385" data-cap="Oculares binoculares" data-full="1" aria-pressed="false" aria-label="Ver imagem: Oculares binoculares"><img src="images/products/gin-ac-5000-oculares.webp" alt="" width="466" height="385" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-ac-5000-ligacoes.webp" data-w="517" data-h="335" data-cap="Saídas de vídeo e dados" data-full="1" aria-pressed="false" aria-label="Ver imagem: Saídas de vídeo e dados"><img src="images/products/gin-ac-5000-ligacoes.webp" alt="" width="517" height="335" loading="lazy"></button></div>
               </div>
@@ -2125,7 +2159,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/produtos/292-colposcopios/54865-colposcopio-altion-ac-5000hv4">Ver ficha do produto</a><a class="bx-link bx-link-ghost" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod r20-reveal" id="gyPrima">
+            <article class="gy-prod r20-reveal" id="gyPrima" data-gy-cat="colposcopia" data-gy-q="labomed prima cs 803 qualidade otica e ergonomia no exame colposcopio labomed prima cs 803 colposcopia colposcopia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-prima-cs-803.webp" alt="Colposcópio LABOMED PRIMA CS 803" width="581" height="684" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:4" role="group" aria-label="Mais imagens de PRIMA CS 803"><button type="button" class="gy-thumb" data-src="images/products/gin-prima-cs-803.webp" data-w="581" data-h="684" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-prima-cs-803.webp" alt="" width="581" height="684" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-prima-cabeca.webp" data-w="250" data-h="336" data-cap="Cabeça ótica" data-full="0" aria-pressed="false" aria-label="Ver imagem: Cabeça ótica"><img src="images/products/gin-prima-cabeca.webp" alt="" width="250" height="336" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-prima-led.webp" data-w="373" data-h="336" data-cap="Iluminação LED" data-full="1" aria-pressed="false" aria-label="Ver imagem: Iluminação LED"><img src="images/products/gin-prima-led.webp" alt="" width="373" height="336" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-prima-video.webp" data-w="321" data-h="335" data-cap="Com captura digital" data-full="0" aria-pressed="false" aria-label="Ver imagem: Com captura digital"><img src="images/products/gin-prima-video.webp" alt="" width="321" height="335" loading="lazy"></button></div>
               </div>
@@ -2144,7 +2178,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/produtos/292-colposcopios/45237-colposcopio-labomed-prima-cs-803">Ver ficha do produto</a><a class="bx-link bx-link-ghost" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod gy-flip r20-reveal" id="gyC21">
+            <article class="gy-prod gy-flip r20-reveal" id="gyC21" data-gy-cat="colposcopia" data-gy-q="edan c21 uhd video-colposcopia digital de ultima geracao video-colposcopio digital edan c21 uhd colposcopia colposcopia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-c21-uhd.webp" alt="Vídeo-colposcópio digital EDAN C21 UHD" width="380" height="455" loading="lazy"></figure>
               </div>
@@ -2167,7 +2201,7 @@
         </div>
       </section>
       <!-- SOFTWARE CLÍNICO PARA COLPOSCOPIA -->
-      <section id="gySoftware" class="r20-section r20-soft">
+      <section id="gySoftware" class="r20-section r20-soft" data-gy-sec="software">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2178,7 +2212,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>GYNREPORT</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyGynReport">
+            <article class="gy-prod r20-reveal" id="gyGynReport" data-gy-cat="software" data-gy-q="gynreport gynreport software clinico especializado em colposcopia ecra do gynreport com as imagens recolhidas do colposcopio software clinico para colposcopia software">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-gynreport.webp" alt="Ecrã do GynReport com as imagens recolhidas do colposcópio" width="1200" height="640" loading="lazy"><figcaption>Arquivo de imagens</figcaption></figure><div class="gy-gallery" style="--gy-n:3" role="group" aria-label="Mais imagens de GynReport"><button type="button" class="gy-thumb" data-src="images/products/gin-gynreport.webp" data-w="1200" data-h="640" data-cap="Arquivo de imagens" data-full="0" aria-pressed="true" aria-label="Ver imagem: Arquivo de imagens"><img src="images/products/gin-gynreport.webp" alt="" width="1200" height="640" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-gynreport-relatorio.webp" data-w="1200" data-h="675" data-cap="Relatório de vaginoscopia" data-full="0" aria-pressed="false" aria-label="Ver imagem: Relatório de vaginoscopia"><img src="images/products/gin-gynreport-relatorio.webp" alt="" width="1200" height="675" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-gynreport-paciente.webp" data-w="1200" data-h="675" data-cap="Gestão de pacientes" data-full="0" aria-pressed="false" aria-label="Ver imagem: Gestão de pacientes"><img src="images/products/gin-gynreport-paciente.webp" alt="" width="1200" height="675" loading="lazy"></button></div>
               </div>
@@ -2201,7 +2235,7 @@
         </div>
       </section>
       <!-- ELETROCIRURGIA -->
-      <section id="gyEletrocirurgia" class="r20-section">
+      <section id="gyEletrocirurgia" class="r20-section" data-gy-sec="eletrocirurgia">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2212,7 +2246,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>UTAH</span><span>LED SpA</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyFinesse">
+            <article class="gy-prod r20-reveal" id="gyFinesse" data-gy-cat="eletrocirurgia" data-gy-q="utah finesse+ eletrocirurgia e aspiracao de fumos num so equipamento sistema eletrocirurgico utah finesse+ com aspiracao de fumos eletrocirurgia eletrocirurgia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-finesse-plus.webp" alt="Sistema eletrocirúrgico UTAH FINESSE+ com aspiração de fumos" width="1000" height="624" loading="lazy"></figure>
               </div>
@@ -2231,7 +2265,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod gy-flip r20-reveal" id="gySurtron">
+            <article class="gy-prod gy-flip r20-reveal" id="gySurtron" data-gy-cat="eletrocirurgia" data-gy-q="led spa surtron touch 200 eletrocirurgia de alta frequencia com ecra tatil unidade de eletrocirurgia led spa surtron touch 200 eletrocirurgia eletrocirurgia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-surtron-touch-200.webp" alt="Unidade de eletrocirurgia LED SpA SURTRON TOUCH 200" width="1245" height="514" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:3" role="group" aria-label="Mais imagens de SURTRON® TOUCH 200"><button type="button" class="gy-thumb" data-src="images/products/gin-surtron-touch-200.webp" data-w="1245" data-h="514" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-surtron-touch-200.webp" alt="" width="1245" height="514" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-surtron-ecra.webp" data-w="1000" data-h="667" data-cap="Ecrã tátil" data-full="1" aria-pressed="false" aria-label="Ver imagem: Ecrã tátil"><img src="images/products/gin-surtron-ecra.webp" alt="" width="1000" height="667" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-surtron-ligacoes.webp" data-w="1000" data-h="667" data-cap="Saídas monopolar e bipolar" data-full="1" aria-pressed="false" aria-label="Ver imagem: Saídas monopolar e bipolar"><img src="images/products/gin-surtron-ligacoes.webp" alt="" width="1000" height="667" loading="lazy"></button></div>
               </div>
@@ -2254,7 +2288,7 @@
         </div>
       </section>
       <!-- ASPIRADOR DE FUMOS -->
-      <section id="gyFumos" class="r20-section r20-soft">
+      <section id="gyFumos" class="r20-section r20-soft" data-gy-sec="fumos">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2265,7 +2299,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>TBH</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyTbh">
+            <article class="gy-prod r20-reveal" id="gyTbh" data-gy-cat="fumos" data-gy-q="tbh aspirador de fumos protecao dos profissionais durante eletrocirurgia e laser aspirador de fumos tbh health pro silence com braco articulado aspirador de fumos aspiracao de fumos">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-aspirador-fumos-tbh.webp" alt="Aspirador de fumos TBH Health Pro Silence com braço articulado" width="1155" height="1255" loading="lazy"><figcaption>Health Pro Silence</figcaption></figure><div class="gy-gallery" style="--gy-n:4" role="group" aria-label="Mais imagens de Aspirador de fumos"><button type="button" class="gy-thumb" data-src="images/products/gin-aspirador-fumos-tbh.webp" data-w="1155" data-h="1255" data-cap="Health Pro Silence" data-full="0" aria-pressed="true" aria-label="Ver imagem: Health Pro Silence"><img src="images/products/gin-aspirador-fumos-tbh.webp" alt="" width="1155" height="1255" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-aspirador-fumos-tbh-compacto.webp" data-w="875" data-h="1157" data-cap="Health Pro, versão compacta" data-full="0" aria-pressed="false" aria-label="Ver imagem: Health Pro, versão compacta"><img src="images/products/gin-aspirador-fumos-tbh-compacto.webp" alt="" width="875" height="1157" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-aspirador-fumos-tbh-bocal.webp" data-w="494" data-h="242" data-cap="Bocal de aspiração" data-full="0" aria-pressed="false" aria-label="Ver imagem: Bocal de aspiração"><img src="images/products/gin-aspirador-fumos-tbh-bocal.webp" alt="" width="494" height="242" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-aspirador-fumos-tbh-uso.webp" data-w="1300" data-h="702" data-cap="Em utilização" data-full="1" aria-pressed="false" aria-label="Ver imagem: Em utilização"><img src="images/products/gin-aspirador-fumos-tbh-uso.webp" alt="" width="1300" height="702" loading="lazy"></button></div>
               </div>
@@ -2288,7 +2322,7 @@
         </div>
       </section>
       <!-- CRIOTERAPIA -->
-      <section id="gyCrioterapia" class="r20-section">
+      <section id="gyCrioterapia" class="r20-section" data-gy-sec="crioterapia">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2299,7 +2333,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>MEDGYN</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyCrio">
+            <article class="gy-prod r20-reveal" id="gyCrio" data-gy-cat="crioterapia" data-gy-q="medgyn pistola de crioterapia aplicacao controlada de frio, em utilizacao manual pistola de crioterapia medgyn com mangueira de gas crioterapia crioterapia">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-crioterapia.webp" alt="Pistola de crioterapia MedGyn com mangueira de gás" width="735" height="1000" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:3" role="group" aria-label="Mais imagens de Pistola de crioterapia"><button type="button" class="gy-thumb" data-src="images/products/gin-crioterapia.webp" data-w="735" data-h="1000" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-crioterapia.webp" alt="" width="735" height="1000" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-crioterapia-sondas.webp" data-w="516" data-h="1000" data-cap="Sondas de crioterapia" data-full="0" aria-pressed="false" aria-label="Ver imagem: Sondas de crioterapia"><img src="images/products/gin-crioterapia-sondas.webp" alt="" width="516" height="1000" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-crioterapia-mala.webp" data-w="919" data-h="955" data-cap="Mala de transporte" data-full="0" aria-pressed="false" aria-label="Ver imagem: Mala de transporte"><img src="images/products/gin-crioterapia-mala.webp" alt="" width="919" height="955" loading="lazy"></button></div>
               </div>
@@ -2322,7 +2356,7 @@
         </div>
       </section>
       <!-- LASER -->
-      <section id="gyLaser" class="r20-section r20-soft">
+      <section id="gyLaser" class="r20-section r20-soft" data-gy-sec="laser">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2333,7 +2367,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>INTERMEDIC</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyGynelase">
+            <article class="gy-prod r20-reveal" id="gyGynelase" data-gy-cat="laser" data-gy-q="intermedic gynelase laser para procedimentos ginecologicos sistema laser intermedic gynelase laser laser">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-gynelase.webp" alt="Sistema laser INTERMEDIC GYNELASE" width="1100" height="1100" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:4" role="group" aria-label="Mais imagens de GYNELASE"><button type="button" class="gy-thumb" data-src="images/products/gin-gynelase.webp" data-w="1100" data-h="1100" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-gynelase.webp" alt="" width="1100" height="1100" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-gynelase-aplicacao.webp" data-w="601" data-h="900" data-cap="Peça de mão" data-full="1" aria-pressed="false" aria-label="Ver imagem: Peça de mão"><img src="images/products/gin-gynelase-aplicacao.webp" alt="" width="601" height="900" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-gynelase-braco.webp" data-w="1100" data-h="734" data-cap="Braço articulado" data-full="1" aria-pressed="false" aria-label="Ver imagem: Braço articulado"><img src="images/products/gin-gynelase-braco.webp" alt="" width="1100" height="734" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-gynelase-pecas.webp" data-w="1100" data-h="833" data-cap="Acessórios GyneScan™" data-full="0" aria-pressed="false" aria-label="Ver imagem: Acessórios GyneScan™"><img src="images/products/gin-gynelase-pecas.webp" alt="" width="1100" height="833" loading="lazy"></button></div>
               </div>
@@ -2356,7 +2390,7 @@
         </div>
       </section>
       <!-- ILUMINAÇÃO DE PRECISÃO -->
-      <section id="gyIluminacao" class="r20-section">
+      <section id="gyIluminacao" class="r20-section" data-gy-sec="iluminacao">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2367,7 +2401,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>ACEM</span><span>LID</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyAcem">
+            <article class="gy-prod r20-reveal" id="gyAcem" data-gy-cat="iluminacao" data-gy-q="acem acemst1 candeeiro medico led, com temperatura de cor regulavel candeeiro medico led acemst1 com braco flexivel, em suporte com rodas iluminacao de precisao iluminacao intensidade maxima 30.000 lux a 100 cm 100.000 lux a 50 cm (st1.3) temperatura de cor 3.000 a 5.500 k (st1.3) 4.300 k (st1.1) restituicao de cor (ra/r9/r13) 98 / 96 / 100 diametro do campo de luz 26 cm consumo 10 va (st1.1) 12 va (st1.3) duracao media dos led cerca de 60.000 horas">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-acemst1.webp" alt="Candeeiro médico LED ACEMST1 com braço flexível, em suporte com rodas" width="544" height="1057" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:4" role="group" aria-label="Mais imagens de ACEMST1"><button type="button" class="gy-thumb" data-src="images/products/gin-acemst1.webp" data-w="544" data-h="1057" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-acemst1.webp" alt="" width="544" height="1057" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-acemst1-articulado.webp" data-w="546" data-h="1100" data-cap="Braço articulado" data-full="0" aria-pressed="false" aria-label="Ver imagem: Braço articulado"><img src="images/products/gin-acemst1-articulado.webp" alt="" width="546" height="1100" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-acemst1-luz.webp" data-w="494" data-h="629" data-cap="Feixe de luz sem infravermelhos" data-full="1" aria-pressed="false" aria-label="Ver imagem: Feixe de luz sem infravermelhos"><img src="images/products/gin-acemst1-luz.webp" alt="" width="494" height="629" loading="lazy"></button><button type="button" class="gy-thumb gy-thumb-full" data-src="images/products/gin-acemst1-cores.webp" data-w="1100" data-h="630" data-cap="Cores disponíveis" data-full="1" aria-pressed="false" aria-label="Ver imagem: Cores disponíveis"><img src="images/products/gin-acemst1-cores.webp" alt="" width="1100" height="630" loading="lazy"></button></div>
               </div>
@@ -2386,7 +2420,7 @@
                 <div class="gy-actions"><a class="bx-link" href="https://www.speculum.pt/pt/contactos">Pedir informação</a></div>
               </div>
             </article>
-            <article class="gy-prod gy-flip r20-reveal" id="gyCarla">
+            <article class="gy-prod gy-flip r20-reveal" id="gyCarla" data-gy-cat="iluminacao" data-gy-q="lid carla focus candeeiro de exame led para consulta e procedimentos candeeiro de exame led carla focus em suporte movel iluminacao de precisao iluminacao">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-carla-focus.webp" alt="Candeeiro de exame LED CARLA FOCUS em suporte móvel" width="227" height="441" loading="lazy"><figcaption>Vista principal</figcaption></figure><div class="gy-gallery" style="--gy-n:2" role="group" aria-label="Mais imagens de CARLA FOCUS"><button type="button" class="gy-thumb" data-src="images/products/gin-carla-focus.webp" data-w="227" data-h="441" data-cap="Vista principal" data-full="0" aria-pressed="true" aria-label="Ver imagem: Vista principal"><img src="images/products/gin-carla-focus.webp" alt="" width="227" height="441" loading="lazy"></button><button type="button" class="gy-thumb" data-src="images/products/gin-carla-focus-parede.webp" data-w="159" data-h="347" data-cap="Montagem fixa" data-full="0" aria-pressed="false" aria-label="Ver imagem: Montagem fixa"><img src="images/products/gin-carla-focus-parede.webp" alt="" width="159" height="347" loading="lazy"></button></div>
               </div>
@@ -2409,7 +2443,7 @@
         </div>
       </section>
       <!-- INSTRUMENTOS -->
-      <section id="gyInstrumentos" class="r20-section r20-soft">
+      <section id="gyInstrumentos" class="r20-section r20-soft" data-gy-sec="instrumentos">
         <div class="r20-container">
           <div class="gy-section-head r20-reveal">
             <div>
@@ -2420,7 +2454,7 @@
             <div class="gy-brands" aria-label="Marcas"><span>HEBU</span></div>
           </div>
           <div class="gy-prod-list">
-            <article class="gy-prod r20-reveal" id="gyHebu">
+            <article class="gy-prod r20-reveal" id="gyHebu" data-gy-cat="instrumentos" data-gy-q="hebu metalicos revestidos instrumentos especializados para laser e eletrocirurgia especulos e pincas ginecologicas hebu com revestimento isolante azul instrumentos instrumentos">
               <div class="gy-prod-media">
                 <figure class="gy-photo gy-main"><img src="images/products/gin-hebu-revestidos.webp" alt="Espéculos e pinças ginecológicas HEBU com revestimento isolante azul" width="631" height="351" loading="lazy"></figure>
               </div>
@@ -3023,6 +3057,47 @@
 						fig.classList.remove('gy-troca');
 					}, 150);
 				});
+			});
+		});
+	})();
+</script>
+
+<!-- Localizador do topo: filtra as fichas por texto (modelo, marca, especificações) e por área. -->
+<script>
+	(function () {
+		var campo = document.querySelector('.gy-query');
+		if (!campo) return;
+		var chips = [].slice.call(document.querySelectorAll('.gy-finder .bx-chip'));
+		var fichas = [].slice.call(document.querySelectorAll('.gy-prod[data-gy-cat]'));
+		var seccoes = [].slice.call(document.querySelectorAll('section[data-gy-sec]'));
+		var procura = document.getElementById('gyProcura');
+		var estado = document.querySelector('.gy-status');
+		var ver = document.querySelector('.gy-ver');
+		var area = 'all';
+		var normaliza = function (t) { return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); };
+		function aplica() {
+			var termos = normaliza(campo.value).split(/\s+/).filter(Boolean);
+			var ativo = termos.length > 0 || area !== 'all';
+			var n = 0, primeira = null;
+			fichas.forEach(function (f) {
+				var q = f.getAttribute('data-gy-q');
+				var ok = (area === 'all' || f.getAttribute('data-gy-cat') === area) && termos.every(function (t) { return q.indexOf(t) !== -1; });
+				f.hidden = !ok;
+				if (ok) { n++; if (!primeira) primeira = f; f.classList.add('visible'); }
+			});
+			seccoes.forEach(function (s) { s.hidden = !s.querySelector('.gy-prod[data-gy-cat]:not([hidden])'); });
+			if (procura) procura.hidden = ativo;
+			estado.innerHTML = n ? '<strong>' + n + '</strong> ' + (n === 1 ? 'equipamento' : 'equipamentos') : 'Nenhum equipamento encontrado';
+			ver.hidden = !n;
+			ver.setAttribute('href', ativo && primeira ? '#' + primeira.closest('section').id : '#gyProcura');
+		}
+		campo.addEventListener('input', aplica);
+		campo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); if (!ver.hidden) ver.click(); } });
+		chips.forEach(function (b) {
+			b.addEventListener('click', function () {
+				area = b.getAttribute('data-gy-area');
+				chips.forEach(function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
+				aplica();
 			});
 		});
 	})();
