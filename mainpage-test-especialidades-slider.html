@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speculum | Soluções e Equipamentos Médicos</title>
+
+  <!-- Biblioteca Swiper CSS (Slider moderno estilo La Medic Rio) -->
+
+  <!-- Tipografia Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 1. Header & Menu Superior */
+    :root {
+      --header-height: 95px;
+      --primary-color: #0077b6;
+      --primary-hover: #005f94;
+    }
+
+    .main-header {
+      height: var(--header-height);
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .logo-area img {
+      height: 65px; /* Altura aumentada (antes era 48px) */
+      max-height: 75px;
+      width: auto; /* Mantém a proporção correta sem distorcer */
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-area img:hover {
+      transform: scale(1.02); /* Efeito suave ao passar o cursor */
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .nav-menu a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #334155;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-color);
+    }
+
+    .btn-quote {
+      background-color: var(--primary-color);
+      color: #ffffff !important;
+      padding: 0.65rem 1.35rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      font-size: 0.9rem !important;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-quote:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* 2. Slider Abrangendo Toda a Área (Hero) */
+    .hero-slider {
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      min-height: 580px;
+      position: relative;
+    }
+
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 6%;
+    }
+
+    /* Overlay escuro para contraste profissional */
+    .slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.90) 0%,
+        rgba(15, 23, 42, 0.87) 35%,
+        rgba(15, 23, 42, 0.72) 50%,
+        rgba(15, 23, 42, 0.40) 68%,
+        rgba(15, 23, 42, 0.12) 85%,
+        rgba(15, 23, 42, 0) 100%
+      );
+      z-index: 1;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      color: #ffffff;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .slide-tag {
+      display: inline-block;
+      background-color: rgba(0, 119, 182, 0.35);
+      border: 1px solid #38bdf8;
+      color: #e0f2fe;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-content p {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .slide-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-main {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-main:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.9rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Customização dos Controlos do Slider */
+    .swiper-button-next, .swiper-button-prev {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+      font-size: 1.25rem !important;
+      font-weight: bold;
+    }
+
+    .swiper-pagination {
+      bottom: 2rem !important;
+    }
+
+    .swiper-pagination-bullet {
+      background: #ffffff !important;
+      opacity: 0.45 !important;
+      width: 10px !important;
+      height: 10px !important;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1 !important;
+      width: 32px !important;
+      border-radius: 8px !important;
+      background: var(--primary-color) !important;
+    }
+
+    /* 3. Secção Rápida de Destaque / Especialidades */
+    .overview-section {
+      max-width: 1320px;
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-body h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0f172a;
+    }
+
+    .card-body p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-link:hover {
+      color: var(--primary-hover);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .nav-menu {
+        gap: 1rem;
+      }
+      .slide-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .hero-slider {
+        height: 520px;
+      }
+      .slide-content h1 {
+        font-size: 2rem;
+      }
+      .slide-content p {
+        font-size: 1rem;
+      }
+      .slide-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Atualização: slider com quatro conteúdos e navegação móvel acessível. */
+    html { scroll-padding-top: calc(var(--header-height) + 20px); }
+    :focus-visible { outline: 3px solid #38bdf8; outline-offset: 5px; }
+    button { font: inherit; cursor: pointer; }
+    .skip-link { position: fixed; left: 12px; top: -100px; z-index: 2000; padding: 12px 18px; background: #fff; color: #005f94; }
+    .skip-link:focus { top: 12px; }
+    .hero-slider { height: calc(100svh - var(--header-height)); min-height: 640px; background: #102a3d; }
+    .hero-slider .swiper-slide {
+      background-image: var(--slide-image);
+      background-position: var(--slide-position, center);
+      padding: 65px max(7%, 80px) 110px;
+      height: 100%;
+    }
+    .slide-content { width: 100%; max-width: 780px; animation: none; }
+    .slide-content h1, .slide-content h2 { font-size: clamp(2rem, 3.4vw, 3.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -0.02em; text-wrap: balance; }
+    .slide-content p { max-width: 680px; }
+    .slide-actions { flex-wrap: wrap; }
+    .slide-callout { display: block; color: #7dd3fc; font-size: clamp(2rem, 3.6vw, 3.5rem); line-height: 1.1; margin-bottom: 1rem; }
+    .slide-campaign h2 { font-size: clamp(1.8rem, 2.8vw, 2.7rem); }
+    .slide-content .slide-validity { font-size: .9rem; color: #f1f5f9; margin-bottom: 1.5rem; }
+    .hero-slider .swiper-button-prev, .hero-slider .swiper-button-next { padding: 0; }
+    .hero-slider .swiper-pagination { left: 50%; width: auto; transform: translateX(-50%); }
+    .menu-toggle { display: none; }
+
+    /* O menu passa a hambúrguer antes de os links ficarem sem espaço. */
+    @media (max-width: 1200px) {
+      :root { --header-height: 80px; }
+      .main-header { padding: 0 5%; }
+      .logo-area img { height: auto; width: 220px; max-width: 58vw; max-height: 58px; object-fit: contain; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; min-width: 44px; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; color: #005f94; background: #fff; }
+      .hamburger { width: 22px; display: grid; gap: 4px; }
+      .hamburger span { display: block; height: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
+      .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+      .main-header #main-navigation { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-top: 1px solid #e2e8f0; box-shadow: 0 12px 18px #0f172a15; max-height: calc(100dvh - var(--header-height)); overflow-y: auto; }
+      .main-header #main-navigation.is-open { display: block; }
+      .main-header #main-navigation .nav-menu { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 5% 20px; }
+      .main-header #main-navigation .nav-menu a { display: block; padding: 12px 10px; min-height: 44px; }
+      .main-header #main-navigation .nav-menu .btn-quote { text-align: center; margin-top: 8px; }
+    }
+    @media (max-width: 768px) {
+      .hero-slider { height: calc(100svh - var(--header-height)); min-height: 720px; }
+      .hero-slider .swiper-slide { padding: 36px 6% 120px; background-image: var(--slide-image-mobile, var(--slide-image)); background-position: var(--slide-position-mobile, center); }
+      .slide-overlay { background: linear-gradient(90deg, rgba(15, 23, 42, .94) 0%, rgba(15, 23, 42, .88) 45%, rgba(15, 23, 42, .65) 68%, rgba(15, 23, 42, .30) 85%, rgba(15, 23, 42, 0) 100%); }
+      .slide-tag { font-size: .72rem; margin-bottom: 1rem; }
+      .slide-content h1, .slide-content h2 { font-size: clamp(1.65rem, 6.4vw, 2.15rem); }
+      .slide-content p { font-size: 1rem; margin-bottom: 1.5rem; }
+      .slide-content .slide-validity { font-size: .82rem; }
+      .slide-callout { font-size: clamp(1.8rem, 7.5vw, 2.6rem); }
+      .slide-actions { align-items: stretch; gap: .75rem; }
+      .slide-actions a { font-size: .9rem; padding: .85rem 1rem; text-align: center; }
+      .hero-slider .swiper-button-prev, .hero-slider .swiper-button-next { top: auto; bottom: 24px; margin: 0; width: 44px !important; height: 44px !important; }
+      .hero-slider .swiper-button-prev { left: 6%; }
+      .hero-slider .swiper-button-next { left: calc(6% + 54px); right: auto; }
+      .hero-slider .swiper-pagination { bottom: 86px !important; }
+    }
+    @media (max-width: 359px) {
+      .menu-label { display: none; }
+      .hero-slider { min-height: 790px; }
+      .grid-cards { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* Rodapé moderno — regras limitadas ao rodapé. */
+    .speculum-footer { color: #cfdfeb; background: #092a40; border-top: 4px solid #279fc7; }
+    .footer-inner { width: min(1320px, 90%); margin-inline: auto; }
+    .footer-intro { display: flex; align-items: center; justify-content: space-between; gap: 36px; padding-block: 54px 44px; border-bottom: 1px solid #ffffff24; }
+    .footer-eyebrow { display: block; color: #7dd3fc; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-intro h2 { color: #fff; font-size: clamp(1.6rem, 2.5vw, 2.1rem); font-weight: 600; line-height: 1.25; letter-spacing: -.025em; margin-bottom: 12px; }
+    .footer-intro p { font-size: .95rem; max-width: 620px; }
+    .footer-cta { display: inline-flex; align-items: center; justify-content: center; gap: 20px; flex-shrink: 0; border-radius: 8px; padding: 15px 22px; min-height: 48px; color: #082a40; background: #7dd3fc; font-size: .95rem; font-weight: 600; transition: background .2s; }
+    .footer-cta:hover { background: #bae6fd; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr .9fr .8fr 1.1fr; gap: 44px; padding-block: 48px; }
+    .footer-logo { display: inline-block; background: #fff; padding: 14px 18px; border-radius: 10px; max-width: 100%; }
+    .footer-logo img { display: block; width: 238px; max-width: 100%; height: auto; }
+    .footer-brand > p { font-size: .9rem; line-height: 1.75; margin-block: 20px; max-width: 290px; }
+    .footer-social { display: inline-flex; align-items: center; gap: 9px; font-size: .8rem; }
+    .footer-social-icon { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #ffffff40; border-radius: 50%; color: #fff; font-size: 1rem; font-weight: 700; }
+    .footer-column h2 { color: #fff; font-size: .95rem; font-weight: 600; margin-block: 4px 18px; }
+    .footer-column ul { display: grid; gap: 2px; list-style: none; padding: 0; }
+    .footer-column li a { display: inline-block; padding-block: 8px; font-size: .88rem; line-height: 1.5; }
+    .speculum-footer a:not(.footer-cta):hover { color: #7dd3fc; text-decoration: underline; text-underline-offset: 4px; }
+    .footer-phone { display: block; color: #fff; font-size: 1.05rem; font-weight: 500; padding-block: 5px; width: fit-content; }
+    .footer-note { color: #a9c2d3; font-size: .72rem; line-height: 1.6; margin-top: 4px; }
+    .footer-email { display: inline-block; font-size: .88rem; padding-block: 14px; overflow-wrap: anywhere; }
+    .footer-contact address { font-style: normal; font-size: .85rem; line-height: 1.8; }
+    .footer-trust { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 26px; border: 1px solid #ffffff24; border-radius: 12px; background: #ffffff05; }
+    .footer-certification { display: flex; align-items: center; gap: 24px; min-width: 0; }
+    .footer-certificate-image { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 200px; min-height: 100px; padding: 12px; border-radius: 8px; background: #fff; }
+    .footer-certificate-image img { display: block; max-width: 100%; max-height: 120px; width: auto; height: auto; object-fit: contain; }
+    .footer-trust-copy h2 { color: #fff; font-size: .95rem; font-weight: 600; margin-bottom: 8px; }
+    .footer-trust-copy p { color: #b6cddd; font-size: .82rem; line-height: 1.6; max-width: 340px; }
+    .footer-trust-copy a { display: inline-block; color: #7dd3fc; font-size: .82rem; padding-block: 8px; }
+    .footer-complaints { display: grid; gap: 3px; border-left: 1px solid #ffffff24; padding: 12px 0 12px 32px; flex-shrink: 0; color: #fff; font-size: .9rem; }
+    .footer-complaints-sub { color: #b6cddd; font-size: .78rem; }
+    .footer-bottom { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-block: 28px; color: #a9c2d3; font-size: .73rem; line-height: 1.8; }
+    .footer-bottom nav { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: flex-end; }
+    @media (max-width: 1100px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px 48px; }
+      .footer-trust { align-items: flex-start; }
+      .footer-certification { align-items: flex-start; }
+      .footer-certificate-image { width: 160px; }
+      .footer-complaints { padding-left: 20px; }
+    }
+    @media (max-width: 768px) {
+      .footer-intro { align-items: flex-start; flex-direction: column; gap: 24px; padding-block: 36px; }
+      .footer-grid { padding-block: 36px; gap: 28px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-brand > p { max-width: 400px; }
+      .footer-contact { grid-column: 1 / -1; }
+      .footer-trust { flex-direction: column; gap: 24px; padding: 20px; }
+      .footer-certification { flex-wrap: wrap; gap: 18px; }
+      .footer-certificate-image { width: 180px; }
+      .footer-complaints { width: 100%; border-left: 0; border-top: 1px solid #ffffff24; padding: 20px 0 0; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+      .footer-bottom nav { justify-content: flex-start; gap: 4px 18px; }
+      .footer-column li a, .footer-bottom a { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+    @media (max-width: 359px) {
+      .footer-grid { grid-template-columns: minmax(0, 1fr); }
+      .footer-cta { width: 100%; padding-inline: 14px; }
+    }
+
+    /* Cabeçalho com pesquisa sempre visível, fora do menu recolhível. */
+    :root { --header-height: 148px; }
+    .main-header { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "brand navigation" "search search"; grid-template-rows: 80px 44px; gap: 8px 24px; padding: 8px 4%; }
+    .logo-area { grid-area: brand; }
+    .main-header #main-navigation { grid-area: navigation; justify-self: end; }
+    .nav-menu { gap: 1.2rem; }
+    .nav-menu a { font-size: .88rem; }
+    .site-search { grid-area: search; width: 100%; max-width: 520px; margin-inline: auto; justify-self: center; display: flex; align-items: center; height: 44px; min-width: 0; background: #f1f6fa; border: 1px solid #d5e3ec; border-radius: 8px; overflow: hidden; }
+    .site-search:focus-within { border-color: #0077b6; outline: 2px solid #0077b630; outline-offset: 1px; }
+    .site-search .search-icon { flex-shrink: 0; width: 20px; height: 20px; margin-left: 14px; color: #52758d; }
+    .site-search input { min-width: 0; flex: 1; width: 100%; height: 100%; border: 0; background: transparent; padding: 10px 12px; outline: none; color: #16384f; font-size: .9rem; }
+    .site-search input::placeholder { color: #527087; opacity: 1; }
+    .site-search button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; align-self: stretch; padding: 0 18px; min-width: 44px; border: 0; color: #fff; background: #0077b6; font-size: .85rem; font-weight: 600; }
+    .site-search button:hover { background: #005f94; }
+    .site-search button:focus-visible { outline-offset: -4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+    /* Cinco acessos: uma linha no computador e apenas duas no telemóvel. */
+    .specialty-section { width: min(1320px, 90%); margin: 48px auto 36px; padding: 0; }
+    .specialty-section .section-header { margin-bottom: 24px; }
+    .specialty-section .section-header h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    .specialty-section .section-header p { font-size: .95rem; max-width: 620px; margin-inline: auto; }
+    .specialty-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; list-style: none; }
+    .specialty-grid li { min-width: 0; }
+    .specialty-button { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 80px; padding: 14px 10px; border: 1px solid #dbe8f1; border-radius: 12px; color: #16435e; background: #fff; box-shadow: 0 3px 12px #0a355006; font-size: .9rem; font-weight: 600; transition: background .2s, border-color .2s; }
+    .specialty-button svg { width: 26px; height: 26px; flex-shrink: 0; color: #0077b6; }
+    .specialty-arrow { color: #7295aa; font-weight: 400; }
+    .specialty-button:hover { background: #edf8ff; border-color: #70bbdf; }
+
+    /* Faixa contínua de logótipos, sem pausas por cursor ou toque. */
+    .brands-section { padding-block: 32px 28px; border-top: 1px solid #e2eaf1; background: #fff; }
+    .brands-heading { width: min(1320px, 90%); margin: 0 auto 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brands-eyebrow { display: block; margin-bottom: 6px; color: #52758d; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    .brands-heading h2 { color: #183d54; font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.35; }
+    .brands-viewport { overflow: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+    .brands-track { display: flex; width: max-content; animation: brands-scroll 38s linear infinite; }
+    .brands-group { flex-shrink: 0; padding-right: 48px; }
+    .brands-group img { display: block; width: 1020px; height: 110px; max-width: none; object-fit: contain; }
+    @keyframes brands-scroll { to { transform: translateX(-50%); } }
+    .brands-section.is-reduced-motion .brands-track { animation: none; }
+    .brands-section.is-reduced-motion .brands-clone { display: none; }
+    @media (max-width: 1200px) {
+      :root { --header-height: 132px; }
+      .main-header { grid-template-areas: "brand toggle" "search search"; grid-template-rows: 64px 44px; padding-inline: 5%; }
+      .menu-toggle { grid-area: toggle; justify-self: end; }
+      .main-header #main-navigation { grid-area: auto; justify-self: stretch; width: 100%; }
+      .specialty-button { flex-direction: column; gap: 8px; font-size: .85rem; }
+      .specialty-arrow { display: none; }
+    }
+    @media (max-width: 768px) {
+      .site-search input { font-size: 16px; padding-inline: 8px; }
+      .site-search .search-icon { margin-left: 10px; width: 18px; }
+      .site-search button { padding-inline: 12px; font-size: .78rem; gap: 5px; }
+      .site-search button span { display: none; }
+      .specialty-section { margin-block: 28px; }
+      .specialty-section .section-header { margin-bottom: 18px; }
+      .specialty-section .section-header p { font-size: .85rem; }
+      .specialty-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+      .specialty-grid li { grid-column: span 2; }
+      .specialty-grid li:nth-last-child(-n+2) { grid-column: span 3; }
+      .specialty-button { min-height: 76px; padding: 10px 5px; gap: 6px; border-radius: 10px; font-size: clamp(.7rem, 2.8vw, .85rem); }
+      .specialty-button svg { width: 24px; height: 24px; }
+      .brands-section { padding-block: 24px 16px; }
+      .brands-heading { gap: 12px; margin-bottom: 16px; }
+      .brands-eyebrow { font-size: .65rem; letter-spacing: .04em; }
+        .brands-group img { width: 816px; height: 88px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brands-track { animation: none; }
+      .brands-clone { display: none; }
+    }
+
+    /* Submenu de Especialidades: abertura por clique/toque. */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; border: 0; background: transparent; color: #334155; font-size: .88rem; font-weight: 500; }
+    .nav-dropdown-toggle:hover { color: #0077b6; }
+    .dropdown-chevron { display: inline-block; transition: transform .2s; }
+    .nav-dropdown-toggle[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
+    .specialties-submenu { position: absolute; top: calc(100% + 8px); left: -16px; z-index: 1100; min-width: 225px; padding: 8px; border: 1px solid #dce7ef; border-radius: 12px; background: #fff; box-shadow: 0 14px 35px #092a4026; list-style: none; }
+    .specialties-submenu[hidden] { display: none !important; }
+    .nav-menu .specialties-submenu a { display: flex; align-items: center; min-height: 44px; padding: 10px 12px; border-radius: 7px; }
+    .nav-menu .specialties-submenu a:hover { background: #edf8ff; color: #0077b6; }
+    .clinical-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+    .clinical-card { display: flex; flex-direction: column; min-width: 0; padding: 22px 18px; border: 1px solid #dbe8f1; border-radius: 14px; background: #fff; }
+    .clinical-number { color: #52758d; font-size: .75rem; letter-spacing: .08em; margin-bottom: 18px; }
+    .clinical-card h3 { color: #16435e; font-size: 1.05rem; margin-bottom: 10px; }
+    .clinical-card .clinical-subtitle { color: #315c75; font-weight: 600; margin-bottom: 10px; }
+    .clinical-card p { color: #64748b; font-size: .82rem; line-height: 1.65; }
+    .clinical-card a { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 5px; min-height: 44px; margin-top: auto; padding-top: 18px; color: #0077b6; font-size: .8rem; font-weight: 600; }
+    .clinical-card a:hover { text-decoration: underline; }
+    .clinical-scroll-hint { display: none; }
+    @media (max-width: 1200px) {
+      .menu-toggle { gap: 0; }
+      .main-header #main-navigation .nav-dropdown-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 44px; padding: 12px 10px; font-size: .88rem; }
+      .specialties-submenu { position: static; min-width: 0; margin: 2px 0 8px; padding: 6px 10px; border: 0; border-left: 2px solid #b7ddf0; border-radius: 0 8px 8px 0; background: #f4f9fc; box-shadow: none; }
+      .clinical-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .clinical-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(80vw, 290px); gap: 12px; overflow-x: auto; padding: 2px 2px 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bfd6e4 transparent; }
+      .clinical-card { padding: 18px; scroll-snap-align: start; }
+      .clinical-number { margin-bottom: 10px; }
+      .clinical-scroll-hint { display: block; margin-top: 8px; color: #52758d; font-size: .75rem; text-align: center; }
+    }
+    /* Títulos das marcas centrados em todas as dimensões. */
+    .brands-heading { justify-content: center; text-align: center; }
+    .brands-heading > div { width: 100%; }
+
+    .logo-area img { width: 300px; max-width: 100%; height: auto; max-height: 65px; object-fit: contain; }
+    @media (max-width: 1200px) { .logo-area img { width: 220px; max-width: 58vw; max-height: 58px; } }
+    /* Marcas: título semântico e frase de apoio com maior destaque visual. */
+    .brands-heading #brands-title { margin: 0 0 10px; color: #52758d; font-size: clamp(.85rem, 1.4vw, 1rem); font-weight: 600; letter-spacing: .04em; text-transform: none; line-height: 1.5; }
+    .brands-statement { color: #143b54; font-size: clamp(1.6rem, 3.2vw, 2.5rem); font-weight: 800; line-height: 1.2; letter-spacing: -.03em; text-wrap: balance; }
+    /* Os logótipos brancos assentam diretamente no fundo escuro. */
+    .footer-logo { background: transparent; padding: 0; border-radius: 0; }
+    .footer-logo img { width: 260px; max-width: 100%; height: auto; }
+    .footer-certificate-image { background: transparent; padding: 4px; }
+    .footer-certificate-image img { width: 100%; height: auto; max-height: 130px; object-fit: contain; }
+    .footer-socials { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+    .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 11px; border: 1px solid #ffffff40; border-radius: 50%; background: transparent; color: #fff; }
+    .social-icon svg { display: block; width: 22px; height: 22px; }
+    .speculum-footer a.social-icon:hover { color: #fff; background: #ffffff15; border-color: #7dd3fc; }
+
+    /* Carrossel com temporizador nativo e transição em fade. */
+    .hero-slider { overflow: hidden; }
+    .hero-slider .swiper-wrapper { position: relative; width: 100%; height: 100%; }
+    .hero-slider .swiper-slide { position: absolute; inset: 0; width: 100%; opacity: 0; visibility: hidden; transition: opacity .65s ease, visibility .65s ease; }
+    .hero-slider .swiper-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
+    .hero-slider .swiper-button-prev, .hero-slider .swiper-button-next { position: absolute; top: 50%; z-index: 10; display: grid; place-items: center; margin-top: -26px; }
+    .hero-slider .swiper-button-prev { left: 12px; }
+    .hero-slider .swiper-button-next { right: 12px; }
+    .hero-slider .swiper-button-prev::after { content: '‹'; font-size: 32px; line-height: 1; }
+    .hero-slider .swiper-button-next::after { content: '›'; font-size: 32px; line-height: 1; }
+    .hero-slider .swiper-pagination { position: absolute; z-index: 10; display: flex; align-items: center; gap: 10px; }
+    .hero-slider .swiper-pagination-bullet { display: block; border: 0; border-radius: 999px; cursor: pointer; padding: 0; position: relative; }
+    .hero-slider .swiper-pagination-bullet::before { content: ''; position: absolute; inset: -14px -4px; }
+    .hero-slider .swiper-pagination-bullet-active { border-radius: 999px; }
+    .content-container { width: min(1320px, 90%); margin-inline: auto; }
+    .section-eyebrow { display: block; color: #7dd3fc; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    /* Especialidades em fundo institucional. */
+    .specialty-showcase.specialty-section { width: 100%; max-width: none; margin: 0; padding: 64px 0; color: #fff; background: radial-gradient(circle at center, #002b4d 0%, #001428 100%); }
+    .specialty-container { width: min(1320px, 90%); margin: auto; }
+    .specialty-showcase .section-header h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.3rem); }
+    .specialty-showcase .section-header p { color: #c1d5e5; }
+    .specialty-photo-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+    .specialty-photo-card { display: flex; flex-direction: column; border: 1px solid #ffffff26; background: #ffffff08; border-radius: 16px; overflow: hidden; transition: transform .2s, background .2s; }
+    .specialty-photo-card:hover { transform: translateY(-4px); background: #ffffff14; }
+    .specialty-photo { padding: 18px; background: #fff; }
+    .specialty-photo img { display: block; width: 100%; height: 160px; border-radius: 10px; object-fit: contain; background: #fff; }
+    .specialty-photo-copy { display: flex; flex-direction: column; flex: 1; padding: 20px 16px; }
+    .specialty-photo-copy h3 { margin-bottom: 10px; font-size: 1.05rem; color: #fff; }
+    .specialty-photo-copy p { color: #c1d5e5; font-size: .82rem; line-height: 1.65; margin-bottom: 18px; }
+    .specialty-photo-link { display: flex; justify-content: space-between; gap: 8px; margin-top: auto; color: #7dd3fc; font-size: .78rem; font-weight: 600; }
+    .specialty-swipe-hint { display: none; }
+    /* Diferenciação institucional. */
+    .difference-section { padding: 64px 0; background: #f3f7fa; }
+    .difference-section .section-header { margin-bottom: 32px; }
+    .difference-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    .difference-card { padding: 30px 24px; border: 1px solid #e7eef4; border-radius: 18px; background: #fff; box-shadow: 0 8px 28px #0e365a0a; }
+    .difference-icon { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #e9f5fc; color: #0077b6; margin-bottom: 24px; }
+    .difference-icon svg { width: 28px; height: 28px; }
+    .difference-card h3 { color: #123a54; font-size: 1.08rem; line-height: 1.4; margin-bottom: 14px; }
+    .difference-card p { color: #64748b; font-size: .9rem; line-height: 1.8; }
+    /* Newsletter imediatamente antes do rodapé. */
+    .newsletter-section { padding: 40px 0; background: #e8f2f8; }
+    .newsletter-box { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+    .newsletter-copy .section-eyebrow { color: #327594; }
+    .newsletter-copy h2 { color: #123a54; font-size: clamp(1.6rem, 2.5vw, 2rem); line-height: 1.25; margin-bottom: 14px; }
+    .newsletter-copy p { color: #527087; font-size: .94rem; line-height: 1.75; }
+    .newsletter-input-row { display: flex; gap: 10px; }
+    .newsletter-input-row input { flex: 1; min-width: 0; padding: 15px 16px; border: 1px solid #c9dce8; border-radius: 8px; background: #fff; font: inherit; font-size: .9rem; color: #123a54; }
+    .newsletter-input-row button { min-height: 50px; padding: 12px 20px; border: 0; border-radius: 8px; background: #0077b6; color: #fff; font-weight: 600; }
+    .newsletter-input-row button:hover { background: #005f94; }
+    .newsletter-consent { display: flex; align-items: flex-start; gap: 9px; color: #46667c; font-size: .77rem; margin-top: 14px; line-height: 1.7; }
+    .newsletter-consent input { width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; accent-color: #0077b6; }
+    .newsletter-consent a { text-decoration: underline; }
+    .newsletter-note { color: #527087; font-size: .73rem; line-height: 1.6; margin-top: 10px; }
+    .newsletter-status { color: #123a54; font-size: .85rem; margin-top: 10px; }
+    .footer-complete .footer-grid { grid-template-columns: 1.25fr 1fr .8fr 1.1fr; padding-block: 56px 40px; }
+    .footer-sgs { display: inline-block; max-width: 190px; }
+    .footer-sgs img { width: 100%; height: auto; display: block; }
+    .footer-complete .footer-brand > p { font-size: .82rem; margin-block: 18px; }
+    .footer-help-link { display: inline-block; margin-top: 14px; font-size: .82rem; color: #7dd3fc; }
+    .footer-complete .footer-bottom { border-top: 1px solid #ffffff24; }
+    @media (max-width: 1100px) {
+      .specialty-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .difference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-complete .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero-slider .swiper-button-prev, .hero-slider .swiper-button-next { top: auto; bottom: 24px; margin: 0; }
+      .hero-slider .swiper-button-prev { left: 6%; }
+      .hero-slider .swiper-button-next { left: calc(6% + 54px); right: auto; }
+      .hero-slider .swiper-pagination { bottom: 40px !important; left: auto; right: 6%; transform: none; }
+      .specialty-showcase.specialty-section { padding-block: 36px; }
+      .specialty-photo-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(76vw, 270px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 16px; gap: 14px; scrollbar-width: thin; scrollbar-color: #7dd3fc66 transparent; }
+      .specialty-photo-card { scroll-snap-align: start; }
+      .specialty-photo img { height: 150px; }
+      .specialty-swipe-hint { display: block; text-align: center; font-size: .75rem; color: #bdd4e5; margin-top: 12px; }
+      .difference-section { padding-block: 36px; }
+      .difference-grid { gap: 12px; }
+      .difference-card { padding: 20px 16px; }
+      .difference-card h3 { font-size: .95rem; }
+      .difference-card p { font-size: .8rem; }
+      .difference-icon { width: 48px; height: 48px; margin-bottom: 18px; }
+      .newsletter-box { grid-template-columns: 1fr; gap: 24px; }
+      .newsletter-input-row input { font-size: 16px; }
+      .newsletter-input-row { flex-wrap: wrap; }
+      .newsletter-input-row input { flex-basis: 220px; }
+      .newsletter-input-row button { flex: 1; }
+    }
+    @media (max-width: 359px) {
+      .difference-grid, .footer-complete .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Faixa limpa: sem barras horizontais ou verticais. */
+    .brands-slider, .brands-container, .brands-viewport, .brands-track {
+      overflow: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .brands-slider::-webkit-scrollbar,
+    .brands-container::-webkit-scrollbar,
+    .brands-viewport::-webkit-scrollbar,
+    .brands-track::-webkit-scrollbar { display: none; width: 0; height: 0; }
+    /* Pesquisa limitada à coluna do menu no computador. */
+    @media (min-width: 1201px) {
+      .main-header { grid-template-areas: "brand navigation" "brand search"; grid-template-columns: 300px max-content; justify-content: space-between; column-gap: 40px; }
+      .main-header .logo-area { align-self: center; }
+      .main-header #main-navigation { width: 100%; justify-self: stretch; }
+      .main-header .nav-menu { justify-content: space-between; }
+      .main-header .site-search { width: 100%; max-width: none; justify-self: stretch; margin: 0; }
+    }
+    @media (max-width: 1200px) {
+      .main-header .site-search { width: 100%; max-width: 520px; justify-self: center; margin-inline: auto; }
+    }
+
+    /* Logótipos individuais na mesma caixa visual, com margens preservadas. */
+    .brands-group { display: flex; align-items: center; gap: 32px; padding-right: 32px; }
+    .brands-group img { width: 220px; height: 110px; flex-shrink: 0; object-fit: contain; }
+    .brands-track { animation-duration: 55s; }
+    @media (max-width: 768px) { .brands-group img { width: 180px; height: 90px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .brands-viewport { overflow: hidden; }
+      .brands-track { width: 100%; }
+      .brands-group:not(.brands-clone) { width: 100%; justify-content: center; flex-wrap: wrap; padding-right: 0; gap: 8px; }
+      .brands-clone { display: none; }
+      .brands-group img { width: min(40vw, 220px); height: auto; }
+    }
+
+    /* Pesquisa e menu partilham a mesma coluna e os mesmos limites laterais. */
+    @media (min-width: 1201px) {
+      :root { --header-height: 112px; }
+      .main-header { grid-template-rows: 52px 40px; row-gap: 4px; column-gap: 32px; padding-block: 8px; }
+      .main-header #main-navigation { align-self: end; }
+      .main-header .site-search { width: 100%; max-width: none; height: 40px; margin: 0; justify-self: stretch; }
+    }
+    @media (max-width: 1200px) {
+      :root { --header-height: 122px; }
+      .main-header { grid-template-rows: 58px 44px; row-gap: 4px; padding-block: 8px; }
+    }
+    /* CTA imediatamente antes da newsletter. */
+    .contact-cta-section { padding: 52px 0; background: radial-gradient(circle at center, #002b4d 0%, #001428 100%); color: #fff; }
+    .contact-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+    .contact-cta-copy { max-width: 780px; }
+    .contact-cta-eyebrow { display: block; margin-bottom: 14px; color: #7bd1f8; font-size: .76rem; font-weight: 700; line-height: 1.6; letter-spacing: .1em; text-transform: uppercase; }
+    .contact-cta-copy h2 { margin-bottom: 16px; color: #fff; font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; text-wrap: balance; }
+    .contact-cta-copy p { color: #c2d6e6; font-size: 1rem; line-height: 1.75; max-width: 650px; }
+    .contact-cta-button { display: inline-flex; justify-content: center; align-items: center; gap: 22px; flex-shrink: 0; min-height: 52px; padding: 15px 24px; border: 1px solid #7bd1f8; border-radius: 8px; background: #7bd1f8; color: #092a40; font-size: .95rem; font-weight: 700; transition: background .2s, border-color .2s; }
+    .contact-cta-button:hover { background: #a6e1fc; border-color: #a6e1fc; }
+    @media (max-width: 768px) {
+      .contact-cta-section { padding-block: 36px; }
+      .contact-cta-inner { flex-direction: column; justify-content: center; align-items: center; gap: 26px; text-align: center; }
+      .contact-cta-copy h2 { font-size: clamp(1.65rem, 6vw, 2.1rem); }
+      .contact-cta-copy p { font-size: .92rem; }
+      .contact-cta-eyebrow { font-size: .68rem; }
+      .contact-cta-button { max-width: 100%; padding-inline: 20px; }
+    }
+
+    /* Botão de pesquisa apenas com lupa, com nome acessível. */
+    .site-search button { width: 48px; min-width: 48px; flex: 0 0 48px; padding: 0; gap: 0; }
+    .site-search .search-submit-icon { display: block; width: 21px; height: 21px; flex-shrink: 0; }
+    .site-search input { padding-left: 14px; }
+
+    /* CTA: botão por baixo dos textos; coluna direita reservada para imagem. */
+    .contact-cta-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 40px; text-align: left; }
+    .contact-cta-copy { display: flex; flex-direction: column; align-items: flex-start; max-width: none; }
+    .contact-cta-button { margin-top: 24px; width: fit-content; }
+    .contact-cta-media { min-width: 0; }
+    .contact-cta-media img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: cover; border-radius: 18px; }
+    @media (max-width: 768px) {
+      .contact-cta-inner { grid-template-columns: 1fr; gap: 28px; text-align: left; }
+      .contact-cta-copy { align-items: flex-start; }
+      .contact-cta-media:empty { display: none; }
+      .contact-cta-button { margin-top: 22px; }
+    }
+
+    /* Header: logótipo junto ao menu; pesquisa e conta na linha superior. */
+    .header-account { grid-area: account; display: inline-flex; align-items: center; justify-self: end; gap: 10px; min-height: 44px; color: #143b54; }
+    .header-account > svg { width: 26px; height: 26px; flex-shrink: 0; }
+    .header-account-copy { display: grid; gap: 2px; font-size: .7rem; line-height: 1.3; }
+    .header-account-copy strong { font-size: .8rem; font-weight: 700; }
+    .header-account:hover { color: #0077b6; }
+    @media (min-width: 1201px) {
+      :root { --header-height: 102px; }
+      .main-header { grid-template-columns: 240px minmax(0, 1fr) 190px; grid-template-areas: "brand search account" "brand navigation navigation"; grid-template-rows: 40px 42px; justify-content: stretch; column-gap: 24px; row-gap: 4px; padding: 8px 3%; }
+      .main-header .logo-area { align-self: center; }
+      .main-header .logo-area img { width: 240px; max-width: 100%; height: auto; max-height: 65px; }
+      .main-header #main-navigation { grid-area: navigation; width: 100%; min-width: 0; align-self: center; justify-self: start; }
+      .main-header .nav-menu { justify-content: flex-start; gap: 18px; }
+      .main-header .nav-menu > li { flex-shrink: 0; }
+      .main-header .nav-menu a, .main-header .nav-dropdown-toggle { font-size: .85rem; }
+      .main-header .site-search { grid-area: search; width: 100%; max-width: 520px; height: 38px; justify-self: end; margin: 0; }
+      .main-header .site-search input { font-size: .82rem; }
+      .main-header .header-account { grid-area: account; }
+    }
+    @media (max-width: 1200px) {
+      :root { --header-height: 116px; }
+      .main-header { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "brand account toggle" "search search search"; grid-template-rows: 54px 40px; column-gap: 8px; row-gap: 6px; padding: 8px 5%; }
+      .main-header .logo-area img { width: 210px; max-width: min(100%, 54vw); max-height: 50px; }
+      .main-header .site-search { width: 100%; max-width: 520px; height: 40px; justify-self: center; margin: 0; }
+      .header-account { width: 44px; height: 44px; justify-content: center; gap: 0; border: 1px solid #dce7ef; border-radius: 6px; }
+      .header-account-copy { display: none; }
+      .main-header .menu-toggle { width: 44px; height: 44px; padding: 8px; }
+    }
+
+    /* Computador: todos os elementos do header numa única linha horizontal. */
+    @media (min-width: 1201px) {
+      :root { --header-height: 88px; }
+      .main-header { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: clamp(10px, 1vw, 18px); height: var(--header-height); padding: 12px 2%; }
+      .main-header .logo-area { flex: 0 0 clamp(165px, 13vw, 220px); min-width: 0; align-self: center; }
+      .main-header .logo-area img { width: 100%; height: auto; max-height: 60px; }
+      .main-header #main-navigation { position: static; display: block; flex: 0 0 auto; width: auto; min-width: 0; align-self: center; margin: 0; }
+      .main-header .nav-menu { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: clamp(8px, .9vw, 16px); padding: 0; margin: 0; }
+      .main-header .nav-menu > li { flex-shrink: 0; }
+      .main-header .nav-menu > li > a, .main-header .nav-dropdown-toggle { white-space: nowrap; font-size: clamp(.75rem, .8vw, .88rem); }
+      .main-header .nav-dropdown-toggle { gap: 5px; }
+      .main-header .nav-menu .btn-quote { padding: 11px 12px; font-size: .78rem !important; }
+      .main-header .site-search { flex: 1 1 150px; width: auto; min-width: 140px; max-width: 260px; height: 40px; margin: 0 0 0 auto; }
+      .main-header .site-search input { padding-inline: 10px; font-size: .8rem; }
+      .main-header .site-search button { width: 40px; min-width: 40px; flex-basis: 40px; }
+      .main-header .header-account { flex: 0 0 auto; min-width: 44px; justify-content: center; margin: 0; }
+      .main-header .menu-toggle { display: none; }
+    }
+    @media (min-width: 1201px) and (max-width: 1599px) {
+      .main-header .header-account { width: 44px; height: 44px; border: 1px solid #dce7ef; border-radius: 6px; }
+      .main-header .header-account-copy { display: none; }
+    }
+    /* Sombra em tom ameixa, exclusiva do slide GyneLase. */
+    .slide-gynelase .slide-overlay { background: linear-gradient(90deg, rgba(49, 24, 48, .90) 0%, rgba(49, 24, 48, .85) 35%, rgba(49, 24, 48, .65) 50%, rgba(49, 24, 48, .32) 68%, rgba(49, 24, 48, .08) 85%, rgba(49, 24, 48, 0) 100%); }
+  
+    /* Primeiro slide: contraste para leitura e equipamento iluminado à direita. */
+    .slide-premium .slide-content { max-width: 700px; }
+    .slide-premium .slide-overlay { background: linear-gradient(90deg, rgba(3, 20, 42, .88) 0%, rgba(3, 20, 42, .80) 32%, rgba(3, 20, 42, .48) 49%, rgba(3, 20, 42, .10) 65%, rgba(3, 20, 42, 0) 80%); }
+    @media (max-width: 768px) {
+      .slide-premium .slide-overlay { background: linear-gradient(90deg, rgba(3, 20, 42, .94) 0%, rgba(3, 20, 42, .85) 45%, rgba(3, 20, 42, .54) 100%); }
+    }
+  
+    /* Especialidades: fotografias humanas e equipamentos com altura visual consistente. */
+    .specialty-photo--human { padding: 0; }
+    .specialty-photo--human img { height: 196px; object-fit: cover; border-radius: 0; }
+    @media (max-width: 768px) { .specialty-photo--human img { height: 186px; } }
+
+/* Cabeçalho segundo a imagem de referência enviada pelo utilizador. */
+:root { --header-height: 108px; }
+body { padding-top: var(--header-height); }
+.original-header { position: fixed; inset: 0 0 auto; z-index: 1200; background: #fff; color: #02486f; box-shadow: 0 3px 7px #0000001a; }
+.original-header, .original-header * { font-family: 'Open Sans',Arial,sans-serif; }
+.original-header svg { width: 22px; height: 22px; flex-shrink: 0; }
+.original-header-container { width: min(1175px,96%); margin-inline: auto; }
+.original-topbar { height: 30px; }
+.original-topbar > div { display: flex; justify-content: flex-end; align-items: center; gap: 24px; height: 30px; font-size: 12px; }
+.original-topbar a { display: inline-flex; align-items: center; gap: 6px; }
+.original-topbar svg { width: 17px; height: 17px; }
+.original-header .original-login svg { fill: currentColor; stroke-width: 1; }
+.original-header .original-cart svg { width: 20px; height: 20px; }
+.original-language { position: relative; margin-right: auto; z-index: 2; }
+.original-language summary { display: inline-flex; align-items: center; gap: 12px; list-style: none; cursor: pointer; }
+.original-language summary::-webkit-details-marker { display: none; }
+.original-language > a { position: absolute; top: 24px; left: 18px; padding: 7px 12px; background: white; box-shadow: 0 3px 10px #0002; }
+.original-mainbar { height: 78px; min-height: 78px; display: flex; align-items: flex-end; gap: 0; }
+.original-logo { display: block; flex: 0 0 325px; margin-right: auto; margin-top: -10px; align-self: flex-start; }
+.original-logo img { display: block; width: 100%; max-width: 325px; height: auto; max-height: 105px; object-fit: contain; }
+.original-header .original-navigation { display: block; position: static; width: auto; align-self: flex-end; }
+.original-header .original-menu { display: flex; flex-direction: row; align-items: center; gap: 0; list-style: none; padding: 0; margin: 0; }
+.original-header .original-menu > li { position: relative; display: flex; align-items: center; }
+.original-header .original-menu > li > a { display: flex; align-items: center; padding: 14px 8px 10px; min-height: 59px; border-bottom: 5px solid transparent; font-size: 17px; line-height: 25px; font-weight: 400; color: #02486f; white-space: nowrap; }
+.original-header .original-menu > li > a:hover, .original-header .original-menu > li > a.selected { color: #1f7bae; border-bottom-color: #1f7bae; }
+.original-header .original-toggle, .original-header .original-products-toggle { display: none; }
+.original-search-panel { position: absolute; top: 100%; left: 0; right: 0; padding: 0; background: transparent; }
+.original-header .site-search { display: flex; width: 380px; max-width: 100%; height: 48px; margin: 0 0 0 auto; padding: 0; border: 1px solid #1d7bae; border-radius: 0; background: white; box-shadow: 5px 5px 25px #0003; overflow: hidden; }
+.original-header .site-search input { flex: 1 1 auto; min-width: 0; width: 280px; height: 46px; margin: 0; border: 0; padding: 13px 20px; border-radius: 0; color: #777; background: white; font-size: 14px; font-weight: 400; }
+.original-header .site-search button { display: grid; place-items: center; flex: 0 0 100px; width: 100px; min-width: 100px; height: 46px; padding: 0; border: 0; border-radius: 0; color: white; background: #1d7bae; font-size: 30px; line-height: 1; font-weight: 400; cursor: pointer; }
+.original-header .site-search button:hover { background: #02486f; }
+.original-header .specialties-submenu { top: 100%; left: 0; }
+
+.original-sidebar { position: fixed; top: max(20%, calc(var(--header-height) + 20px)); right: 0; z-index: 30; width: 195px; color: white; }
+.original-sidebar a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 16px 18px; margin-bottom: 9px; background: #1d7bae; border-radius: 10px 0 0 10px; font-size: 17px; font-weight: 500; }
+.original-sidebar a:hover { background: #156b9a; }
+.original-contact-button { position: fixed; bottom: 104px; right: 0; z-index: 1100; display: flex; gap: 12px; align-items: center; min-height: 60px; padding: 0 20px; border: 0; border-radius: 60px 0 0 60px; color: #fff; background: linear-gradient(136deg,#00293e,#0a4e7f 55%,#1d7bae); box-shadow: 0 2px 18px #0003; cursor: pointer; }
+.original-contact-button svg, .original-contact-heading svg { width: 30px; height: 30px; }
+.original-contact-dialog { position: fixed; inset: 0; width: min(480px,calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 0; margin: auto; border: 0; border-radius: 14px; color: #213e50; overflow-y: auto; }
+.original-contact-dialog::backdrop { background: #001522a8; }
+.original-contact-heading { display: flex; justify-content: space-between; gap: 16px; padding: 18px 22px; color: #fff; background: linear-gradient(136deg,#00293e,#1d7bae); }
+.original-contact-heading h2 { display: flex; align-items: center; gap: 12px; font-size: 19px; }
+.original-contact-close { border: 0; background: transparent; color: white; font-size: 30px; cursor: pointer; }
+.original-contact-dialog form { padding: 22px; display: grid; gap: 13px; }
+.original-contact-dialog label { display: grid; gap: 5px; font-size: 14px; }
+.original-contact-dialog input:not([type=checkbox]):not([type=hidden]), .original-contact-dialog textarea { width: 100%; border: 1px solid #b8cbd7; border-radius: 5px; padding: 10px; font: inherit; }
+.original-contact-dialog .original-consent { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; }
+.original-consent input { margin-top: 3px; flex-shrink: 0; }
+.original-consent a, .original-contact-official { color: #087eae; text-decoration: underline; }
+.original-contact-dialog .helpbox-submit { padding: 12px; color: #fff; background: #1d7bae; border: 0; border-radius: 5px; cursor: pointer; }
+.original-contact-dialog .helpbox-submit:disabled { opacity: .45; cursor: not-allowed; }
+.original-contact-status { font-size: 13px; }
+.original-contact-official[hidden] { display: none; }
+@media (min-width: 1101px) { .hero-slider .slide-content { max-width: min(700px,calc(100% - 210px)); } }
+@media (max-width: 1100px) {
+  .original-header .original-menu > li > a { font-size: 15px; padding-inline: 7px; }
+  .original-logo { flex-basis: 220px; }
+  .original-sidebar { position: static; width: min(1320px,90%); margin: 24px auto; }
+  .original-sidebar nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .original-sidebar a { border-radius: 6px; margin: 0; }
+}
+@media (max-width: 800px) {
+  :root { --header-height: 100px; }
+  .original-mainbar { min-height: 70px; gap: 6px; flex-wrap: wrap; }
+  .original-logo { flex: 0 1 200px; }
+  .original-logo img { max-height: 60px; }
+  .original-topbar > div { gap: 16px; }
+  .original-header .original-toggle { display: grid; place-items: center; padding: 10px; color: #02486f; width: 44px; height: 44px; border: 0; background: transparent; }
+  .original-header .original-navigation { position: absolute; top: 100%; left: 0; width: 100%; display: none; background: #fff; max-height: calc(100dvh - 100px); overflow: auto; box-shadow: 0 8px 12px #0002; }
+  .original-header .original-navigation.is-open { display: block; }
+  .original-header .original-menu { display: block; width: 100%; }
+  .original-header .original-menu > li { display: flex; flex-wrap: wrap; }
+  .original-header .original-menu > li > a { flex: 1; min-height: 48px; padding: 10px 5%; border-bottom-width: 1px; }
+  .original-header .original-products-toggle { display: block; font-size: 24px; padding: 10px 24px; background: none; border: 0; color: #02486f; }
+  .original-header .specialties-submenu { position: static; flex: 0 0 100%; border: 0; border-radius: 0; box-shadow: none; padding: 8px 7%; background: #f2f7fa; }
+  .original-header .specialties-submenu[hidden] { display: none; }
+  .original-sidebar nav { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .original-contact-button { min-height: 48px; padding: 0 14px; font-size: 12px; bottom: 96px; }
+  .original-contact-button svg { width: 24px; height: 24px; }
+}
+
+
+@media (min-width: 1101px) { .original-logo { flex: 0 0 325px; margin-left: 10px; margin-top: -10px; } }
+@media (max-width: 800px) {
+  :root { --header-height: 100px; }
+  .original-mainbar { height: 70px; min-height: 70px; align-items: center; }
+  .original-logo { flex: 0 1 220px; margin-top: 0; }
+  .original-logo img { max-height: 65px; }
+  .original-header .original-language { margin-right: auto; }
+  .original-header .site-search { width: min(380px,100%); }
+  .original-header .site-search button { flex: 0 0 80px; width: 80px; min-width: 80px; }
+}
+/* Espaço para a pesquisa e centragem vertical do slider. */
+.hero-slider {
+  margin-top: 0;
+  height: calc(100svh - var(--header-height));
+}
+.hero-slider .swiper-slide {
+  align-items: center;
+  padding-top: 144px;
+  padding-bottom: 80px;
+}
+@media (max-width: 768px) {
+  .hero-slider { margin-top: 0; height: calc(100svh - var(--header-height)); }
+  .hero-slider .swiper-slide { padding-top: 132px; padding-bottom: 72px; }
+}
+/* Atendimento: recorte transparente integrado no fundo institucional. */
+.contact-cta-inner { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: clamp(24px,4vw,64px); align-items: center; }
+.contact-cta-media--team { display: flex; justify-content: center; align-items: flex-end; min-width: 0; }
+.contact-cta-media--team img { width: 100%; max-width: 520px; height: auto; max-height: 420px; object-fit: contain; border-radius: 0; background: transparent; mask-image: linear-gradient(to bottom,#000 92%,transparent 100%); }
+@media (max-width: 768px) {
+  .contact-cta-inner { grid-template-columns: 1fr; }
+  .contact-cta-media--team { width: min(100%,440px); justify-self: center; }
+  .contact-cta-media--team img { max-height: 330px; }
+}
+
+
+
+/* Símbolo Speculum animado numa área estável, sem fotografia nem círculo. */
+.contact-cta-media--team { display: block; }
+.contact-cta-visual-stage { position: relative; width: 100%; max-width: 520px; margin-inline: auto; aspect-ratio: 4 / 3; isolation: isolate; }
+.contact-cta-brand-phase { position: absolute; inset: 0; display: grid; place-items: center; opacity: 1; pointer-events: none; }
+.contact-cta-brand-icon { position: relative; z-index: 1; display: block; width: 49%; height: auto; overflow: hidden; filter: drop-shadow(0 0 20px #7bd1f82e); transform-origin: center; animation: speculumHeartbeat 2.4s ease-in-out infinite; }
+@keyframes speculumHeartbeat {
+  0%, 45%, 100% { transform:scale(1); filter:none; }
+  12% { transform:scale(1.18); filter:drop-shadow(0 0 4px #ffffff80) drop-shadow(0 0 10px #ffffff33); }
+  24% { transform:scale(1); filter:none; }
+  33% { transform:scale(1.11); filter:drop-shadow(0 0 3px #ffffff66) drop-shadow(0 0 8px #ffffff26); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-cta-brand-icon { animation: none; }
+  .contact-cta-brand-phase { animation: none; opacity: 1; }
+}
+
+
+
+.specialty-photo--product { display:grid; place-items:center; padding:18px; min-height:196px; background:#fff; }.specialty-photo--product img { width:100%; height:160px; object-fit:contain; object-position:center; border-radius:0; }
+
+/* Formulário original Speculum, delimitado ao painel de contacto. */
+#helpbox-content form .box-content-top {
+    background: linear-gradient(136deg, #00293E 9.07%, #0A4E7F 54.86%, #1D7BAE 100.66%);
+    filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.06)) drop-shadow(0px 2px 32px rgba(0, 0, 0, 0.16));
+    padding: 32px 35px;
+    border-radius: 16px 0px 0px 0px;
+    display: flex;
+    /* gap: 12px; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+#helpbox-content form .box-content-top > div {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#helpbox-content form .box-content-top > div span {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#helpbox-content form .box-content-middle {
+    background-color: #FFFFFF;
+    padding: 15px 35px;
+    border-radius: 0px 0px 0px 16px;
+}
+
+#helpbox-content form .box-content-middle p {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: #1D7BAE;
+    margin-bottom: 4px;
+}
+
+#helpbox-content form .box-input-text {
+    border-radius: 8px;
+    border: 1px solid #E1E1E1;
+    background: #FAFAFA;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07) inset;
+    margin-bottom: 10px;
+}
+
+#helpbox-content form .box-area-text {
+    border-radius: 6px;
+    border: 1px solid #E1E1E1;
+    background: #FAFAFA;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07) inset;
+    margin-bottom: 10px;
+    min-height: 80px;
+}
+
+#helpbox-content form .box-content-middle label {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    color: #888888;
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+#helpbox-content form .box-content-middle label input {
+    color: #1D7BAE;
+    text-decoration-line: underline;
+    font-weight: 700;
+    margin: 0;
+}
+
+#helpbox-content form .box-content-middle label a {
+    color: #1D7BAE;
+    text-decoration-line: underline;
+    font-weight: 700;
+}
+
+#helpbox-content #form-captcha {
+    margin-top: 4px;
+}
+
+#helpbox-content #forms-captcha {
+    margin-bottom: 20px;
+}
+
+.g-recaptcha > div {
+    transform: scale(0.95394);
+    margin-left: -8px;
+}
+
+#helpbox-content .helpbox-submit {
+    width: 100%;
+    max-width: unset;
+    border: none;
+    color: var(--White, #FFF);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: none;
+    border-radius: 20px;
+    background: linear-gradient(136deg, #00293E 9.07%, #0A4E7F 54.86%, #1D7BAE 100.66%);
+    filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.06)) drop-shadow(0px 2px 32px rgba(0, 0, 0, 0.16));
+}
+
+#helpbox-content .helpbox-submit:disabled {
+    background: var(--lines, #D8D8D8);
+}
+
+
+#helpbox-content.original-contact-dialog--native { width:min(360px,96vw); max-width:360px; padding:0; border:0; border-radius:16px 0 0 16px; margin:auto 0 auto auto; max-height:92dvh; overflow:auto; box-shadow:-1px 2px 50px -17px #000b; }
+#helpbox-content.original-contact-dialog--native form { display:block; padding:0; gap:0; }
+#helpbox-content .box-content-top { gap:10px; }
+#helpbox-content .box-content-top > div { min-width:0; }
+#helpbox-content .box-content-top svg { flex-shrink:0; }
+#helpbox-content .original-contact-close { background:transparent; border:0; padding:0; display:grid; place-items:center; cursor:pointer; color:white; }
+#helpbox-content .original-contact-close svg { width:28px; height:28px; }
+#helpbox-content .box-content-middle input.box-input-text,#helpbox-content .box-content-middle textarea.box-area-text { width:100%; padding:10px; font:inherit; font-size:13px; box-sizing:border-box; }
+#helpbox-content input.helpbox-submit { height:44px; padding:10px 16px; cursor:pointer; }
+#helpbox-content .original-contact-feedback { padding:0 35px 16px; background:white; font-size:12px; }
+#helpbox-content .original-contact-feedback:has(.original-contact-status:empty) { padding-bottom:0; }
+#helpbox-content .original-contact-status { color:#526879; font-size:12px; line-height:1.6; }
+#helpbox-content .original-contact-official[hidden] { display:none; }
+#helpbox-content .original-contact-close:focus-visible { outline:2px solid white; outline-offset:3px; }
+@media(max-width:420px) { #helpbox-content form .box-content-top { padding:24px; } #helpbox-content form .box-content-middle { padding:15px 24px; } }
+
+
+/* Botão original: ícone inicial e texto revelado após 2000ms. */
+#helpbox.original-contact-button {
+ display:flex; align-items:center; justify-content:center; gap:12px;
+ height:60px; min-height:60px; min-width:60px; width:auto; padding:0 15px;
+ border-radius:60px 0 0 60px; bottom:31px;
+ background:linear-gradient(136deg,#00293e 9.07%,#0a4e7f 54.86%,#1d7bae 100.66%);
+ transition:background-color .2s linear,filter .2s linear;
+}
+#helpbox.original-contact-button > svg { width:33px; height:32px; flex-shrink:0; }
+#helpbox.original-contact-button > span {
+ display:block; flex:0 0 auto; width:0; overflow:hidden; white-space:nowrap;
+ font-size:14px; font-weight:600; color:#fff;
+ animation:speculumContactReveal .2s linear 2s forwards;
+}
+#helpbox.original-contact-button:hover { background:linear-gradient(134deg,#242424 0%,#242424 100%); }
+#helpbox.original-contact-button:focus-visible { outline:3px solid #7bd1f8; outline-offset:4px; }
+@keyframes speculumContactReveal { from { width:0; } to { width:150px; } }
+@media(max-width:768px) { #helpbox.original-contact-button { bottom:max(16px,env(safe-area-inset-bottom)); } }
+@media(prefers-reduced-motion:reduce) {
+ #helpbox.original-contact-button { transition:none; }
+ #helpbox.original-contact-button > span { animation:none; width:150px; }
+}
+
+
+/* Preservar o topo das fotografias em todos os tamanhos de ecrã. */
+.hero-slider .swiper-slide {
+  background-position: var(--slide-position-x, 50%) var(--slide-position-y, 0%);
+  background-repeat: no-repeat;
+}
+.hero-slider .slide-premium { --slide-position-x: 70%; }
+@media (max-width:768px) {
+  .hero-slider .swiper-slide { background-position:var(--slide-position-x-mobile,var(--slide-position-x,50%)) var(--slide-position-y-mobile,var(--slide-position-y,0%)); }
+}
+
+
+/* Subir apenas a fotografia da campanha, preservando os restantes slides. */
+.hero-slider .slide-campaign { --slide-position-y: 35%; }
+
+/* Subida ligeira dos slides 1, 3 e 4; a campanha mantém 35%. */
+.hero-slider .swiper-slide:not(.slide-campaign) { --slide-position-y: 12%; }
+
+
+/* Duas partes naturais do símbolo: interior primeiro na saída, coração depois. */
+.contact-cta-brand-phase { opacity:1; animation:none; transform:none; }
+.speculum-heart-outline,.speculum-heart-interior { transform-box:view-box; transform-origin:50% 46%; }
+.speculum-heart-outline { animation:speculumHeartOutlineCycle 14s cubic-bezier(.4,0,.2,1) infinite; }
+.speculum-heart-interior { animation:speculumHeartInteriorCycle 14s cubic-bezier(.4,0,.2,1) infinite; }
+@keyframes speculumHeartOutlineCycle {
+  0% { opacity:0; transform:scale(.05) rotate(45deg); }
+  .4% { opacity:1; transform:scale(.1) rotate(40deg); }
+  3.5% { opacity:1; transform:scale(1.22) rotate(0deg); }
+  5.5%, 85.3% { opacity:1; transform:scale(1) rotate(0deg); }
+  87.3% { opacity:1; transform:scale(1.22) rotate(0deg); }
+  99.6% { opacity:1; transform:scale(.05) rotate(-45deg); }
+  100% { opacity:0; transform:scale(.05) rotate(-45deg); }
+}
+@keyframes speculumHeartInteriorCycle {
+  0%, .3% { opacity:0; transform:scale(.05) rotate(45deg); }
+  .7% { opacity:1; transform:scale(.1) rotate(40deg); }
+  3.8% { opacity:1; transform:scale(1.22) rotate(0deg); }
+  5.8%, 85% { opacity:1; transform:scale(1) rotate(0deg); }
+  87% { opacity:1; transform:scale(1.22) rotate(0deg); }
+  99.3% { opacity:1; transform:scale(.05) rotate(-45deg); }
+  99.7%, 100% { opacity:0; transform:scale(.05) rotate(-45deg); }
+}
+@media(prefers-reduced-motion:reduce) {
+ .contact-cta-brand-phase { opacity:1; transform:none; animation:none; }
+ .contact-cta-brand-icon,.speculum-heart-outline,.speculum-heart-interior { animation:none; opacity:1; transform:none; }
+}
+
+/* Néon subtil apenas durante o batimento, sem círculo. */
+.contact-cta-brand-icon { overflow:visible; filter:none; }
+@media(prefers-reduced-motion:reduce) { .contact-cta-brand-icon { filter:none; } }
+</style>
+<style>
+/* Especialidades: secção própria logo a seguir ao slider (substitui a barra lateral). */
+.esp-faixa { padding: 36px 0 40px; background: #fff; border-bottom: 1px solid #e3edf3; }
+.esp-faixa-inner { width: min(1320px, 90%); margin: auto; }
+/* Título como o das outras secções: sobretítulo, título e frase, centrados. */
+.esp-faixa-cabeca { margin-bottom: 24px; text-align: center; }
+.esp-faixa-cabeca .section-eyebrow { color: #327594; font-weight: 700; margin-bottom: 8px; }
+.esp-faixa-cabeca h2 { margin: 0 0 6px; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: #02486f; }
+.esp-faixa-cabeca p { margin: 0 auto; max-width: 620px; color: #4d6b7d; font-size: .95rem; }
+.esp-faixa-lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.esp-faixa-lista a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; padding: 14px 18px; border: 1px solid #cfe0ea; border-left: 4px solid #1d7bae; border-radius: 8px; background: #f5f9fc; color: #02486f; font-size: 1.02rem; font-weight: 700; text-decoration: none; transition: background .18s, color .18s, border-color .18s; }
+.esp-faixa-lista a span { font-size: 1.2rem; line-height: 1; color: #1d7bae; transition: transform .18s, color .18s; }
+.esp-faixa-lista a:hover, .esp-faixa-lista a:focus-visible { background: #02486f; border-color: #02486f; color: #fff; }
+.esp-faixa-lista a:hover span, .esp-faixa-lista a:focus-visible span { color: #fff; transform: translateX(3px); }
+.esp-faixa-lista a:focus-visible { outline: 3px solid #1d7bae; outline-offset: 2px; }
+/* Sem a barra lateral, o texto do slider pode usar a largura toda. */
+@media (min-width: 1101px) { .hero-slider .slide-content { max-width: 700px; } }
+@media (max-width: 1100px) { .esp-faixa-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 800px) {
+  .esp-faixa { padding: 26px 0 28px; }
+  .esp-faixa-cabeca { margin-bottom: 16px; }
+  .esp-faixa-cabeca p { font-size: .88rem; }
+  .esp-faixa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .esp-faixa-lista li:last-child { grid-column: 1 / -1; }
+  .esp-faixa-lista a { min-height: 54px; padding: 12px 14px; font-size: .98rem; }
+}
+/* Computador: os cinco botões passam para cima do slider, por baixo do logótipo e à esquerda da pesquisa.
+   Só a partir de 1230 px: abaixo disso não cabem por extenso e ficam na secção a seguir ao slider. */
+@media (min-width: 1230px) {
+  #conteudo { position: relative; }
+  .esp-faixa { position: absolute; inset: 0 0 auto; z-index: 20; padding: 18px 0 0; background: none; border: 0; pointer-events: none; }
+  .esp-faixa-inner { width: min(1175px, 96%); }
+  /* Título só para leitores de ecrã: no slider não há espaço para ele. */
+  .esp-faixa-cabeca { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .esp-faixa-lista { display: flex; gap: 10px; max-width: calc(100% - 400px); pointer-events: auto; }
+  .esp-faixa-lista li { flex: 1 1 0; min-width: 0; }
+  .esp-faixa-lista a { min-height: 50px; padding: 10px 14px; font-size: .95rem; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 20, 31, .28); }
+  .esp-faixa-lista a span { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) { .esp-faixa-lista a, .esp-faixa-lista a span { transition: none; } }
+</style>
+</head>
+<body>
+
+  <!-- Menu Superior com Links Atualizados e Logótipo -->
+  <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+  <header class="original-header" id="navtop">
+  <div class="original-topbar"><div class="original-header-container">
+<details class="original-language"><summary aria-label="Idioma atual: português"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.8 7h-3.1a16 16 0 0 0-1.3-4.1A8.1 8.1 0 0 1 19.8 9ZM12 4c1 1.2 1.8 2.9 2.2 5H9.8C10.2 6.9 11 5.2 12 4ZM4.2 15h3.1a16 16 0 0 0 1.3 4.1A8.1 8.1 0 0 1 4.2 15Zm3.1-2H3.9a8.4 8.4 0 0 1 0-2h3.4a17 17 0 0 0 0 2ZM4.2 9a8.1 8.1 0 0 1 4.4-4.1A16 16 0 0 0 7.3 9H4.2ZM12 20c-1-1.2-1.8-2.9-2.2-5h4.4c-.4 2.1-1.2 3.8-2.2 5Zm2.6-7H9.4a15 15 0 0 1 0-2h5.2a15 15 0 0 1 0 2Zm.8 6.1a16 16 0 0 0 1.3-4.1h3.1a8.1 8.1 0 0 1-4.4 4.1Zm1.3-6.1a17 17 0 0 0 0-2h3.4a8.4 8.4 0 0 1 0 2h-3.4Z"/></svg><span>PT</span></summary><a href="https://www.speculum.pt/en" lang="en">en</a></details>
+    <a href="https://www.speculum.pt/pt/area-de-cliente" class="original-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 22v-4a8 8 0 0 1 16 0v4"/></svg>Login / Registo</a>
+    
+    <a href="https://www.speculum.pt/pt/carrinho-de-compras" class="original-cart" aria-label="Carrinho de compras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 3h3l3 13h11l3-9H6"/><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg><span class="original-cart-value">(0) 0.00 €</span></a>
+  </div></div>
+  <div class="original-header-container original-mainbar">
+    <a class="original-logo" href="https://www.speculum.pt/pt/inicio" aria-label="Speculum — Início"><img src="https://www.speculum.pt/page/Site-Speculum/images/logo_speculum_original.png" alt="Speculum" width="325" height="89"></a>
+    <button class="menu-toggle original-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav id="main-navigation" class="original-navigation" aria-label="Menu principal"><ul class="nav-menu original-menu"><li><a href="https://www.speculum.pt/pt/inicio" class="selected" aria-current="page">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li class="nav-dropdown original-products"><a href="https://www.speculum.pt/medicoshospitalares.html">Produtos</a><button class="nav-dropdown-toggle original-products-toggle" type="button" aria-expanded="false" aria-controls="original-products-menu" aria-label="Abrir categorias de produtos">+</button><ul id="original-products-menu" class="specialties-submenu" hidden><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul></nav>
+  </div>
+  <div id="original-search-panel" class="original-search-panel"><div class="original-header-container"><form class="site-search" action="https://www.speculum.pt/pt/pesquisar" method="post" role="search"><label for="site-search-input" class="sr-only">Pesquisar no site</label><input id="site-search-input" name="search_tag_all" type="search" placeholder="Pesquisar" required><button type="submit" aria-label="Pesquisar">»</button></form></div></div>
+</header>
+
+  <!-- Slides geridos pelo backoffice em slider-admin/ (entre os marcadores SLIDER-INICIO e SLIDER-FIM). -->
+  <main id="conteudo">
+  <section class="swiper hero-slider" aria-label="Destaques Speculum" aria-roledescription="carrossel">
+    <div class="swiper-wrapper">
+      <!-- SLIDER-INICIO: gerado pelo backoffice (slider-admin). Não editar à mão entre estes marcadores. -->
+      <!-- Slide 1: Ecógrafos Samsung premium -->
+      <div class="swiper-slide slide-premium" style="--slide-image: url('https://www.speculum.pt/page/Site-Speculum/images/Slider_ecografos_premium_principal_samsung.png');">
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">Ecógrafos Samsung · Tecnologia Premium</span>
+          <h1>Veja mais longe no diagnóstico por imagem.</h1>
+          <p>Qualidade de imagem avançada, ferramentas inteligentes e soluções versáteis para apoiar a sua prática clínica. Conheça a gama de ecógrafos Samsung.</p>
+          <div class="slide-actions">
+            <a href="https://www.speculum.pt/ecografospremium.html" class="btn-main">Explorar Ecógrafos Premium</a>
+            <a href="https://www.speculum.pt/pt/contactos" class="btn-secondary">Solicitar Demonstração</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Campanha de novembro -->
+      <div class="swiper-slide slide-campaign" data-fim="2026-11-30" style="--slide-image: url('https://www.speculum.pt/page/Site-Speculum/images/Slider_1.jpg');">
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">Campanha Exclusiva de Novembro</span>
+          <strong class="slide-callout">ATÉ 23% DE OFERTA</strong>
+          <h2>Oportunidades do Mês em Ginecologia &amp; Obstetrícia</h2>
+          <p>Condições especiais em consumíveis selecionados, instrumentais e equipamentos clínicos essenciais para o seu consultório.</p>
+          <p class="slide-validity">⚡ Campanha válida até 30 de novembro de 2026 | Limitada ao stock existente</p>
+          <div class="slide-actions">
+            <a href="https://www.speculum.pt/files/files/catalog/FOLHETO_NOVEMBRO-20261102-045827.pdf" class="btn-main" target="_blank" rel="noopener noreferrer">Descarregar Folheto em PDF ↓</a>
+            <a href="https://www.speculum.pt/pt/contactos" class="btn-secondary">Falar com o Comercial →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Kosmos · ecografia ultraportátil -->
+      <div class="swiper-slide" style="--slide-image: url('https://www.speculum.pt/page/Site-Speculum/images/Slider_principal_kosmos.jpg');">
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">Ecografia Ultraportátil · POCUS</span>
+          <h2>Diagnóstico Avançado no Ponto de Contacto com o Doente</h2>
+          <p>Sistemas de ecografia ultraportáteis com inteligência artificial para decisões clínicas imediatas.</p>
+          <div class="slide-actions">
+            <a href="https://www.speculum.pt/ultrassonografia-ecografo-portatil.html" class="btn-main">Saber Mais</a>
+            <a href="https://www.speculum.pt/pt/contactos" class="btn-secondary">Solicitar Demonstração</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: GyneLase -->
+      <div class="swiper-slide slide-gynelase" style="--slide-image: url('https://www.speculum.pt/page/Site-Speculum/images/Slider_principal_gynelase_humanizado.png');">
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">Inovação em Ginecologia</span>
+          <h2>Novas Fronteiras na Saúde Íntima Feminina</h2>
+          <p>Tecnologia médica inovadora para tratamentos ginecológicos funcionais e regenerativos.</p>
+          <div class="slide-actions">
+            <a href="https://www.speculum.pt/rejuvenescimentovaginal.html" class="btn-main">Conhecer Tecnologias</a>
+            <a href="https://www.speculum.pt/pt/contactos" class="btn-secondary">Falar com Especialista</a>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDER-FIM -->
+    </div>
+    <button class="swiper-button-prev" type="button" aria-label="Slide anterior"></button>
+    <button class="swiper-button-next" type="button" aria-label="Slide seguinte"></button>
+    <div class="swiper-pagination"></div>
+  </section>
+  <section class="esp-faixa" aria-labelledby="esp-faixa-titulo">
+    <div class="esp-faixa-inner">
+      <div class="esp-faixa-cabeca"><span class="section-eyebrow">Áreas clínicas</span><h2 id="esp-faixa-titulo">Especialidades</h2><p>Escolha a sua área e conheça as soluções Speculum.</p></div>
+      <ul class="esp-faixa-lista"><li><a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização <span aria-hidden="true">→</span></a></li></ul>
+    </div>
+  </section>
+<!-- Acesso compacto às cinco especialidades, sem cartões altos. -->
+  <section class="specialty-section specialty-showcase" id="especialidades" aria-labelledby="specialty-title">
+    <div class="specialty-container">
+      <div class="section-header"><span class="section-eyebrow">Soluções para a prática clínica</span><h2 id="specialty-title">Produtos e soluções em destaque</h2><p>Conheça algumas das soluções que acompanham a sua prática clínica.</p></div>
+      <div class="specialty-photo-grid">
+        <a class="specialty-photo-card" href="https://www.speculum.pt/pt/produtos/397-especulos" aria-label="Ver produtos: Espéculos e consumíveis">
+          <div class="specialty-photo specialty-photo--product"><img src="https://www.speculum.pt/page/Site-Speculum/images/especialidade-produtos-ginecologia.jpg" alt="Espéculo vaginal descartável — Ginecologia" loading="lazy" decoding="async" width="600" height="450"></div>
+          <div class="specialty-photo-copy"><h3>Espéculos e consumíveis</h3><p>Soluções descartáveis e consumíveis para a consulta ginecológica.</p><span class="specialty-photo-link">Ver produtos <span aria-hidden="true">↗</span></span></div>
+        </a>
+        <a class="specialty-photo-card" href="https://www.speculum.pt/pt/produtos/394-cardiotocografos" aria-label="Ver produtos: Cardiotocografia">
+          <div class="specialty-photo specialty-photo--product"><img src="https://www.speculum.pt/page/Site-Speculum/images/especialidade-produtos-obstetricia.jpg" alt="Cardiotocógrafo EDAN F9 — Obstetrícia" loading="lazy" decoding="async" width="600" height="450"></div>
+          <div class="specialty-photo-copy"><h3>Cardiotocografia</h3><p>Equipamentos para acompanhar a frequência cardíaca fetal e a atividade uterina.</p><span class="specialty-photo-link">Ver produtos <span aria-hidden="true">↗</span></span></div>
+        </a>
+        <a class="specialty-photo-card" href="https://www.speculum.pt/ecografospremium.html" aria-label="Ver produtos: Ecógrafos Samsung">
+          <div class="specialty-photo specialty-photo--product"><img src="https://www.speculum.pt/page/Site-Speculum/images/especialidade-produtos-ecografia.jpg" alt="Ecógrafo Samsung — Ecografia" loading="lazy" decoding="async" width="600" height="450"></div>
+          <div class="specialty-photo-copy"><h3>Ecógrafos Samsung</h3><p>Tecnologia de ecografia para diferentes especialidades e contextos clínicos.</p><span class="specialty-photo-link">Ver produtos <span aria-hidden="true">↗</span></span></div>
+        </a>
+        <a class="specialty-photo-card" href="https://www.speculum.pt/pt/produtos/especialidade=[66-anestesia]" aria-label="Ver produtos: Agulhas e kits de anestesia">
+          <div class="specialty-photo specialty-photo--product"><img src="https://www.speculum.pt/page/Site-Speculum/images/especialidade-produtos-anestesia.jpg" alt="Kit de anestesia PAJUNK — Anestesia" loading="lazy" decoding="async" width="600" height="450"></div>
+          <div class="specialty-photo-copy"><h3>Agulhas e kits de anestesia</h3><p>Agulhas, cateteres e kits para procedimentos de anestesia regional.</p><span class="specialty-photo-link">Ver produtos <span aria-hidden="true">↗</span></span></div>
+        </a>
+        <a class="specialty-photo-card" href="https://www.speculum.pt/pt/produtos/272-monitorizacao" aria-label="Ver produtos: Monitores de sinais vitais">
+          <div class="specialty-photo specialty-photo--product"><img src="https://www.speculum.pt/page/Site-Speculum/images/especialidade-produtos-monitorizacao.jpg" alt="Monitor de sinais vitais EDAN iX15 — Monitorização" loading="lazy" decoding="async" width="600" height="450"></div>
+          <div class="specialty-photo-copy"><h3>Monitores de sinais vitais</h3><p>Equipamentos para acompanhar os sinais vitais em diferentes ambientes clínicos.</p><span class="specialty-photo-link">Ver produtos <span aria-hidden="true">↗</span></span></div>
+        </a>
+      </div>
+      <p class="specialty-swipe-hint">Deslize para descobrir os produtos <span aria-hidden="true">↔</span></p>
+    </div>
+  </section>
+
+
+  <!-- Logótipos originais da página Empresa da Speculum. -->
+  <section id="marcas-parceiras" class="brands-section" aria-labelledby="brands-title">
+    <div class="brands-heading">
+      <div><h2 id="brands-title" class="brands-eyebrow">Marcas que fazem parte das nossas soluções</h2><p class="brands-statement">Tecnologia de parceiros de referência</p></div>
+    </div>
+    <div id="brands-viewport" class="brands-viewport" role="region" aria-label="Marcas: Samsung, EDAN, HEBUmedical, INTERmedic, Laborie, PAJUNK, SCHMITZ, Utah Medical Products e EchoNous" tabindex="0">
+      <div class="brands-track">
+        <div class="brands-group"><img src="https://www.speculum.pt/page/Site-Speculum/images/logo-samsung.png" alt="Samsung" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-edan.png" alt="EDAN" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-hebu.png" alt="HEBUmedical" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-intermedic.png" alt="INTERmedic" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-laborie.png" alt="Laborie" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-pajunk.png" alt="PAJUNK" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-schmitz.png" alt="SCHMITZ" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-utah.png" alt="Utah Medical Products" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-echonous.png" alt="EchoNous" width="1200" height="600" loading="lazy" decoding="async"></div>
+        <div class="brands-group brands-clone" aria-hidden="true"><img src="https://www.speculum.pt/page/Site-Speculum/images/logo-samsung.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-edan.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-hebu.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-intermedic.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-laborie.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-pajunk.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-schmitz.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-utah.png" alt="" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="https://www.speculum.pt/page/Site-Speculum/images/logo-echonous.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="difference-section" aria-labelledby="difference-title">
+    <div class="content-container"><div class="section-header"><h2 id="difference-title">O que nos diferencia</h2><p>Compromisso com a inovação, precisão médica e confiança clínica</p></div>
+      <div class="difference-grid">
+        <article class="difference-card"><span class="difference-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></span><h3>Mais de 30 anos de experiência</h3><p>Desde 1993 dedicados a fornecer equipamentos e dispositivos médicos com rigor técnico e excelência em Portugal.</p></article>
+        <article class="difference-card"><span class="difference-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></svg></span><h3>Qualidade certificada</h3><p>Certificação SGS e cumprimento rigoroso das normas europeias de dispositivos médicos e segurança hospitalar.</p></article>
+        <article class="difference-card"><span class="difference-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg></span><h3>Tecnologia de referência mundial</h3><p>Parcerias com os principais fabricantes internacionais de tecnologia médica e imagiologia de topo.</p></article>
+        <article class="difference-card"><span class="difference-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v6c0 3-3 4-6 4"/><rect x="2" y="11" width="4" height="7" rx="2"/><rect x="18" y="11" width="4" height="7" rx="2"/></svg></span><h3>Suporte e assistência técnica</h3><p>Equipa especializada de consultoria clínica, formação contínua e assistência pós-venda dedicada.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-cta-section" aria-labelledby="contact-cta-title">
+    <div class="contact-cta-inner content-container">
+      <div class="contact-cta-copy">
+        <span class="contact-cta-eyebrow">AO LADO DOS PROFISSIONAIS DE SAÚDE</span>
+        <h2 id="contact-cta-title">A solução certa começa com uma conversa.</h2>
+        <p>Fale com a nossa equipa sobre equipamentos, consumíveis e apoio à sua prática clínica.</p>
+        <a class="contact-cta-button" href="https://www.speculum.pt/pt/contactos">Falar com a Speculum <span aria-hidden="true">↗</span></a>
+      </div>
+            <div class="contact-cta-media contact-cta-media--team">
+        <div class="contact-cta-visual-stage">
+          <div class="contact-cta-brand-phase" aria-hidden="true">
+            <!-- Recorte visual do símbolo original; o ficheiro do logótipo é preservado. -->
+            <svg class="contact-cta-brand-icon" viewBox="0 0 1004 1043" xmlns="http://www.w3.org/2000/svg" focusable="false" overflow="visible">
+ <defs>
+  <clipPath id="speculum-interior-clip" clipPathUnits="userSpaceOnUse"><ellipse cx="503" cy="474" rx="345" ry="345"/></clipPath>
+  <mask id="speculum-heart-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1004" height="1043"><rect x="0" y="0" width="1004" height="1043" fill="white"/><ellipse cx="503" cy="474" rx="345" ry="345" fill="black"/></mask>
+ </defs>
+ <g class="speculum-heart-outline"><g mask="url(#speculum-heart-mask)"><image href="https://www.speculum.pt/page/Site-Speculum/images/logo_speculum_white.png" width="5279" height="1043"/></g></g>
+ <g class="speculum-heart-interior"><g clip-path="url(#speculum-interior-clip)"><image href="https://www.speculum.pt/page/Site-Speculum/images/logo_speculum_white.png" width="5279" height="1043"/></g></g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Rodapé: conteúdos do rodapé de ecografos.html, com apresentação renovada. -->
+  <footer class="speculum-footer footer-complete" aria-label="Rodapé Speculum">
+    <div class="footer-inner"><div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo" href="https://www.speculum.pt/pt/inicio" aria-label="Speculum — Página inicial"><img src="https://www.speculum.pt/page/Site-Speculum/images/logo_speculum_white.png" alt="Speculum" loading="lazy" decoding="async"></a>
+        <p>Desde 1993, equipamentos e dispositivos médicos para profissionais de saúde.<br>Inovação e apoio técnico para a prática clínica em Portugal.</p>
+        <a class="footer-sgs" href="https://www.speculum.pt/pt/noticias/6-noticias/79-certificacao-sgs" aria-label="Consultar certificação SGS da Speculum"><img src="https://www.speculum.pt/page/Site-Speculum/images/sgs_logo_white.png" alt="Certificação SGS da Speculum" width="200" height="106" loading="lazy" decoding="async"></a>
+        <nav class="footer-socials" aria-label="Redes sociais da Speculum">
+            <a class="social-icon" href="https://www.facebook.com/speculum.sa" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Speculum (abre numa nova janela)">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 22v-9h3l.5-4H14V6.5c0-1.1.3-1.5 1.5-1.5H18V1.4C17.2 1.2 16.1 1 14.8 1 11.6 1 10 2.8 10 6v3H7v4h3v9z"/></svg>
+            </a>
+            <a class="social-icon" href="https://www.instagram.com/speculumsa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Speculum (abre numa nova janela)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="social-icon" href="https://www.linkedin.com/company/speculum-sa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Speculum (abre numa nova janela)">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="4.5" r="2"/><path d="M3.3 8h3.4v13H3.3zM10 8h3.3v1.8C14 8.6 15.2 7.7 17 7.7c3.4 0 4 2.2 4 5.2V21h-3.5v-7.2c0-1.7 0-3-1.8-3s-2.2 1.4-2.2 3V21H10z"/></svg>
+            </a>
+          </nav>
+      </div>
+      <nav class="footer-column" aria-labelledby="footer-solutions-title"><h2 id="footer-solutions-title">Soluções &amp; Equipamentos</h2><ul><li><a href="https://www.speculum.pt/ecografospremium.html">Ecografia</a></li><li><a href="https://www.speculum.pt/medicoshospitalares.html">Ginecologia &amp; Obstetrícia</a></li><li><a href="https://www.speculum.pt/pt/produtos/especialidade=[66-anestesia]">Anestesia</a></li><li><a href="https://www.speculum.pt/pt/produtos/especialidade=[7-cirurgia]">Bloco Operatório</a></li><li><a href="https://www.speculum.pt/pt/produtos/272-monitorizacao">Cuidados Críticos</a></li></ul></nav>
+      <nav class="footer-column" aria-labelledby="footer-institution-title"><h2 id="footer-institution-title">Institucional</h2><ul><li><a href="https://www.speculum.pt/pt/empresa">Sobre Nós</a></li><li><a href="#marcas-parceiras">Marcas Parceiras</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias/176-inovadora-cotec">Inovação COTEC</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/recursos-humanos">Carreiras</a></li></ul></nav>
+      <section class="footer-column footer-contact" aria-labelledby="footer-contact-title"><h2 id="footer-contact-title">Apoio ao Cliente &amp; Contactos</h2><a class="footer-phone" href="tel:+351214728040">21 472 80 40</a><a class="footer-phone" href="tel:+351808200306">808 200 306</a><p class="footer-note">Chamada para rede fixa nacional</p><a class="footer-email" href="mailto:cliente@speculum.pt">cliente@speculum.pt</a><address><a href="https://www.speculum.pt/distribuidoradematerialhospitalar.html">Travessa do Miradouro, nº1<br>2610-114 Alfragide · Portugal</a></address><a class="footer-help-link" href="https://www.speculum.pt/pt/contactos">Fale com a nossa equipa →</a></section>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Speculum – Artigos Médicos, S.A. Todos os direitos reservados.</p><nav aria-label="Informação legal"><a href="https://www.speculum.pt/pt/protecao-de-dados">Política de Privacidade</a><a href="https://www.speculum.pt/pt/protecao-de-dados">Termos de Utilização</a><a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener noreferrer">Livro de Reclamações</a></nav></div>
+    </div>
+  </footer>
+
+
+  <!-- Navegação e carrossel com temporizador próprio -->
+
+  <script>
+    // Menu móvel: estado ARIA, Escape, clique fora e fecho após navegação.
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#main-navigation');
+    const mobileLayout = window.matchMedia('(max-width: 1200px)');
+    function setMenu(open, restoreFocus = false) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      navigation.classList.toggle('is-open', open);
+      if (restoreFocus) menuButton.focus();
+    }
+    menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+    navigation.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false, true);
+    });
+    document.addEventListener('click', event => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+    });
+    document.addEventListener('focusin', event => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+    });
+    mobileLayout.addEventListener('change', () => setMenu(false));
+
+    // Temporizador próprio: independente de bibliotecas externas e do foco dos botões.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+(() => {
+  const hero = document.querySelector('.hero-slider');
+  if (!hero) return;
+  // Slides com datas (data-inicio / data-fim, definidas no backoffice): fora do prazo
+  // saem antes de o slider arrancar. Se todos estiverem fora do prazo, ficam todos.
+  if (!window.SLIDER_PREVIEW) {
+    const agora = new Date();
+    const hoje = `${agora.getFullYear()}-${String(agora.getMonth() + 1).padStart(2, '0')}-${String(agora.getDate()).padStart(2, '0')}`;
+    const todos = Array.from(hero.querySelectorAll('.swiper-slide'));
+    const foraDePrazo = todos.filter(slide => (slide.dataset.inicio && hoje < slide.dataset.inicio) || (slide.dataset.fim && hoje > slide.dataset.fim));
+    if (foraDePrazo.length < todos.length) foraDePrazo.forEach(slide => slide.remove());
+    // A página tem de manter um h1: se o slide que o tinha saiu, o primeiro h2 passa a h1.
+    if (!hero.querySelector('h1')) {
+      const titulo = hero.querySelector('.swiper-slide h2');
+      if (titulo) {
+        const h1 = document.createElement('h1');
+        h1.className = titulo.className;
+        h1.innerHTML = titulo.innerHTML;
+        titulo.replaceWith(h1);
+      }
+    }
+  }
+  const slides = Array.from(hero.querySelectorAll('.swiper-slide'));
+  const pagination = hero.querySelector('.swiper-pagination');
+  const previous = hero.querySelector('.swiper-button-prev');
+  const next = hero.querySelector('.swiper-button-next');
+  if (!slides.length) return;
+  const DELAY = 7000;
+  let currentSlide = 0;
+  let slideInterval = null;
+  const bullets = slides.map((slide, index) => {
+    const bullet = document.createElement('button');
+    bullet.type = 'button';
+    bullet.className = 'swiper-pagination-bullet';
+    bullet.setAttribute('aria-label', `Ir para o slide ${index + 1}`);
+    bullet.addEventListener('click', () => {
+      showSlide(index);
+      restartAutoplay();
+    });
+    pagination.appendChild(bullet);
+    return bullet;
+  });
+  function showSlide(index) {
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, position) => {
+      const active = position === currentSlide;
+      slide.classList.toggle('is-active', active);
+      slide.inert = !active;
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-label', `${position + 1} de ${slides.length}`);
+    });
+    bullets.forEach((bullet, position) => {
+      const active = position === currentSlide;
+      bullet.classList.toggle('swiper-pagination-bullet-active', active);
+      bullet.setAttribute('aria-current', String(active));
+    });
+  }
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+  function stopAutoplay() {
+    if (slideInterval !== null) clearInterval(slideInterval);
+    slideInterval = null;
+  }
+  function restartAutoplay() {
+    stopAutoplay();
+    if (slides.length > 1 && !document.hidden) {
+      slideInterval = setInterval(nextSlide, DELAY);
+    }
+  }
+  next.addEventListener('click', () => {
+    nextSlide();
+    restartAutoplay();
+  });
+  previous.addEventListener('click', () => {
+    showSlide(currentSlide - 1);
+    restartAutoplay();
+  });
+  let touchStartX = null;
+  hero.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0].clientX;
+  }, { passive: true });
+  hero.addEventListener('touchend', event => {
+    if (touchStartX === null) return;
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 60) {
+      showSlide(currentSlide + (distance < 0 ? 1 : -1));
+      restartAutoplay();
+    }
+    touchStartX = null;
+  }, { passive: true });
+  document.addEventListener('visibilitychange', restartAutoplay);
+  window.addEventListener('pagehide', stopAutoplay);
+  window.addEventListener('pageshow', restartAutoplay);
+  showSlide(0);
+  restartAutoplay();
+})();
+
+  </script>
+
+  <script>
+    // Marcas em loop contínuo, respeitando a preferência de movimento reduzido.
+    const brandsSection = document.querySelector('.brands-section');
+    function updateBrandsMotion() {
+      brandsSection.classList.toggle('is-reduced-motion', reducedMotion.matches);
+    }
+    reducedMotion.addEventListener('change', updateBrandsMotion);
+    updateBrandsMotion();
+
+    // Submeter a pesquisa para a página de resultados oficial da Speculum.
+    const searchForm = document.querySelector('.site-search');
+    const searchInput = document.querySelector('#site-search-input');
+    searchInput.addEventListener('input', () => searchInput.setCustomValidity(''));
+    searchForm.addEventListener('submit', event => {
+      searchInput.value = searchInput.value.trim();
+      if (!searchInput.value) {
+        event.preventDefault();
+        searchInput.setCustomValidity('Escreva o que pretende pesquisar.');
+        searchInput.reportValidity();
+      }
+    });
+  </script>
+
+  <script>
+    (() => {
+      // Submenus de Especialidades e Produtos, por clique/toque e teclado.
+      const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown')).map(element => {
+        const toggle = element.querySelector('.nav-dropdown-toggle');
+        const submenu = document.getElementById(toggle.getAttribute('aria-controls'));
+        const links = Array.from(submenu.querySelectorAll('a'));
+        return { element, toggle, submenu, links };
+      });
+      function setDropdown(item, open, restoreFocus = false) {
+        item.toggle.setAttribute('aria-expanded', String(open));
+        item.submenu.hidden = !open;
+        if (restoreFocus) item.toggle.focus();
+      }
+      function closeAll(except) {
+        dropdowns.forEach(item => { if (item !== except) setDropdown(item, false); });
+      }
+      dropdowns.forEach(item => {
+        item.toggle.addEventListener('click', () => {
+          const open = item.submenu.hidden;
+          closeAll(item);
+          setDropdown(item, open);
+        });
+        item.toggle.addEventListener('keydown', event => {
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            closeAll(item);
+            setDropdown(item, true);
+            item.links[0].focus();
+          }
+        });
+        item.element.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && !item.submenu.hidden) {
+            event.preventDefault();
+            event.stopPropagation();
+            setDropdown(item, false, true);
+          }
+        });
+        item.submenu.addEventListener('click', event => {
+          if (event.target.closest('a')) closeAll();
+        });
+      });
+      document.addEventListener('click', event => {
+        dropdowns.forEach(item => {
+          if (!item.element.contains(event.target)) setDropdown(item, false);
+        });
+      });
+      document.addEventListener('focusin', event => {
+        dropdowns.forEach(item => {
+          if (!item.element.contains(event.target)) setDropdown(item, false);
+        });
+      });
+      document.querySelector('.menu-toggle').addEventListener('click', () => closeAll());
+      window.matchMedia('(max-width: 1200px)').addEventListener('change', () => closeAll());
+    })();
+  </script>
+
+  
+<button type="button" class="original-contact-button" id="helpbox" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 13V10a8 8 0 0 1 16 0v3M20 18v2h-7"/><rect x="2" y="11" width="4" height="7" rx="2"/><rect x="18" y="11" width="4" height="7" rx="2"/></svg><span>Quero ser contactado</span></button>
+<dialog id="helpbox-content" class="original-contact-dialog original-contact-dialog--native" aria-labelledby="original-contact-title"><form name="helpbox" id="hfrm" action="https://www.speculum.pt/pt/inicio" method="post" enctype="multipart/form-data" onsubmit="getHelpBoxToken(event)">
+		<div class="box-content-top">
+			<div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+					<path d="M28.8974 12.8001H26.9912V10.88C26.9912 4.88151 22.0895 0 16.0662 0C10.0429 0 5.14118 4.88151 5.14118 10.88V12.8001H3.235C1.45264 12.8001 0 14.2467 0 16.0217V21.0982C0 22.8733 1.45264 24.3199 3.235 24.3199H5.78382C6.13862 24.3199 6.42647 24.0333 6.42647 23.6799V10.8799C6.42647 5.58492 10.7493 1.27983 16.0662 1.27983C21.383 1.27983 25.7059 5.58492 25.7059 10.8799V26.2233C25.7059 27.7633 24.4457 29.0133 22.9043 29.0133H19.189C18.9062 28.0316 18.0025 27.3066 16.923 27.3066H15.2093C13.9106 27.3066 12.8529 28.36 12.8529 29.6533C12.8529 30.9466 13.9106 32 15.2093 32H16.923C17.9991 32 18.9062 31.275 19.189 30.2933H22.9043C25.1586 30.2933 26.9912 28.4667 26.9912 26.2233V24.32H28.8974C30.6797 24.32 32.1324 22.8733 32.1324 21.0983V16.0218C32.1324 14.2468 30.6797 12.8001 28.8974 12.8001ZM5.14126 23.0401H3.23509C2.15899 23.0401 1.28538 22.1701 1.28538 21.0984V16.0219C1.28538 14.9502 2.15899 14.0802 3.23509 14.0802H5.14126V23.0401ZM16.9231 30.7201H15.2094C14.6186 30.7201 14.1383 30.2418 14.1383 29.6535C14.1383 29.0651 14.6186 28.5868 15.2094 28.5868H16.9231C17.5139 28.5868 17.9942 29.0651 17.9942 29.6535C17.9942 30.2418 17.5139 30.7201 16.9231 30.7201ZM30.8471 21.0983C30.8471 22.17 29.9735 23.04 28.8974 23.04H26.9913V14.08H28.8974C29.9735 14.08 30.8471 14.95 30.8471 16.0217V21.0983ZM16.0663 3.84002C14.4546 3.84002 12.8781 4.39503 11.623 5.4067C11.3485 5.62837 10.9419 5.5867 10.7193 5.31336C10.4967 5.04003 10.5385 4.63505 10.813 4.41335C12.2957 3.21667 14.1601 2.55999 16.0664 2.55999C17.9727 2.55999 19.837 3.21667 21.3147 4.40665C21.5892 4.62832 21.631 5.03334 21.4084 5.30667C21.2796 5.465 21.0955 5.545 20.9063 5.545C20.7658 5.545 20.6185 5.49833 20.503 5.405C19.2545 4.39499 17.6777 3.84002 16.0663 3.84002Z" fill="white" />
+				</svg>
+				<span id="original-contact-title">Quero ser contactado</span>
+			</div>
+			<button type="button" class="original-contact-close" aria-label="Fechar formulário"><svg class="close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+				<path d="M16 14.1147L22.6 7.51468L24.4853 9.40001L17.8853 16L24.4853 22.6L22.6 24.4853L16 17.8853L9.39998 24.4853L7.51465 22.6L14.1146 16L7.51465 9.40001L9.39998 7.51468L16 14.1147Z" fill="white" />
+			</svg></button>
+		</div>
+		<div class="box-content-middle">
+						<p>Nome*</p>
+			<input class="box-input-text" required type="text" name="name" aria-label="Nome" value="" />
+
+			<p>Email*</p>
+			<input class="box-input-text" required type="email" name="email" aria-label="Email" value="" />
+
+			<p>Telefone*</p>
+			<input class="box-input-text" required type="tel" name="phone" aria-label="Telefone" value="" />
+
+			<p>Mensagem*</p>
+			<textarea class="box-area-text" required name="message" aria-label="Mensagem" rows="2"></textarea>
+
+			<label for="health"><input type="checkbox" required name="health" id="health" /><span>Sim, sou <b>Profissional de Saúde</b></span></label>
+
+			<label for="terms"><input type="checkbox" required name="terms" id="terms" /><span>Sim, eu li e aceito os <a href="https://www.speculum.pt/pt/protecao-de-dados" target="_self">Termos e Condições e a Política de Privacidade</a></span></label>
+
+			
+						<input type="hidden" value="helpbox_submit" name="helpbox_submit" />
+			<input class="helpbox-submit" disabled type="submit" name="helpbox_submit" value="Submeter" />
+		</div>
+	<div class="original-contact-feedback"><p class="original-contact-status" role="status" aria-live="polite"></p><a class="original-contact-official" href="https://www.speculum.pt/pt/contactos" hidden>Continuar no site oficial →</a></div></form></dialog>
+<script>
+(() => {
+  const dialog = document.querySelector('#helpbox-content');
+  const form = document.querySelector('#hfrm');
+  const trigger = document.querySelector('#helpbox');
+  if (!dialog || !form || !trigger) return;
+  const status = form.querySelector('.original-contact-status');
+  const officialLink = form.querySelector('.original-contact-official');
+  const submit = form.querySelector('.helpbox-submit');
+  const liveDomain = /^(www\.)?speculum\.pt$/i.test(window.location.hostname) && window.location.protocol === 'https:';
+  const siteKey = '6Lc4RTcpAAAAAIQjoFy8jRRUvvvPYVC5FZBOx0Nx';
+  const localNotice = 'Pré-visualização local: o envio deste formulário requer o servidor da Speculum e a verificação reCAPTCHA no domínio autorizado.';
+  let captchaReady, submitting = false;
+  function updateSubmit() {
+    submit.disabled = submitting || !(form.elements.health.checked && form.elements.terms.checked);
+    const label = submitting ? 'A verificar…' : 'Submeter';
+    if (submit.tagName === 'INPUT') submit.value = label; else submit.textContent = label;
+  }
+  function loadCaptcha() {
+    if (window.grecaptcha && window.grecaptcha.execute) return Promise.resolve();
+    if (!captchaReady) captchaReady = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
+      script.onload = resolve;
+      script.onerror = () => { captchaReady = null; reject(new Error('captcha')); };
+      document.head.appendChild(script);
+    });
+    return captchaReady;
+  }
+  function withTimeout(promise) {
+    return new Promise((resolve,reject) => {
+      const timer = setTimeout(() => reject(new Error('timeout')),15000);
+      promise.then(value => { clearTimeout(timer); resolve(value); }, error => { clearTimeout(timer); reject(error); });
+    });
+  }
+  trigger.addEventListener('click', () => {
+    if (!dialog.open) dialog.showModal();
+    if (!liveDomain) status.textContent = localNotice;
+    updateSubmit();
+  });
+  dialog.querySelector('.original-contact-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  form.addEventListener('change',updateSubmit);
+  window.getHelpBoxToken = async event => {
+    event.preventDefault();
+    if (submitting || !form.reportValidity()) return;
+    if (!(form.elements.health.checked && form.elements.terms.checked)) { updateSubmit(); return; }
+    if (!liveDomain) {
+      status.textContent = localNotice + ' Utilize o formulário no site oficial para enviar o seu pedido.';
+      officialLink.hidden = false;
+      officialLink.textContent = 'Abrir contactos no site oficial →';
+      return;
+    }
+    submitting = true; updateSubmit(); status.textContent = 'A verificar o pedido…';
+    try {
+      const token = await withTimeout((async () => {
+        await loadCaptcha();
+        await new Promise(resolve => window.grecaptcha.ready(resolve));
+        return window.grecaptcha.execute(siteKey,{action:'submit'});
+      })());
+      if (!token) throw new Error('captcha');
+      let input = form.querySelector('[name="recaptcha_token"]');
+      if (!input) { input=document.createElement('input'); input.type='hidden'; input.name='recaptcha_token'; form.appendChild(input); }
+      input.value = token;
+      form.action='https://www.speculum.pt/pt/inicio';
+      HTMLFormElement.prototype.submit.call(form);
+    } catch {
+      submitting = false; updateSubmit();
+      status.textContent='Não foi possível verificar o pedido. Tente novamente ou use a página de contactos.';
+      officialLink.hidden=false;
+    }
+  };
+  // Atribuir uma única função evita duplicar envios caso o HTML inclua onsubmit.
+  form.onsubmit = window.getHelpBoxToken;
+  updateSubmit();
+
+})();
+
+</script>
+</body>
+</html>
