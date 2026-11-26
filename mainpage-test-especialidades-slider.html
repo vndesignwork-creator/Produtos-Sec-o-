@@ -1232,10 +1232,11 @@ body { padding-top: var(--header-height); }
   .esp-faixa-inner { width: min(1175px, 96%); }
   /* Título só para leitores de ecrã: no slider não há espaço para ele. */
   .esp-faixa-cabeca { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  .esp-faixa-lista { display: flex; gap: 10px; max-width: calc(100% - 400px); pointer-events: auto; }
-  .esp-faixa-lista li { flex: 1 1 0; min-width: 0; }
-  .esp-faixa-lista a { min-height: 50px; padding: 10px 14px; font-size: .95rem; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 20, 31, .28); }
-  .esp-faixa-lista a span { font-size: 1.05rem; }
+  /* Cada botão mede o seu texto: o espaço entre o nome e a seta é igual em todos. Alinhados com o logótipo. */
+  .esp-faixa-lista { display: flex; gap: 8px; max-width: calc(100% - 410px); margin-left: 10px; pointer-events: auto; }
+  .esp-faixa-lista li { flex: 0 0 auto; }
+  .esp-faixa-lista a { justify-content: flex-start; gap: 8px; min-height: 46px; padding: 10px 12px 10px 14px; font-size: .9rem; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 20, 31, .28); }
+  .esp-faixa-lista a span { font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .esp-faixa-lista a, .esp-faixa-lista a span { transition: none; } }
 </style>
