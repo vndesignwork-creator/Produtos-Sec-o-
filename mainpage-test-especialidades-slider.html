@@ -1228,14 +1228,14 @@ body { padding-top: var(--header-height); }
    Só a partir de 1230 px: abaixo disso não cabem por extenso e ficam na secção a seguir ao slider. */
 @media (min-width: 1230px) {
   #conteudo { position: relative; }
-  .esp-faixa { position: absolute; inset: 0 0 auto; z-index: 20; padding: 18px 0 0; background: none; border: 0; pointer-events: none; }
+  .esp-faixa { position: absolute; inset: 0 0 auto; z-index: 20; padding: 0; /* mesma linha e altura que a pesquisa */ background: none; border: 0; pointer-events: none; }
   .esp-faixa-inner { width: min(1175px, 96%); }
   /* Título só para leitores de ecrã: no slider não há espaço para ele. */
   .esp-faixa-cabeca { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   /* Cada botão mede o seu texto: o espaço entre o nome e a seta é igual em todos. Alinhados com o logótipo. */
   .esp-faixa-lista { display: flex; gap: 8px; max-width: calc(100% - 410px); margin-left: 10px; pointer-events: auto; }
   .esp-faixa-lista li { flex: 0 0 auto; }
-  .esp-faixa-lista a { justify-content: flex-start; gap: 8px; min-height: 46px; padding: 10px 12px 10px 14px; font-size: .9rem; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 20, 31, .28); }
+  .esp-faixa-lista a { justify-content: flex-start; gap: 8px; height: 48px; min-height: 0; border-radius: 0 0 8px 8px; border-top: 0; padding: 10px 12px 10px 14px; font-size: .9rem; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 20, 31, .28); }
   .esp-faixa-lista a span { font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .esp-faixa-lista a, .esp-faixa-lista a span { transition: none; } }
