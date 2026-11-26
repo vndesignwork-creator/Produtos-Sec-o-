@@ -1206,9 +1206,6 @@
 
     /* Quem somos (fundo escuro) */
     .gy-about-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    /* Selos SGS (versão branca oficial, a mesma do rodapé) no lugar do ícone */
-    .gy-iso-seal { height: 52px; margin: 0 0 14px; }
-    #root .gy-iso-seal img { display: block; width: auto; height: 100%; max-width: 100%; margin: 0; padding: 0; border-radius: 0; box-shadow: none; background: transparent; }
 
     @media (max-width: 1100px) {
       .gy-about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1691,6 +1688,17 @@
       <circle class="nt-i-w" cx="24" cy="33" r="3"/>
     </symbol>
     <!-- Ginecologia: símbolo feminino com cruz médica -->
+    <symbol id="nt-i-cert" viewBox="0 0 48 48">
+      <rect class="nt-i-d" x="4" y="4" width="32" height="38" rx="4"/>
+      <rect class="nt-i-w" x="10" y="11" width="20" height="3.5" rx="1.75"/>
+      <rect class="nt-i-w" x="10" y="18.5" width="15" height="3.5" rx="1.75"/>
+      <rect class="nt-i-w" x="10" y="26" width="10" height="3.5" rx="1.75"/>
+      <path class="nt-i-d" d="M30 38 L27 47 L31 45.5 L33.5 48 L35 40 Z"/>
+      <path class="nt-i-l" d="M40 38 L43 47 L39 45.5 L36.5 48 L35 40 Z"/>
+      <circle class="nt-i-w" cx="35" cy="32" r="11.5"/>
+      <circle class="nt-i-l" cx="35" cy="32" r="9"/>
+      <path class="nt-i-check" stroke-width="3.2" d="M30.8 32.2 L33.8 35.2 L39.4 29"/>
+    </symbol>
     <symbol id="es-i-gyn" viewBox="0 0 48 48">
       <circle class="nt-i-d" cx="24" cy="17" r="14"/>
       <circle class="nt-i-w" cx="24" cy="17" r="8.5"/>
@@ -2491,7 +2499,7 @@
 
           <div class="nt-benefit-grid gy-about-grid">
             <article class="r20-software-card r20-reveal">
-              <div class="gy-iso-seal"><img src="https://www.speculum.pt/page/Site-Speculum/images/sgs_logo_white.png" alt="Selos SGS de certificação ISO 9001 (IPAC) e ISO 13485 (UKAS)" width="2084" height="1108" loading="lazy" decoding="async"></div>
+              <div class="r20-feature-icon"><svg aria-hidden="true"><use href="#nt-i-cert"/></svg></div>
               <h3>Certificação ISO</h3>
               <p class="r20-software-summary">Certificada pelas normas ISO 9001 e ISO 13485.</p>
             </article>
