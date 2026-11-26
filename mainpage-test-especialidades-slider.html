@@ -1228,6 +1228,9 @@ body { padding-top: var(--header-height); }
    Só a partir de 1230 px: abaixo disso não cabem por extenso e ficam na secção a seguir ao slider. */
 @media (min-width: 1230px) {
   #conteudo { position: relative; }
+  /* A faixa da pesquisa ocupa a largura toda e tapava os botões: só a caixa de pesquisa recebe cliques. */
+  .original-search-panel { pointer-events: none; }
+  .original-search-panel .site-search { pointer-events: auto; }
   /* Fixos por baixo do cabeçalho, como a pesquisa: continuam visíveis ao descer a página. */
   .esp-faixa { position: fixed; inset: var(--header-height) 0 auto; z-index: 1190; padding: 0; /* mesma linha e altura que a pesquisa */ background: none; border: 0; pointer-events: none; }
   .esp-faixa-inner { width: min(1175px, 96%); }
