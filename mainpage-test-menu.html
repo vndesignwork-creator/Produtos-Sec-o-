@@ -1215,11 +1215,12 @@ body { padding-top: var(--header-height); }
 @media (max-width: 1100px) {
   .original-header .original-search-panel .site-search { width: 300px; }
 }
-/* Telemóvel: especialidades numa linha que desliza, pesquisa por baixo. */
+/* Telemóvel: as cinco especialidades sempre visíveis, em 3 + 2, com a pesquisa por baixo. */
 @media (max-width: 700px) {
   .original-search-panel .original-header-container { flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
-  .specialty-menu { gap: 22px; padding-inline: 4%; }
-  .specialty-menu a { font-size: 13px; padding: 12px 0; }
+  .specialty-menu { flex-wrap: wrap; justify-content: center; gap: 0 8px; padding: 4px 3%; overflow: visible; }
+  .specialty-menu a { flex: 0 0 calc((100% - 16px) / 3); justify-content: center; text-align: center; font-size: 13px; padding: 9px 0; }
+  .specialty-menu a::after { inset-inline: 22%; inset-block-end: 4px; }
   .original-header .original-search-panel .site-search { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .specialty-menu a, .specialty-menu a::after { transition: none; } }
