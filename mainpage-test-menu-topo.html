@@ -1202,9 +1202,11 @@ body { padding-top: var(--header-height); }
 /* Especialidades: secção própria logo a seguir ao slider (substitui a barra lateral). */
 .esp-faixa { padding: 36px 0 40px; background: #fff; border-bottom: 1px solid #e3edf3; }
 .esp-faixa-inner { width: min(1320px, 90%); margin: auto; }
-.esp-faixa-cabeca { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
-.esp-faixa-cabeca h2 { margin: 0; font-size: clamp(1.35rem, 2.2vw, 1.75rem); color: #02486f; }
-.esp-faixa-cabeca p { margin: 0; color: #4d6b7d; font-size: .95rem; }
+/* Título como o das outras secções: sobretítulo, título e frase, centrados. */
+.esp-faixa-cabeca { margin-bottom: 24px; text-align: center; }
+.esp-faixa-cabeca .section-eyebrow { color: #327594; font-weight: 700; margin-bottom: 8px; }
+.esp-faixa-cabeca h2 { margin: 0 0 6px; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: #02486f; }
+.esp-faixa-cabeca p { margin: 0 auto; max-width: 620px; color: #4d6b7d; font-size: .95rem; }
 .esp-faixa-lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .esp-faixa-lista a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; padding: 14px 18px; border: 1px solid #cfe0ea; border-left: 4px solid #1d7bae; border-radius: 8px; background: #f5f9fc; color: #02486f; font-size: 1.02rem; font-weight: 700; text-decoration: none; transition: background .18s, color .18s, border-color .18s; }
 .esp-faixa-lista a span { font-size: 1.2rem; line-height: 1; color: #1d7bae; transition: transform .18s, color .18s; }
@@ -1216,8 +1218,8 @@ body { padding-top: var(--header-height); }
 @media (max-width: 1100px) { .esp-faixa-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 800px) {
   .esp-faixa { padding: 26px 0 28px; }
-  .esp-faixa-cabeca { display: block; margin-bottom: 14px; }
-  .esp-faixa-cabeca p { margin-top: 4px; font-size: .9rem; }
+  .esp-faixa-cabeca { margin-bottom: 16px; }
+  .esp-faixa-cabeca p { font-size: .88rem; }
   .esp-faixa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .esp-faixa-lista li:last-child { grid-column: 1 / -1; }
   .esp-faixa-lista a { min-height: 54px; padding: 12px 14px; font-size: .98rem; }
@@ -1314,7 +1316,7 @@ body { padding-top: var(--header-height); }
   </section>
   <section class="esp-faixa" aria-labelledby="esp-faixa-titulo">
     <div class="esp-faixa-inner">
-      <div class="esp-faixa-cabeca"><h2 id="esp-faixa-titulo">Especialidades</h2><p>Escolha a sua área e veja as soluções Speculum.</p></div>
+      <div class="esp-faixa-cabeca"><span class="section-eyebrow">Áreas clínicas</span><h2 id="esp-faixa-titulo">Especialidades</h2><p>Escolha a sua área e conheça as soluções Speculum.</p></div>
       <ul class="esp-faixa-lista"><li><a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização <span aria-hidden="true">→</span></a></li></ul>
     </div>
   </section>
