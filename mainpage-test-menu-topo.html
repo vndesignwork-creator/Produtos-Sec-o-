@@ -1199,32 +1199,30 @@ body { padding-top: var(--header-height); }
 @media(prefers-reduced-motion:reduce) { .contact-cta-brand-icon { filter:none; } }
 </style>
 <style>
-/* Especialidades na barra de topo, entre o idioma e o Login. */
-.original-header .original-language { margin-right: 0; }
-.topo-especialidades { display: flex; align-items: center; gap: 22px; margin-right: auto; margin-left: 18px; min-width: 0; height: 30px; overflow-x: auto; scrollbar-width: none; }
-.topo-especialidades::-webkit-scrollbar { display: none; }
-.topo-especialidades a { position: relative; flex: 0 0 auto; display: inline-flex; align-items: center; height: 30px; white-space: nowrap; font-size: 13px; font-weight: 600; color: #02486f; transition: color .18s; }
-.topo-especialidades a::after { content: ""; position: absolute; inset-inline: 0; bottom: 4px; height: 2px; background: #1f7bae; transform: scaleX(0); transition: transform .2s; }
-.topo-especialidades a:hover, .topo-especialidades a:focus-visible { color: #1f7bae; }
-.topo-especialidades a:hover::after, .topo-especialidades a:focus-visible::after { transform: scaleX(1); }
-.topo-especialidades a:focus-visible { outline: 2px solid #1f7bae; outline-offset: 2px; }
-/* Itens do menu ☰: só aparecem no telemóvel. */
-/* Telemóvel: especialidades em destaque por baixo da pesquisa, fora do menu ☰. */
-.esp-movel { display: none; }
+/* Especialidades: secção própria logo a seguir ao slider (substitui a barra lateral). */
+.esp-faixa { padding: 36px 0 40px; background: #fff; border-bottom: 1px solid #e3edf3; }
+.esp-faixa-inner { width: min(1320px, 90%); margin: auto; }
+.esp-faixa-cabeca { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.esp-faixa-cabeca h2 { margin: 0; font-size: clamp(1.35rem, 2.2vw, 1.75rem); color: #02486f; }
+.esp-faixa-cabeca p { margin: 0; color: #4d6b7d; font-size: .95rem; }
+.esp-faixa-lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.esp-faixa-lista a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; padding: 14px 18px; border: 1px solid #cfe0ea; border-left: 4px solid #1d7bae; border-radius: 8px; background: #f5f9fc; color: #02486f; font-size: 1.02rem; font-weight: 700; text-decoration: none; transition: background .18s, color .18s, border-color .18s; }
+.esp-faixa-lista a span { font-size: 1.2rem; line-height: 1; color: #1d7bae; transition: transform .18s, color .18s; }
+.esp-faixa-lista a:hover, .esp-faixa-lista a:focus-visible { background: #02486f; border-color: #02486f; color: #fff; }
+.esp-faixa-lista a:hover span, .esp-faixa-lista a:focus-visible span { color: #fff; transform: translateX(3px); }
+.esp-faixa-lista a:focus-visible { outline: 3px solid #1d7bae; outline-offset: 2px; }
 /* Sem a barra lateral, o texto do slider pode usar a largura toda. */
 @media (min-width: 1101px) { .hero-slider .slide-content { max-width: 700px; } }
-@media (max-width: 1100px) { .topo-especialidades { gap: 16px; margin-left: 12px; } .topo-especialidades a { font-size: 12.5px; } }
+@media (max-width: 1100px) { .esp-faixa-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 800px) {
-  .topo-especialidades { display: none; }
-  .original-header .original-language { margin-right: auto; }
-  .esp-movel { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 10px; }
-  .esp-movel a { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border-radius: 999px; background: rgba(255,255,255,.94); color: #02486f; font-size: 13px; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,20,31,.25); transition: background .18s, color .18s; }
-  .esp-movel a:hover, .esp-movel a:focus-visible { background: #1d7bae; color: #fff; }
-  .esp-movel a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-  /* Espaço para as etiquetas por cima do texto do slider. */
-  .hero-slider .swiper-slide { padding-top: 168px; }
+  .esp-faixa { padding: 26px 0 28px; }
+  .esp-faixa-cabeca { display: block; margin-bottom: 14px; }
+  .esp-faixa-cabeca p { margin-top: 4px; font-size: .9rem; }
+  .esp-faixa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .esp-faixa-lista li:last-child { grid-column: 1 / -1; }
+  .esp-faixa-lista a { min-height: 54px; padding: 12px 14px; font-size: .98rem; }
 }
-@media (prefers-reduced-motion: reduce) { .topo-especialidades a, .topo-especialidades a::after { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .esp-faixa-lista a, .esp-faixa-lista a span { transition: none; } }
 </style>
 </head>
 <body>
@@ -1234,7 +1232,6 @@ body { padding-top: var(--header-height); }
   <header class="original-header" id="navtop">
   <div class="original-topbar"><div class="original-header-container">
 <details class="original-language"><summary aria-label="Idioma atual: português"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.8 7h-3.1a16 16 0 0 0-1.3-4.1A8.1 8.1 0 0 1 19.8 9ZM12 4c1 1.2 1.8 2.9 2.2 5H9.8C10.2 6.9 11 5.2 12 4ZM4.2 15h3.1a16 16 0 0 0 1.3 4.1A8.1 8.1 0 0 1 4.2 15Zm3.1-2H3.9a8.4 8.4 0 0 1 0-2h3.4a17 17 0 0 0 0 2ZM4.2 9a8.1 8.1 0 0 1 4.4-4.1A16 16 0 0 0 7.3 9H4.2ZM12 20c-1-1.2-1.8-2.9-2.2-5h4.4c-.4 2.1-1.2 3.8-2.2 5Zm2.6-7H9.4a15 15 0 0 1 0-2h5.2a15 15 0 0 1 0 2Zm.8 6.1a16 16 0 0 0 1.3-4.1h3.1a8.1 8.1 0 0 1-4.4 4.1Zm1.3-6.1a17 17 0 0 0 0-2h3.4a8.4 8.4 0 0 1 0 2h-3.4Z"/></svg><span>PT</span></summary><a href="https://www.speculum.pt/en" lang="en">en</a></details>
-<nav class="topo-especialidades" aria-label="Especialidades médicas"><a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia</a><a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia</a><a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia</a><a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia</a><a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização</a></nav>
     <a href="https://www.speculum.pt/pt/area-de-cliente" class="original-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 22v-4a8 8 0 0 1 16 0v4"/></svg>Login / Registo</a>
     
     <a href="https://www.speculum.pt/pt/carrinho-de-compras" class="original-cart" aria-label="Carrinho de compras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 3h3l3 13h11l3-9H6"/><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg><span class="original-cart-value">(0) 0.00 €</span></a>
@@ -1244,7 +1241,7 @@ body { padding-top: var(--header-height); }
     <button class="menu-toggle original-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <nav id="main-navigation" class="original-navigation" aria-label="Menu principal"><ul class="nav-menu original-menu"><li><a href="https://www.speculum.pt/pt/inicio" class="selected" aria-current="page">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li class="nav-dropdown original-products"><a href="https://www.speculum.pt/medicoshospitalares.html">Produtos</a><button class="nav-dropdown-toggle original-products-toggle" type="button" aria-expanded="false" aria-controls="original-products-menu" aria-label="Abrir categorias de produtos">+</button><ul id="original-products-menu" class="specialties-submenu" hidden><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul></nav>
   </div>
-  <div id="original-search-panel" class="original-search-panel"><div class="original-header-container"><form class="site-search" action="https://www.speculum.pt/pt/pesquisar" method="post" role="search"><label for="site-search-input" class="sr-only">Pesquisar no site</label><input id="site-search-input" name="search_tag_all" type="search" placeholder="Pesquisar" required><button type="submit" aria-label="Pesquisar">»</button></form><nav class="esp-movel" aria-label="Especialidades médicas"><a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia</a><a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia</a><a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia</a><a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia</a><a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização</a></nav></div></div>
+  <div id="original-search-panel" class="original-search-panel"><div class="original-header-container"><form class="site-search" action="https://www.speculum.pt/pt/pesquisar" method="post" role="search"><label for="site-search-input" class="sr-only">Pesquisar no site</label><input id="site-search-input" name="search_tag_all" type="search" placeholder="Pesquisar" required><button type="submit" aria-label="Pesquisar">»</button></form></div></div>
 </header>
 
   <!-- Slides geridos pelo backoffice em slider-admin/ (entre os marcadores SLIDER-INICIO e SLIDER-FIM). -->
@@ -1314,6 +1311,12 @@ body { padding-top: var(--header-height); }
     <button class="swiper-button-prev" type="button" aria-label="Slide anterior"></button>
     <button class="swiper-button-next" type="button" aria-label="Slide seguinte"></button>
     <div class="swiper-pagination"></div>
+  </section>
+  <section class="esp-faixa" aria-labelledby="esp-faixa-titulo">
+    <div class="esp-faixa-inner">
+      <div class="esp-faixa-cabeca"><h2 id="esp-faixa-titulo">Especialidades</h2><p>Escolha a sua área e veja as soluções Speculum.</p></div>
+      <ul class="esp-faixa-lista"><li><a href="https://www.speculum.pt/pt/noticias/8-ginecologia">Ginecologia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/7-obstetricia">Obstetrícia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/10-ecografia">Ecografia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/9-anestesia">Anestesia <span aria-hidden="true">→</span></a></li><li><a href="https://www.speculum.pt/pt/noticias/11-monitorizacao">Monitorização <span aria-hidden="true">→</span></a></li></ul>
+    </div>
   </section>
 <!-- Acesso compacto às cinco especialidades, sem cartões altos. -->
   <section class="specialty-section specialty-showcase" id="especialidades" aria-labelledby="specialty-title">
