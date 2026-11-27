@@ -2091,7 +2091,7 @@ body { padding-top: var(--header-height); }
       #navtop #search-input-section,
       #navtop.compacto #search-input-section{position:absolute!important;inset-block-start:100%!important;
         inset-inline-end:calc((100% - min(1175px, 96%)) / 2)!important;inset-inline-start:auto!important;
-        width:330px!important;max-width:330px!important;height:48px!important;box-sizing:border-box!important;
+        width:380px!important;max-width:380px!important;height:48px!important;box-sizing:border-box!important;
         padding:7px 8px!important;background:#f5f9fc!important;border:1px solid #cfe0ea!important;border-top:0!important;
         border-radius:0 0 8px 8px!important;
         /* A sombra interior por cima imita a sombra do cabeçalho que cai sobre os separadores das
@@ -2102,7 +2102,9 @@ body { padding-top: var(--header-height); }
       #navtop #search-input-section-inside{height:34px!important}
       #navtop #search-input-section .search-input{border-color:#cfe0ea!important}
       #navtop #search-input-section .search-input:focus{border-color:#1d7bae!important}
-      #navtop #search-input-section #search-content{inset-block-start:calc(100% + 7px)!important;inset-inline-end:-8px!important}
+      /* A lista de resultados ocupa exactamente a largura da caixa (380px): -9px = 8px de padding + 1px de borda. */
+      #navtop #search-input-section #search-content{inset-block-start:calc(100% + 7px)!important;
+        inset-inline-start:-9px!important;inset-inline-end:-9px!important;width:auto!important;max-width:none!important;box-sizing:border-box!important}
     }
   }
 </style>
