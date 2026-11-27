@@ -23,10 +23,35 @@
        e ao rodapé. Ficam antes do <style> desta página para que, em caso de empate de
        especificidade, prevaleçam as regras do conteúdo. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap" type="text/css">
-  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/stylesheet.css" type="text/css">
-  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/core.css" type="text/css">
-  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/select2.css" type="text/css">
-  <link rel="stylesheet" href="https://www.speculum.pt/layout/css/font-awesome.min.css" type="text/css">
+  <style>
+    /* Folhas do site Speculum dentro da camada "site": dão o aspeto ao cabeçalho, mas qualquer regra
+       desta página ganha-lhes, por isso o conteúdo fica exatamente como na versão sem o cabeçalho do site. */
+    /* Os @import têm de vir antes de qualquer outra regra; só a declaração da ordem das camadas pode vir antes. */
+    @layer repor-importante, site, repor;
+    @import url("https://www.speculum.pt/layout/css/stylesheet.css") layer(site);
+    @import url("https://www.speculum.pt/layout/css/core.css") layer(site);
+    @import url("https://www.speculum.pt/layout/css/select2.css") layer(site);
+    @import url("https://www.speculum.pt/layout/css/font-awesome.min.css") layer(site);
+    /* O site dá margin-top: 1.41rem !important a tudo o que vem a seguir a uma imagem (img + *).
+       Um !important só perde para outro numa camada anterior, daí esta camada antes da "site". */
+    @layer repor-importante {
+      :where(#conteudo, footer, #helpbox-content) :is(img, picture) + :not(svg *) { margin-top: 0 !important; }
+      /* Abaixo dos 768px o site reescreve o h1 com !important (20px, centrado, azul). Repõem-se os
+         valores do título do slider desta página (.slide-content h1). */
+      .slide-content h1 { font-size: clamp(2rem, 3.4vw, 3.2rem) !important; font-weight: 700 !important; line-height: 1.15 !important; letter-spacing: -0.02em !important; margin: 0 0 1.25rem !important; text-align: start !important; color: inherit !important; }
+      @media (max-width: 768px) { .slide-content h1 { font-size: clamp(1.65rem, 6.4vw, 2.15rem) !important; } }
+      /* Fundo da página: o site força-o com !important. */
+      body { background-color: #f8fafc !important; }
+    }
+    /* Fora do cabeçalho, cada elemento volta aos valores por omissão do browser (camada "repor",
+       acima da do site); as regras da página continuam a ganhar. Os SVG ficam de fora porque
+       usam atributos de apresentação (fill, stroke), que o revert apagaria. */
+    @layer repor {
+      :where(#conteudo, footer, #helpbox-content, #helpbox), :where(#conteudo, footer, #helpbox-content, #helpbox) :not(svg, svg *) { all: revert; }
+      /* O body do site traz letter-spacing .1px, que o conteúdo herdaria. */
+      :where(#conteudo, footer, #helpbox-content, #helpbox) { letter-spacing: normal; }
+    }
+  </style>
 
 <style>
     /* Reset & Base */
@@ -1269,6 +1294,12 @@ body { padding-top: var(--header-height); }
     @media (max-width: 760px) { .difference-icon, .difference-icon svg { width: 40px; height: 40px; } .difference-icon { margin-bottom: 16px; } }
 </style>
   <style>
+    /* As regras gerais desta página (*, a, ul, img, button…) foram escritas para o cabeçalho antigo e
+       ganhariam às folhas do site, que estão numa camada. Dentro do #navtop voltam todas ao valor da
+       camada do site; as regras #navtop… do bloco seguinte continuam a mandar por virem depois. */
+    #navtop, #navtop :not(svg *) { all: revert-layer; }
+  </style>
+  <style>
     /* ============================================================
        Cabeçalho e rodapé do site — CSS igual ao da monitoresdesinaisvitais.html
        ============================================================
@@ -1652,7 +1683,9 @@ body { padding-top: var(--header-height); }
   /* ===== Ajustes da página principal ao cabeçalho do site ===== */
   /* O espaço do cabeçalho fixo segue a altura publicada pelo script (--header-h). */
   html:root { --header-height: calc(var(--header-h, 100px) + var(--search-h, 0px)); }
-  body { padding-top: var(--header-height) !important; }
+  /* O script do cabeçalho põe padding-top: 0 !important no body (como na ginecologia), por isso o
+     espaço do cabeçalho fixo passa para o <main>. */
+  #conteudo { padding-top: var(--header-height); }
   /* Especialidades (≥1230px): fixas por baixo do cabeçalho, acompanhando-o quando fica compacto.
      A pesquisa está na barra de topo, por isso a linha pode usar a largura toda. */
   @media (min-width: 1230px) {
