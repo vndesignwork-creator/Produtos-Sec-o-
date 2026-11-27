@@ -2093,7 +2093,11 @@ body { padding-top: var(--header-height); }
         inset-inline-end:calc((100% - min(1175px, 96%)) / 2)!important;inset-inline-start:auto!important;
         width:330px!important;max-width:330px!important;height:48px!important;box-sizing:border-box!important;
         padding:7px 8px!important;background:#f5f9fc!important;border:1px solid #cfe0ea!important;border-top:0!important;
-        border-radius:0 0 8px 8px!important;box-shadow:0 6px 18px rgba(0,20,31,.28)!important;
+        border-radius:0 0 8px 8px!important;
+        /* A sombra interior por cima imita a sombra do cabeçalho que cai sobre os separadores das
+           especialidades: como a pesquisa vive dentro do #navtop, fica por cima dessa sombra e
+           sem isto parecia colada à frente do cabeçalho em vez de sair de baixo dele. */
+        box-shadow:inset 0 5px 8px -3px rgba(0,0,0,.14),0 6px 18px rgba(0,20,31,.28)!important;
         opacity:1!important;visibility:visible!important;transition:none!important;z-index:10002!important}
       #navtop #search-input-section-inside{height:34px!important}
       #navtop #search-input-section .search-input{border-color:#cfe0ea!important}
