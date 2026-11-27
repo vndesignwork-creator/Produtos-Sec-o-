@@ -2783,30 +2783,17 @@ body { padding-top: var(--header-height); }
 				setTimeout(setHeaderOffset, 340);
 			}
 
-			// Nesta página o compacto só aparece com o scroll parado: enquanto se rola (para
-			// cima ou para baixo) o cabeçalho mostra-se por extenso, e só ~180ms depois do
-			// último movimento, já longe do topo, encolhe.
-			var PAUSA = 180, temporizador = null;
-			function definir(compactar) {
-				if (cabecalho.classList.contains('compacto') === compactar) return;
-				cabecalho.classList.toggle('compacto', compactar);
-				seguirTransicao();
-			}
-			function aoParar() {
-				temporizador = null;
-				var y = window.scrollY || document.documentElement.scrollTop || 0;
-				definir(y > COMPACTA_A);
-			}
 			function aoRolar() {
 				var y = window.scrollY || document.documentElement.scrollTop || 0;
-				if (y < EXPANDE_A) { clearTimeout(temporizador); definir(false); return; }
-				definir(false);
-				clearTimeout(temporizador);
-				temporizador = setTimeout(aoParar, PAUSA);
+				var compacto = cabecalho.classList.contains('compacto');
+				if (!compacto && y > COMPACTA_A) cabecalho.classList.add('compacto');
+				else if (compacto && y < EXPANDE_A) cabecalho.classList.remove('compacto');
+				else return;
+				seguirTransicao();
 			}
 
 			window.addEventListener('scroll', aoRolar, { passive: true });
-			aoParar(); // a página pode abrir já rolada (recarregar, voltar atrás, âncora)
+			aoRolar(); // a página pode abrir já rolada (recarregar, voltar atrás, âncora)
 		})();
 
 		// Dropdown de idioma (pt | en)
