@@ -27,7 +27,7 @@
     /* Folhas do site Speculum dentro da camada "site": dão o aspeto ao cabeçalho, mas qualquer regra
        desta página ganha-lhes, por isso o conteúdo fica exatamente como na versão sem o cabeçalho do site. */
     /* Os @import têm de vir antes de qualquer outra regra; só a declaração da ordem das camadas pode vir antes. */
-    @layer repor-importante, site, repor;
+    @layer cabecalho-importante, repor-importante, site, repor;
     @import url("https://www.speculum.pt/layout/css/stylesheet.css") layer(site);
     @import url("https://www.speculum.pt/layout/css/core.css") layer(site);
     @import url("https://www.speculum.pt/layout/css/select2.css") layer(site);
@@ -1695,6 +1695,392 @@ body { padding-top: var(--header-height); }
     .esp-faixa-lista { max-width: none; margin-left: 0; }
   }
 </style>
+  <style>
+    /* Cópia das regras do cabeçalho numa camada anterior à do site. Num !important ganha a camada
+       anterior, por isso só assim as correções !important do cabeçalho (como na ecografos.html)
+       vencem as !important do site. As declarações normais continuam a vir do bloco sem camada. */
+    @layer cabecalho-importante {
+
+    /* ============================================================
+       Cabeçalho e rodapé do site — CSS igual ao da monitoresdesinaisvitais.html
+       ============================================================
+       O #navtop é fixo e o script no fim da página publica a sua altura em --header-h
+       (altura por extenso) e --header-now (altura neste momento, menor quando o cabeçalho
+       fica compacto ao rolar). --search-h acrescenta a faixa da pesquisa quando esta abre
+       por baixo do cabeçalho, abaixo dos 992px. */
+
+    /* Variáveis usadas pelas regras do cabeçalho copiadas do site. */
+		:root{
+			color-scheme: light;
+			--azul-escuro:#00416b; --azul-claro:#0070af;
+			/* Verde EDAN, retirado do logótipo da arte oficial (#52c32f). O tom escuro é o mesmo
+			   verde puxado para baixo, para o traço do ícone se ler bem sobre fundo claro. */
+			--verde-edan:#52c32f; --verde-edan-escuro:#3f9d24;
+			--branco:#fff; --cinza-claro:#f4f6f8; --cinza-borda:#e3e8ec; --cinza-texto:#4a5560;
+			--sombra:0 6px 24px rgba(0,65,107,.12); --sombra-mega:0 18px 40px rgba(0,65,107,.22);
+			--radius:10px; --container:1240px;
+		}
+
+    /* O CSS do site põe html e body a 100% de altura, o que criava uma segunda barra de
+       rolagem vertical. */
+    html { overflow-x: clip !important; height: auto !important; }
+    body {
+      overflow-x: clip !important;
+      overflow-y: visible !important;
+      height: auto !important;
+      min-height: 0 !important;
+      background: #ffffff !important;
+    }
+
+    /* Espaço para o cabeçalho fixo. Usa --header-h e não --header-now: se seguisse a altura
+       actual, encolhia ao rolar e a página dava um salto. */
+    #root { padding-block-start: calc(var(--header-h, 90px) + var(--search-h, 0px)); }
+
+    /* O body do site traz line-height 1.5 e letter-spacing .1px; o conteúdo desta página
+       foi desenhado com os valores por omissão, e quem precisa de outros declara-os. */
+    #root { line-height: normal; letter-spacing: normal; }
+
+    /* A barra de secções deixa de colar ao topo da janela e passa a colar por baixo do
+       cabeçalho, acompanhando-o quando este encolhe. Vem depois da regra de telemóvel
+       (top: 72px) do bloco acima, por isso vale nas duas larguras. */
+    .r20-subnav { inset-block-start: calc(var(--header-now, 90px) + var(--search-h, 0px)); }
+
+    /* As âncoras da barra de secções param abaixo do cabeçalho e da própria barra
+       (--subnav-h é medida por JS, como na monitoresdesinaisvitais.html). */
+    #root section[id] { scroll-margin-top: calc(var(--header-now, 90px) + var(--search-h, 0px) + var(--subnav-h, 45px)); }
+
+    /* Barra de secções: realce da secção que está a ser lida e ao passar o rato, com o
+       mesmo traço por baixo da monitoresdesinaisvitais.html. */
+    .r20-subnav .r20-container { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+    .r20-subnav .r20-container::-webkit-scrollbar { display: none; }
+    .r20-subnav a { position: relative; transition: color 0.18s; }
+    .r20-subnav a::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: 0;
+      height: 2px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    .r20-subnav a:hover, .r20-subnav a:focus-visible, .r20-subnav a.is-ativo { color: #ffffff; }
+    .r20-subnav a:hover::after, .r20-subnav a:focus-visible::after, .r20-subnav a.is-ativo::after { transform: scaleX(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .r20-subnav .r20-container { scroll-behavior: auto; }
+      .r20-subnav a, .r20-subnav a::after { transition: none; }
+    }
+
+    /* Ligação de regresso à lista de ecógrafos, como nas páginas dos outros modelos. */
+    .r20-subnav a.eco-voltar { color: #8fb3c6; }
+    .r20-subnav a.eco-voltar::after { display: none; }
+    .r20-subnav a.eco-voltar:hover { color: #fff; }
+
+    /* Cabeçalho fixo: o offset do conteúdo e o topo do menu mobile são definidos por JS. */
+    #navtop .toggle-menu { top: 50% !important; transform: translateY(-50%); margin: 0 !important; }
+    #navtop .mobile-menu { top: var(--header-now, 80px) !important; background: #fff !important; }
+
+    /* No telemóvel, o cabeçalho branco cresce para conter o logótipo. */
+    @media (max-width: 991px) {
+      #navtop { padding-bottom: 18px; }
+    }
+
+    /* O site limitava a largura do rodapé. */
+
+    /* ============================================================
+       Tipografia do conteúdo
+       ============================================================
+       A stylesheet.css do site estiliza directamente h1…h6, p, a, span e afins. Uma regra
+       que declara um valor no próprio elemento ganha sempre a um valor herdado, por isso
+       o `font-family` que esta página punha no body deixava de chegar ao conteúdo e o texto
+       caía para MiniSerif/Times.
+
+       As regras seguintes repõem os valores desta página ao nível do elemento. O selector
+       vai dentro de :where(#root), que limita o alcance ao conteúdo (deixando de fora o
+       cabeçalho e o rodapé) sem somar especificidade: contam como um selector de elemento,
+       ganham às regras do site por virem depois e continuam a perder para qualquer regra
+       .r20-* que declare o mesmo — que é o que se pretende. */
+    :where(#root) h1, :where(#root) h2, :where(#root) h3,
+    :where(#root) h4, :where(#root) h5, :where(#root) h6 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: normal;
+      color: inherit;
+    }
+    /* Os elementos de texto voltam a herdar do contexto, como antes de a folha do site
+       entrar: é o que devolve a Plus Jakarta Sans do body e, dentro do h1 do herói, a
+       Montserrat do próprio título. */
+    :where(#root) p, :where(#root) span, :where(#root) a, :where(#root) li,
+    :where(#root) em, :where(#root) button, :where(#root) th, :where(#root) td,
+    :where(#root) figcaption {
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: normal;
+      color: inherit;
+      text-transform: none;
+    }
+    /* O site colore os links com `a:link` / `a:visited`, mais específico do que `a`. */
+    :where(#root) a:link, :where(#root) a:visited { color: inherit; }
+    /* Os links a que esta página dá cor própria têm de voltar a ganhar à regra acima,
+       daí o par classe + :link (que vale mais do que elemento + :link). */
+    :where(#root) .r20-btn-primary:link, :where(#root) .r20-btn-primary:visited { color: #051722; }
+    :where(#root) .r20-btn-outline:link, :where(#root) .r20-btn-outline:visited { color: #ffffff; }
+    :where(#root) .r20-contact-button:link, :where(#root) .r20-contact-button:visited { color: #005a85; }
+    :where(#root) .r20-software-note a:link, :where(#root) .r20-software-note a:visited { color: #12dcff; }
+    /* strong e b mantêm-se a negrito (o site impunha-lhes a MiniSerifBold, que já não
+       existe no servidor, e o texto caía para Times). */
+    :where(#root) strong, :where(#root) b {
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: normal;
+    }
+
+    /* Abaixo dos 768px o site reescreve o h1 com !important (20px, centrado, azul). É a
+       única regra do site que obriga a responder também com !important; os valores são os
+       que esta página já usava. */
+    #root .r20-hero h1 {
+      margin: 18px 0 0 !important;
+      font-size: clamp(58px, 8vw, 100px) !important;
+      font-weight: 700 !important;
+      line-height: 0.9 !important;
+      text-align: start !important;
+      color: inherit !important;
+    }
+    @media (max-width: 620px) {
+      #root .r20-hero h1 { font-size: 52px !important; }
+    }
+
+		/* Remove o padding-bottom que o site reserva para o chat fixo (não usado aqui) → tira o espaço em branco do rodapé */
+		body.has-mainnav{padding-bottom:0}
+
+		/* ===== FontAwesome auto-alojado (garante os ícones em qualquer contexto) ===== */
+		
+		#navtop .fa{font-family:'FontAwesome'}
+		#navtop .fa-user:before{content:"\f007"}
+		#navtop .fa-shopping-cart:before{content:"\f07a"}
+		#navtop .fa-search:before{content:"\f002"}
+
+		/* ===== Pesquisa em tempo real =====
+		   Marcação e circuito são os do speculum.pt. A aparência é fixada aqui porque esta
+		   página carrega também o core.css (que o site não usa na homepage) e esse sobrepõe-se
+		   às regras de pesquisa da stylesheet.css — o campo ficava com 23px de altura.
+		   Os valores seguem os do site: campo de 380px com moldura azul, botão », e lista de
+		   produtos com miniatura redonda à esquerda e nome alinhado à direita. */
+
+		/* Faixa: linha própria colada por baixo do cabeçalho fixo. O espaço que ocupa é
+		   reservado em --search-h (medido por JS) para não tapar a barra de especialidades. */
+		#navtop #search-input-section{position:absolute!important;left:0!important;right:0!important;top:100%!important;
+			width:100%!important;max-width:none!important;height:auto!important;min-height:0!important;
+			margin:0!important;padding:0 0 12px!important;background:transparent!important;border:0!important;
+			box-shadow:none!important;opacity:1!important;pointer-events:auto!important;overflow:visible!important;
+			display:block!important;z-index:9998!important;transition:none}
+		#navtop #search-input-section.fechada{display:none!important}
+		/* Todas as regras vão prefixadas com #navtop: abaixo de 768px o site usa seletores como
+		   `#searchform input[type="text"]`, mais específicos do que `#search-input-section .x`. */
+		/* box-sizing para o campo ficar alinhado com o .container do conteúdo (mesma margem) */
+		#navtop #search-input-section-inside{box-sizing:border-box;max-width:var(--container);height:auto;
+			margin-inline:auto;padding-inline:20px;text-align:right}
+		/* !important porque abaixo de 768px a stylesheet.css do site fixa o formulário ao topo
+		   do ecrã (position:fixed) — aqui ele vive dentro da faixa, em qualquer largura. */
+		#navtop #search-input-section form#searchform{position:relative!important;top:auto!important;left:auto!important;
+			right:auto!important;display:inline-block;width:100%!important;max-width:380px!important;
+			height:50px!important;margin:0!important;padding:0!important;background:transparent!important;
+			border:0!important;z-index:auto!important;box-shadow:0 10px 26px rgba(0,65,107,.18)!important}
+		/* Na barra de topo o campo é pequeno: a sombra da faixa larga (26px de desfoque,
+		   10px de deslocamento) pesava demasiado. Aqui fica um pousio discreto. */
+		@media (min-width:992px){
+			#navtop #search-input-section form#searchform{box-shadow:0 1px 3px rgba(0,65,107,.1)!important}
+		}
+
+		/* Campo + botão */
+		#navtop #search-input-section .search-input{box-sizing:border-box!important;width:100%!important;height:50px!important;
+			margin:0!important;padding:0 60px 0 18px!important;border:1px solid var(--azul-claro)!important;
+			border-radius:0!important;background:#fff!important;color:var(--azul-escuro)!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;
+			font-size:.9rem!important;line-height:normal!important;box-shadow:none!important}
+		#navtop #search-input-section .search-input::placeholder{color:#8a97a3;opacity:1}
+		#navtop #search-input-section .search-input:focus{border-color:var(--azul-escuro)!important}
+		#navtop #search-input-section .form-button{position:absolute!important;top:1px!important;right:1px!important;
+			left:auto!important;bottom:auto!important;width:50px!important;height:48px!important;margin:0!important;
+			padding:0 0 4px!important;border:0!important;border-radius:0!important;background:var(--azul-claro)!important;
+			color:#fff!important;font-family:inherit!important;font-size:26px!important;line-height:1!important;
+			cursor:pointer;transition:background .2s}
+		#navtop #search-input-section .form-button:hover,
+		#navtop #search-input-section .form-button:focus-visible{background:var(--azul-escuro)!important}
+
+		/* Lista de resultados — fora do fluxo do formulário para os resultados não fazerem
+		   crescer o cabeçalho (que é medido para o offset da página). */
+		#navtop #search-input-section #search-content{position:absolute!important;top:100%!important;left:0!important;
+			right:0!important;width:auto!important;height:auto!important;max-height:500px!important;overflow-y:auto!important;
+			background:#fff!important;box-shadow:0 12px 28px rgba(0,65,107,.22);z-index:1!important}
+		#navtop #search-input-section #search-content:empty{display:none!important}
+		#navtop #search-input-section a.cc_item{display:flex!important;align-items:center;gap:12px;width:100%!important;
+			height:60px!important;padding:5px 12px!important;background:#f7f9fb!important;
+			border-bottom:1px solid var(--cinza-borda)!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;font-size:.82rem!important;
+			line-height:1.3!important;color:var(--cinza-texto)!important;transition:background .15s}
+		#navtop #search-input-section a.cc_item:last-child{border-bottom:0!important}
+		#navtop #search-input-section a.cc_item:hover,
+		#navtop #search-input-section a.cc_item:focus-visible{background:var(--cinza-claro)!important}
+		#navtop #search-input-section a.cc_item .image{flex:0 0 50px;width:50px!important;height:50px!important;
+			padding:0!important;margin:0!important;overflow:hidden;float:none!important}
+		#navtop #search-input-section a.cc_item img{width:50px!important;height:50px!important;max-width:none!important;
+			max-height:none!important;margin:0!important;padding:0!important;object-fit:cover!important;
+			border-radius:500px!important;background:#fff}
+		#navtop #search-input-section a.cc_item div:not(.image){flex:1;min-width:0;width:auto!important;
+			line-height:1.3!important;text-align:right!important}
+		/* "Ver mais (N)" — o endpoint envia-o no fim quando há mais resultados do que os
+		   listados; é um submit do próprio formulário, leva à página de resultados do site. */
+		#navtop #search-input-section .cc_wrapper .button-send{display:block!important;position:static!important;
+			width:100%!important;max-width:none!important;height:auto!important;margin:0!important;
+			padding:15px 20px!important;border:0!important;border-radius:0!important;
+			background:var(--azul-claro)!important;color:#fff!important;
+			font-family:"Montserrat",-apple-system,"Segoe UI",sans-serif!important;font-size:.8rem!important;
+			font-weight:600!important;letter-spacing:.06em;text-transform:uppercase;text-align:center;
+			line-height:1.2!important;cursor:pointer;transition:background .2s}
+		#navtop #search-input-section .cc_wrapper .button-send:hover,
+		#navtop #search-input-section .cc_wrapper .button-send:focus-visible{background:var(--azul-escuro)!important}
+
+		/* ===== Pesquisa na barra de topo (≥992px) =====
+		   Anula a faixa própria e põe o campo em linha com o Login e o carrinho. A barra de topo
+		   cresce de 30 para 46px para acomodar o campo; em troca desaparecem os 62px da faixa,
+		   pelo que o cabeçalho fica mais baixo e a barra de secções encosta-lhe. */
+		@media (min-width:992px){
+			/* A barra de topo cresce de 30 para 46px para acolher o campo; em troca desaparecem
+			   os 62px da faixa, pelo que o cabeçalho fica mais baixo do que estava. */
+			#navtop .navtop-top-bar{height:46px!important}
+			#navtop .navtop-top-buttons{display:flex!important;align-items:center;justify-content:flex-end;
+				gap:26px;height:46px!important;padding-inline-start:0!important}
+			/* Ocupava 52px de espaço com visibility:hidden — fora do fluxo fica tudo alinhado. */
+			#navtop .logout-btn-wrapper{display:none!important}
+			/* Como itens flex os links passam a bloco e herdavam line-height:45px, o que os
+			   partia em duas linhas de 90px de altura. Aqui centram-se na barra numa só linha. */
+			#navtop .user-btn-wrapper,#navtop .shopping-btn-wrapper{display:flex!important;
+				align-items:center;height:auto!important;line-height:1!important;white-space:nowrap;
+				margin:0!important;padding:0!important;flex:0 0 auto}
+			#navtop .user-btn-wrapper .fa,#navtop .shopping-btn-wrapper .fa{line-height:1!important}
+			#navtop #languages-flags{inset-block-start:6px!important}
+
+			/* Sobreposta à barra de topo, à esquerda do Login. --busca-right é a distância ao
+			   bordo direito do cabeçalho, medida por JS a partir da posição real dos botões. */
+			#navtop #search-input-section{position:absolute!important;inset-block-start:6px!important;
+				inset-inline-end:var(--busca-right,420px)!important;inset-inline-start:auto!important;
+				width:320px!important;max-width:320px!important;height:34px!important;
+				padding:0!important;z-index:10002!important}
+			#navtop #search-input-section-inside{max-width:none!important;width:100%!important;
+				height:34px!important;margin:0!important;padding:0!important}
+			#navtop #search-input-section form#searchform{max-width:none!important;width:100%!important;
+				height:34px!important;display:block!important}
+			#navtop #search-input-section .search-input{height:34px!important;font-size:.85rem!important;
+				padding:0 44px 0 14px!important;border-radius:6px!important}
+			#navtop #search-input-section .form-button{top:2px!important;right:2px!important;
+				width:34px!important;height:30px!important;border-radius:5px!important;font-size:15px!important}
+			/* A lista de resultados cai por baixo do campo, sobre o resto do cabeçalho. */
+			#navtop #search-input-section #search-content{width:380px!important;max-width:none!important;
+				inset-inline-end:0!important;inset-inline-start:auto!important;z-index:10003!important}
+		}
+
+		/* ===== Cabeçalho compacto ao rolar =====
+		   A classe .compacto é posta por JS a partir dos ~90px de scroll: a barra de topo
+		   recolhe-se e o logótipo encolhe, levando o cabeçalho de 146 para 74px.
+
+		   Tudo o que muda são propriedades animáveis — alturas, margens, preenchimentos e
+		   opacidade. Nada de `display:none` nem de trocar `position`, que cortam a meio: a
+		   barra de topo fecha-se de 46 para 0 de altura, e as peças por baixo sobem com ela.
+
+		   A stylesheet.css do site afina a vertical destas peças para o cabeçalho por extenso
+		   (margin-top:-10px na .menu-left, padding-bottom:20px na .menu-center, margin-top:26px
+		   na lista do menu). Com o cabeçalho mais baixo esses valores punham o logótipo a sair
+		   por cima, cortado, e o menu a transbordar por baixo; no estado compacto são
+		   substituídos por valores que centram as duas colunas nos 74px — e, por serem margens
+		   e preenchimentos, fazem-no a deslizar em vez de aos saltos. */
+		@media (min-width:992px){
+			#navtop .navtop-top-bar{overflow:hidden;
+				transition:height .26s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+			/* O site fixa #navtopinner em 100px, por isso o cabeçalho nunca desceria abaixo
+			   disso só por encolher o que está lá dentro. Como ambos os extremos são valores
+			   explícitos, a altura interpola-se. */
+			#navtop #navtopinner{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .logo img{transition:height .26s cubic-bezier(.4,0,.2,1)}
+			/* As duas colunas também têm altura fixa do site (80px); sem a encolher, o cabeçalho
+			   ficava pelos 104px mesmo com o interior a 74. */
+			#navtop .menu-left{transition:height .26s cubic-bezier(.4,0,.2,1),
+				margin-block-start .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop .menu-center{transition:height .26s cubic-bezier(.4,0,.2,1),
+				padding-block-end .26s cubic-bezier(.4,0,.2,1)}
+			#navtop ul.sf-menu{transition:margin-block-start .26s cubic-bezier(.4,0,.2,1)}
+			/* A pesquisa é irmã da barra de topo, não filha, por isso não recolhe com ela: se
+			   ficasse no sítio, atravessava o menu durante a animação. Sobe com a barra (de
+			   6px para -40px, os mesmos 46px que a barra perde) enquanto se esvai.
+			   O `visibility 0s` sem atraso é o que a faz reaparecer de imediato ao voltar ao
+			   topo; o atraso só existe no sentido inverso, na regra .compacto abaixo. */
+			#navtop #search-input-section{transition:opacity .2s ease,
+				inset-block-start .26s cubic-bezier(.4,0,.2,1),visibility 0s}
+
+			#navtop.compacto .navtop-top-bar{height:0!important;opacity:0}
+			#navtop.compacto #navtopinner{height:74px!important}
+			/* Esvai-se depressa (.14s) para já lá não estar quando passa pela zona do menu.
+			   O !important na opacidade é preciso: a regra base da faixa fixa opacity:1!important
+			   (vem de quando a pesquisa era uma faixa que o site escondia por opacidade). */
+			#navtop.compacto #search-input-section{opacity:0!important;visibility:hidden;
+				inset-block-start:-40px!important;
+				transition:opacity .14s ease,inset-block-start .26s cubic-bezier(.4,0,.2,1),
+				visibility 0s linear .14s}
+			#navtop.compacto .logo img{height:50px!important;width:auto!important}
+			#navtop.compacto .menu-left{height:50px!important;margin-block-start:12px!important;
+				padding-block-end:12px!important}
+			#navtop.compacto .menu-center{height:71px!important;padding-block-end:3px!important}
+			#navtop.compacto ul.sf-menu{margin-block-start:2px!important}
+		}
+		@media (prefers-reduced-motion:reduce){
+			#navtop .navtop-top-bar,#navtop #navtopinner,#navtop .logo img,#navtop .menu-left,
+			#navtop .menu-center,#navtop ul.sf-menu,#navtop #search-input-section{transition:none!important}
+		}
+		/* Abaixo de 992px não há modo compacto: a barra de topo já está escondida e o cabeçalho
+		   tem min-height:58px, por isso encolher o logótipo não devolveria altura nenhuma. */
+
+		/* A lupa só faz sentido onde a faixa arranca fechada (ecrãs estreitos); à direita do
+		   logótipo e à esquerda do menu de hambúrguer, sem lhe tocar. */
+		#navtop .menu-right{display:none}
+		@media (max-width:991px){
+			#navtop .menu-right{display:block!important;visibility:visible!important;position:absolute!important;
+				top:50%!important;right:62px!important;left:auto!important;transform:translateY(-50%);
+				width:auto!important;height:auto!important;margin:0!important;padding:0!important;z-index:10001}
+			#navtop .menu-right .search-btn{display:block!important;width:auto!important;height:auto!important;
+				min-width:0!important;min-height:0!important;margin:0!important;padding:8px!important;
+				border-left:0!important;font-size:20px!important;color:var(--azul-escuro)!important}
+			/* em ecrã estreito o campo ocupa a largura toda da faixa */
+			#navtop #search-input-section form#searchform{max-width:none!important}
+			/* Abaixo de 992px a stylesheet.css do site esconde a faixa com visibility:hidden e
+			   display:none nos elementos interiores — a lupa abria uma faixa vazia. (O mesmo
+			   acontece nas outras páginas do site; aqui fica reposto.) */
+			#navtop #search-input-section{visibility:visible!important}
+			#navtop #search-input-section.fechada{visibility:hidden!important}
+			/* O site arruma-o fora do ecrã com position:absolute e left/top:-9999px. */
+			/* max-width:0 era o que colapsava a faixa toda — daí o campo sair com 80px. */
+			#navtop #search-input-section-inside{display:block!important;visibility:visible!important;
+				position:relative!important;inset:auto!important;width:100%!important;
+				max-width:none!important;height:auto!important}
+			#navtop #search-input-section form#searchform{display:block!important;visibility:visible!important;
+				width:100%!important;height:auto!important}
+			#navtop #search-input-section .search-input{display:block!important;visibility:visible!important;
+				width:100%!important}
+			#navtop #search-input-section .form-button{display:block!important;visibility:visible!important}
+		}
+
+		/* O ecrã de espera do site (loading2.gif) não deve intercetar cliques */
+		#navtop #search-input-section #search-input-section-inside.loading:before{pointer-events:none}
+  
+    }
+    /* Texto do cabeçalho como nas páginas de produto: herda do body do site, não do desta página. */
+    #navtop { font-family: "Open Sans", Arial, sans-serif; font-size: 16px; line-height: 1.3; color: #000; }
+    @media only screen and (max-width: 768px) { #navtop { line-height: 1.5; } }
+    @media (prefers-color-scheme: dark) { #navtop { color: #e8eef2; } }
+  </style>
 </head>
 <body class="has-mainnav mouse-user">
 <!-- Ícones no estilo aprovado (sólidos em dois azuis, sem fundo), como na nervetrack.html. -->
@@ -1787,7 +2173,7 @@ body { padding-top: var(--header-height); }
 <div class="menu-center similar">
 <nav class="fright show">
 
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="medicoshospitalares.html">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class="selected" aria-current="page">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa">Empresa</a></li><li><a href="medicoshospitalares.html">Produtos</a></li><li><a href="https://www.speculum.pt/pt/servicos">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos">Contactos</a></li></ul>
 <select onchange="if(this.value)window.location.href=this.value"><option value="https://www.speculum.pt/pt/inicio">Início</option><option value="https://www.speculum.pt/pt/empresa">Empresa</option><option value="medicoshospitalares.html">Produtos</option><option value="https://www.speculum.pt/pt/servicos">Serviços</option><option value="https://www.speculum.pt/pt/catalogos">Catálogos</option><option value="https://www.speculum.pt/pt/noticias/6-noticias">Notícias</option><option value="https://www.speculum.pt/pt/contactos">Contactos</option></select></nav>
 </div>
 
@@ -1795,7 +2181,7 @@ body { padding-top: var(--header-height); }
 
 <div class="toggle-menu" role="button" tabindex="0" aria-label="Abrir menu"></div>
 <div class="mobile-menu">
-<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class=" ">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="medicoshospitalares.html" class=" ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
+<ul class="sf-menu"><li><a href="https://www.speculum.pt/pt/inicio" class="selected " aria-current="page">Início</a></li><li><a href="https://www.speculum.pt/pt/empresa" class=" ">Empresa</a></li><li class="sf-menus-inner"><div class="button-plus"></div><a href="medicoshospitalares.html" class=" ">Produtos</a><ul class="sf-submenu"><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1-consumiveis]">Consumíveis</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[2-equipamentos]">Equipamentos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[3-metalicos]">Metálicos</a></li><li><a href="https://www.speculum.pt/pt/produtos/categoria=[1303-inovacao]">Inovação</a></li></ul></li><li><a href="https://www.speculum.pt/pt/servicos" class=" ">Serviços</a></li><li><a href="https://www.speculum.pt/pt/catalogos" class=" ">Catálogos</a></li><li><a href="https://www.speculum.pt/pt/noticias/6-noticias" class=" ">Notícias</a></li><li><a href="https://www.speculum.pt/pt/contactos" class=" ">Contactos</a></li></ul> </div>
 <div class="clear"></div>
 </div>
 
