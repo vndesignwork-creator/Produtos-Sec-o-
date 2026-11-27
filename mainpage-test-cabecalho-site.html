@@ -1689,7 +1689,9 @@ body { padding-top: var(--header-height); }
   /* Especialidades (≥1230px): fixas por baixo do cabeçalho, acompanhando-o quando fica compacto.
      A pesquisa está na barra de topo, por isso a linha pode usar a largura toda. */
   @media (min-width: 1230px) {
-    .esp-faixa { inset-block-start: var(--header-now, 100px) !important; transition: inset-block-start .2s; }
+    /* Sem transição própria: o script do cabeçalho atualiza --header-now a cada fotograma enquanto este
+       encolhe ou cresce, por isso os botões ficam sempre colados a ele. */
+    .esp-faixa { inset-block-start: var(--header-now, 100px) !important; }
     .esp-faixa-lista { max-width: none; margin-left: 0; }
   }
 </style>
